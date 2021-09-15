@@ -45,4 +45,29 @@ imp_dv <- function(x, y){
 # 1.2. Cargar datos ------------------------------------------------------------
 
 # Catálogo de bases de datos 
-imp_dv(v_id, "99_pobtot")
+df_data     <- imp_dv(v_id, 2)
+
+# Guardar base de datos vacía
+ips_test <- data.frame()
+
+
+# Bucle para estimar 
+for(i in 3:54){
+    
+    ips_tempo <- imp_dv(v_id, i) %>% 
+        mutate_at(
+            vars(c(contains("value"),contains("anio"))),
+            ~as.numeric(.)
+        ) %>% 
+        mutate_at(
+            vars(c(starts_with("id"), starts_with("cve"))),
+            ~as.character(str_pad(.,2,"l","0"))
+        ) %>% 
+        filter(
+            anio == 2015 | anio == 2016
+        )
+    
+    
+    ips_test <- bind_rows(ips_test, ips_tempo)
+
+}
