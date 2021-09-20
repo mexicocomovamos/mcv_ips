@@ -6,7 +6,7 @@
 # Correos:                    katia@mexicocomovamos.mx | regimedina19@gmail.com
 # 
 # Fecha de creación:          09 de septiembre de 2021
-# Última actualización:       14 de septiembre de 2021
+# Última actualización:       20 de septiembre de 2021
 #------------------------------------------------------------------------------#
 
 # 0. Configuración inicial -----------------------------------------------------
@@ -15,7 +15,7 @@ Sys.setlocale("LC_TIME", "es_ES")
 
 # Cargar paquetería 
 require(pacman)
-p_load(tidyverse, dplyr, googledrive, googlesheets4, beepr)
+p_load(tidyverse, dplyr, googledrive, googlesheets4, janitor, beepr)
 
 # Desactiva notación científica
 options(scipen=999)
@@ -147,7 +147,6 @@ df_2020 <- df_2020r                                     %>%
         valor     = ifelse(valor == 1, 1, 0))
 
 
-
 # Unir todas las nuevas bases con formato largo de 2017 a 2020
 df_long1720 <- df_2017                                  %>% 
     rbind(df_2018, df_2019, df_2020)                    %>% 
@@ -155,15 +154,25 @@ df_long1720 <- df_2017                                  %>%
         valor = as.numeric(valor))                      %>% 
     group_by(entidad, year)                             %>% 
     summarise(mec_part = sum(valor, na.rm = T))         %>% 
-    mutate(p_mec     = round(mec_part/(16*23), 5))
-
+    mutate(p_mec     = round(mec_part/(16*23), 5))      
 
 # Unir todos los años y agregar los nombres de las entidades
 df_mecanismos <- df_long1116                            %>% 
     rbind(df_long1720)                                  %>% 
     mutate(entidad = as.double(entidad))                %>% 
     left_join(df_ent, by = c("entidad" = "ENTIDAD"))    %>% 
-    arrange(entidad, year)                              %>% 
+    # Añadir total nacional
+    mutate(entidad = as.character(entidad))             %>% 
+    mutate(p_mec   = as.numeric(p_mec))                 %>% 
+    group_by(year)                                      %>%
+    bind_rows(summarise_all(., 
+        ~if(is.numeric(.)) mean(.) else ("Nacional")))  %>% 
+    mutate(entidad = ifelse(DESCRIP == "Nacional", 
+        "00", entidad))                                 %>% 
+    ungroup()                                           %>% 
+    # Ordenar
+    arrange(year, entidad)                              %>% 
+    # Renombrar
     mutate(
         cve_ent = str_pad(entidad, 2, pad = "0"), 
         entidad_abr_m = case_when(
@@ -201,10 +210,11 @@ df_mecanismos <- df_long1116                            %>%
             cve_ent == "31" ~ "YUC",
             cve_ent == "32" ~ "ZAC"), 
         id_dimension = "03", 
-        id_indicador = "38")    %>% 
+        id_indicador = "38")                            %>% 
     select(
         cve_ent, entidad_abr_m, anio = year, id_dimension, 
-        id_indicador, indicador_value = p_mec)
+        id_indicador, indicador_value = p_mec)          %>% 
+    mutate_all(as.character)
     
 # View(df_mecanismos)
 
