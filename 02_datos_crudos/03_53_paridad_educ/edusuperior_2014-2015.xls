@@ -1,0 +1,320 @@
+<table><tr><td colspan=6 align='center' style='font-weight: bold; font-size: 12pt'>SISTEMA EDUCATIVO NACIONAL</td></tr><tr><td colspan=6 align='center' style='font-weight: bold; font-size: 12pt'>CICLO ESCOLAR 2014-2015</td></tr><tr height=10><td aling="center"></td></tr></table><table>
+	<tr>
+		<td colspan="6"><span class="Titulos_principales2" style="font-size:8pt;">TIPO EDUCATIVO: EDUCACIÓN SUPERIOR;     SOSTENIMIENTO: TODOS;     ENTIDAD: TODAS</span></td>
+	</tr>
+	<tr bgcolor="#666666">
+		<td width="290" align="center"><span class="Titulos_principales2" style="color:White;">Entidad</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Escuelas²</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Instituciones</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Alumnos</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Alumnos Hombres</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Alumnos Mujeres</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Total Docentes</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> AGUASCALIENTES</span></td>
+		<td align="Right"><span class="FontRow">86</span></td>
+		<td align="Right"><span class="FontRow">39</span></td>
+		<td align="Right"><span class="FontRow">44,435</span></td>
+		<td align="Right"><span class="FontRow">22,411</span></td>
+		<td align="Right"><span class="FontRow">22,024</span></td>
+		<td align="Right"><span class="FontRow">5,426</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> BAJA CALIFORNIA</span></td>
+		<td align="Right"><span class="FontRow">194</span></td>
+		<td align="Right"><span class="FontRow">71</span></td>
+		<td align="Right"><span class="FontRow">106,581</span></td>
+		<td align="Right"><span class="FontRow">53,714</span></td>
+		<td align="Right"><span class="FontRow">52,867</span></td>
+		<td align="Right"><span class="FontRow">12,147</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> BAJA CALIFORNIA SUR</span></td>
+		<td align="Right"><span class="FontRow">47</span></td>
+		<td align="Right"><span class="FontRow">23</span></td>
+		<td align="Right"><span class="FontRow">21,075</span></td>
+		<td align="Right"><span class="FontRow">10,679</span></td>
+		<td align="Right"><span class="FontRow">10,396</span></td>
+		<td align="Right"><span class="FontRow">2,518</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> CAMPECHE</span></td>
+		<td align="Right"><span class="FontRow">85</span></td>
+		<td align="Right"><span class="FontRow">36</span></td>
+		<td align="Right"><span class="FontRow">26,644</span></td>
+		<td align="Right"><span class="FontRow">13,651</span></td>
+		<td align="Right"><span class="FontRow">12,993</span></td>
+		<td align="Right"><span class="FontRow">2,708</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> CHIAPAS</span></td>
+		<td align="Right"><span class="FontRow">257</span></td>
+		<td align="Right"><span class="FontRow">118</span></td>
+		<td align="Right"><span class="FontRow">77,265</span></td>
+		<td align="Right"><span class="FontRow">40,668</span></td>
+		<td align="Right"><span class="FontRow">36,597</span></td>
+		<td align="Right"><span class="FontRow">9,216</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> CHIHUAHUA</span></td>
+		<td align="Right"><span class="FontRow">216</span></td>
+		<td align="Right"><span class="FontRow">91</span></td>
+		<td align="Right"><span class="FontRow">121,770</span></td>
+		<td align="Right"><span class="FontRow">62,457</span></td>
+		<td align="Right"><span class="FontRow">59,313</span></td>
+		<td align="Right"><span class="FontRow">11,886</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> COAHUILA DE ZARAGOZA</span></td>
+		<td align="Right"><span class="FontRow">210</span></td>
+		<td align="Right"><span class="FontRow">99</span></td>
+		<td align="Right"><span class="FontRow">91,300</span></td>
+		<td align="Right"><span class="FontRow">49,005</span></td>
+		<td align="Right"><span class="FontRow">42,295</span></td>
+		<td align="Right"><span class="FontRow">10,514</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> COLIMA</span></td>
+		<td align="Right"><span class="FontRow">80</span></td>
+		<td align="Right"><span class="FontRow">17</span></td>
+		<td align="Right"><span class="FontRow">22,405</span></td>
+		<td align="Right"><span class="FontRow">11,501</span></td>
+		<td align="Right"><span class="FontRow">10,904</span></td>
+		<td align="Right"><span class="FontRow">2,834</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> DISTRITO FEDERAL</span></td>
+		<td align="Right"><span class="FontRow">688</span></td>
+		<td align="Right"><span class="FontRow">276</span></td>
+		<td align="Right"><span class="FontRow">530,490</span></td>
+		<td align="Right"><span class="FontRow">269,590</span></td>
+		<td align="Right"><span class="FontRow">260,900</span></td>
+		<td align="Right"><span class="FontRow">66,443</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> DURANGO</span></td>
+		<td align="Right"><span class="FontRow">126</span></td>
+		<td align="Right"><span class="FontRow">62</span></td>
+		<td align="Right"><span class="FontRow">46,527</span></td>
+		<td align="Right"><span class="FontRow">24,068</span></td>
+		<td align="Right"><span class="FontRow">22,459</span></td>
+		<td align="Right"><span class="FontRow">5,424</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> GUANAJUATO</span></td>
+		<td align="Right"><span class="FontRow">330</span></td>
+		<td align="Right"><span class="FontRow">143</span></td>
+		<td align="Right"><span class="FontRow">116,756</span></td>
+		<td align="Right"><span class="FontRow">58,643</span></td>
+		<td align="Right"><span class="FontRow">58,113</span></td>
+		<td align="Right"><span class="FontRow">14,237</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> GUERRERO</span></td>
+		<td align="Right"><span class="FontRow">156</span></td>
+		<td align="Right"><span class="FontRow">83</span></td>
+		<td align="Right"><span class="FontRow">61,891</span></td>
+		<td align="Right"><span class="FontRow">30,084</span></td>
+		<td align="Right"><span class="FontRow">31,807</span></td>
+		<td align="Right"><span class="FontRow">4,859</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> HIDALGO</span></td>
+		<td align="Right"><span class="FontRow">187</span></td>
+		<td align="Right"><span class="FontRow">96</span></td>
+		<td align="Right"><span class="FontRow">87,777</span></td>
+		<td align="Right"><span class="FontRow">43,105</span></td>
+		<td align="Right"><span class="FontRow">44,672</span></td>
+		<td align="Right"><span class="FontRow">8,328</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> JALISCO</span></td>
+		<td align="Right"><span class="FontRow">363</span></td>
+		<td align="Right"><span class="FontRow">185</span></td>
+		<td align="Right"><span class="FontRow">229,548</span></td>
+		<td align="Right"><span class="FontRow">116,575</span></td>
+		<td align="Right"><span class="FontRow">112,973</span></td>
+		<td align="Right"><span class="FontRow">22,661</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> MÉXICO</span></td>
+		<td align="Right"><span class="FontRow">584</span></td>
+		<td align="Right"><span class="FontRow">266</span></td>
+		<td align="Right"><span class="FontRow">398,556</span></td>
+		<td align="Right"><span class="FontRow">197,609</span></td>
+		<td align="Right"><span class="FontRow">200,947</span></td>
+		<td align="Right"><span class="FontRow">38,932</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> MICHOACÁN DE OCAMPO </span></td>
+		<td align="Right"><span class="FontRow">267</span></td>
+		<td align="Right"><span class="FontRow">108</span></td>
+		<td align="Right"><span class="FontRow">98,105</span></td>
+		<td align="Right"><span class="FontRow">49,982</span></td>
+		<td align="Right"><span class="FontRow">48,123</span></td>
+		<td align="Right"><span class="FontRow">9,356</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> MORELOS</span></td>
+		<td align="Right"><span class="FontRow">161</span></td>
+		<td align="Right"><span class="FontRow">77</span></td>
+		<td align="Right"><span class="FontRow">55,708</span></td>
+		<td align="Right"><span class="FontRow">27,096</span></td>
+		<td align="Right"><span class="FontRow">28,612</span></td>
+		<td align="Right"><span class="FontRow">7,744</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> NAYARIT</span></td>
+		<td align="Right"><span class="FontRow">65</span></td>
+		<td align="Right"><span class="FontRow">32</span></td>
+		<td align="Right"><span class="FontRow">32,789</span></td>
+		<td align="Right"><span class="FontRow">16,506</span></td>
+		<td align="Right"><span class="FontRow">16,283</span></td>
+		<td align="Right"><span class="FontRow">2,903</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> NUEVO LEÓN</span></td>
+		<td align="Right"><span class="FontRow">327</span></td>
+		<td align="Right"><span class="FontRow">132</span></td>
+		<td align="Right"><span class="FontRow">179,939</span></td>
+		<td align="Right"><span class="FontRow">94,177</span></td>
+		<td align="Right"><span class="FontRow">85,762</span></td>
+		<td align="Right"><span class="FontRow">15,784</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> OAXACA</span></td>
+		<td align="Right"><span class="FontRow">156</span></td>
+		<td align="Right"><span class="FontRow">85</span></td>
+		<td align="Right"><span class="FontRow">68,011</span></td>
+		<td align="Right"><span class="FontRow">33,287</span></td>
+		<td align="Right"><span class="FontRow">34,724</span></td>
+		<td align="Right"><span class="FontRow">6,573</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> PUEBLA</span></td>
+		<td align="Right"><span class="FontRow">594</span></td>
+		<td align="Right"><span class="FontRow">257</span></td>
+		<td align="Right"><span class="FontRow">210,149</span></td>
+		<td align="Right"><span class="FontRow">104,000</span></td>
+		<td align="Right"><span class="FontRow">106,149</span></td>
+		<td align="Right"><span class="FontRow">18,861</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> QUERÉTARO</span></td>
+		<td align="Right"><span class="FontRow">131</span></td>
+		<td align="Right"><span class="FontRow">68</span></td>
+		<td align="Right"><span class="FontRow">63,208</span></td>
+		<td align="Right"><span class="FontRow">32,513</span></td>
+		<td align="Right"><span class="FontRow">30,695</span></td>
+		<td align="Right"><span class="FontRow">7,818</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> QUINTANA ROO</span></td>
+		<td align="Right"><span class="FontRow">71</span></td>
+		<td align="Right"><span class="FontRow">40</span></td>
+		<td align="Right"><span class="FontRow">33,081</span></td>
+		<td align="Right"><span class="FontRow">16,781</span></td>
+		<td align="Right"><span class="FontRow">16,300</span></td>
+		<td align="Right"><span class="FontRow">3,927</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> SAN LUIS POTOSÍ</span></td>
+		<td align="Right"><span class="FontRow">122</span></td>
+		<td align="Right"><span class="FontRow">58</span></td>
+		<td align="Right"><span class="FontRow">71,831</span></td>
+		<td align="Right"><span class="FontRow">35,515</span></td>
+		<td align="Right"><span class="FontRow">36,316</span></td>
+		<td align="Right"><span class="FontRow">6,285</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> SINALOA</span></td>
+		<td align="Right"><span class="FontRow">162</span></td>
+		<td align="Right"><span class="FontRow">64</span></td>
+		<td align="Right"><span class="FontRow">112,414</span></td>
+		<td align="Right"><span class="FontRow">57,344</span></td>
+		<td align="Right"><span class="FontRow">55,070</span></td>
+		<td align="Right"><span class="FontRow">8,819</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> SONORA</span></td>
+		<td align="Right"><span class="FontRow">192</span></td>
+		<td align="Right"><span class="FontRow">55</span></td>
+		<td align="Right"><span class="FontRow">102,394</span></td>
+		<td align="Right"><span class="FontRow">52,640</span></td>
+		<td align="Right"><span class="FontRow">49,754</span></td>
+		<td align="Right"><span class="FontRow">9,378</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> TABASCO</span></td>
+		<td align="Right"><span class="FontRow">100</span></td>
+		<td align="Right"><span class="FontRow">50</span></td>
+		<td align="Right"><span class="FontRow">71,790</span></td>
+		<td align="Right"><span class="FontRow">36,978</span></td>
+		<td align="Right"><span class="FontRow">34,812</span></td>
+		<td align="Right"><span class="FontRow">6,880</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> TAMAULIPAS</span></td>
+		<td align="Right"><span class="FontRow">254</span></td>
+		<td align="Right"><span class="FontRow">103</span></td>
+		<td align="Right"><span class="FontRow">110,988</span></td>
+		<td align="Right"><span class="FontRow">56,504</span></td>
+		<td align="Right"><span class="FontRow">54,484</span></td>
+		<td align="Right"><span class="FontRow">11,053</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> TLAXCALA</span></td>
+		<td align="Right"><span class="FontRow">78</span></td>
+		<td align="Right"><span class="FontRow">46</span></td>
+		<td align="Right"><span class="FontRow">29,509</span></td>
+		<td align="Right"><span class="FontRow">14,104</span></td>
+		<td align="Right"><span class="FontRow">15,405</span></td>
+		<td align="Right"><span class="FontRow">3,066</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> VERACRUZ DE IGNACIO DE LA LLAVE </span></td>
+		<td align="Right"><span class="FontRow">490</span></td>
+		<td align="Right"><span class="FontRow">186</span></td>
+		<td align="Right"><span class="FontRow">179,682</span></td>
+		<td align="Right"><span class="FontRow">93,769</span></td>
+		<td align="Right"><span class="FontRow">85,913</span></td>
+		<td align="Right"><span class="FontRow">15,477</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> YUCATÁN </span></td>
+		<td align="Right"><span class="FontRow">187</span></td>
+		<td align="Right"><span class="FontRow">90</span></td>
+		<td align="Right"><span class="FontRow">68,458</span></td>
+		<td align="Right"><span class="FontRow">35,001</span></td>
+		<td align="Right"><span class="FontRow">33,457</span></td>
+		<td align="Right"><span class="FontRow">7,183</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> ZACATECAS</span></td>
+		<td align="Right"><span class="FontRow">107</span></td>
+		<td align="Right"><span class="FontRow">44</span></td>
+		<td align="Right"><span class="FontRow">44,328</span></td>
+		<td align="Right"><span class="FontRow">22,248</span></td>
+		<td align="Right"><span class="FontRow">22,080</span></td>
+		<td align="Right"><span class="FontRow">4,455</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow">TOTAL</span></td>
+		<td align="Right"><span class="FontRow">7,073</span></td>
+		<td align="Right"><span class="FontRow">3,100</span></td>
+		<td align="Right"><span class="FontRow">3,515,404</span></td>
+		<td align="Right"><span class="FontRow">1,782,205</span></td>
+		<td align="Right"><span class="FontRow">1,733,199</span></td>
+		<td align="Right"><span class="FontRow">363,695</span></td>
+	</tr>
+	<tr>
+		<td align="left" colspan="7"><span class="Titulos_listas2" style="font-size:8pt;">¹   Conjunto de individuos adscritos a un centro de trabajo, de acuerdo a la función que realizan en el mismo. A cada uno se le considera tantas veces como en centros de trabajo esté adscrito.</span></td>
+	</tr>
+	<tr>
+		<td align="left" colspan="6"><span class="Titulos_listas2" style="font-size:8pt;">²   El total de escuelas no corresponde a la suma de los servicios, debido a que en cada una de ellas se pueden atender más de un servicio.</span></td>
+	</tr>
+	<tr>
+		<td align="left" colspan="7"><span class="Titulos_listas2" style="font-size:8pt;">  Fuente: Sistema de Estadísticas Continuas (Formato 911). DGPPyEE, SEP.</span></td>
+	</tr>
+</table>

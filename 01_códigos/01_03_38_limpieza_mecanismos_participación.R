@@ -2,8 +2,8 @@
 # Proyecto:                   ÍNDICE DE PROGRESO SOCIAL
 # Objetivo:                   Procesar datos de mecanismos de participación
 #
-# Encargadas:     
-# Correos:                    katia@mexicocomovamos.mx | regimedina19@gmail.com
+# Encargada:                  Regina Isabel Medina Rosales     
+# Correos:                    regimedina19@gmail.com
 # 
 # Fecha de creación:          09 de septiembre de 2021
 # Última actualización:       20 de septiembre de 2021
