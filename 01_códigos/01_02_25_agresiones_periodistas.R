@@ -32,22 +32,39 @@ mcv_morados  <- c("#6950D8", "#A99BE9")                       # Morados
 # Vectores para directorio 
 inp <- "02_datos_crudos/02_25_agresiones_periodistas/"
 
+# Activar las credenciales de google
+googledrive::drive_auth("regimedina19@gmail.com")
+googlesheets4::gs4_auth("regimedina19@gmail.com")
+
+# Verificar credenciales 
+googledrive::drive_user()
+googlesheets4::gs4_user() 
+
+# Función para importar de manera más corta desde drive
+imp_dv <- function(x){
+    googlesheets4::read_sheet(
+        paste0("https://docs.google.com/spreadsheets/d/", x))}
+
 # 1. Cargar datos --------------------------------------------------------------
 
 # Base histórica de 2007 a 2014
 df_crudo0714    <- read_excel(paste0(inp, "2007-2015_fechas.xlsx"))
 
 # Base 2015 
-df_crudo15      <- read_excel(paste0(inp, "Agresiones 2015 - public.xlsx"))
+df_crudo15  <- read_excel(paste0(inp, "Agresiones 2015 - public.xlsx"))
 
 # Base 2018
-df_crudo18      <- read_excel(paste0(inp, "RESPALDO BASE DE DATOS 2018 - public.xlsx"))
+df_crudo18  <- read_excel(paste0(inp, "RESPALDO BASE DE DATOS 2018 - public.xlsx"))
 
 # Base 2019 
-df_crudo19      <- read_excel(paste0(inp, "CIFRAS 2019 - public.xlsx"))
+df_crudo19  <- read_excel(paste0(inp, "CIFRAS 2019 - public.xlsx"))
+
+# Población tota por entidad
+df_pop      <- imp_dv("1hi5qzhpZz1S7_TFe68lqMQCYUFOEQjRejMOlvSTjw0w/edit#gid=1859408845")
 
 # 2. Procesamiento -------------------------------------------------------------
 
+# Limpiar cada base por separado 
 v_names <- names(df_crudo0714)
 
 df_0714 <- df_crudo0714                                 %>% 
@@ -151,7 +168,9 @@ df_expanded <- df_entidad               %>%
 # Ahora todas las entidades tienen los años registrados (con 0 incidentes)
 table(df_expanded$cve_ent)
 
-df_limpia <- df_expanded                %>% 
+# Limpieza final 
+df_limpia <- df_expanded                            %>% 
+    # Agregar abreviatura de la entidad
     mutate(
         entidad_abr_m = case_when(
             cve_ent == "00" ~ "Nacional", 
@@ -186,11 +205,16 @@ df_limpia <- df_expanded                %>%
             cve_ent == "29" ~ "TLAX",
             cve_ent == "30" ~ "VER",
             cve_ent == "31" ~ "YUC",
-            cve_ent == "32" ~ "ZAC"))  %>% 
-    mutate(id_dimension = 02, id_indicador = 35) %>% 
-    arrange(anio, cve_ent) %>% 
+            cve_ent == "32" ~ "ZAC"))               %>% 
+    # Agregar identificadores de dimensión e indicador
+    mutate(id_dimension = 02, id_indicador = 35)    %>% 
+    # Estimar tasa por cada 100,000 habitantes 
+    left_join(df_pop, by = c("cve_ent", "anio"))    %>% 
+    mutate(indicador_value = total*100000/pob_tot)  %>% 
+    # Ordernar y seleccionar variables finales
+    arrange(anio, cve_ent)                          %>% 
     select(cve_ent, entidad_abr_m, anio, id_dimension, 
-        id_indicador, indicador_value = total)
+        id_indicador, indicador_value)
 
 
 # 2. Guardar en drive ----------------------------------------------------------
