@@ -1,6 +1,6 @@
 #------------------------------------------------------------------------------#
 # Proyecto:                   ÍNDICE DE PROGRESO SOCIAL
-# Objetivo:                   Procesar datos de mecanismos de participación
+# Objetivo:                   Procesar datos de paridad de género en educación
 #
 # Encargada:                  Regina Isabel Medina Rosales     
 # Correos:                    regimedina19@gmail.com
@@ -190,7 +190,7 @@ df_final    <- df_unida                             %>%
     # Generar identificador numérico 
     mutate(
         cve_ent = case_when(
-            entidad == v_entidad[2]  ~ "01",
+            entidad == v_entidad[2]  ~ "01", 
             entidad == v_entidad[3]  ~ "02", 
             entidad == v_entidad[4]  ~ "03", 
             entidad == v_entidad[5]  ~ "04",
@@ -288,14 +288,15 @@ df_licenciatura <- df_final %>% filter(nivel == "licenciatura") %>% select(-nive
 googledrive::drive_auth("regimedina19@gmail.com")
 googlesheets4::gs4_auth("regimedina19@gmail.com")
 
+# Verificar credenciales 
+googledrive::drive_user()
+googlesheets4::gs4_user() 
+
 # Obtener identificador de la base de del IPS 
 v_id <- as.character(
     googledrive::drive_get(
         "https://docs.google.com/spreadsheets/d/1hi5qzhpZz1S7_TFe68lqMQCYUFOEQjRejMOlvSTjw0w/edit#gid=1128387096")[1, 2])
 
-# Verificar credenciales 
-googledrive::drive_user()
-googlesheets4::gs4_user() 
 
 # Guardar en la base en el Drive
 googlesheets4::range_write(ss = v_id, data = df_posgrado,
