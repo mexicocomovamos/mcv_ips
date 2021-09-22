@@ -66,7 +66,7 @@ uyd <- rbind(utopia,distopia)
 final <- rbind(ipsw, uyd)    
 
 #standardize una variable
-prov <- (final$ind_0101 - mean(final$ind_0101 )) / sd(final$ind_0101 )
+prov <- (final$ind_0220 - mean(final$ind_0220)) / sd(final$ind_0220)
 
 #standardize un rango de variables
 final_standarized <- as.data.frame(scale(final[3:52]))
