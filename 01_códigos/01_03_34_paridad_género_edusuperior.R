@@ -54,7 +54,7 @@ v_names     <- names(df_crudo)
 
 df_posgrado <- df_crudo                                     %>%
     slice(1:33)                                             %>% 
-    select(v_names[1], v_names[5], v_names[6], v_names[7])  %>%
+    select(v_names[1], v_names[3], v_names[4], v_names[5])  %>%
     rename(
         entidad = v_names[1], 
         posgrado_total   = v_names[5], 

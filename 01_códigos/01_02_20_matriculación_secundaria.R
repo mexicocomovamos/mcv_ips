@@ -59,18 +59,18 @@ v_formato   <- c(".xlsx")
 
 ## 1.1. Limpieza de ensayo -----------------------------------------------------
 
-# Posgrados 
+# Cargar datos 
 df_crudo    <- read_excel(paste0(inp, v_time[1], v_formato), skip = 4)
 v_names     <- names(df_crudo)
 
-
+# Renombrar variables
 df_estudiantes <- df_crudo                                  %>%
     slice(1:33)                                             %>% 
-    select(v_names[1], v_names[3])  %>%
-    rename(
-        entidad = v_names[1], 
-        estudiantes   = v_names[3]) %>% 
-    mutate(anio = 2010)
+    select(v_names[1], v_names[3])                          %>%
+    rename(                 
+        entidad       = v_names[1],                   
+        estudiantes   = v_names[3])                         %>% 
+    mutate(anio       = 2010)
 
 
 ## 1.2. Limpieza en bucle ------------------------------------------------------
@@ -93,11 +93,11 @@ for(i in 1:length(v_time)){
     
     df_estudiantes <- df_crudo                                  %>%
         slice(1:33)                                             %>% 
-        select(v_names[1], v_names[3])  %>%
+        select(v_names[1],  v_names[3])                         %>%
         rename(
-            entidad = v_names[1], 
-            estudiantes   = v_names[3]) %>% 
-        mutate(anio =  v_years[i])
+            entidad       = v_names[1], 
+            estudiantes   = v_names[3])                         %>% 
+        mutate(anio       = v_years[i])
     
     df_unida <- df_unida %>% bind_rows(df_estudiantes)
     
