@@ -65,5 +65,16 @@ uyd <- rbind(utopia,distopia)
 
 final <- rbind(ipsw, uyd)    
 
+#standardize una variable
+prov <- (final$ind_0101 - mean(final$ind_0101 )) / sd(final$ind_0101 )
+
+#standardize un rango de variables
+final_standarized <- as.data.frame(scale(final[3:52]))
+
+prov <- final %>% 
+            select(cve_ent, entidad_abr_m)
+
+final <- cbind(prov, final_standarized)
+
 haven::write_dta(final, "02_bases_procesadas/01_ips_complete_wide.dta")
 openxlsx::write.xlsx(final, "02_bases_procesadas/01_ips_complete_wide.xlsx")
