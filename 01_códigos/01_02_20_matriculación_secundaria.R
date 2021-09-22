@@ -1,11 +1,11 @@
 #------------------------------------------------------------------------------#
 # Proyecto:                   ÍNDICE DE PROGRESO SOCIAL
-# Objetivo:                   Matriculación secundaria
+# Objetivo:                   Matriculación de secundaria
 #
 # Encargada:                  Regina Isabel Medina Rosales     
 # Correos:                    regimedina19@gmail.com
 # 
-# Fecha de creación:          22 de septiembre de 2021
+# Fecha de creación:          21 de septiembre de 2021
 # Última actualización:       21 de septiembre de 2021
 #------------------------------------------------------------------------------#
 
@@ -55,6 +55,7 @@ v_time      <- c(
     "2009-2010", "2010-2011", "2011-2012", "2012-2013", 
     "2013-2014", "2014-2015", "2015-2016", "2016-2017", 
     "2018-2019", "2019-2020", "2020-2021")
+
 v_formato   <- c(".xlsx")
 
 ## 1.1. Limpieza de ensayo -----------------------------------------------------
@@ -155,7 +156,7 @@ df_limpio    <- df_unida                            %>%
             entidad == v_entidad[34] ~ "00", # Nacional
             entidad == v_entidad[35] ~ "09", # Ciudad de México
             entidad == v_entidad[36] ~ "16", # Michoacán 
-            entidad == v_entidad[37] ~ "20"  # Nuevo León
+            entidad == v_entidad[37] ~ "20"  # Oaxaca
         )) %>% 
     # Generar identificador abreviado 
     mutate(
@@ -228,4 +229,3 @@ googlesheets4::range_write(ss = v_id, data = df_final,
     sheet = "02_20_matriculación_secundaria")
 
 # FIN. -------------------------------------------------------------------------
-

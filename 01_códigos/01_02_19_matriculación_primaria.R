@@ -1,6 +1,6 @@
 #------------------------------------------------------------------------------#
 # Proyecto:                   ÍNDICE DE PROGRESO SOCIAL
-# Objetivo:                   Paridad de género educación secundaria
+# Objetivo:                   Matriculación de primaria
 #
 # Encargada:                  Regina Isabel Medina Rosales     
 # Correos:                    regimedina19@gmail.com
@@ -33,10 +33,7 @@ mcv_blacks   <- c("black"  , "#D2D0CD", "#777777")            # Negros
 mcv_morados  <- c("#6950D8", "#A99BE9")                       # Morados
 
 # Vectores para directorio 
-inp <- "02_datos_crudos/02_25_agresiones_periodistas/"
-
-# Vectores para directorio 
-inp <- "02_datos_crudos/02_20_matriculación_secundaria/"
+inp <- "02_datos_crudos/02_19_matriculación_primaria/"
 
 # Activar las credenciales de google
 googledrive::drive_auth("regimedina19@gmail.com")
@@ -67,20 +64,14 @@ v_formato   <- c(".xlsx")
 df_crudo    <- read_excel(paste0(inp, v_time[1], v_formato), skip = 4)
 v_names     <- names(df_crudo)
 
-
+# Renombrar variables
 df_estudiantes <- df_crudo                                  %>%
     slice(1:33)                                             %>% 
-    select(v_names[1], v_names[3], v_names[4], v_names[5])  %>%
-    rename(
-        entidad = v_names[1], 
-        total   = v_names[3], 
-        hombres = v_names[4],
-        mujeres = v_names[5])                               %>% 
-    mutate(
-        anio       = 2010, 
-        indicador_value = abs((hombres/mujeres)-1))         %>% 
-    select(entidad, anio, indicador_value)
-
+    select(v_names[1], v_names[3])                          %>%
+    rename(                 
+        entidad       = v_names[1],                   
+        estudiantes   = v_names[3])                         %>% 
+    mutate(anio       = 2010)
 
 
 ## 1.2. Limpieza en bucle ------------------------------------------------------
@@ -94,9 +85,8 @@ v_formato   <- c(".xlsx")
 v_years     <- c(2010:2021)
 
 # Base vacía 
-df_unida <- data.frame(entidad = NA, anio = NA, indicador_value = NA)
+df_unida <- data.frame(entidad = NA, estudiantes = NA, anio = NA)
 
-# Bucle
 for(i in 1:length(v_time)){
     
     df_crudo    <- read_excel(paste0(inp, v_time[i], v_formato), skip = 4)
@@ -104,36 +94,31 @@ for(i in 1:length(v_time)){
     
     df_estudiantes <- df_crudo                                  %>%
         slice(1:33)                                             %>% 
-        select(v_names[1], v_names[3], v_names[4], v_names[5])  %>%
+        select(v_names[1],  v_names[3])                         %>%
         rename(
-            entidad = v_names[1], 
-            total   = v_names[3], 
-            hombres = v_names[4],
-            mujeres = v_names[5])                               %>% 
-        mutate(
-            anio       = v_years[i], 
-            indicador_value = abs((hombres/mujeres)-1))         %>% 
-        select(entidad, anio, indicador_value)
+            entidad       = v_names[1], 
+            estudiantes   = v_names[3])                         %>% 
+        mutate(anio       = v_years[i])
     
     df_unida <- df_unida %>% bind_rows(df_estudiantes)
     
 }
 
-
 # View(df_unida)
 
 ## 1.3.  Limpieza final --------------------------------------------------------
+
 
 # Guardar todos los nombres de entidades federativas para homologarlos 
 v_entidad   <- unique(df_unida$entidad)
 
 df_limpio    <- df_unida                            %>% 
     filter(!is.na(entidad))                         %>% 
-    select(entidad, anio, indicador_value)          %>% 
+    select(entidad, anio, estudiantes)              %>% 
     # Agregar identificador del indicador
     mutate(
         id_dimension = "02", 
-        id_indicador = "21")                        %>% 
+        id_indicador = "20")                        %>% 
     # Generar identificador numérico 
     mutate(
         cve_ent = case_when(
@@ -172,7 +157,7 @@ df_limpio    <- df_unida                            %>%
             entidad == v_entidad[34] ~ "00", # Nacional
             entidad == v_entidad[35] ~ "09", # Ciudad de México
             entidad == v_entidad[36] ~ "16", # Michoacán 
-            entidad == v_entidad[37] ~ "20"  # Nuevo León
+            entidad == v_entidad[37] ~ "20"  # Oaxaca
         )) %>% 
     # Generar identificador abreviado 
     mutate(
@@ -211,19 +196,26 @@ df_limpio    <- df_unida                            %>%
             cve_ent == "31" ~ "YUC",
             cve_ent == "32" ~ "ZAC")) %>% 
     # Seleccionar variables finales 
-    select(cve_ent, entidad_abr_m, anio, id_dimension, id_indicador, indicador_value)
+    select(cve_ent, entidad_abr_m, anio, id_dimension, id_indicador, estudiantes)
 
-# View(df_limpio)
+unique(df_limpio$entidad_abr_m)
+
+# Agregar población 
+# Población tota por entidad
+df_pop      <- imp_dv("1hi5qzhpZz1S7_TFe68lqMQCYUFOEQjRejMOlvSTjw0w/edit#gid=1859408845")
+
+df_final    <- df_limpio                            %>% 
+    left_join(df_pop, by = c("cve_ent", "anio"))    %>% 
+    filter(anio < 2021)                             %>% 
+    mutate(
+        indicador_value = estudiantes*100/pob_tot)  %>% 
+    # Seleccionar variables finales 
+    select(
+        cve_ent, entidad_abr_m, anio, id_dimension, id_indicador, indicador_value)
+
+table(df_final$entidad_abr_m, df_final$anio)
 
 # 2. Guardar en drive ----------------------------------------------------------
-
-# Activar las credenciales de google
-googledrive::drive_auth("regimedina19@gmail.com")
-googlesheets4::gs4_auth("regimedina19@gmail.com")
-
-# Verificar credenciales 
-googledrive::drive_user()
-googlesheets4::gs4_user() 
 
 # Obtener identificador de la base de del IPS 
 v_id <- as.character(
@@ -232,8 +224,7 @@ v_id <- as.character(
 
 
 # Guardar en la base en el Drive
-googlesheets4::range_write(ss = v_id, data = df_limpio,
-    sheet = "02_21_paridad_genero_educacion_secundaria")
+googlesheets4::range_write(ss = v_id, data = df_final,
+    sheet = "02_19_matriculación_primaria")
 
 # FIN. -------------------------------------------------------------------------
-
