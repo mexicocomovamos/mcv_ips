@@ -9,6 +9,7 @@
 # Última actualización:       20 de septiembre de 2021
 #------------------------------------------------------------------------------#
 
+# Fuente: https://www.planeacion.sep.gob.mx/principalescifras/
 # Cada año corresponde a aquel en que terminó el ciclo escolar.  
 
 # 0. Configuración inicial -----------------------------------------------------
@@ -170,10 +171,10 @@ table(df_unida$nivel)
 table(df_unida$anio)
 
 # Hay diferencias en cómo se escriben las entidades, pero ninguna en el mismo año 
-View(table(df_unida$entidad, df_unida$anio))
+# View(table(df_unida$entidad, df_unida$anio))
 
 
-# 1.3.  Limpieza final --------------------------------------------------------- 
+## 1.3.  Limpieza final --------------------------------------------------------
 
 
 # Guardar todos los nombres de entidades federativas para homologarlos 
