@@ -1,0 +1,725 @@
+<table><tr><td colspan=6 align='center' style='font-weight: bold; font-size: 12pt'>SISTEMA EDUCATIVO NACIONAL</td></tr><tr><td colspan=6 align='center' style='font-weight: bold; font-size: 12pt'>CICLO ESCOLAR 2015-2016</td></tr><tr height=10><td aling="center"></td></tr></table><table>
+	<tr>
+		<td colspan="18"><span class="Titulos_principales2" style="font-size:8pt;">TIPO EDUCATIVO: EDUCACIÓN SUPERIOR;     NIVEL EDUCATIVO: POSGRADO                                          ;     SOSTENIMIENTO: TODOS;     ENTIDAD: TODAS</span></td>
+	</tr>
+	<tr bgcolor="#666666">
+		<td width="290" align="center"><span class="Titulos_principales2" style="color:White;">Entidad</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Escuelas</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Institucion</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Total Docentes</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Alumnos</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Alumnos Hombres</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Alumnos Mujeres</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Especialidad</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Maestria</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Doctorado</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">1er.Ingreso</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">1er.Ingreso hombres</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">1er.Ingreso Mujeres</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Egresados</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Egresados Hombres</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Egresados Mujeres</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Titulados</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Titulados Hombres</span></td>
+		<td width="80" align="center"><span class="Titulos_principales2" style="color:White;">Titulados Mujeres</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> AGUASCALIENTES     </span></td>
+		<td align="Right"><span class="FontRow">28</span></td>
+		<td align="Right"><span class="FontRow">18</span></td>
+		<td align="Right"><span class="FontRow">526</span></td>
+		<td align="Right"><span class="FontRow">1,595</span></td>
+		<td align="Right"><span class="FontRow">749</span></td>
+		<td align="Right"><span class="FontRow">846</span></td>
+		<td align="Right"><span class="FontRow">181</span></td>
+		<td align="Right"><span class="FontRow">1,177</span></td>
+		<td align="Right"><span class="FontRow">237</span></td>
+		<td align="Right"><span class="FontRow">590</span></td>
+		<td align="Right"><span class="FontRow">301</span></td>
+		<td align="Right"><span class="FontRow">289</span></td>
+		<td align="Right"><span class="FontRow">739</span></td>
+		<td align="Right"><span class="FontRow">336</span></td>
+		<td align="Right"><span class="FontRow">403</span></td>
+		<td align="Right"><span class="FontRow">482</span></td>
+		<td align="Right"><span class="FontRow">235</span></td>
+		<td align="Right"><span class="FontRow">247</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> BAJA CALIFORNIA    </span></td>
+		<td align="Right"><span class="FontRow">74</span></td>
+		<td align="Right"><span class="FontRow">31</span></td>
+		<td align="Right"><span class="FontRow">1,209</span></td>
+		<td align="Right"><span class="FontRow">6,613</span></td>
+		<td align="Right"><span class="FontRow">3,252</span></td>
+		<td align="Right"><span class="FontRow">3,361</span></td>
+		<td align="Right"><span class="FontRow">418</span></td>
+		<td align="Right"><span class="FontRow">5,295</span></td>
+		<td align="Right"><span class="FontRow">900</span></td>
+		<td align="Right"><span class="FontRow">1,843</span></td>
+		<td align="Right"><span class="FontRow">893</span></td>
+		<td align="Right"><span class="FontRow">950</span></td>
+		<td align="Right"><span class="FontRow">2,179</span></td>
+		<td align="Right"><span class="FontRow">1,029</span></td>
+		<td align="Right"><span class="FontRow">1,150</span></td>
+		<td align="Right"><span class="FontRow">2,103</span></td>
+		<td align="Right"><span class="FontRow">982</span></td>
+		<td align="Right"><span class="FontRow">1,121</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> BAJA CALIFORNIA SUR</span></td>
+		<td align="Right"><span class="FontRow">16</span></td>
+		<td align="Right"><span class="FontRow">10</span></td>
+		<td align="Right"><span class="FontRow">354</span></td>
+		<td align="Right"><span class="FontRow">883</span></td>
+		<td align="Right"><span class="FontRow">456</span></td>
+		<td align="Right"><span class="FontRow">427</span></td>
+		<td align="Right"><span class="FontRow">6</span></td>
+		<td align="Right"><span class="FontRow">638</span></td>
+		<td align="Right"><span class="FontRow">239</span></td>
+		<td align="Right"><span class="FontRow">244</span></td>
+		<td align="Right"><span class="FontRow">133</span></td>
+		<td align="Right"><span class="FontRow">111</span></td>
+		<td align="Right"><span class="FontRow">274</span></td>
+		<td align="Right"><span class="FontRow">151</span></td>
+		<td align="Right"><span class="FontRow">123</span></td>
+		<td align="Right"><span class="FontRow">143</span></td>
+		<td align="Right"><span class="FontRow">76</span></td>
+		<td align="Right"><span class="FontRow">67</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> CAMPECHE           </span></td>
+		<td align="Right"><span class="FontRow">24</span></td>
+		<td align="Right"><span class="FontRow">11</span></td>
+		<td align="Right"><span class="FontRow">264</span></td>
+		<td align="Right"><span class="FontRow">865</span></td>
+		<td align="Right"><span class="FontRow">400</span></td>
+		<td align="Right"><span class="FontRow">465</span></td>
+		<td align="Right"><span class="FontRow">157</span></td>
+		<td align="Right"><span class="FontRow">677</span></td>
+		<td align="Right"><span class="FontRow">31</span></td>
+		<td align="Right"><span class="FontRow">396</span></td>
+		<td align="Right"><span class="FontRow">172</span></td>
+		<td align="Right"><span class="FontRow">224</span></td>
+		<td align="Right"><span class="FontRow">408</span></td>
+		<td align="Right"><span class="FontRow">201</span></td>
+		<td align="Right"><span class="FontRow">207</span></td>
+		<td align="Right"><span class="FontRow">269</span></td>
+		<td align="Right"><span class="FontRow">112</span></td>
+		<td align="Right"><span class="FontRow">157</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> CHIAPAS            </span></td>
+		<td align="Right"><span class="FontRow">70</span></td>
+		<td align="Right"><span class="FontRow">34</span></td>
+		<td align="Right"><span class="FontRow">1,285</span></td>
+		<td align="Right"><span class="FontRow">4,961</span></td>
+		<td align="Right"><span class="FontRow">2,387</span></td>
+		<td align="Right"><span class="FontRow">2,574</span></td>
+		<td align="Right"><span class="FontRow">284</span></td>
+		<td align="Right"><span class="FontRow">4,330</span></td>
+		<td align="Right"><span class="FontRow">347</span></td>
+		<td align="Right"><span class="FontRow">1,959</span></td>
+		<td align="Right"><span class="FontRow">950</span></td>
+		<td align="Right"><span class="FontRow">1,009</span></td>
+		<td align="Right"><span class="FontRow">1,979</span></td>
+		<td align="Right"><span class="FontRow">947</span></td>
+		<td align="Right"><span class="FontRow">1,032</span></td>
+		<td align="Right"><span class="FontRow">1,406</span></td>
+		<td align="Right"><span class="FontRow">678</span></td>
+		<td align="Right"><span class="FontRow">728</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> CHIHUAHUA</span></td>
+		<td align="Right"><span class="FontRow">71</span></td>
+		<td align="Right"><span class="FontRow">34</span></td>
+		<td align="Right"><span class="FontRow">1,902</span></td>
+		<td align="Right"><span class="FontRow">6,174</span></td>
+		<td align="Right"><span class="FontRow">2,814</span></td>
+		<td align="Right"><span class="FontRow">3,360</span></td>
+		<td align="Right"><span class="FontRow">723</span></td>
+		<td align="Right"><span class="FontRow">4,894</span></td>
+		<td align="Right"><span class="FontRow">557</span></td>
+		<td align="Right"><span class="FontRow">1,854</span></td>
+		<td align="Right"><span class="FontRow">805</span></td>
+		<td align="Right"><span class="FontRow">1,049</span></td>
+		<td align="Right"><span class="FontRow">2,478</span></td>
+		<td align="Right"><span class="FontRow">1,080</span></td>
+		<td align="Right"><span class="FontRow">1,398</span></td>
+		<td align="Right"><span class="FontRow">2,016</span></td>
+		<td align="Right"><span class="FontRow">861</span></td>
+		<td align="Right"><span class="FontRow">1,155</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> CIUDAD DE MÉXICO</span></td>
+		<td align="Right"><span class="FontRow">311</span></td>
+		<td align="Right"><span class="FontRow">176</span></td>
+		<td align="Right"><span class="FontRow">12,619</span></td>
+		<td align="Right"><span class="FontRow">66,498</span></td>
+		<td align="Right"><span class="FontRow">33,287</span></td>
+		<td align="Right"><span class="FontRow">33,211</span></td>
+		<td align="Right"><span class="FontRow">20,648</span></td>
+		<td align="Right"><span class="FontRow">34,844</span></td>
+		<td align="Right"><span class="FontRow">11,006</span></td>
+		<td align="Right"><span class="FontRow">22,063</span></td>
+		<td align="Right"><span class="FontRow">10,966</span></td>
+		<td align="Right"><span class="FontRow">11,097</span></td>
+		<td align="Right"><span class="FontRow">17,116</span></td>
+		<td align="Right"><span class="FontRow">8,397</span></td>
+		<td align="Right"><span class="FontRow">8,719</span></td>
+		<td align="Right"><span class="FontRow">18,769</span></td>
+		<td align="Right"><span class="FontRow">8,699</span></td>
+		<td align="Right"><span class="FontRow">10,070</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> COAHUILA DE ZARAGOZA</span></td>
+		<td align="Right"><span class="FontRow">63</span></td>
+		<td align="Right"><span class="FontRow">29</span></td>
+		<td align="Right"><span class="FontRow">1,345</span></td>
+		<td align="Right"><span class="FontRow">6,429</span></td>
+		<td align="Right"><span class="FontRow">3,166</span></td>
+		<td align="Right"><span class="FontRow">3,263</span></td>
+		<td align="Right"><span class="FontRow">252</span></td>
+		<td align="Right"><span class="FontRow">5,428</span></td>
+		<td align="Right"><span class="FontRow">749</span></td>
+		<td align="Right"><span class="FontRow">1,467</span></td>
+		<td align="Right"><span class="FontRow">728</span></td>
+		<td align="Right"><span class="FontRow">739</span></td>
+		<td align="Right"><span class="FontRow">1,237</span></td>
+		<td align="Right"><span class="FontRow">565</span></td>
+		<td align="Right"><span class="FontRow">672</span></td>
+		<td align="Right"><span class="FontRow">902</span></td>
+		<td align="Right"><span class="FontRow">414</span></td>
+		<td align="Right"><span class="FontRow">488</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> COLIMA             </span></td>
+		<td align="Right"><span class="FontRow">28</span></td>
+		<td align="Right"><span class="FontRow">6</span></td>
+		<td align="Right"><span class="FontRow">223</span></td>
+		<td align="Right"><span class="FontRow">744</span></td>
+		<td align="Right"><span class="FontRow">393</span></td>
+		<td align="Right"><span class="FontRow">351</span></td>
+		<td align="Right"><span class="FontRow">246</span></td>
+		<td align="Right"><span class="FontRow">406</span></td>
+		<td align="Right"><span class="FontRow">92</span></td>
+		<td align="Right"><span class="FontRow">256</span></td>
+		<td align="Right"><span class="FontRow">144</span></td>
+		<td align="Right"><span class="FontRow">112</span></td>
+		<td align="Right"><span class="FontRow">302</span></td>
+		<td align="Right"><span class="FontRow">154</span></td>
+		<td align="Right"><span class="FontRow">148</span></td>
+		<td align="Right"><span class="FontRow">155</span></td>
+		<td align="Right"><span class="FontRow">65</span></td>
+		<td align="Right"><span class="FontRow">90</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> DURANGO            </span></td>
+		<td align="Right"><span class="FontRow">50</span></td>
+		<td align="Right"><span class="FontRow">33</span></td>
+		<td align="Right"><span class="FontRow">1,100</span></td>
+		<td align="Right"><span class="FontRow">3,373</span></td>
+		<td align="Right"><span class="FontRow">1,544</span></td>
+		<td align="Right"><span class="FontRow">1,829</span></td>
+		<td align="Right"><span class="FontRow">406</span></td>
+		<td align="Right"><span class="FontRow">2,605</span></td>
+		<td align="Right"><span class="FontRow">362</span></td>
+		<td align="Right"><span class="FontRow">1,329</span></td>
+		<td align="Right"><span class="FontRow">597</span></td>
+		<td align="Right"><span class="FontRow">732</span></td>
+		<td align="Right"><span class="FontRow">1,147</span></td>
+		<td align="Right"><span class="FontRow">532</span></td>
+		<td align="Right"><span class="FontRow">615</span></td>
+		<td align="Right"><span class="FontRow">738</span></td>
+		<td align="Right"><span class="FontRow">344</span></td>
+		<td align="Right"><span class="FontRow">394</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> GUANAJUATO         </span></td>
+		<td align="Right"><span class="FontRow">101</span></td>
+		<td align="Right"><span class="FontRow">65</span></td>
+		<td align="Right"><span class="FontRow">2,921</span></td>
+		<td align="Right"><span class="FontRow">9,885</span></td>
+		<td align="Right"><span class="FontRow">4,728</span></td>
+		<td align="Right"><span class="FontRow">5,157</span></td>
+		<td align="Right"><span class="FontRow">1,433</span></td>
+		<td align="Right"><span class="FontRow">7,382</span></td>
+		<td align="Right"><span class="FontRow">1,070</span></td>
+		<td align="Right"><span class="FontRow">4,230</span></td>
+		<td align="Right"><span class="FontRow">1,998</span></td>
+		<td align="Right"><span class="FontRow">2,232</span></td>
+		<td align="Right"><span class="FontRow">4,228</span></td>
+		<td align="Right"><span class="FontRow">2,012</span></td>
+		<td align="Right"><span class="FontRow">2,216</span></td>
+		<td align="Right"><span class="FontRow">2,099</span></td>
+		<td align="Right"><span class="FontRow">993</span></td>
+		<td align="Right"><span class="FontRow">1,106</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> GUERRERO           </span></td>
+		<td align="Right"><span class="FontRow">26</span></td>
+		<td align="Right"><span class="FontRow">13</span></td>
+		<td align="Right"><span class="FontRow">247</span></td>
+		<td align="Right"><span class="FontRow">941</span></td>
+		<td align="Right"><span class="FontRow">415</span></td>
+		<td align="Right"><span class="FontRow">526</span></td>
+		<td align="Right"><span class="FontRow">0</span></td>
+		<td align="Right"><span class="FontRow">876</span></td>
+		<td align="Right"><span class="FontRow">65</span></td>
+		<td align="Right"><span class="FontRow">338</span></td>
+		<td align="Right"><span class="FontRow">139</span></td>
+		<td align="Right"><span class="FontRow">199</span></td>
+		<td align="Right"><span class="FontRow">578</span></td>
+		<td align="Right"><span class="FontRow">262</span></td>
+		<td align="Right"><span class="FontRow">316</span></td>
+		<td align="Right"><span class="FontRow">358</span></td>
+		<td align="Right"><span class="FontRow">159</span></td>
+		<td align="Right"><span class="FontRow">199</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> HIDALGO            </span></td>
+		<td align="Right"><span class="FontRow">56</span></td>
+		<td align="Right"><span class="FontRow">42</span></td>
+		<td align="Right"><span class="FontRow">846</span></td>
+		<td align="Right"><span class="FontRow">4,521</span></td>
+		<td align="Right"><span class="FontRow">1,796</span></td>
+		<td align="Right"><span class="FontRow">2,725</span></td>
+		<td align="Right"><span class="FontRow">1,151</span></td>
+		<td align="Right"><span class="FontRow">3,131</span></td>
+		<td align="Right"><span class="FontRow">239</span></td>
+		<td align="Right"><span class="FontRow">1,899</span></td>
+		<td align="Right"><span class="FontRow">755</span></td>
+		<td align="Right"><span class="FontRow">1,144</span></td>
+		<td align="Right"><span class="FontRow">1,887</span></td>
+		<td align="Right"><span class="FontRow">732</span></td>
+		<td align="Right"><span class="FontRow">1,155</span></td>
+		<td align="Right"><span class="FontRow">872</span></td>
+		<td align="Right"><span class="FontRow">355</span></td>
+		<td align="Right"><span class="FontRow">517</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> JALISCO            </span></td>
+		<td align="Right"><span class="FontRow">127</span></td>
+		<td align="Right"><span class="FontRow">82</span></td>
+		<td align="Right"><span class="FontRow">5,398</span></td>
+		<td align="Right"><span class="FontRow">15,954</span></td>
+		<td align="Right"><span class="FontRow">8,229</span></td>
+		<td align="Right"><span class="FontRow">7,725</span></td>
+		<td align="Right"><span class="FontRow">4,263</span></td>
+		<td align="Right"><span class="FontRow">10,200</span></td>
+		<td align="Right"><span class="FontRow">1,491</span></td>
+		<td align="Right"><span class="FontRow">3,927</span></td>
+		<td align="Right"><span class="FontRow">1,990</span></td>
+		<td align="Right"><span class="FontRow">1,937</span></td>
+		<td align="Right"><span class="FontRow">5,715</span></td>
+		<td align="Right"><span class="FontRow">2,759</span></td>
+		<td align="Right"><span class="FontRow">2,956</span></td>
+		<td align="Right"><span class="FontRow">4,372</span></td>
+		<td align="Right"><span class="FontRow">2,239</span></td>
+		<td align="Right"><span class="FontRow">2,133</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> MÉXICO</span></td>
+		<td align="Right"><span class="FontRow">177</span></td>
+		<td align="Right"><span class="FontRow">94</span></td>
+		<td align="Right"><span class="FontRow">5,197</span></td>
+		<td align="Right"><span class="FontRow">23,205</span></td>
+		<td align="Right"><span class="FontRow">10,184</span></td>
+		<td align="Right"><span class="FontRow">13,021</span></td>
+		<td align="Right"><span class="FontRow">3,680</span></td>
+		<td align="Right"><span class="FontRow">16,948</span></td>
+		<td align="Right"><span class="FontRow">2,577</span></td>
+		<td align="Right"><span class="FontRow">8,764</span></td>
+		<td align="Right"><span class="FontRow">3,887</span></td>
+		<td align="Right"><span class="FontRow">4,877</span></td>
+		<td align="Right"><span class="FontRow">9,938</span></td>
+		<td align="Right"><span class="FontRow">4,283</span></td>
+		<td align="Right"><span class="FontRow">5,655</span></td>
+		<td align="Right"><span class="FontRow">5,818</span></td>
+		<td align="Right"><span class="FontRow">2,438</span></td>
+		<td align="Right"><span class="FontRow">3,380</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> MICHOACÁN DE OCAMPO</span></td>
+		<td align="Right"><span class="FontRow">85</span></td>
+		<td align="Right"><span class="FontRow">33</span></td>
+		<td align="Right"><span class="FontRow">1,278</span></td>
+		<td align="Right"><span class="FontRow">4,726</span></td>
+		<td align="Right"><span class="FontRow">2,272</span></td>
+		<td align="Right"><span class="FontRow">2,454</span></td>
+		<td align="Right"><span class="FontRow">372</span></td>
+		<td align="Right"><span class="FontRow">3,607</span></td>
+		<td align="Right"><span class="FontRow">747</span></td>
+		<td align="Right"><span class="FontRow">1,511</span></td>
+		<td align="Right"><span class="FontRow">734</span></td>
+		<td align="Right"><span class="FontRow">777</span></td>
+		<td align="Right"><span class="FontRow">1,727</span></td>
+		<td align="Right"><span class="FontRow">800</span></td>
+		<td align="Right"><span class="FontRow">927</span></td>
+		<td align="Right"><span class="FontRow">1,050</span></td>
+		<td align="Right"><span class="FontRow">504</span></td>
+		<td align="Right"><span class="FontRow">546</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> MORELOS            </span></td>
+		<td align="Right"><span class="FontRow">59</span></td>
+		<td align="Right"><span class="FontRow">38</span></td>
+		<td align="Right"><span class="FontRow">1,815</span></td>
+		<td align="Right"><span class="FontRow">5,003</span></td>
+		<td align="Right"><span class="FontRow">2,256</span></td>
+		<td align="Right"><span class="FontRow">2,747</span></td>
+		<td align="Right"><span class="FontRow">297</span></td>
+		<td align="Right"><span class="FontRow">3,661</span></td>
+		<td align="Right"><span class="FontRow">1,045</span></td>
+		<td align="Right"><span class="FontRow">1,489</span></td>
+		<td align="Right"><span class="FontRow">643</span></td>
+		<td align="Right"><span class="FontRow">846</span></td>
+		<td align="Right"><span class="FontRow">1,730</span></td>
+		<td align="Right"><span class="FontRow">685</span></td>
+		<td align="Right"><span class="FontRow">1,045</span></td>
+		<td align="Right"><span class="FontRow">1,104</span></td>
+		<td align="Right"><span class="FontRow">407</span></td>
+		<td align="Right"><span class="FontRow">697</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> NAYARIT            </span></td>
+		<td align="Right"><span class="FontRow">15</span></td>
+		<td align="Right"><span class="FontRow">8</span></td>
+		<td align="Right"><span class="FontRow">279</span></td>
+		<td align="Right"><span class="FontRow">1,197</span></td>
+		<td align="Right"><span class="FontRow">487</span></td>
+		<td align="Right"><span class="FontRow">710</span></td>
+		<td align="Right"><span class="FontRow">335</span></td>
+		<td align="Right"><span class="FontRow">749</span></td>
+		<td align="Right"><span class="FontRow">113</span></td>
+		<td align="Right"><span class="FontRow">459</span></td>
+		<td align="Right"><span class="FontRow">150</span></td>
+		<td align="Right"><span class="FontRow">309</span></td>
+		<td align="Right"><span class="FontRow">349</span></td>
+		<td align="Right"><span class="FontRow">149</span></td>
+		<td align="Right"><span class="FontRow">200</span></td>
+		<td align="Right"><span class="FontRow">234</span></td>
+		<td align="Right"><span class="FontRow">101</span></td>
+		<td align="Right"><span class="FontRow">133</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> NUEVO LEÓN</span></td>
+		<td align="Right"><span class="FontRow">121</span></td>
+		<td align="Right"><span class="FontRow">75</span></td>
+		<td align="Right"><span class="FontRow">3,547</span></td>
+		<td align="Right"><span class="FontRow">14,171</span></td>
+		<td align="Right"><span class="FontRow">7,188</span></td>
+		<td align="Right"><span class="FontRow">6,983</span></td>
+		<td align="Right"><span class="FontRow">2,479</span></td>
+		<td align="Right"><span class="FontRow">10,065</span></td>
+		<td align="Right"><span class="FontRow">1,627</span></td>
+		<td align="Right"><span class="FontRow">4,692</span></td>
+		<td align="Right"><span class="FontRow">2,277</span></td>
+		<td align="Right"><span class="FontRow">2,415</span></td>
+		<td align="Right"><span class="FontRow">4,350</span></td>
+		<td align="Right"><span class="FontRow">2,279</span></td>
+		<td align="Right"><span class="FontRow">2,071</span></td>
+		<td align="Right"><span class="FontRow">3,500</span></td>
+		<td align="Right"><span class="FontRow">1,805</span></td>
+		<td align="Right"><span class="FontRow">1,695</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> OAXACA             </span></td>
+		<td align="Right"><span class="FontRow">40</span></td>
+		<td align="Right"><span class="FontRow">32</span></td>
+		<td align="Right"><span class="FontRow">736</span></td>
+		<td align="Right"><span class="FontRow">2,132</span></td>
+		<td align="Right"><span class="FontRow">894</span></td>
+		<td align="Right"><span class="FontRow">1,238</span></td>
+		<td align="Right"><span class="FontRow">344</span></td>
+		<td align="Right"><span class="FontRow">1,658</span></td>
+		<td align="Right"><span class="FontRow">130</span></td>
+		<td align="Right"><span class="FontRow">917</span></td>
+		<td align="Right"><span class="FontRow">385</span></td>
+		<td align="Right"><span class="FontRow">532</span></td>
+		<td align="Right"><span class="FontRow">845</span></td>
+		<td align="Right"><span class="FontRow">358</span></td>
+		<td align="Right"><span class="FontRow">487</span></td>
+		<td align="Right"><span class="FontRow">514</span></td>
+		<td align="Right"><span class="FontRow">230</span></td>
+		<td align="Right"><span class="FontRow">284</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> PUEBLA             </span></td>
+		<td align="Right"><span class="FontRow">160</span></td>
+		<td align="Right"><span class="FontRow">93</span></td>
+		<td align="Right"><span class="FontRow">2,459</span></td>
+		<td align="Right"><span class="FontRow">16,525</span></td>
+		<td align="Right"><span class="FontRow">7,007</span></td>
+		<td align="Right"><span class="FontRow">9,518</span></td>
+		<td align="Right"><span class="FontRow">2,456</span></td>
+		<td align="Right"><span class="FontRow">12,205</span></td>
+		<td align="Right"><span class="FontRow">1,864</span></td>
+		<td align="Right"><span class="FontRow">6,181</span></td>
+		<td align="Right"><span class="FontRow">2,491</span></td>
+		<td align="Right"><span class="FontRow">3,690</span></td>
+		<td align="Right"><span class="FontRow">6,838</span></td>
+		<td align="Right"><span class="FontRow">2,876</span></td>
+		<td align="Right"><span class="FontRow">3,962</span></td>
+		<td align="Right"><span class="FontRow">3,814</span></td>
+		<td align="Right"><span class="FontRow">1,611</span></td>
+		<td align="Right"><span class="FontRow">2,203</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> QUERÉTARO</span></td>
+		<td align="Right"><span class="FontRow">44</span></td>
+		<td align="Right"><span class="FontRow">28</span></td>
+		<td align="Right"><span class="FontRow">1,091</span></td>
+		<td align="Right"><span class="FontRow">4,522</span></td>
+		<td align="Right"><span class="FontRow">2,191</span></td>
+		<td align="Right"><span class="FontRow">2,331</span></td>
+		<td align="Right"><span class="FontRow">623</span></td>
+		<td align="Right"><span class="FontRow">3,431</span></td>
+		<td align="Right"><span class="FontRow">468</span></td>
+		<td align="Right"><span class="FontRow">1,454</span></td>
+		<td align="Right"><span class="FontRow">684</span></td>
+		<td align="Right"><span class="FontRow">770</span></td>
+		<td align="Right"><span class="FontRow">1,410</span></td>
+		<td align="Right"><span class="FontRow">657</span></td>
+		<td align="Right"><span class="FontRow">753</span></td>
+		<td align="Right"><span class="FontRow">1,015</span></td>
+		<td align="Right"><span class="FontRow">477</span></td>
+		<td align="Right"><span class="FontRow">538</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> QUINTANA ROO       </span></td>
+		<td align="Right"><span class="FontRow">21</span></td>
+		<td align="Right"><span class="FontRow">16</span></td>
+		<td align="Right"><span class="FontRow">468</span></td>
+		<td align="Right"><span class="FontRow">982</span></td>
+		<td align="Right"><span class="FontRow">444</span></td>
+		<td align="Right"><span class="FontRow">538</span></td>
+		<td align="Right"><span class="FontRow">11</span></td>
+		<td align="Right"><span class="FontRow">920</span></td>
+		<td align="Right"><span class="FontRow">51</span></td>
+		<td align="Right"><span class="FontRow">367</span></td>
+		<td align="Right"><span class="FontRow">171</span></td>
+		<td align="Right"><span class="FontRow">196</span></td>
+		<td align="Right"><span class="FontRow">553</span></td>
+		<td align="Right"><span class="FontRow">239</span></td>
+		<td align="Right"><span class="FontRow">314</span></td>
+		<td align="Right"><span class="FontRow">262</span></td>
+		<td align="Right"><span class="FontRow">120</span></td>
+		<td align="Right"><span class="FontRow">142</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> SAN LUIS POTOSÍ</span></td>
+		<td align="Right"><span class="FontRow">32</span></td>
+		<td align="Right"><span class="FontRow">17</span></td>
+		<td align="Right"><span class="FontRow">618</span></td>
+		<td align="Right"><span class="FontRow">3,271</span></td>
+		<td align="Right"><span class="FontRow">1,572</span></td>
+		<td align="Right"><span class="FontRow">1,699</span></td>
+		<td align="Right"><span class="FontRow">668</span></td>
+		<td align="Right"><span class="FontRow">1,997</span></td>
+		<td align="Right"><span class="FontRow">606</span></td>
+		<td align="Right"><span class="FontRow">1,204</span></td>
+		<td align="Right"><span class="FontRow">539</span></td>
+		<td align="Right"><span class="FontRow">665</span></td>
+		<td align="Right"><span class="FontRow">959</span></td>
+		<td align="Right"><span class="FontRow">447</span></td>
+		<td align="Right"><span class="FontRow">512</span></td>
+		<td align="Right"><span class="FontRow">788</span></td>
+		<td align="Right"><span class="FontRow">354</span></td>
+		<td align="Right"><span class="FontRow">434</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> SINALOA            </span></td>
+		<td align="Right"><span class="FontRow">34</span></td>
+		<td align="Right"><span class="FontRow">10</span></td>
+		<td align="Right"><span class="FontRow">1,472</span></td>
+		<td align="Right"><span class="FontRow">3,499</span></td>
+		<td align="Right"><span class="FontRow">1,790</span></td>
+		<td align="Right"><span class="FontRow">1,709</span></td>
+		<td align="Right"><span class="FontRow">1,005</span></td>
+		<td align="Right"><span class="FontRow">2,131</span></td>
+		<td align="Right"><span class="FontRow">363</span></td>
+		<td align="Right"><span class="FontRow">1,139</span></td>
+		<td align="Right"><span class="FontRow">560</span></td>
+		<td align="Right"><span class="FontRow">579</span></td>
+		<td align="Right"><span class="FontRow">928</span></td>
+		<td align="Right"><span class="FontRow">463</span></td>
+		<td align="Right"><span class="FontRow">465</span></td>
+		<td align="Right"><span class="FontRow">509</span></td>
+		<td align="Right"><span class="FontRow">251</span></td>
+		<td align="Right"><span class="FontRow">258</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> SONORA             </span></td>
+		<td align="Right"><span class="FontRow">62</span></td>
+		<td align="Right"><span class="FontRow">27</span></td>
+		<td align="Right"><span class="FontRow">1,108</span></td>
+		<td align="Right"><span class="FontRow">4,359</span></td>
+		<td align="Right"><span class="FontRow">2,079</span></td>
+		<td align="Right"><span class="FontRow">2,280</span></td>
+		<td align="Right"><span class="FontRow">64</span></td>
+		<td align="Right"><span class="FontRow">3,318</span></td>
+		<td align="Right"><span class="FontRow">977</span></td>
+		<td align="Right"><span class="FontRow">1,669</span></td>
+		<td align="Right"><span class="FontRow">774</span></td>
+		<td align="Right"><span class="FontRow">895</span></td>
+		<td align="Right"><span class="FontRow">1,653</span></td>
+		<td align="Right"><span class="FontRow">714</span></td>
+		<td align="Right"><span class="FontRow">939</span></td>
+		<td align="Right"><span class="FontRow">1,311</span></td>
+		<td align="Right"><span class="FontRow">560</span></td>
+		<td align="Right"><span class="FontRow">751</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> TABASCO            </span></td>
+		<td align="Right"><span class="FontRow">24</span></td>
+		<td align="Right"><span class="FontRow">14</span></td>
+		<td align="Right"><span class="FontRow">1,373</span></td>
+		<td align="Right"><span class="FontRow">2,353</span></td>
+		<td align="Right"><span class="FontRow">1,193</span></td>
+		<td align="Right"><span class="FontRow">1,160</span></td>
+		<td align="Right"><span class="FontRow">740</span></td>
+		<td align="Right"><span class="FontRow">1,465</span></td>
+		<td align="Right"><span class="FontRow">148</span></td>
+		<td align="Right"><span class="FontRow">1,193</span></td>
+		<td align="Right"><span class="FontRow">574</span></td>
+		<td align="Right"><span class="FontRow">619</span></td>
+		<td align="Right"><span class="FontRow">1,203</span></td>
+		<td align="Right"><span class="FontRow">595</span></td>
+		<td align="Right"><span class="FontRow">608</span></td>
+		<td align="Right"><span class="FontRow">552</span></td>
+		<td align="Right"><span class="FontRow">244</span></td>
+		<td align="Right"><span class="FontRow">308</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> TAMAULIPAS         </span></td>
+		<td align="Right"><span class="FontRow">60</span></td>
+		<td align="Right"><span class="FontRow">35</span></td>
+		<td align="Right"><span class="FontRow">1,304</span></td>
+		<td align="Right"><span class="FontRow">5,546</span></td>
+		<td align="Right"><span class="FontRow">2,279</span></td>
+		<td align="Right"><span class="FontRow">3,267</span></td>
+		<td align="Right"><span class="FontRow">855</span></td>
+		<td align="Right"><span class="FontRow">3,803</span></td>
+		<td align="Right"><span class="FontRow">888</span></td>
+		<td align="Right"><span class="FontRow">1,666</span></td>
+		<td align="Right"><span class="FontRow">659</span></td>
+		<td align="Right"><span class="FontRow">1,007</span></td>
+		<td align="Right"><span class="FontRow">1,866</span></td>
+		<td align="Right"><span class="FontRow">770</span></td>
+		<td align="Right"><span class="FontRow">1,096</span></td>
+		<td align="Right"><span class="FontRow">1,328</span></td>
+		<td align="Right"><span class="FontRow">521</span></td>
+		<td align="Right"><span class="FontRow">807</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> TLAXCALA           </span></td>
+		<td align="Right"><span class="FontRow">25</span></td>
+		<td align="Right"><span class="FontRow">12</span></td>
+		<td align="Right"><span class="FontRow">504</span></td>
+		<td align="Right"><span class="FontRow">1,207</span></td>
+		<td align="Right"><span class="FontRow">523</span></td>
+		<td align="Right"><span class="FontRow">684</span></td>
+		<td align="Right"><span class="FontRow">17</span></td>
+		<td align="Right"><span class="FontRow">1,005</span></td>
+		<td align="Right"><span class="FontRow">185</span></td>
+		<td align="Right"><span class="FontRow">489</span></td>
+		<td align="Right"><span class="FontRow">194</span></td>
+		<td align="Right"><span class="FontRow">295</span></td>
+		<td align="Right"><span class="FontRow">403</span></td>
+		<td align="Right"><span class="FontRow">161</span></td>
+		<td align="Right"><span class="FontRow">242</span></td>
+		<td align="Right"><span class="FontRow">250</span></td>
+		<td align="Right"><span class="FontRow">110</span></td>
+		<td align="Right"><span class="FontRow">140</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> VERACRUZ DE IGNACIO DE LA LLAVE</span></td>
+		<td align="Right"><span class="FontRow">176</span></td>
+		<td align="Right"><span class="FontRow">79</span></td>
+		<td align="Right"><span class="FontRow">2,350</span></td>
+		<td align="Right"><span class="FontRow">8,582</span></td>
+		<td align="Right"><span class="FontRow">3,869</span></td>
+		<td align="Right"><span class="FontRow">4,713</span></td>
+		<td align="Right"><span class="FontRow">991</span></td>
+		<td align="Right"><span class="FontRow">6,793</span></td>
+		<td align="Right"><span class="FontRow">798</span></td>
+		<td align="Right"><span class="FontRow">3,659</span></td>
+		<td align="Right"><span class="FontRow">1,621</span></td>
+		<td align="Right"><span class="FontRow">2,038</span></td>
+		<td align="Right"><span class="FontRow">2,890</span></td>
+		<td align="Right"><span class="FontRow">1,216</span></td>
+		<td align="Right"><span class="FontRow">1,674</span></td>
+		<td align="Right"><span class="FontRow">1,977</span></td>
+		<td align="Right"><span class="FontRow">874</span></td>
+		<td align="Right"><span class="FontRow">1,103</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> YUCATÁN</span></td>
+		<td align="Right"><span class="FontRow">68</span></td>
+		<td align="Right"><span class="FontRow">45</span></td>
+		<td align="Right"><span class="FontRow">1,247</span></td>
+		<td align="Right"><span class="FontRow">4,395</span></td>
+		<td align="Right"><span class="FontRow">2,055</span></td>
+		<td align="Right"><span class="FontRow">2,340</span></td>
+		<td align="Right"><span class="FontRow">1,098</span></td>
+		<td align="Right"><span class="FontRow">2,802</span></td>
+		<td align="Right"><span class="FontRow">495</span></td>
+		<td align="Right"><span class="FontRow">1,682</span></td>
+		<td align="Right"><span class="FontRow">781</span></td>
+		<td align="Right"><span class="FontRow">901</span></td>
+		<td align="Right"><span class="FontRow">1,587</span></td>
+		<td align="Right"><span class="FontRow">639</span></td>
+		<td align="Right"><span class="FontRow">948</span></td>
+		<td align="Right"><span class="FontRow">889</span></td>
+		<td align="Right"><span class="FontRow">366</span></td>
+		<td align="Right"><span class="FontRow">523</span></td>
+	</tr>
+	<tr bgcolor="#B3B6B7">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow"> ZACATECAS          </span></td>
+		<td align="Right"><span class="FontRow">41</span></td>
+		<td align="Right"><span class="FontRow">16</span></td>
+		<td align="Right"><span class="FontRow">774</span></td>
+		<td align="Right"><span class="FontRow">2,506</span></td>
+		<td align="Right"><span class="FontRow">1,046</span></td>
+		<td align="Right"><span class="FontRow">1,460</span></td>
+		<td align="Right"><span class="FontRow">189</span></td>
+		<td align="Right"><span class="FontRow">2,153</span></td>
+		<td align="Right"><span class="FontRow">164</span></td>
+		<td align="Right"><span class="FontRow">1,220</span></td>
+		<td align="Right"><span class="FontRow">513</span></td>
+		<td align="Right"><span class="FontRow">707</span></td>
+		<td align="Right"><span class="FontRow">672</span></td>
+		<td align="Right"><span class="FontRow">262</span></td>
+		<td align="Right"><span class="FontRow">410</span></td>
+		<td align="Right"><span class="FontRow">272</span></td>
+		<td align="Right"><span class="FontRow">127</span></td>
+		<td align="Right"><span class="FontRow">145</span></td>
+	</tr>
+	<tr bgcolor="white">
+		<td align="Left" style="padding-right:5px;padding-left:5px;"><span class="FontRow">TOTAL</span></td>
+		<td align="Right"><span class="FontRow">2,289</span></td>
+		<td align="Right"><span class="FontRow">1,256</span></td>
+		<td align="Right"><span class="FontRow">57,859</span></td>
+		<td align="Right"><span class="FontRow">237,617</span></td>
+		<td align="Right"><span class="FontRow">112,945</span></td>
+		<td align="Right"><span class="FontRow">124,672</span></td>
+		<td align="Right"><span class="FontRow">46,392</span></td>
+		<td align="Right"><span class="FontRow">160,594</span></td>
+		<td align="Right"><span class="FontRow">30,631</span></td>
+		<td align="Right"><span class="FontRow">82,150</span></td>
+		<td align="Right"><span class="FontRow">38,208</span></td>
+		<td align="Right"><span class="FontRow">43,942</span></td>
+		<td align="Right"><span class="FontRow">80,168</span></td>
+		<td align="Right"><span class="FontRow">36,750</span></td>
+		<td align="Right"><span class="FontRow">43,418</span></td>
+		<td align="Right"><span class="FontRow">59,871</span></td>
+		<td align="Right"><span class="FontRow">27,312</span></td>
+		<td align="Right"><span class="FontRow">32,559</span></td>
+	</tr>
+	<tr>
+		<td align="left" colspan="19"><span class="Titulos_listas2" style="font-size:8pt;">¹   Conjunto de individuos adscritos a un centro de trabajo, de acuerdo a la función que realizan en el mismo. A cada uno se le considera tantas veces como en centros de trabajo esté adscrito.</span></td>
+	</tr>
+	<tr>
+		<td align="left" colspan="19"><span class="Titulos_listas2" style="font-size:8pt;">  Fuente: Sistema de Estadísticas Continuas (Formato 911). DGPPyEE, SEP.</span></td>
+	</tr>
+</table>
