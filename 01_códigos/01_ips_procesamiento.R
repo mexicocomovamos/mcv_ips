@@ -41,7 +41,7 @@ imp_dv <- function(x, y){
 
 # 1. Consolidación de bd ----
 ips_complete <- data.frame()
-for(i in 3:54){
+for(i in 3:57){
     
     ips_tempo <- imp_dv(v_id, i) %>% 
         mutate_at(
@@ -65,33 +65,64 @@ for(i in 3:54){
     
 }
 
+ips_complete <- ips_complete %>% 
+    select(-contains("drop")) %>% 
+    select(-contains("dist"))
 
-ips_wide <- ips_complete %>% 
+
+
+# 2. Direcciones ----
+ips_uto_disto_discrecionales <- imp_dv(v_id, 2) %>% 
+    select(id_dimension:distopia)
+
+ips_direccion <- ips_complete %>% 
+    left_join(ips_uto_disto_discrecionales) %>% 
+    mutate(
+        indicador_value_abs = indicador_value*direccion
+    )
+
+ips_wide <- ips_direccion %>% 
     arrange(desc(anio)) %>% 
-    distinct(cve_ent, id_dimension, id_indicador, .keep_all = T) %>% 
-    select(cve_ent:indicador_value) %>% 
-    drop_na(indicador_value) %>% 
-    mutate(indicador_value = round(indicador_value,4)) %>% 
+    distinct(cve_ent, id_dimension, indicador_value_abs, .keep_all = T) %>% 
+    select(cve_ent:indicador_value_abs) %>% 
+    drop_na(indicador_value_abs) %>% 
+    mutate(indicador_value_abs = round(indicador_value_abs,4)) %>% 
     mutate(id_unica = paste0("ind_",id_dimension, id_indicador)) %>% 
-    select(cve_ent, entidad_abr_m, id_unica, indicador_value) %>% 
+    select(cve_ent, entidad_abr_m, id_unica, indicador_value_abs) %>% 
     arrange(id_unica) %>% 
-    pivot_wider(names_from = id_unica, values_from = indicador_value)
+    pivot_wider(names_from = id_unica, values_from = indicador_value_abs)
 
-# 2. Estadística descriptiva ----
-## 2.1. Estadísticos ----
+# 3. Estadística descriptiva ----
+## 3.1. Estadísticos ----
 ips_stats <- ips_wide %>% 
     psych::describe(quant=c(.25,.5,.75,1)) %>%
     as_tibble(rownames="indicador")  %>%
     print()
 
-## 2.2. Histogramas ----
+## 3.2. Histogramas ----
 plot(hist(ips_wide$ind_0114[ips_wide$cve_ent!="00"]))
 
-# 3. Utopías y distopías ----
-ips_stats %>% 
-    filter(str_detect(indicador,"ind")) %>% 
-    select(indicador, min, max, sd) %>% 
+# 4. Utopías y distopías ----
+test <- ips_direccion %>% 
+    mutate(indicador = paste0("ind_",id_dimension, id_indicador)) %>% 
+    left_join(
+        ips_stats %>% 
+            filter(str_starts(indicador, "ind")) %>% 
+            select(indicador, min, max, sd)
+    ) %>% 
     mutate(
-        utopia = min-sd,
+        utopia_final = case_when(
+            is.na(utopia) & direccion == -1 ~ max+sd,
+            is.na(utopia) & direccion == 1 ~ max+sd,
+            T ~ utopia
+        ),
+        distopia_final = case_when(
+            is.na(distopia) & direccion == -1 ~ min-sd,
+            is.na(distopia) & direccion == 1 ~ min-sd,
+            T ~ distopia
+        )
         
     )
+
+haven::write_dta(test, "02_bases_procesadas/01_ips_complete_long.dta")
+openxlsx::write.xlsx(test, "02_bases_procesadas/01_ips_complete_long.xlsx")
