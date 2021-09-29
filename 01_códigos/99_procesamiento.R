@@ -159,13 +159,71 @@ openxlsx::write.xlsx(
 
 
 # congresos locales ----
-d <- haven::read_sav("downloads/bd.sav")
+d <- haven::read_sav("~/downloads/bd.sav")
 
 
 test <- d %>% 
-  select(nedo, edo, añoinicio, numlegis, femtot) %>% 
-  group_by(nedo, edo, añoinicio, numlegis) %>% 
-  summarise(tot_fem = sum(femtot)) %>% 
+  select(nedo, edo, añoinicio, añofinal, numlegis, femtot, maletot) %>% 
+  group_by(nedo, edo, añoinicio, añofinal, numlegis) %>% 
+  summarise(tot_fem = sum(femtot),
+            tot_hom = sum(maletot)) %>% 
   ungroup() %>% 
-  mutate(prop_fem = round(tot_fem / as.numeric(numlegis) * 100, 4)) %>% 
-  drop_na(prop_fem)
+  mutate(paridad = abs((tot_hom / tot_fem)-1),
+         cve_ent = str_pad(nedo, 2, "l", "0")) %>% 
+  select(cve_ent, añoinicio, añofinal, paridad) %>% 
+  drop_na(paridad) %>% 
+  complete(cve_ent, añoinicio) %>% 
+  fill(paridad, .direction = "down") %>% 
+  select(cve_ent, añoinicio, paridad) 
+
+
+
+openxlsx::write.xlsx(
+  
+  test %>% 
+    bind_rows(
+      test %>% 
+        group_by(añoinicio) %>% 
+        summarise(paridad = mean(paridad)) %>% 
+        ungroup() %>% 
+        mutate(cve_ent = "00")
+    ) %>% 
+    arrange(añoinicio, cve_ent) %>% 
+    mutate(entidad_abr_m = case_when(
+      cve_ent == "00" ~ "Nacional", 
+      cve_ent == "01" ~ "AGS", 
+      cve_ent == "02" ~ "BC",
+      cve_ent == "03" ~ "BCS",
+      cve_ent == "04" ~ "CAMP",
+      cve_ent == "05" ~ "COAH",
+      cve_ent == "06" ~ "COL", 
+      cve_ent == "07" ~ "CHPS",
+      cve_ent == "08" ~ "CHIH",
+      cve_ent == "09" ~ "CDMX",
+      cve_ent == "10" ~ "DGO",
+      cve_ent == "11" ~ "GTO",
+      cve_ent == "12" ~ "GRO", 
+      cve_ent == "13" ~ "HGO",
+      cve_ent == "14" ~ "JAL",
+      cve_ent == "15" ~ "MEX",
+      cve_ent == "16" ~ "MICH",
+      cve_ent == "17" ~ "MOR", 
+      cve_ent == "18" ~ "NAY",
+      cve_ent == "19" ~ "NL",
+      cve_ent == "20" ~ "OAX",
+      cve_ent == "21" ~ "PUE",
+      cve_ent == "22" ~ "QRO", 
+      cve_ent == "23" ~ "QROO",
+      cve_ent == "24" ~ "SLP",
+      cve_ent == "25" ~ "SIN",
+      cve_ent == "26" ~ "SON",
+      cve_ent == "27" ~ "TAB", 
+      cve_ent == "28" ~ "TAM",
+      cve_ent == "29" ~ "TLAX",
+      cve_ent == "30" ~ "VER",
+      cve_ent == "31" ~ "YUC",
+      cve_ent == "32" ~ "ZAC")),
+  
+  "~/desktop/99_ips.xlsx"
+  
+)

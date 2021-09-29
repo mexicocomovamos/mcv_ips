@@ -90,7 +90,8 @@ ips_wide <- ips_direccion %>%
     mutate(id_unica = paste0("ind_",id_dimension, id_indicador)) %>% 
     select(cve_ent, entidad_abr_m, id_unica, indicador_value_abs) %>% 
     arrange(id_unica) %>% 
-    pivot_wider(names_from = id_unica, values_from = indicador_value_abs)
+    pivot_wider(names_from = id_unica, values_from = indicador_value_abs) %>% 
+    glimpse
 
 # 3. Estadística descriptiva ----
 ## 3.1. Estadísticos ----
@@ -103,7 +104,7 @@ ips_stats <- ips_wide %>%
 plot(hist(ips_wide$ind_0114[ips_wide$cve_ent!="00"]))
 
 # 4. Utopías y distopías ----
-test <- ips_direccion %>% 
+utop_distop <- ips_direccion %>% 
     mutate(indicador = paste0("ind_",id_dimension, id_indicador)) %>% 
     left_join(
         ips_stats %>% 
@@ -126,3 +127,7 @@ test <- ips_direccion %>%
 
 haven::write_dta(test, "02_bases_procesadas/01_ips_complete_long.dta")
 openxlsx::write.xlsx(test, "02_bases_procesadas/01_ips_complete_long.xlsx")
+
+
+# Normalización ----
+test <- as.data.frame(scale(ips_wide[3:51]))
