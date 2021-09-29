@@ -1,12 +1,12 @@
 #------------------------------------------------------------------------------#
 # Proyecto:                   ÍNDICE DE PROGRESO SOCIAL
-# Objetivo:                   Matriculación de primaria
+# Objetivo:                   Matriculación de preescolar
 #
 # Encargada:                  Regina Isabel Medina Rosales     
 # Correos:                    regimedina19@gmail.com
 # 
-# Fecha de creación:          21 de septiembre de 2021
-# Última actualización:       21 de septiembre de 2021
+# Fecha de creación:          27 de septiembre de 2021
+# Última actualización:       27 de septiembre de 2021
 #------------------------------------------------------------------------------#
 
 # Fuente: https://www.planeacion.sep.gob.mx/principalescifras/
@@ -33,7 +33,7 @@ mcv_blacks   <- c("black"  , "#D2D0CD", "#777777")            # Negros
 mcv_morados  <- c("#6950D8", "#A99BE9")                       # Morados
 
 # Vectores para directorio 
-inp <- "02_datos_crudos/02_19_matriculación_primaria/"
+inp <- "02_datos_crudos/02_17_matriculación_preescolar/"
 
 # Activar las credenciales de google
 googledrive::drive_auth("regimedina19@gmail.com")
@@ -61,7 +61,7 @@ v_formato   <- c(".xlsx")
 ## 1.1. Limpieza de ensayo -----------------------------------------------------
 
 # Cargar datos 
-df_crudo    <- read_excel(paste0(inp, v_time[1], v_formato), skip = 4)
+df_crudo    <- read_excel(paste0(inp, v_time[8], v_formato), skip = 4)
 v_names     <- names(df_crudo)
 
 # Renombrar variables
@@ -72,7 +72,6 @@ df_estudiantes <- df_crudo                                  %>%
         entidad       = v_names[1],                   
         estudiantes   = v_names[3])                         %>% 
     mutate(anio       = 2010)
-
 
 ## 1.2. Limpieza en bucle ------------------------------------------------------
 
@@ -108,7 +107,6 @@ for(i in 1:length(v_time)){
 
 ## 1.3.  Limpieza final --------------------------------------------------------
 
-
 # Guardar todos los nombres de entidades federativas para homologarlos 
 v_entidad   <- unique(df_unida$entidad)
 
@@ -118,7 +116,7 @@ df_limpio    <- df_unida                            %>%
     # Agregar identificador del indicador
     mutate(
         id_dimension = "02", 
-        id_indicador = "20")                        %>% 
+        id_indicador = "17")                        %>% 
     # Generar identificador numérico 
     mutate(
         cve_ent = case_when(
@@ -222,9 +220,8 @@ v_id <- as.character(
     googledrive::drive_get(
         "https://docs.google.com/spreadsheets/d/1hi5qzhpZz1S7_TFe68lqMQCYUFOEQjRejMOlvSTjw0w/edit#gid=1128387096")[1, 2])
 
-
 # Guardar en la base en el Drive
 googlesheets4::range_write(ss = v_id, data = df_final,
-    sheet = "02_19_matriculación_primaria")
+    sheet = "02_17_matriculacion_preescolar")
 
 # FIN. -------------------------------------------------------------------------

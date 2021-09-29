@@ -1,16 +1,17 @@
 #------------------------------------------------------------------------------#
 # Proyecto:                   ÍNDICE DE PROGRESO SOCIAL
-# Objetivo:                   Matriculación de primaria
+# Objetivo:                   Cobertura educación superior
 #
 # Encargada:                  Regina Isabel Medina Rosales     
 # Correos:                    regimedina19@gmail.com
 # 
-# Fecha de creación:          21 de septiembre de 2021
-# Última actualización:       21 de septiembre de 2021
+# Fecha de creación:          27 de septiembre de 2021
+# Última actualización:       27 de septiembre de 2021
 #------------------------------------------------------------------------------#
 
 # Fuente: https://www.planeacion.sep.gob.mx/principalescifras/
 # Cada año corresponde a aquel en que terminó el ciclo escolar.  
+# La cobertura incluye los posgrados 
 
 # 0. Configuración inicial -----------------------------------------------------
 
@@ -33,7 +34,7 @@ mcv_blacks   <- c("black"  , "#D2D0CD", "#777777")            # Negros
 mcv_morados  <- c("#6950D8", "#A99BE9")                       # Morados
 
 # Vectores para directorio 
-inp <- "02_datos_crudos/02_19_matriculación_primaria/"
+inp <- "02_datos_crudos/03_53_paridad_educ/"
 
 # Activar las credenciales de google
 googledrive::drive_auth("regimedina19@gmail.com")
@@ -51,6 +52,8 @@ imp_dv <- function(x){
 # 1. Procesamiento de datos ----------------------------------------------------
 
 # Vectores de texto
+v_tipo      <- c("edusuperior_")
+
 v_time      <- c(
     "2009-2010", "2010-2011", "2011-2012", "2012-2013", 
     "2013-2014", "2014-2015", "2015-2016", "2016-2017", 
@@ -61,7 +64,7 @@ v_formato   <- c(".xlsx")
 ## 1.1. Limpieza de ensayo -----------------------------------------------------
 
 # Cargar datos 
-df_crudo    <- read_excel(paste0(inp, v_time[1], v_formato), skip = 4)
+df_crudo    <- read_excel(paste0(inp, v_tipo[1], v_time[7], v_formato), skip = 4)
 v_names     <- names(df_crudo)
 
 # Renombrar variables
@@ -71,16 +74,11 @@ df_estudiantes <- df_crudo                                  %>%
     rename(                 
         entidad       = v_names[1],                   
         estudiantes   = v_names[3])                         %>% 
-    mutate(anio       = 2010)
-
+    mutate(anio       = 2015)
 
 ## 1.2. Limpieza en bucle ------------------------------------------------------
 
 # Vectores de texto
-v_time      <- c(
-    "2009-2010", "2010-2011", "2011-2012", "2012-2013", 
-    "2013-2014", "2014-2015", "2015-2016", "2016-2017", 
-    "2017-2018", "2018-2019", "2019-2020", "2020-2021")
 v_formato   <- c(".xlsx")
 v_years     <- c(2010:2021)
 
@@ -89,15 +87,17 @@ df_unida <- data.frame(entidad = NA, estudiantes = NA, anio = NA)
 
 for(i in 1:length(v_time)){
     
-    df_crudo    <- read_excel(paste0(inp, v_time[i], v_formato), skip = 4)
+    df_crudo    <- read_excel(paste0(inp, v_tipo[1], v_time[i], v_formato), skip = 4)
     v_names     <- names(df_crudo)
+    
+    x <- ifelse(v_time[i] %in% v_time[1:5], 3, 4) 
     
     df_estudiantes <- df_crudo                                  %>%
         slice(1:33)                                             %>% 
-        select(v_names[1],  v_names[3])                         %>%
+        select(v_names[1],  v_names[x])                         %>%
         rename(
             entidad       = v_names[1], 
-            estudiantes   = v_names[3])                         %>% 
+            estudiantes   = v_names[x])                         %>% 
         mutate(anio       = v_years[i])
     
     df_unida <- df_unida %>% bind_rows(df_estudiantes)
@@ -108,7 +108,6 @@ for(i in 1:length(v_time)){
 
 ## 1.3.  Limpieza final --------------------------------------------------------
 
-
 # Guardar todos los nombres de entidades federativas para homologarlos 
 v_entidad   <- unique(df_unida$entidad)
 
@@ -117,8 +116,8 @@ df_limpio    <- df_unida                            %>%
     select(entidad, anio, estudiantes)              %>% 
     # Agregar identificador del indicador
     mutate(
-        id_dimension = "02", 
-        id_indicador = "20")                        %>% 
+        id_dimension = "03", 
+        id_indicador = "51")                        %>% 
     # Generar identificador numérico 
     mutate(
         cve_ent = case_when(
@@ -155,9 +154,14 @@ df_limpio    <- df_unida                            %>%
             entidad == v_entidad[32] ~ "31", 
             entidad == v_entidad[33] ~ "32", 
             entidad == v_entidad[34] ~ "00", # Nacional
-            entidad == v_entidad[35] ~ "09", # Ciudad de México
+            entidad == v_entidad[35] ~ "15", # Estado de México
             entidad == v_entidad[36] ~ "16", # Michoacán 
-            entidad == v_entidad[37] ~ "20"  # Oaxaca
+            entidad == v_entidad[37] ~ "19", # Nuevo León
+            entidad == v_entidad[38] ~ "22", # Querétaro
+            entidad == v_entidad[39] ~ "24", # San Luis Potosí 
+            entidad == v_entidad[40] ~ "30", # Veracruz
+            entidad == v_entidad[41] ~ "31", # Yucatán 
+            entidad == v_entidad[42] ~ "09" # Ciudad de México
         )) %>% 
     # Generar identificador abreviado 
     mutate(
@@ -194,26 +198,30 @@ df_limpio    <- df_unida                            %>%
             cve_ent == "29" ~ "TLAX",
             cve_ent == "30" ~ "VER",
             cve_ent == "31" ~ "YUC",
-            cve_ent == "32" ~ "ZAC")) %>% 
+            cve_ent == "32" ~ "ZAC")) %>%
     # Seleccionar variables finales 
     select(cve_ent, entidad_abr_m, anio, id_dimension, id_indicador, estudiantes)
 
-unique(df_limpio$entidad_abr_m)
+# Agregar población en edad de educación superior 
+load("02_datos_crudos/df_pop_state_age.RData")
 
-# Agregar población 
-# Población total por entidad
-df_pop      <- imp_dv("1hi5qzhpZz1S7_TFe68lqMQCYUFOEQjRejMOlvSTjw0w/edit#gid=1859408845")
+# Filtrar por años y edades de interés
+df_pop <- df_pop_state_age              %>% 
+    filter(year > 2009 & year < 2022)   %>% 
+    filter(age  > 17   & age  < 24)     %>%  # Este rango de edad da lo más similar a lo reportado por la SEP
+    group_by(year, CVE_GEO, state)      %>% 
+    summarise(pop = sum(population))    %>% 
+    ungroup()                           %>% 
+    mutate(cve_ent = str_pad(CVE_GEO, 2, pad = "0"))    %>% 
+    select(cve_ent, anio = year, pop)
 
-df_final    <- df_limpio                            %>% 
-    left_join(df_pop, by = c("cve_ent", "anio"))    %>% 
-    filter(anio < 2021)                             %>% 
-    mutate(
-        indicador_value = estudiantes*100/pob_tot)  %>% 
+df_final <- df_limpio                                   %>% 
+    left_join(df_pop, by = c("cve_ent", "anio"))        %>%
+    mutate(indicador_value = estudiantes/pop)           %>% 
     # Seleccionar variables finales 
     select(
         cve_ent, entidad_abr_m, anio, id_dimension, id_indicador, indicador_value)
 
-table(df_final$entidad_abr_m, df_final$anio)
 
 # 2. Guardar en drive ----------------------------------------------------------
 
@@ -225,6 +233,7 @@ v_id <- as.character(
 
 # Guardar en la base en el Drive
 googlesheets4::range_write(ss = v_id, data = df_final,
-    sheet = "02_19_matriculación_primaria")
+    sheet = "03_51_cobertura_educacion_superior")
 
 # FIN. -------------------------------------------------------------------------
+
