@@ -60,8 +60,13 @@ df_limpio   <- df_crudo         %>%
         indicador_value = abs((num_hombres/num_mujeres)-1), 
         id_dimension = "03", 
         id_indicador = "46")   %>% 
+    distinct(cve_ent, ent, anio, id_dimension, id_indicador, indicador_value) %>% 
     # Seleccionar variables finales 
     select(cve_ent, entidad_abr_m = ent, anio, id_dimension, id_indicador, indicador_value)
+
+# Ver entidades y años faltantes 
+table(df_limpio$entidad_abr_m, df_limpio$anio)
+table(df_limpio$cve_ent, df_limpio$anio)
 
 # 2. Guardar en drive ----------------------------------------------------------
 
