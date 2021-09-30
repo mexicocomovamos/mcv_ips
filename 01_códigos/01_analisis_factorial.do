@@ -10,43 +10,9 @@
 clear all
 set more off
 
-gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/02_bases_procesadas"
+gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 
-use "$ruta/01_ips_complete_wide.dta", clear 
-
-global xlist ind_0101 ind_0102 ind_0103 ind_0104
-global id State
-global ncomp 3
-
-describe $xlist
-summarize $xlist
-corr $xlist
-
-
-* Average interitem covariance
-alpha $xlist
-
-
-* Factor analysis
-factor $xlist
-
-* Scree plot of the eigenvalues
-screeplot
-screeplot, yline(1)
-
-predict f1
-
-* KMO measure of sampling adequacy
-estat kmo
-
-****************************Componente 2****************************************
-
-clear all
-set more off
-
-gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/02_bases_procesadas"
-
-use "$ruta/01_ips_complete_wide.dta", clear 
+import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
 
 global xlist ind_0101 ind_0102 ind_0103 ind_0104
 global id State
@@ -74,14 +40,15 @@ predict f1
 estat kmo
 
 
+
 ****************************Componente 2****************************************
 
 clear all
 set more off
 
-gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/02_bases_procesadas"
+gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 
-use "$ruta/01_ips_complete_wide.dta", clear 
+import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
 
 global xlist ind_0105 ind_0106 ind_0107
 global id State
@@ -113,9 +80,9 @@ estat kmo
 clear all
 set more off
 
-gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/02_bases_procesadas"
+gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 
-use "$ruta/01_ips_complete_wide.dta", clear 
+import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
 
 global xlist ind_0108 ind_0109 ind_0110 ind_0111
 global id State
@@ -148,9 +115,9 @@ estat kmo
 clear all
 set more off
 
-gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/02_bases_procesadas"
+gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 
-use "$ruta/01_ips_complete_wide.dta", clear 
+import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
 
 global xlist ind_0112 ind_0113 ind_0114 ind_0115 ind_0116
 global id State
@@ -182,11 +149,11 @@ estat kmo
 clear all
 set more off
 
-gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/02_bases_procesadas"
+gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 
-use "$ruta/01_ips_complete_wide.dta", clear 
+import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
 
-global xlist ind_0117 ind_0118 ind_0119 ind_0120 ind_0121
+global xlist ind_0217 ind_0218 ind_0219 ind_0220 ind_0221
 global id State
 global ncomp 3
 
@@ -216,11 +183,11 @@ estat kmo
 clear all
 set more off
 
-gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/02_bases_procesadas"
+gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 
-use "$ruta/01_ips_complete_wide.dta", clear 
+import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
 
-global xlist ind_0122 ind_0123 ind_0124 ind_0125 
+global xlist ind_0222 ind_0223 ind_0224 ind_0225 
 global id State
 global ncomp 3
 
@@ -250,11 +217,11 @@ estat kmo
 clear all
 set more off
 
-gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/02_bases_procesadas"
+gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 
-use "$ruta/01_ips_complete_wide.dta", clear 
+import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
 
-global xlist ind_0126 ind_0127 ind_0128 ind_0129 ind_0130 
+global xlist ind_0226 ind_0227 ind_0228 ind_0229 ind_0230 
 global id State
 global ncomp 3
 
@@ -285,11 +252,11 @@ estat kmo
 clear all
 set more off
 
-gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/02_bases_procesadas"
+gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 
-use "$ruta/01_ips_complete_wide.dta", clear 
+import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
 
-global xlist ind_0131 ind_0132 ind_0133 ind_0134 
+global xlist ind_0231 ind_0232 ind_0233 ind_0234 
 global id State
 global ncomp 3
 
@@ -320,11 +287,11 @@ estat kmo
 clear all
 set more off
 
-gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/02_bases_procesadas"
+gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 
-use "$ruta/01_ips_complete_wide.dta", clear 
+import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
 
-global xlist ind_0135 ind_0136 ind_0137 ind_0138 ind_0139 
+global xlist ind_0335 ind_0336 ind_0337 ind_0338 ind_0339 
 global id State
 global ncomp 3
 
@@ -355,11 +322,11 @@ estat kmo
 clear all
 set more off
 
-gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/02_bases_procesadas"
+gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 
-use "$ruta/01_ips_complete_wide.dta", clear 
+import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
 
-global xlist ind_0140 ind_0141 ind_0142 ind_0143 ind_0144 
+global xlist ind_0340 ind_0341 ind_0342 ind_0343 ind_0344 
 global id State
 global ncomp 3
 
@@ -389,11 +356,11 @@ estat kmo
 clear all
 set more off
 
-gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/02_bases_procesadas"
+gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 
-use "$ruta/01_ips_complete_wide.dta", clear 
+import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
 
-global xlist ind_0145 ind_0146 ind_0147 ind_0148 ind_0149  
+global xlist ind_0345 ind_0346 ind_0347 ind_0348 ind_0349  
 global id State
 global ncomp 3
 
@@ -424,11 +391,11 @@ estat kmo
 clear all
 set more off
 
-gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/02_bases_procesadas"
+gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 
-use "$ruta/01_ips_complete_wide.dta", clear 
+import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
 
-global xlist ind_0150 ind_0151 ind_0152 ind_0153 ind_0154 ind_0155
+global xlist ind_0350 ind_0351 ind_0352 ind_0353 ind_0354 ind_0355
 global id State
 global ncomp 3
 
