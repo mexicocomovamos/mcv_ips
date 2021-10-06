@@ -5,12 +5,18 @@
 
 
 
-****************************Componente 1****************************************
+
 
 clear all
 set more off
 
 gl ruta=       	"C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
+
+gl log="C:/Users/axelo/Documents/GitHub/ips"
+
+log using "$log\analisis factorial.smcl", replace
+
+****************************Componente 1****************************************
 
 import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
 

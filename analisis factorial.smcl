@@ -1,0 +1,1666 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:/Users/axelo/Documents/GitHub/ips\analisis factorial.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 6 Oct 2021, 15:20:53
+{txt}
+{com}. 
+. ****************************Componente 1****************************************
+. 
+. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+{res}{text}(58 vars, 200 obs)
+
+{com}. 
+. global xlist ind_0101 ind_0102 ind_0103 ind_0104
+{txt}
+{com}. global id State
+{txt}
+{com}. global ncomp 3
+{txt}
+{com}. 
+. describe $xlist
+
+{txt}Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:ind_0101       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0101{p_end}
+{p 0 48}{bind:ind_0102       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0102{p_end}
+{p 0 48}{bind:ind_0103       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0103{p_end}
+{p 0 48}{bind:ind_0104       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0104{p_end}
+{txt}
+{com}. summarize $xlist
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}ind_0101 {c |}{res}        200    3.88e-17           1  -2.356088   10.99424
+{txt}{space 4}ind_0102 {c |}{res}        200   -1.15e-16           1  -3.532226   3.224294
+{txt}{space 4}ind_0103 {c |}{res}        200   -7.78e-17           1  -3.895214   2.252844
+{txt}{space 4}ind_0104 {c |}{res}        200   -3.44e-17           1  -6.437997   1.213431
+{txt}
+{com}. corr $xlist
+{txt}(obs=200)
+
+             {c |} ind_0101 ind_0102 ind_0103 ind_0104
+{hline 13}{c +}{hline 36}
+    ind_0101 {c |}{res}   1.0000
+    {txt}ind_0102 {c |}{res}  -0.0827   1.0000
+    {txt}ind_0103 {c |}{res}  -0.0435   0.4903   1.0000
+    {txt}ind_0104 {c |}{res}  -0.3649   0.1699   0.1781   1.0000
+
+{txt}
+{com}. 
+. 
+. * Average interitem covariance
+. alpha $xlist
+
+{txt}Test scale = mean(unstandardized items)
+Reversed item: {res: ind_0101}
+
+Average interitem covariance:{col 34}{res} .2215576
+{txt}Number of items in the scale:{col 34}{res}        4
+{txt}Scale reliability coefficient:{col 34}{res}   0.5324
+{txt}
+{com}. 
+. 
+. * Factor analysis
+. factor $xlist
+{txt}(obs=200)
+
+Factor analysis/correlation{col 50}Number of obs    = {res}       200
+{col 5}{txt}Method: principal factors{col 50}Retained factors =   {res}       2
+{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}       6
+
+{txt}{col 5}{hline 13}{c TT}{hline 60}
+{col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
+{col 5}{hline 13}{c +}{hline 60}
+{col 5}{ralign 11:Factor1}  {c |}{res}      0.89904      0.53027            1.1258       1.1258
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.36877      0.57940            0.4618       1.5876
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}     -0.21063      0.04800           -0.2638       1.3239
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}     -0.25863            .           -0.3239       1.0000
+{txt}{col 5}{hline 13}{c BT}{hline 60}
+{col 5}LR test: independent vs. saturated:  chi2({res}6{txt})  ={res}   91.28{txt} Prob>chi2 ={res} 0.0000
+
+{txt}Factor loadings (pattern matrix) and unique variances
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{c  TT}{hline 14}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{c   +}{hline 14}
+{space 4}{space 0}{ralign 12:ind_0101}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.2912}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.3987}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.7562}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0102}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.5702}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2122}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6299}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0103}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.5642}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2342}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6268}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0104}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4132}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.3315}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.7193}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{c  BT}{hline 14}
+
+{com}. 
+. * Scree plot of the eigenvalues
+. screeplot
+{res}{txt}
+{com}. screeplot, yline(1)
+{res}{txt}
+{com}. 
+. predict f1
+{txt}(option {bf:regression} assumed; regression scoring)
+
+{p 0 0 2}Scoring coefficients (method = regression){p_end}
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:ind_0101}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.16219}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.31969}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0102}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.34795}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.18478}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0103}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.34502}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.20795}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0104}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.23351}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.28330}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}
+
+
+{com}. 
+. * KMO measure of sampling adequacy
+. estat kmo
+
+{txt}{p 0 0 2}Kaiser-Meyer-Olkin measure of sampling adequacy{p_end}
+
+{space 4}{hline 13}{c  TT}{hline 9}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:ind_0101}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5182}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0102}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5423}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0103}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5321}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0104}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5663}}}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5401}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 9}
+
+{com}. 
+. 
+. 
+. ****************************Componente 2****************************************
+. 
+. clear all
+{res}{txt}
+{com}. set more off
+{txt}
+{com}. 
+. gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
+{txt}
+{com}. 
+. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+{res}{text}(58 vars, 200 obs)
+
+{com}. 
+. global xlist ind_0105 ind_0106 ind_0107
+{txt}
+{com}. global id State
+{txt}
+{com}. global ncomp 3
+{txt}
+{com}. 
+. describe $xlist
+
+{txt}Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:ind_0105       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0105{p_end}
+{p 0 48}{bind:ind_0106       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0106{p_end}
+{p 0 48}{bind:ind_0107       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0107{p_end}
+{txt}
+{com}. summarize $xlist
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}ind_0105 {c |}{res}        200    4.76e-16           1  -3.579627   1.290067
+{txt}{space 4}ind_0106 {c |}{res}        200   -8.38e-17           1  -2.941951   1.347942
+{txt}{space 4}ind_0107 {c |}{res}        200    6.81e-16           1  -8.837928   .8366995
+{txt}
+{com}. corr $xlist
+{txt}(obs=200)
+
+             {c |} ind_0105 ind_0106 ind_0107
+{hline 13}{c +}{hline 27}
+    ind_0105 {c |}{res}   1.0000
+    {txt}ind_0106 {c |}{res}   0.8812   1.0000
+    {txt}ind_0107 {c |}{res}   0.3411   0.4224   1.0000
+
+{txt}
+{com}. 
+. 
+. * Average interitem covariance
+. alpha $xlist
+
+{txt}Test scale = mean(unstandardized items)
+
+Average interitem covariance:{col 34}{res} .5482405
+{txt}Number of items in the scale:{col 34}{res}        3
+{txt}Scale reliability coefficient:{col 34}{res}   0.7845
+{txt}
+{com}. 
+. 
+. * Factor analysis
+. factor $xlist
+{txt}(obs=200)
+
+Factor analysis/correlation{col 50}Number of obs    = {res}       200
+{col 5}{txt}Method: principal factors{col 50}Retained factors =   {res}       2
+{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}       3
+
+{txt}{col 5}{hline 13}{c TT}{hline 60}
+{col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
+{col 5}{hline 13}{c +}{hline 60}
+{col 5}{ralign 11:Factor1}  {c |}{res}      1.84276      1.81373            1.0506       1.0506
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.02903      0.14688            0.0166       1.0672
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}     -0.11785            .           -0.0672       1.0000
+{txt}{col 5}{hline 13}{c BT}{hline 60}
+{col 5}LR test: independent vs. saturated:  chi2({res}3{txt})  ={res}  337.00{txt} Prob>chi2 ={res} 0.0000
+
+{txt}Factor loadings (pattern matrix) and unique variances
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{c  TT}{hline 14}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{c   +}{hline 14}
+{space 4}{space 0}{ralign 12:ind_0105}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9001}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0815}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1831}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0106}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9251}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0115}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1440}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0107}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4204}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.1492}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.8010}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{c  BT}{hline 14}
+
+{com}. 
+. * Scree plot of the eigenvalues
+. screeplot
+{res}{txt}
+{com}. screeplot, yline(1)
+{res}{txt}
+{com}. 
+. predict f1
+{txt}(option {bf:regression} assumed; regression scoring)
+
+{p 0 0 2}Scoring coefficients (method = regression){p_end}
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:ind_0105}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.38697}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.38747}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0106}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.56270}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.28492}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0107}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.05069}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.16100}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}
+
+
+{com}. 
+. * KMO measure of sampling adequacy
+. estat kmo
+
+{txt}{p 0 0 2}Kaiser-Meyer-Olkin measure of sampling adequacy{p_end}
+
+{space 4}{hline 13}{c  TT}{hline 9}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:ind_0105}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5422}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0106}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5369}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0107}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7855}}}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5638}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 9}
+
+{com}. 
+. ****************************Componente 3****************************************
+. 
+. clear all
+{res}{txt}
+{com}. set more off
+{txt}
+{com}. 
+. gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
+{txt}
+{com}. 
+. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+{res}{text}(58 vars, 200 obs)
+
+{com}. 
+. global xlist ind_0108 ind_0109 ind_0110 ind_0111
+{txt}
+{com}. global id State
+{txt}
+{com}. global ncomp 3
+{txt}
+{com}. 
+. describe $xlist
+
+{txt}Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:ind_0108       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0108{p_end}
+{p 0 48}{bind:ind_0109       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0109{p_end}
+{p 0 48}{bind:ind_0110       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0110{p_end}
+{p 0 48}{bind:ind_0111       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0111{p_end}
+{txt}
+{com}. summarize $xlist
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}ind_0108 {c |}{res}        200   -7.31e-17           1  -.7214216   13.74868
+{txt}{space 4}ind_0109 {c |}{res}        200   -5.39e-18           1  -1.654686   13.25901
+{txt}{space 4}ind_0110 {c |}{res}        200   -4.62e-17           1  -3.951564   6.790149
+{txt}{space 4}ind_0111 {c |}{res}        200    3.70e-17           1  -1.494711   12.98255
+{txt}
+{com}. corr $xlist
+{txt}(obs=200)
+
+             {c |} ind_0108 ind_0109 ind_0110 ind_0111
+{hline 13}{c +}{hline 36}
+    ind_0108 {c |}{res}   1.0000
+    {txt}ind_0109 {c |}{res}   0.9691   1.0000
+    {txt}ind_0110 {c |}{res}   0.6138   0.6988   1.0000
+    {txt}ind_0111 {c |}{res}   0.9489   0.9600   0.6929   1.0000
+
+{txt}
+{com}. 
+. 
+. * Average interitem covariance
+. alpha $xlist
+
+{txt}Test scale = mean(unstandardized items)
+
+Average interitem covariance:{col 34}{res} .8139001
+{txt}Number of items in the scale:{col 34}{res}        4
+{txt}Scale reliability coefficient:{col 34}{res}   0.9459
+{txt}
+{com}. 
+. 
+. * Factor analysis
+. factor $xlist
+{txt}(obs=200)
+
+Factor analysis/correlation{col 50}Number of obs    = {res}       200
+{col 5}{txt}Method: principal factors{col 50}Retained factors =   {res}       2
+{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}       6
+
+{txt}{col 5}{hline 13}{c TT}{hline 60}
+{col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
+{col 5}{hline 13}{c +}{hline 60}
+{col 5}{ralign 11:Factor1}  {c |}{res}      3.35120      3.22668            0.9786       0.9786
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.12452      0.13799            0.0364       1.0150
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}     -0.01347      0.02433           -0.0039       1.0110
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}     -0.03780            .           -0.0110       1.0000
+{txt}{col 5}{hline 13}{c BT}{hline 60}
+{col 5}LR test: independent vs. saturated:  chi2({res}6{txt})  ={res} 1242.67{txt} Prob>chi2 ={res} 0.0000
+
+{txt}Factor loadings (pattern matrix) and unique variances
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{c  TT}{hline 14}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{c   +}{hline 14}
+{space 4}{space 0}{ralign 12:ind_0108}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9647}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1949}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.0314}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0109}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9885}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0187}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.0224}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0110}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.7056}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2936}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.4160}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0111}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9724}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0007}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.0545}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{c  BT}{hline 14}
+
+{com}. 
+. * Scree plot of the eigenvalues
+. screeplot
+{res}{txt}
+{com}. screeplot, yline(1)
+{res}{txt}
+{com}. 
+. predict f1
+{txt}(option {bf:regression} assumed; regression scoring)
+
+{p 0 0 2}Scoring coefficients (method = regression){p_end}
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:ind_0108}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.04852}}}{space 1}{space 1}{ralign 8:{res:{sf:-2.96412}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0109}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.65646}}}{space 1}{space 1}{ralign 8:{res:{sf: 1.88217}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0110}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.02277}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.19436}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0111}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.28039}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.87052}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}
+
+
+{com}. 
+. * KMO measure of sampling adequacy
+. estat kmo
+
+{txt}{p 0 0 2}Kaiser-Meyer-Olkin measure of sampling adequacy{p_end}
+
+{space 4}{hline 13}{c  TT}{hline 9}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:ind_0108}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7386}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0109}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7450}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0110}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7818}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0111}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8838}}}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7837}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 9}
+
+{com}. 
+. 
+. ****************************Componente 4****************************************
+. 
+. clear all
+{res}{txt}
+{com}. set more off
+{txt}
+{com}. 
+. gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
+{txt}
+{com}. 
+. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+{res}{text}(58 vars, 200 obs)
+
+{com}. 
+. global xlist ind_0112 ind_0113 ind_0114 ind_0115 ind_0116
+{txt}
+{com}. global id State
+{txt}
+{com}. global ncomp 3
+{txt}
+{com}. 
+. describe $xlist
+
+{txt}Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:ind_0112       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0112{p_end}
+{p 0 48}{bind:ind_0113       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0113{p_end}
+{p 0 48}{bind:ind_0114       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0114{p_end}
+{p 0 48}{bind:ind_0115       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0115{p_end}
+{p 0 48}{bind:ind_0116       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0116{p_end}
+{txt}
+{com}. summarize $xlist
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}ind_0112 {c |}{res}        200   -3.67e-17           1  -4.539791   1.975442
+{txt}{space 4}ind_0113 {c |}{res}        200    1.34e-16           1  -5.425483   1.923548
+{txt}{space 4}ind_0114 {c |}{res}        200    6.56e-18           1  -2.884098   2.598076
+{txt}{space 4}ind_0115 {c |}{res}        200    2.85e-16           1  -2.941163   2.505946
+{txt}{space 4}ind_0116 {c |}{res}        200   -3.86e-16           1  -1.194468   8.761586
+{txt}
+{com}. corr $xlist
+{txt}(obs=200)
+
+             {c |} ind_0112 ind_0113 ind_0114 ind_0115 ind_0116
+{hline 13}{c +}{hline 45}
+    ind_0112 {c |}{res}   1.0000
+    {txt}ind_0113 {c |}{res}   0.2979   1.0000
+    {txt}ind_0114 {c |}{res}   0.2614   0.1236   1.0000
+    {txt}ind_0115 {c |}{res}   0.4623   0.4028   0.3865   1.0000
+    {txt}ind_0116 {c |}{res}   0.0918  -0.2883   0.1427   0.0266   1.0000
+
+{txt}
+{com}. 
+. 
+. * Average interitem covariance
+. alpha $xlist
+
+{txt}Test scale = mean(unstandardized items)
+Reversed item: {res: ind_0116}
+
+Average interitem covariance:{col 34}{res} .1961526
+{txt}Number of items in the scale:{col 34}{res}        5
+{txt}Scale reliability coefficient:{col 34}{res}   0.5496
+{txt}
+{com}. 
+. 
+. * Factor analysis
+. factor $xlist
+{txt}(obs=200)
+
+Factor analysis/correlation{col 50}Number of obs    = {res}       200
+{col 5}{txt}Method: principal factors{col 50}Retained factors =   {res}       2
+{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}       9
+
+{txt}{col 5}{hline 13}{c TT}{hline 60}
+{col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
+{col 5}{hline 13}{c +}{hline 60}
+{col 5}{ralign 11:Factor1}  {c |}{res}      1.27546      0.82683            1.0627       1.0627
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.44864      0.51172            0.3738       1.4365
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}     -0.06308      0.14765           -0.0526       1.3840
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}     -0.21073      0.03936           -0.1756       1.2084
+{txt}{col 5}{ralign 11:Factor5}  {c |}{res}     -0.25009            .           -0.2084       1.0000
+{txt}{col 5}{hline 13}{c BT}{hline 60}
+{col 5}LR test: independent vs. saturated:  chi2({res}10{txt}) ={res}  150.45{txt} Prob>chi2 ={res} 0.0000
+
+{txt}Factor loadings (pattern matrix) and unique variances
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{c  TT}{hline 14}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{c   +}{hline 14}
+{space 4}{space 0}{ralign 12:ind_0112}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.5753}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0980}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6594}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0113}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.5111}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.3696}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6022}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0114}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4381}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2443}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.7484}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0115}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.7008}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0446}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.5068}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0116}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.0117}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.4906}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.7591}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{c  BT}{hline 14}
+
+{com}. 
+. * Scree plot of the eigenvalues
+. screeplot
+{res}{txt}
+{com}. screeplot, yline(1)
+{res}{txt}
+{com}. 
+. predict f1
+{txt}(option {bf:regression} assumed; regression scoring)
+
+{p 0 0 2}Scoring coefficients (method = regression){p_end}
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:ind_0112}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.26636}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.09087}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0113}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.24356}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.34063}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0114}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.18031}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.18991}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0115}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.40999}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.05694}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0116}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.00263}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.35549}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}
+
+
+{com}. 
+. * KMO measure of sampling adequacy
+. estat kmo
+
+{txt}{p 0 0 2}Kaiser-Meyer-Olkin measure of sampling adequacy{p_end}
+
+{space 4}{hline 13}{c  TT}{hline 9}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:ind_0112}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6993}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0113}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5879}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0114}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6887}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0115}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6385}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0116}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4264}}}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6251}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 9}
+
+{com}. 
+. ****************************Componente 5****************************************
+. 
+. clear all
+{res}{txt}
+{com}. set more off
+{txt}
+{com}. 
+. gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
+{txt}
+{com}. 
+. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+{res}{text}(58 vars, 200 obs)
+
+{com}. 
+. global xlist ind_0217 ind_0218 ind_0219 ind_0220 ind_0221
+{txt}
+{com}. global id State
+{txt}
+{com}. global ncomp 3
+{txt}
+{com}. 
+. describe $xlist
+
+{txt}Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:ind_0217       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0217{p_end}
+{p 0 48}{bind:ind_0218       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0218{p_end}
+{p 0 48}{bind:ind_0219       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0219{p_end}
+{p 0 48}{bind:ind_0220       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0220{p_end}
+{p 0 48}{bind:ind_0221       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0221{p_end}
+{txt}
+{com}. summarize $xlist
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}ind_0217 {c |}{res}        200   -2.23e-18           1  -2.722122   3.492255
+{txt}{space 4}ind_0218 {c |}{res}        200   -1.75e-16           1  -1.457674   12.22125
+{txt}{space 4}ind_0219 {c |}{res}        200    6.31e-16           1  -3.513053    4.16322
+{txt}{space 4}ind_0220 {c |}{res}        200   -1.68e-16           1  -2.932517   3.317119
+{txt}{space 4}ind_0221 {c |}{res}        200    2.01e-17           1  -4.647394   1.457658
+{txt}
+{com}. corr $xlist
+{txt}(obs=200)
+
+             {c |} ind_0217 ind_0218 ind_0219 ind_0220 ind_0221
+{hline 13}{c +}{hline 45}
+    ind_0217 {c |}{res}   1.0000
+    {txt}ind_0218 {c |}{res}  -0.4001   1.0000
+    {txt}ind_0219 {c |}{res}   0.8168  -0.4097   1.0000
+    {txt}ind_0220 {c |}{res}   0.5885  -0.2729   0.7088   1.0000
+    {txt}ind_0221 {c |}{res}  -0.1275  -0.1520   0.0074   0.1657   1.0000
+
+{txt}
+{com}. 
+. 
+. * Average interitem covariance
+. alpha $xlist
+
+{txt}Test scale = mean(unstandardized items)
+Reversed item: {res: ind_0218}
+
+Average interitem covariance:{col 34}{res} .3394319
+{txt}Number of items in the scale:{col 34}{res}        5
+{txt}Scale reliability coefficient:{col 34}{res}   0.7198
+{txt}
+{com}. 
+. 
+. * Factor analysis
+. factor $xlist
+{txt}(obs=200)
+
+Factor analysis/correlation{col 50}Number of obs    = {res}       200
+{col 5}{txt}Method: principal factors{col 50}Retained factors =   {res}       3
+{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}      10
+
+{txt}{col 5}{hline 13}{c TT}{hline 60}
+{col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
+{col 5}{hline 13}{c +}{hline 60}
+{col 5}{ralign 11:Factor1}  {c |}{res}      2.28167      1.95492            0.9707       0.9707
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.32675      0.25152            0.1390       1.1098
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.07523      0.19955            0.0320       1.1418
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}     -0.12432      0.08457           -0.0529       1.0889
+{txt}{col 5}{ralign 11:Factor5}  {c |}{res}     -0.20889            .           -0.0889       1.0000
+{txt}{col 5}{hline 13}{c BT}{hline 60}
+{col 5}LR test: independent vs. saturated:  chi2({res}10{txt}) ={res}  426.48{txt} Prob>chi2 ={res} 0.0000
+
+{txt}Factor loadings (pattern matrix) and unique variances
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{hline 10}{c  TT}{hline 14}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{space 1}{ralign 8:Factor3}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{hline 10}{c   +}{hline 14}
+{space 4}{space 0}{ralign 12:ind_0217}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8491}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.2253}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0552}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2252}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0218}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.4449}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1548}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2134}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.7325}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0219}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9110}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0358}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0287}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1680}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0220}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.7288}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.1869}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.1597}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.4084}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0221}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.0407}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.4646}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0177}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.7822}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{hline 10}{c  BT}{hline 14}
+
+{com}. 
+. * Scree plot of the eigenvalues
+. screeplot
+{res}{txt}
+{com}. screeplot, yline(1)
+{res}{txt}
+{com}. 
+. predict f1
+{txt}(option {bf:regression} assumed; regression scoring)
+
+{p 0 0 2}Scoring coefficients (method = regression){p_end}
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{space 1}{ralign 8:Factor3}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:ind_0217}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.31789}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.51173}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.22224}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0218}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.05641}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.19515}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.23614}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0219}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.52244}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.05714}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.09797}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0220}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.14875}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.34246}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.29545}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0221}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.04415}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.31249}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.05986}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{hline 10}
+
+
+{com}. 
+. * KMO measure of sampling adequacy
+. estat kmo
+
+{txt}{p 0 0 2}Kaiser-Meyer-Olkin measure of sampling adequacy{p_end}
+
+{space 4}{hline 13}{c  TT}{hline 9}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:ind_0217}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6896}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0218}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8052}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0219}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6695}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0220}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7632}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0221}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.2684}}}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6909}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 9}
+
+{com}. 
+. ****************************Componente 6****************************************
+. 
+. clear all
+{res}{txt}
+{com}. set more off
+{txt}
+{com}. 
+. gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
+{txt}
+{com}. 
+. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+{res}{text}(58 vars, 200 obs)
+
+{com}. 
+. global xlist ind_0222 ind_0223 ind_0224 ind_0225 
+{txt}
+{com}. global id State
+{txt}
+{com}. global ncomp 3
+{txt}
+{com}. 
+. describe $xlist
+
+{txt}Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:ind_0222       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0222{p_end}
+{p 0 48}{bind:ind_0223       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0223{p_end}
+{p 0 48}{bind:ind_0224       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0224{p_end}
+{p 0 48}{bind:ind_0225       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0225{p_end}
+{txt}
+{com}. summarize $xlist
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}ind_0222 {c |}{res}        200   -2.35e-16           1  -3.507266   2.889367
+{txt}{space 4}ind_0223 {c |}{res}        200   -2.31e-16           1  -4.212429   5.273456
+{txt}{space 4}ind_0224 {c |}{res}        200    1.34e-16           1  -3.134394   3.104332
+{txt}{space 4}ind_0225 {c |}{res}        200    7.53e-17           1  -5.615054   1.668491
+{txt}
+{com}. corr $xlist
+{txt}(obs=200)
+
+             {c |} ind_0222 ind_0223 ind_0224 ind_0225
+{hline 13}{c +}{hline 36}
+    ind_0222 {c |}{res}   1.0000
+    {txt}ind_0223 {c |}{res}   0.8623   1.0000
+    {txt}ind_0224 {c |}{res}   0.8672   0.8087   1.0000
+    {txt}ind_0225 {c |}{res}   0.2729   0.2676   0.1616   1.0000
+
+{txt}
+{com}. 
+. 
+. * Average interitem covariance
+. alpha $xlist
+
+{txt}Test scale = mean(unstandardized items)
+
+Average interitem covariance:{col 34}{res} .5400596
+{txt}Number of items in the scale:{col 34}{res}        4
+{txt}Scale reliability coefficient:{col 34}{res}   0.8245
+{txt}
+{com}. 
+. 
+. * Factor analysis
+. factor $xlist
+{txt}(obs=200)
+
+Factor analysis/correlation{col 50}Number of obs    = {res}       200
+{col 5}{txt}Method: principal factors{col 50}Retained factors =   {res}       2
+{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}       6
+
+{txt}{col 5}{hline 13}{c TT}{hline 60}
+{col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
+{col 5}{hline 13}{c +}{hline 60}
+{col 5}{ralign 11:Factor1}  {c |}{res}      2.55024      2.45844            1.0302       1.0302
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.09180      0.15660            0.0371       1.0673
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}     -0.06480      0.03700           -0.0262       1.0411
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}     -0.10179            .           -0.0411       1.0000
+{txt}{col 5}{hline 13}{c BT}{hline 60}
+{col 5}LR test: independent vs. saturated:  chi2({res}6{txt})  ={res}  579.64{txt} Prob>chi2 ={res} 0.0000
+
+{txt}Factor loadings (pattern matrix) and unique variances
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{c  TT}{hline 14}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{c   +}{hline 14}
+{space 4}{space 0}{ralign 12:ind_0222}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9409}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0228}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1141}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0223}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8956}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0539}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1949}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0224}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8910}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1533}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1826}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0225}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.2622}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2547}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.8664}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{c  BT}{hline 14}
+
+{com}. 
+. * Scree plot of the eigenvalues
+. screeplot
+{res}{txt}
+{com}. screeplot, yline(1)
+{res}{txt}
+{com}. 
+. predict f1
+{txt}(option {bf:regression} assumed; regression scoring)
+
+{p 0 0 2}Scoring coefficients (method = regression){p_end}
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:ind_0222}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.49513}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.34119}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0223}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.26922}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.27559}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0224}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.24132}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.70462}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0225}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.01606}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.20168}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}
+
+
+{com}. 
+. * KMO measure of sampling adequacy
+. estat kmo
+
+{txt}{p 0 0 2}Kaiser-Meyer-Olkin measure of sampling adequacy{p_end}
+
+{space 4}{hline 13}{c  TT}{hline 9}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:ind_0222}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7104}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0223}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8090}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0224}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7659}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0225}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7004}}}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7560}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 9}
+
+{com}. 
+. ****************************Componente 7****************************************
+. 
+. clear all
+{res}{txt}
+{com}. set more off
+{txt}
+{com}. 
+. gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
+{txt}
+{com}. 
+. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+{res}{text}(58 vars, 200 obs)
+
+{com}. 
+. global xlist ind_0226 ind_0227 ind_0228 ind_0229 ind_0230 
+{txt}
+{com}. global id State
+{txt}
+{com}. global ncomp 3
+{txt}
+{com}. 
+. describe $xlist
+
+{txt}Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:ind_0226       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0226{p_end}
+{p 0 48}{bind:ind_0227       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0227{p_end}
+{p 0 48}{bind:ind_0228       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0228{p_end}
+{p 0 48}{bind:ind_0229       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0229{p_end}
+{p 0 48}{bind:ind_0230       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0230{p_end}
+{txt}
+{com}. summarize $xlist
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}ind_0226 {c |}{res}        200   -2.87e-15           1  -3.925131   3.128803
+{txt}{space 4}ind_0227 {c |}{res}        200    2.57e-16           1  -4.223994   2.778268
+{txt}{space 4}ind_0228 {c |}{res}        200    7.28e-17           1  -6.207335   1.222523
+{txt}{space 4}ind_0229 {c |}{res}        200   -3.06e-16           1  -4.715199   2.301944
+{txt}{space 4}ind_0230 {c |}{res}        200   -2.05e-16           1  -3.583226   3.120719
+{txt}
+{com}. corr $xlist
+{txt}(obs=200)
+
+             {c |} ind_0226 ind_0227 ind_0228 ind_0229 ind_0230
+{hline 13}{c +}{hline 45}
+    ind_0226 {c |}{res}   1.0000
+    {txt}ind_0227 {c |}{res}  -0.1080   1.0000
+    {txt}ind_0228 {c |}{res}   0.1267   0.0737   1.0000
+    {txt}ind_0229 {c |}{res}   0.1991  -0.1640   0.2601   1.0000
+    {txt}ind_0230 {c |}{res}   0.4000  -0.0803   0.1250   0.0878   1.0000
+
+{txt}
+{com}. 
+. 
+. * Average interitem covariance
+. alpha $xlist
+
+{txt}Test scale = mean(unstandardized items)
+Reversed item: {res: ind_0227}
+
+Average interitem covariance:{col 34}{res}  .147737
+{txt}Number of items in the scale:{col 34}{res}        5
+{txt}Scale reliability coefficient:{col 34}{res}   0.4643
+{txt}
+{com}. 
+. 
+. * Factor analysis
+. factor $xlist
+{txt}(obs=200)
+
+Factor analysis/correlation{col 50}Number of obs    = {res}       200
+{col 5}{txt}Method: principal factors{col 50}Retained factors =   {res}       3
+{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}      10
+
+{txt}{col 5}{hline 13}{c TT}{hline 60}
+{col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
+{col 5}{hline 13}{c +}{hline 60}
+{col 5}{ralign 11:Factor1}  {c |}{res}      0.79808      0.60491            1.2662       1.2662
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.19317      0.07455            0.3065       1.5727
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.11863      0.31958            0.1882       1.7609
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}     -0.20095      0.07767           -0.3188       1.4421
+{txt}{col 5}{ralign 11:Factor5}  {c |}{res}     -0.27863            .           -0.4421       1.0000
+{txt}{col 5}{hline 13}{c BT}{hline 60}
+{col 5}LR test: independent vs. saturated:  chi2({res}10{txt}) ={res}   69.29{txt} Prob>chi2 ={res} 0.0000
+
+{txt}Factor loadings (pattern matrix) and unique variances
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{hline 10}{c  TT}{hline 14}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{space 1}{ralign 8:Factor3}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{hline 10}{c   +}{hline 14}
+{space 4}{space 0}{ralign 12:ind_0226}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.5400}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1351}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0365}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6888}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0227}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.1841}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0795}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2768}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.8832}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0228}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.3062}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2796}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.1161}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.8146}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0229}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.3846}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2367}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1330}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.7784}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0230}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4806}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1854}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0975}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.7252}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{hline 10}{c  BT}{hline 14}
+
+{com}. 
+. * Scree plot of the eigenvalues
+. screeplot
+{res}{txt}
+{com}. screeplot, yline(1)
+{res}{txt}
+{com}. 
+. predict f1
+{txt}(option {bf:regression} assumed; regression scoring)
+
+{p 0 0 2}Scoring coefficients (method = regression){p_end}
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{space 1}{ralign 8:Factor3}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:ind_0226}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.34455}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.13327}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.03645}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0227}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.09858}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.06867}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.25793}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0228}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.17362}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.25553}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.11542}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0229}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.22894}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.22369}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.13684}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0230}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.29303}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.17813}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.10122}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{hline 10}
+
+
+{com}. 
+. * KMO measure of sampling adequacy
+. estat kmo
+
+{txt}{p 0 0 2}Kaiser-Meyer-Olkin measure of sampling adequacy{p_end}
+
+{space 4}{hline 13}{c  TT}{hline 9}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:ind_0226}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5648}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0227}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4806}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0228}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5246}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0229}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5407}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0230}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5473}}}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5426}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 9}
+
+{com}. 
+. 
+. ****************************Componente 8****************************************
+. 
+. clear all
+{res}{txt}
+{com}. set more off
+{txt}
+{com}. 
+. gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
+{txt}
+{com}. 
+. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+{res}{text}(58 vars, 200 obs)
+
+{com}. 
+. global xlist ind_0231 ind_0232 ind_0233 ind_0234 
+{txt}
+{com}. global id State
+{txt}
+{com}. global ncomp 3
+{txt}
+{com}. 
+. describe $xlist
+
+{txt}Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:ind_0231       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0231{p_end}
+{p 0 48}{bind:ind_0232       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0232{p_end}
+{p 0 48}{bind:ind_0233       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0233{p_end}
+{p 0 48}{bind:ind_0234       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0234{p_end}
+{txt}
+{com}. summarize $xlist
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}ind_0231 {c |}{res}        200    1.14e-16           1  -4.030562   2.472074
+{txt}{space 4}ind_0232 {c |}{res}        200   -7.13e-17           1  -2.147327   8.673853
+{txt}{space 4}ind_0233 {c |}{res}        200   -2.63e-16           1  -3.784442   5.227636
+{txt}{space 4}ind_0234 {c |}{res}        200   -3.60e-16           1  -10.23403   1.591267
+{txt}
+{com}. corr $xlist
+{txt}(obs=200)
+
+             {c |} ind_0231 ind_0232 ind_0233 ind_0234
+{hline 13}{c +}{hline 36}
+    ind_0231 {c |}{res}   1.0000
+    {txt}ind_0232 {c |}{res}  -0.6639   1.0000
+    {txt}ind_0233 {c |}{res}   0.0541   0.1499   1.0000
+    {txt}ind_0234 {c |}{res}   0.1307  -0.2416   0.3607   1.0000
+
+{txt}
+{com}. 
+. 
+. * Average interitem covariance
+. alpha $xlist
+
+{txt}Test scale = mean(unstandardized items)
+Reversed item: {res: ind_0232}
+
+Average interitem covariance:{col 34}{res} .2168349
+{txt}Number of items in the scale:{col 34}{res}        4
+{txt}Scale reliability coefficient:{col 34}{res}   0.5255
+{txt}
+{com}. 
+. 
+. * Factor analysis
+. factor $xlist
+{txt}(obs=200)
+
+Factor analysis/correlation{col 50}Number of obs    = {res}       200
+{col 5}{txt}Method: principal factors{col 50}Retained factors =   {res}       2
+{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}       6
+
+{txt}{col 5}{hline 13}{c TT}{hline 60}
+{col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
+{col 5}{hline 13}{c +}{hline 60}
+{col 5}{ralign 11:Factor1}  {c |}{res}      1.23914      0.66375            0.8360       0.8360
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.57540      0.59386            0.3882       1.2241
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}     -0.01846      0.29531           -0.0125       1.2117
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}     -0.31377            .           -0.2117       1.0000
+{txt}{col 5}{hline 13}{c BT}{hline 60}
+{col 5}LR test: independent vs. saturated:  chi2({res}6{txt})  ={res}  181.26{txt} Prob>chi2 ={res} 0.0000
+
+{txt}Factor loadings (pattern matrix) and unique variances
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{c  TT}{hline 14}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{c   +}{hline 14}
+{space 4}{space 0}{ralign 12:ind_0231}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.7336}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0547}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.4589}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0232}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.7833}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.1484}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.3644}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0233}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.0284}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.5686}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6759}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0234}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.2942}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.4766}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6863}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{c  BT}{hline 14}
+
+{com}. 
+. * Scree plot of the eigenvalues
+. screeplot
+{res}{txt}
+{com}. screeplot, yline(1)
+{res}{txt}
+{com}. 
+. predict f1
+{txt}(option {bf:regression} assumed; regression scoring)
+
+{p 0 0 2}Scoring coefficients (method = regression){p_end}
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:ind_0231}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.37389}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.01487}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0232}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.51760}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.16643}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0233}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.04867}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.41075}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0234}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.10276}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.37059}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}
+
+
+{com}. 
+. * KMO measure of sampling adequacy
+. estat kmo
+
+{txt}{p 0 0 2}Kaiser-Meyer-Olkin measure of sampling adequacy{p_end}
+
+{space 4}{hline 13}{c  TT}{hline 9}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:ind_0231}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4568}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0232}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4269}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0233}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.2943}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0234}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.3948}}}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4096}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 9}
+
+{com}. 
+. 
+. ****************************Componente 9****************************************
+. 
+. clear all
+{res}{txt}
+{com}. set more off
+{txt}
+{com}. 
+. gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
+{txt}
+{com}. 
+. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+{res}{text}(58 vars, 200 obs)
+
+{com}. 
+. global xlist ind_0335 ind_0336 ind_0337 ind_0338 ind_0339 
+{txt}
+{com}. global id State
+{txt}
+{com}. global ncomp 3
+{txt}
+{com}. 
+. describe $xlist
+
+{txt}Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:ind_0335       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0335{p_end}
+{p 0 48}{bind:ind_0336       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0336{p_end}
+{p 0 48}{bind:ind_0337       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0337{p_end}
+{p 0 48}{bind:ind_0338       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0338{p_end}
+{p 0 48}{bind:ind_0339       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0339{p_end}
+{txt}
+{com}. summarize $xlist
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}ind_0335 {c |}{res}        200   -3.35e-16           1  -5.953926   2.925489
+{txt}{space 4}ind_0336 {c |}{res}        200    9.56e-17           1   -3.20567   2.771073
+{txt}{space 4}ind_0337 {c |}{res}        199   -1.48e-16           1  -2.268608   9.211493
+{txt}{space 4}ind_0338 {c |}{res}        200   -8.40e-17           1  -1.967014   5.691056
+{txt}{space 4}ind_0339 {c |}{res}        200   -9.11e-17           1  -1.054957   11.74743
+{txt}
+{com}. corr $xlist
+{txt}(obs=199)
+
+             {c |} ind_0335 ind_0336 ind_0337 ind_0338 ind_0339
+{hline 13}{c +}{hline 45}
+    ind_0335 {c |}{res}   1.0000
+    {txt}ind_0336 {c |}{res}   0.5268   1.0000
+    {txt}ind_0337 {c |}{res}   0.1610   0.2504   1.0000
+    {txt}ind_0338 {c |}{res}  -0.1228  -0.1088   0.3596   1.0000
+    {txt}ind_0339 {c |}{res}  -0.2581  -0.1732   0.0980   0.0571   1.0000
+
+{txt}
+{com}. 
+. 
+. * Average interitem covariance
+. alpha $xlist
+
+{txt}Test scale = mean(unstandardized items)
+Reversed items: {res: ind_0338 ind_0339}
+
+Average interitem covariance:{col 34}{res}  .119549
+{txt}Number of items in the scale:{col 34}{res}        5
+{txt}Scale reliability coefficient:{col 34}{res}   0.4044
+{txt}
+{com}. 
+. 
+. * Factor analysis
+. factor $xlist
+{txt}(obs=199)
+
+Factor analysis/correlation{col 50}Number of obs    = {res}       199
+{col 5}{txt}Method: principal factors{col 50}Retained factors =   {res}       3
+{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}      10
+
+{txt}{col 5}{hline 13}{c TT}{hline 60}
+{col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
+{col 5}{hline 13}{c +}{hline 60}
+{col 5}{ralign 11:Factor1}  {c |}{res}      1.03717      0.43858            0.8972       0.8972
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.59859      0.56609            0.5178       1.4150
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.03250      0.25470            0.0281       1.4431
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}     -0.22221      0.06786           -0.1922       1.2509
+{txt}{col 5}{ralign 11:Factor5}  {c |}{res}     -0.29006            .           -0.2509       1.0000
+{txt}{col 5}{hline 13}{c BT}{hline 60}
+{col 5}LR test: independent vs. saturated:  chi2({res}10{txt}) ={res}  135.16{txt} Prob>chi2 ={res} 0.0000
+
+{txt}Factor loadings (pattern matrix) and unique variances
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{hline 10}{c  TT}{hline 14}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{space 1}{ralign 8:Factor3}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{hline 10}{c   +}{hline 14}
+{space 4}{space 0}{ralign 12:ind_0335}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.6614}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0792}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0078}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.5562}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0336}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.6645}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0103}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0497}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.5559}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0337}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.2692}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.5385}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0242}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6369}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0338}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.0850}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.5123}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0855}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.7230}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0339}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.2801}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.1994}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.1486}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.8597}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{hline 10}{c  BT}{hline 14}
+
+{com}. 
+. * Scree plot of the eigenvalues
+. screeplot
+{res}{txt}
+{com}. screeplot, yline(1)
+{res}{txt}
+{com}. 
+. predict f1
+{txt}(option {bf:regression} assumed; regression scoring)
+
+{p 0 0 2}Scoring coefficients (method = regression){p_end}
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{space 1}{ralign 8:Factor3}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:ind_0335}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.39522}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.07417}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.02098}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0336}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.39971}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.00509}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.06942}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0337}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.12890}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.41193}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.03089}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0338}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.03249}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.34868}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.10062}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0339}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.11967}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.12091}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.15791}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{hline 10}
+
+
+{com}. 
+. * KMO measure of sampling adequacy
+. estat kmo
+
+{txt}{p 0 0 2}Kaiser-Meyer-Olkin measure of sampling adequacy{p_end}
+
+{space 4}{hline 13}{c  TT}{hline 9}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:ind_0335}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5827}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0336}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5622}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0337}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4629}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0338}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4427}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0339}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5793}}}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5307}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 9}
+
+{com}. 
+. 
+. ****************************Componente 10****************************************
+. 
+. clear all
+{res}{txt}
+{com}. set more off
+{txt}
+{com}. 
+. gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
+{txt}
+{com}. 
+. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+{res}{text}(58 vars, 200 obs)
+
+{com}. 
+. global xlist ind_0340 ind_0341 ind_0342 ind_0343 ind_0344 
+{txt}
+{com}. global id State
+{txt}
+{com}. global ncomp 3
+{txt}
+{com}. 
+. describe $xlist
+
+{txt}Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:ind_0340       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0340{p_end}
+{p 0 48}{bind:ind_0341       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0341{p_end}
+{p 0 48}{bind:ind_0342       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0342{p_end}
+{p 0 48}{bind:ind_0343       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0343{p_end}
+{p 0 48}{bind:ind_0344       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0344{p_end}
+{txt}
+{com}. summarize $xlist
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}ind_0340 {c |}{res}        200   -3.84e-16           1  -.9862161   12.92865
+{txt}{space 4}ind_0341 {c |}{res}        200    6.26e-16           1  -3.190313   4.254022
+{txt}{space 4}ind_0342 {c |}{res}        200   -8.55e-17           1  -4.132358   2.136568
+{txt}{space 4}ind_0343 {c |}{res}        200    8.07e-17           1  -1.498728   9.401226
+{txt}{space 4}ind_0344 {c |}{res}        200    1.65e-16           1  -5.311771    1.94895
+{txt}
+{com}. corr $xlist
+{txt}(obs=200)
+
+             {c |} ind_0340 ind_0341 ind_0342 ind_0343 ind_0344
+{hline 13}{c +}{hline 45}
+    ind_0340 {c |}{res}   1.0000
+    {txt}ind_0341 {c |}{res}  -0.0226   1.0000
+    {txt}ind_0342 {c |}{res}  -0.2438   0.4656   1.0000
+    {txt}ind_0343 {c |}{res}   0.7761   0.0350  -0.1720   1.0000
+    {txt}ind_0344 {c |}{res}  -0.3650  -0.1648   0.0434  -0.0593   1.0000
+
+{txt}
+{com}. 
+. 
+. * Average interitem covariance
+. alpha $xlist
+
+{txt}Test scale = mean(unstandardized items)
+Reversed items: {res: ind_0341 ind_0342 ind_0344}
+
+Average interitem covariance:{col 34}{res} .1948093
+{txt}Number of items in the scale:{col 34}{res}        5
+{txt}Scale reliability coefficient:{col 34}{res}   0.5475
+{txt}
+{com}. 
+. 
+. * Factor analysis
+. factor $xlist
+{txt}(obs=200)
+
+Factor analysis/correlation{col 50}Number of obs    = {res}       200
+{col 5}{txt}Method: principal factors{col 50}Retained factors =   {res}       3
+{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}      10
+
+{txt}{col 5}{hline 13}{c TT}{hline 60}
+{col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
+{col 5}{hline 13}{c +}{hline 60}
+{col 5}{ralign 11:Factor1}  {c |}{res}      1.61565      0.87607            0.7221       0.7221
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.73959      0.42131            0.3305       1.0526
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.31827      0.49044            0.1422       1.1948
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}     -0.17217      0.09163           -0.0769       1.1179
+{txt}{col 5}{ralign 11:Factor5}  {c |}{res}     -0.26380            .           -0.1179       1.0000
+{txt}{col 5}{hline 13}{c BT}{hline 60}
+{col 5}LR test: independent vs. saturated:  chi2({res}10{txt}) ={res}  317.38{txt} Prob>chi2 ={res} 0.0000
+
+{txt}Factor loadings (pattern matrix) and unique variances
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{hline 10}{c  TT}{hline 14}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{space 1}{ralign 8:Factor3}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{hline 10}{c   +}{hline 14}
+{space 4}{space 0}{ralign 12:ind_0340}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8931}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0762}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0700}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1916}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0341}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.0615}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.6193}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0432}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6108}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0342}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.2958}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.5303}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.1392}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6119}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0343}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8029}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0673}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2943}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2643}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0344}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.2866}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.2538}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.4533}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6479}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{hline 10}{c  BT}{hline 14}
+
+{com}. 
+. * Scree plot of the eigenvalues
+. screeplot
+{res}{txt}
+{com}. screeplot, yline(1)
+{res}{txt}
+{com}. 
+. predict f1
+{txt}(option {bf:regression} assumed; regression scoring)
+
+{p 0 0 2}Scoring coefficients (method = regression){p_end}
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{space 1}{ralign 8:Factor3}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:ind_0340}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.61869}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.07975}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.45497}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0341}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.03021}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.41984}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.00014}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0342}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.07591}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.36922}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.13280}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0343}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.30807}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.04425}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.68936}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0344}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.04421}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.16893}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.32240}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{hline 10}
+
+
+{com}. 
+. * KMO measure of sampling adequacy
+. estat kmo
+
+{txt}{p 0 0 2}Kaiser-Meyer-Olkin measure of sampling adequacy{p_end}
+
+{space 4}{hline 13}{c  TT}{hline 9}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:ind_0340}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4562}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0341}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4355}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0342}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5626}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0343}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4289}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0344}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.2522}}}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4306}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 9}
+
+{com}. 
+. ****************************Componente 11****************************************
+. 
+. clear all
+{res}{txt}
+{com}. set more off
+{txt}
+{com}. 
+. gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
+{txt}
+{com}. 
+. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+{res}{text}(58 vars, 200 obs)
+
+{com}. 
+. global xlist ind_0345 ind_0346 ind_0347 ind_0348 ind_0349  
+{txt}
+{com}. global id State
+{txt}
+{com}. global ncomp 3
+{txt}
+{com}. 
+. describe $xlist
+
+{txt}Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:ind_0345       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0345{p_end}
+{p 0 48}{bind:ind_0346       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0346{p_end}
+{p 0 48}{bind:ind_0347       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0347{p_end}
+{p 0 48}{bind:ind_0348       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0348{p_end}
+{p 0 48}{bind:ind_0349       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0349{p_end}
+{txt}
+{com}. summarize $xlist
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}ind_0345 {c |}{res}        200   -2.44e-16           1  -9.455652   4.874242
+{txt}{space 4}ind_0346 {c |}{res}        168   -2.55e-16           1   -5.81704   .6835789
+{txt}{space 4}ind_0347 {c |}{res}        200    1.12e-16           1   -3.27346   3.412475
+{txt}{space 4}ind_0348 {c |}{res}        200    1.94e-16           1  -2.087823   12.08363
+{txt}{space 4}ind_0349 {c |}{res}        200    4.28e-16           1  -2.148016   10.42194
+{txt}
+{com}. corr $xlist
+{txt}(obs=168)
+
+             {c |} ind_0345 ind_0346 ind_0347 ind_0348 ind_0349
+{hline 13}{c +}{hline 45}
+    ind_0345 {c |}{res}   1.0000
+    {txt}ind_0346 {c |}{res}   0.4172   1.0000
+    {txt}ind_0347 {c |}{res}   0.4044   0.3641   1.0000
+    {txt}ind_0348 {c |}{res}  -0.4780  -0.3050  -0.0932   1.0000
+    {txt}ind_0349 {c |}{res}  -0.3204  -0.2312   0.0704   0.8961   1.0000
+
+{txt}
+{com}. 
+. 
+. * Average interitem covariance
+. alpha $xlist
+
+{txt}Test scale = mean(unstandardized items)
+Reversed items: {res: ind_0345 ind_0346 ind_0347}
+
+Average interitem covariance:{col 34}{res} .3273399
+{txt}Number of items in the scale:{col 34}{res}        5
+{txt}Scale reliability coefficient:{col 34}{res}   0.7087
+{txt}
+{com}. 
+. 
+. * Factor analysis
+. factor $xlist
+{txt}(obs=168)
+
+Factor analysis/correlation{col 50}Number of obs    = {res}       168
+{col 5}{txt}Method: principal factors{col 50}Retained factors =   {res}       2
+{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}       9
+
+{txt}{col 5}{hline 13}{c TT}{hline 60}
+{col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
+{col 5}{hline 13}{c +}{hline 60}
+{col 5}{ralign 11:Factor1}  {c |}{res}      2.12493      1.29516            0.8118       0.8118
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.82977      0.88413            0.3170       1.1288
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}     -0.05437      0.07100           -0.0208       1.1081
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}     -0.12536      0.03213           -0.0479       1.0602
+{txt}{col 5}{ralign 11:Factor5}  {c |}{res}     -0.15749            .           -0.0602       1.0000
+{txt}{col 5}{hline 13}{c BT}{hline 60}
+{col 5}LR test: independent vs. saturated:  chi2({res}10{txt}) ={res}  415.78{txt} Prob>chi2 ={res} 0.0000
+
+{txt}Factor loadings (pattern matrix) and unique variances
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{c  TT}{hline 14}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{c   +}{hline 14}
+{space 4}{space 0}{ralign 12:ind_0345}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.5697}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.3992}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.5161}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0346}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.4237}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.3817}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6748}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0347}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.2240}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.5727}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6218}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0348}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9250}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.1953}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1063}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0349}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8456}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.3982}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1263}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{c  BT}{hline 14}
+
+{com}. 
+. * Scree plot of the eigenvalues
+. screeplot
+{res}{txt}
+{com}. screeplot, yline(1)
+{res}{txt}
+{com}. 
+. predict f1
+{txt}(option {bf:regression} assumed; regression scoring)
+
+{p 0 0 2}Scoring coefficients (method = regression){p_end}
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:ind_0345}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.11951}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.31992}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0346}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.09404}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.25224}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0347}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.10269}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.28942}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0348}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.60476}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.15482}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0349}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.25091}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.67737}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}
+
+
+{com}. 
+. * KMO measure of sampling adequacy
+. estat kmo
+
+{txt}{p 0 0 2}Kaiser-Meyer-Olkin measure of sampling adequacy{p_end}
+
+{space 4}{hline 13}{c  TT}{hline 9}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:ind_0345}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7167}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0346}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7905}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0347}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5549}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0348}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5461}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0349}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5167}}}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5876}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 9}
+
+{com}. 
+. 
+. ****************************Componente 12****************************************
+. 
+. clear all
+{res}{txt}
+{com}. set more off
+{txt}
+{com}. 
+. gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
+{txt}
+{com}. 
+. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+{res}{text}(58 vars, 200 obs)
+
+{com}. 
+. global xlist ind_0350 ind_0351 ind_0352 ind_0353 ind_0354 ind_0355
+{txt}
+{com}. global id State
+{txt}
+{com}. global ncomp 3
+{txt}
+{com}. 
+. describe $xlist
+
+{txt}Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:ind_0350       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0350{p_end}
+{p 0 48}{bind:ind_0351       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0351{p_end}
+{p 0 48}{bind:ind_0352       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0352{p_end}
+{p 0 48}{bind:ind_0353       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0353{p_end}
+{p 0 48}{bind:ind_0354       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0354{p_end}
+{p 0 48}{bind:ind_0355       }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}ind_0355{p_end}
+{txt}
+{com}. summarize $xlist
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}ind_0350 {c |}{res}        199   -1.37e-16           1  -3.331129   3.457424
+{txt}{space 4}ind_0351 {c |}{res}        200   -3.37e-16           1  -3.035843   5.034373
+{txt}{space 4}ind_0352 {c |}{res}        200   -4.34e-16           1  -3.409002   3.360877
+{txt}{space 4}ind_0353 {c |}{res}        200    9.60e-17           1  -3.700999   1.472458
+{txt}{space 4}ind_0354 {c |}{res}        200    5.34e-16           1  -2.409046   9.713965
+{txt}{hline 13}{c +}{hline 57}
+{space 4}ind_0355 {c |}{res}        198    5.92e-18           1  -1.231818   6.115237
+{txt}
+{com}. corr $xlist
+{txt}(obs=197)
+
+             {c |} ind_0350 ind_0351 ind_0352 ind_0353 ind_0354 ind_0355
+{hline 13}{c +}{hline 54}
+    ind_0350 {c |}{res}   1.0000
+    {txt}ind_0351 {c |}{res}   0.5841   1.0000
+    {txt}ind_0352 {c |}{res}   0.4707   0.7592   1.0000
+    {txt}ind_0353 {c |}{res}   0.1769   0.3270   0.3443   1.0000
+    {txt}ind_0354 {c |}{res}   0.2434   0.2065   0.1958   0.4103   1.0000
+    {txt}ind_0355 {c |}{res}   0.1417   0.3087   0.1918   0.2197   0.2987   1.0000
+
+{txt}
+{com}. 
+. 
+. * Average interitem covariance
+. alpha $xlist
+
+{txt}Test scale = mean(unstandardized items)
+
+Average interitem covariance:{col 34}{res} .3193825
+{txt}Number of items in the scale:{col 34}{res}        6
+{txt}Scale reliability coefficient:{col 34}{res}   0.7379
+{txt}
+{com}. 
+. 
+. * Factor analysis
+. factor $xlist
+{txt}(obs=197)
+
+Factor analysis/correlation{col 50}Number of obs    = {res}       197
+{col 5}{txt}Method: principal factors{col 50}Retained factors =   {res}       4
+{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}      15
+
+{txt}{col 5}{hline 13}{c TT}{hline 60}
+{col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
+{col 5}{hline 13}{c +}{hline 60}
+{col 5}{ralign 11:Factor1}  {c |}{res}      2.18073      1.71139            0.9513       0.9513
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.46934      0.42034            0.2047       1.1560
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.04900      0.03288            0.0214       1.1774
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.01613      0.18184            0.0070       1.1844
+{txt}{col 5}{ralign 11:Factor5}  {c |}{res}     -0.16571      0.09129           -0.0723       1.1121
+{txt}{col 5}{ralign 11:Factor6}  {c |}{res}     -0.25700            .           -0.1121       1.0000
+{txt}{col 5}{hline 13}{c BT}{hline 60}
+{col 5}LR test: independent vs. saturated:  chi2({res}15{txt}) ={res}  354.08{txt} Prob>chi2 ={res} 0.0000
+
+{txt}Factor loadings (pattern matrix) and unique variances
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{hline 10}{hline 10}{c  TT}{hline 14}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{space 1}{ralign 8:Factor3}{space 1}{space 1}{ralign 8:Factor4}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{hline 10}{hline 10}{c   +}{hline 14}
+{space 4}{space 0}{ralign 12:ind_0350}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.6010}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1443}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.1498}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0536}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.5927}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0351}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8485}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.2064}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0064}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0392}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2359}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0352}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.7753}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.2019}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1116}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0070}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.3456}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0353}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4628}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.3328}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0972}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0367}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6643}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0354}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.3971}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.4309}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0451}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0326}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6535}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0355}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.3558}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2621}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0509}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0962}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.7929}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{hline 10}{hline 10}{c  BT}{hline 14}
+
+{com}. 
+. * Scree plot of the eigenvalues
+. screeplot
+{res}{txt}
+{com}. screeplot, yline(1)
+{res}{txt}
+{com}. 
+. predict f1
+{txt}(option {bf:regression} assumed; regression scoring)
+
+{p 0 0 2}Scoring coefficients (method = regression){p_end}
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{space 1}{ralign 8:Factor3}{space 1}{space 1}{ralign 8:Factor4}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:ind_0350}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.12808}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.07450}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.22334}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.10270}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0351}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.48058}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.26416}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.08514}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.13354}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0352}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.26869}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.18095}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.26497}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.05510}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0353}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.11534}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.30348}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.10651}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.05176}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0354}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.14618}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.34943}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.05346}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.03351}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0355}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.06876}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.21785}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.05120}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.10154}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{hline 10}{hline 10}
+
+
+{com}. 
+. * KMO measure of sampling adequacy
+. estat kmo
+
+{txt}{p 0 0 2}Kaiser-Meyer-Olkin measure of sampling adequacy{p_end}
+
+{space 4}{hline 13}{c  TT}{hline 9}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:ind_0350}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7604}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0351}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6401}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0352}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6875}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0353}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7409}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0354}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6435}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0355}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6827}}}{space 1}
+{space 4}{hline 13}{c   +}{hline 9}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6846}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 9}
+
+{com}. 
+. 
+. 
+{txt}end of do-file
+
+{com}. exit, clear
