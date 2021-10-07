@@ -34,7 +34,7 @@ alpha $xlist
 
 
 * Factor analysis
-factor $xlist
+factor $xlist, pcf
 
 * Scree plot of the eigenvalues
 screeplot
