@@ -222,4 +222,3 @@ ips_wide_norm <- bind_cols(
 
 openxlsx::write.xlsx(ips_wide_norm, paste0("03_ips_clean/00_ips_wide_norm_complete.xlsx"))
 
-
