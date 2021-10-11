@@ -43,6 +43,7 @@ imp_dv <- function(x, y){
 anio_vec <- 2015:2020
 ips_wide <- data.frame()
 ips_long <- data.frame()
+ips_direccion <- data.frame()
 for(x in 1:6){
     
     print(
@@ -88,7 +89,7 @@ for(x in 1:6){
     
     # 2. Direcciones ----
     ips_uto_disto_discrecionales <- imp_dv(v_id, 2) %>% 
-        select(id_dimension:distopia)
+        select(id_dimension:direccion,utopia,distopia)
     
     ips_direccion_tempo <- ips_complete %>% 
         left_join(ips_uto_disto_discrecionales) %>% 
@@ -221,4 +222,15 @@ ips_wide_norm <- bind_cols(
 
 
 openxlsx::write.xlsx(ips_wide_norm, paste0("03_ips_clean/00_ips_wide_norm_complete.xlsx"))
+
+
+
+
+openxlsx::write.xlsx(ips_wide_norm %>% 
+                         mutate_at(
+                             vars(starts_with("ind")),
+                             ~abs(.)
+                         ),
+                     paste0("03_ips_clean/00_ips_wide_norm_complete_abs.xlsx"))
+
 
