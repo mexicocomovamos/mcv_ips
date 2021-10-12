@@ -1655,4 +1655,4 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       199
 . 
 {txt}end of do-file
 
-{com}. 
+{com}. exit, clear
