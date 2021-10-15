@@ -3,12 +3,12 @@
       name:  {res}<unnamed>
        {txt}log:  {res}C:/Users/axelo/Documents/GitHub/ips\analisis factorial.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}11 Oct 2021, 11:08:14
+ {txt}opened on:  {res}11 Oct 2021, 12:06:20
 {txt}
 {com}. 
 . ****************************Componente 1****************************************
 . 
-. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+. import excel "$ruta/00_ips_wide_norm_complete_abs.xlsx", sheet("Sheet 1") firstrow
 {res}{text}(58 vars, 200 obs)
 
 {com}. 
@@ -33,10 +33,10 @@
 
 {txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 4}ind_0101 {c |}{res}        200    3.88e-17           1  -2.356088   10.99424
-{txt}{space 4}ind_0102 {c |}{res}        200   -1.15e-16           1  -3.532226   3.224294
-{txt}{space 4}ind_0103 {c |}{res}        200   -7.78e-17           1  -3.895214   2.252844
-{txt}{space 4}ind_0104 {c |}{res}        200   -3.44e-17           1  -6.437997   1.213431
+{space 4}ind_0101 {c |}{res}        200     .486323    .8730987   .0084122   10.99424
+{txt}{space 4}ind_0102 {c |}{res}        200    .7418872    .6684591   .0066109   3.532226
+{txt}{space 4}ind_0103 {c |}{res}        200    .7634728    .6435683   .0095049   3.895214
+{txt}{space 4}ind_0104 {c |}{res}        200    .3840853    .9228961   .0019384   6.437997
 {txt}
 {com}. corr $xlist
 {txt}(obs=200)
@@ -44,9 +44,9 @@
              {c |} ind_0101 ind_0102 ind_0103 ind_0104
 {hline 13}{c +}{hline 36}
     ind_0101 {c |}{res}   1.0000
-    {txt}ind_0102 {c |}{res}  -0.0827   1.0000
-    {txt}ind_0103 {c |}{res}  -0.0435   0.4903   1.0000
-    {txt}ind_0104 {c |}{res}  -0.3649   0.1699   0.1781   1.0000
+    {txt}ind_0102 {c |}{res}   0.2699   1.0000
+    {txt}ind_0103 {c |}{res}   0.4189   0.4314   1.0000
+    {txt}ind_0104 {c |}{res}   0.3481   0.0264   0.0787   1.0000
 
 {txt}
 {com}. 
@@ -55,11 +55,10 @@
 . alpha $xlist
 
 {txt}Test scale = mean(unstandardized items)
-Reversed item: {res: ind_0101}
 
-Average interitem covariance:{col 34}{res} .2215576
+Average interitem covariance:{col 34}{res} .1536748
 {txt}Number of items in the scale:{col 34}{res}        4
-{txt}Scale reliability coefficient:{col 34}{res}   0.5324
+{txt}Scale reliability coefficient:{col 34}{res}   0.5693
 {txt}
 {com}. 
 . 
@@ -74,22 +73,22 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {txt}{col 5}{hline 13}{c TT}{hline 60}
 {col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
 {col 5}{hline 13}{c +}{hline 60}
-{col 5}{ralign 11:Factor1}  {c |}{res}      1.68031      0.48959            0.4201       0.4201
-{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      1.19072      0.56657            0.2977       0.7178
-{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.62415      0.11933            0.1560       0.8738
-{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.50482            .            0.1262       1.0000
+{col 5}{ralign 11:Factor1}  {c |}{res}      1.83454      0.75822            0.4586       0.4586
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      1.07632      0.46854            0.2691       0.7277
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.60778      0.12641            0.1519       0.8797
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.48137            .            0.1203       1.0000
 {txt}{col 5}{hline 13}{c BT}{hline 60}
-{col 5}LR test: independent vs. saturated:  chi2({res}6{txt})  ={res}   91.28{txt} Prob>chi2 ={res} 0.0000
+{col 5}LR test: independent vs. saturated:  chi2({res}6{txt})  ={res}  108.56{txt} Prob>chi2 ={res} 0.0000
 
 {txt}Factor loadings (pattern matrix) and unique variances
 
 {space 4}{hline 13}{c  TT}{hline 10}{hline 10}{c  TT}{hline 14}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
 {space 4}{hline 13}{c   +}{hline 10}{hline 10}{c   +}{hline 14}
-{space 4}{space 0}{ralign 12:ind_0101}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.4717}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.7081}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2761}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0102}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.7356}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.4370}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2678}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0103}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.7242}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.4715}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2532}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0104}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.6262}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.5254}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.3318}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0101}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.7809}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2861}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.3084}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0102}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.6673}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.4820}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.3224}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0103}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.7766}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.3141}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2983}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0104}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4200}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.8145}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1601}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 10}{hline 10}{c  BT}{hline 14}
 
 {com}. 
@@ -107,10 +106,10 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {space 4}{hline 13}{c  TT}{hline 10}{hline 10}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}
 {space 4}{hline 13}{c   +}{hline 10}{hline 10}
-{space 4}{space 0}{ralign 12:ind_0101}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.28071}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.59467}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0102}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.43780}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.36704}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0103}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.43100}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.39600}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0104}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.37269}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.44121}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0101}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.42566}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.26583}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0102}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.36374}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.44781}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0103}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.42330}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.29186}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0104}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.22896}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.75678}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 10}{hline 10}
 
 
@@ -123,12 +122,12 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {space 4}{hline 13}{c  TT}{hline 9}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:ind_0101}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5182}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0102}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5423}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0103}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5321}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0104}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5663}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0101}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5902}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0102}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6393}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0103}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5935}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0104}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4984}}}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5401}}}{space 1}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5893}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 9}
 
 {com}. 
@@ -144,7 +143,7 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 . gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 {txt}
 {com}. 
-. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+. import excel "$ruta/00_ips_wide_norm_complete_abs.xlsx", sheet("Sheet 1") firstrow
 {res}{text}(58 vars, 200 obs)
 
 {com}. 
@@ -168,9 +167,9 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 
 {txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 4}ind_0105 {c |}{res}        200    4.76e-16           1  -3.579627   1.290067
-{txt}{space 4}ind_0106 {c |}{res}        200   -8.38e-17           1  -2.941951   1.347942
-{txt}{space 4}ind_0107 {c |}{res}        200    6.81e-16           1  -8.837928   .8366995
+{space 4}ind_0105 {c |}{res}        200    .8365435    .5446819   .0044678   3.579627
+{txt}{space 4}ind_0106 {c |}{res}        200    .8691483    .4906986   .0197487   2.941951
+{txt}{space 4}ind_0107 {c |}{res}        200    .4235119    .9053929   .0100432   8.837928
 {txt}
 {com}. corr $xlist
 {txt}(obs=200)
@@ -178,8 +177,8 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
              {c |} ind_0105 ind_0106 ind_0107
 {hline 13}{c +}{hline 27}
     ind_0105 {c |}{res}   1.0000
-    {txt}ind_0106 {c |}{res}   0.8812   1.0000
-    {txt}ind_0107 {c |}{res}   0.3411   0.4224   1.0000
+    {txt}ind_0106 {c |}{res}   0.7394   1.0000
+    {txt}ind_0107 {c |}{res}   0.2572   0.3557   1.0000
 
 {txt}
 {com}. 
@@ -189,9 +188,9 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 
 {txt}Test scale = mean(unstandardized items)
 
-Average interitem covariance:{col 34}{res} .5482405
+Average interitem covariance:{col 34}{res} .1608359
 {txt}Number of items in the scale:{col 34}{res}        3
-{txt}Scale reliability coefficient:{col 34}{res}   0.7845
+{txt}Scale reliability coefficient:{col 34}{res}   0.6233
 {txt}
 {com}. 
 . 
@@ -206,20 +205,20 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {txt}{col 5}{hline 13}{c TT}{hline 60}
 {col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
 {col 5}{hline 13}{c +}{hline 60}
-{col 5}{ralign 11:Factor1}  {c |}{res}      2.13777      1.38971            0.7126       0.7126
-{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.74806      0.63389            0.2494       0.9619
-{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.11417            .            0.0381       1.0000
+{col 5}{ralign 11:Factor1}  {c |}{res}      1.93987      1.13254            0.6466       0.6466
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.80733      0.55452            0.2691       0.9157
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.25280            .            0.0843       1.0000
 {txt}{col 5}{hline 13}{c BT}{hline 60}
-{col 5}LR test: independent vs. saturated:  chi2({res}3{txt})  ={res}  337.00{txt} Prob>chi2 ={res} 0.0000
+{col 5}LR test: independent vs. saturated:  chi2({res}3{txt})  ={res}  183.61{txt} Prob>chi2 ={res} 0.0000
 
 {txt}Factor loadings (pattern matrix) and unique variances
 
 {space 4}{hline 13}{c  TT}{hline 10}{c  TT}{hline 14}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
 {space 4}{hline 13}{c   +}{hline 10}{c   +}{hline 14}
-{space 4}{space 0}{ralign 12:ind_0105}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9211}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1516}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0106}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9464}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1044}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0107}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.6275}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6063}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0105}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8766}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2316}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0106}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9109}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1703}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0107}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.5847}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6582}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 10}{c  BT}{hline 14}
 
 {com}. 
@@ -237,9 +236,9 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {space 4}{hline 13}{c  TT}{hline 10}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}
 {space 4}{hline 13}{c   +}{hline 10}
-{space 4}{space 0}{ralign 12:ind_0105}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.43087}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0106}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.44269}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0107}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.29352}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0105}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.45187}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0106}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.46955}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0107}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.30139}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 10}
 
 
@@ -252,11 +251,11 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {space 4}{hline 13}{c  TT}{hline 9}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:ind_0105}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5422}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0106}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5369}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0107}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7855}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0105}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5435}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0106}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5375}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0107}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7483}}}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5638}}}{space 1}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5606}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 9}
 
 {com}. 
@@ -270,7 +269,7 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 . gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 {txt}
 {com}. 
-. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+. import excel "$ruta/00_ips_wide_norm_complete_abs.xlsx", sheet("Sheet 1") firstrow
 {res}{text}(58 vars, 200 obs)
 
 {com}. 
@@ -295,10 +294,10 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 
 {txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 4}ind_0108 {c |}{res}        200   -7.31e-17           1  -.7214216   13.74868
-{txt}{space 4}ind_0109 {c |}{res}        200   -5.39e-18           1  -1.654686   13.25901
-{txt}{space 4}ind_0110 {c |}{res}        200   -4.62e-17           1  -3.951564   6.790149
-{txt}{space 4}ind_0111 {c |}{res}        200    3.70e-17           1  -1.494711   12.98255
+{space 4}ind_0108 {c |}{res}        200    .2214444    .9750466   .0001257   13.74868
+{txt}{space 4}ind_0109 {c |}{res}        200    .2779829    .9603839   .0071088   13.25901
+{txt}{space 4}ind_0110 {c |}{res}        200    .7217306    .6902807   .0257507   6.790149
+{txt}{space 4}ind_0111 {c |}{res}        200    .3545814    .9346872   .0067483   12.98255
 {txt}
 {com}. corr $xlist
 {txt}(obs=200)
@@ -306,9 +305,9 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
              {c |} ind_0108 ind_0109 ind_0110 ind_0111
 {hline 13}{c +}{hline 36}
     ind_0108 {c |}{res}   1.0000
-    {txt}ind_0109 {c |}{res}   0.9691   1.0000
-    {txt}ind_0110 {c |}{res}   0.6138   0.6988   1.0000
-    {txt}ind_0111 {c |}{res}   0.9489   0.9600   0.6929   1.0000
+    {txt}ind_0109 {c |}{res}   0.9737   1.0000
+    {txt}ind_0110 {c |}{res}   0.7042   0.7718   1.0000
+    {txt}ind_0111 {c |}{res}   0.9677   0.9731   0.7324   1.0000
 
 {txt}
 {com}. 
@@ -318,9 +317,9 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 
 {txt}Test scale = mean(unstandardized items)
 
-Average interitem covariance:{col 34}{res} .8139001
+Average interitem covariance:{col 34}{res} .6875621
 {txt}Number of items in the scale:{col 34}{res}        4
-{txt}Scale reliability coefficient:{col 34}{res}   0.9459
+{txt}Scale reliability coefficient:{col 34}{res}   0.9588
 {txt}
 {com}. 
 . 
@@ -335,22 +334,22 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {txt}{col 5}{hline 13}{c TT}{hline 60}
 {col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
 {col 5}{hline 13}{c +}{hline 60}
-{col 5}{ralign 11:Factor1}  {c |}{res}      3.46321      2.99890            0.8658       0.8658
-{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.46432      0.41585            0.1161       0.9819
-{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.04847      0.02447            0.0121       0.9940
-{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.02400            .            0.0060       1.0000
+{col 5}{ralign 11:Factor1}  {c |}{res}      3.57461      3.20102            0.8937       0.8937
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.37359      0.34175            0.0934       0.9870
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.03184      0.01187            0.0080       0.9950
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.01997            .            0.0050       1.0000
 {txt}{col 5}{hline 13}{c BT}{hline 60}
-{col 5}LR test: independent vs. saturated:  chi2({res}6{txt})  ={res} 1242.67{txt} Prob>chi2 ={res} 0.0000
+{col 5}LR test: independent vs. saturated:  chi2({res}6{txt})  ={res} 1399.00{txt} Prob>chi2 ={res} 0.0000
 
 {txt}Factor loadings (pattern matrix) and unique variances
 
 {space 4}{hline 13}{c  TT}{hline 10}{c  TT}{hline 14}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
 {space 4}{hline 13}{c   +}{hline 10}{c   +}{hline 14}
-{space 4}{space 0}{ralign 12:ind_0108}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9594}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.0796}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0109}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9822}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.0354}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0110}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.7920}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.3727}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0111}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9751}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.0491}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0108}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9701}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.0589}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0109}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9876}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.0247}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0110}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8392}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2957}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0111}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9766}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.0462}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 10}{c  BT}{hline 14}
 
 {com}. 
@@ -368,10 +367,10 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {space 4}{hline 13}{c  TT}{hline 10}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}
 {space 4}{hline 13}{c   +}{hline 10}
-{space 4}{space 0}{ralign 12:ind_0108}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.27702}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0109}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.28360}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0110}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.22869}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0111}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.28157}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0108}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.27139}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0109}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.27628}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0110}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.23478}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0111}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.27321}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 10}
 
 
@@ -384,12 +383,12 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {space 4}{hline 13}{c  TT}{hline 9}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:ind_0108}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7386}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0109}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7450}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0110}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7818}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0111}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8838}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0108}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8003}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0109}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7539}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0110}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8391}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0111}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8706}}}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7837}}}{space 1}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8110}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 9}
 
 {com}. 
@@ -404,7 +403,7 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 . gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 {txt}
 {com}. 
-. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+. import excel "$ruta/00_ips_wide_norm_complete_abs.xlsx", sheet("Sheet 1") firstrow
 {res}{text}(58 vars, 200 obs)
 
 {com}. 
@@ -430,11 +429,11 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 
 {txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 4}ind_0112 {c |}{res}        200   -3.67e-17           1  -4.539791   1.975442
-{txt}{space 4}ind_0113 {c |}{res}        200    1.34e-16           1  -5.425483   1.923548
-{txt}{space 4}ind_0114 {c |}{res}        200    6.56e-18           1  -2.884098   2.598076
-{txt}{space 4}ind_0115 {c |}{res}        200    2.85e-16           1  -2.941163   2.505946
-{txt}{space 4}ind_0116 {c |}{res}        200   -3.86e-16           1  -1.194468   8.761586
+{space 4}ind_0112 {c |}{res}        200    .7368014    .6740888   .0016772   4.539791
+{txt}{space 4}ind_0113 {c |}{res}        200     .655238    .7539932   .0048558   5.425483
+{txt}{space 4}ind_0114 {c |}{res}        200    .8056056    .5896934   .0051869   2.884098
+{txt}{space 4}ind_0115 {c |}{res}        200    .8123999    .5802498   3.67e-06   2.941163
+{txt}{space 4}ind_0116 {c |}{res}        200    .6699793    .7408591    .004295   8.761586
 {txt}
 {com}. corr $xlist
 {txt}(obs=200)
@@ -442,10 +441,10 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
              {c |} ind_0112 ind_0113 ind_0114 ind_0115 ind_0116
 {hline 13}{c +}{hline 45}
     ind_0112 {c |}{res}   1.0000
-    {txt}ind_0113 {c |}{res}   0.2979   1.0000
-    {txt}ind_0114 {c |}{res}   0.2614   0.1236   1.0000
-    {txt}ind_0115 {c |}{res}   0.4623   0.4028   0.3865   1.0000
-    {txt}ind_0116 {c |}{res}   0.0918  -0.2883   0.1427   0.0266   1.0000
+    {txt}ind_0113 {c |}{res}   0.2654   1.0000
+    {txt}ind_0114 {c |}{res}   0.0698   0.0420   1.0000
+    {txt}ind_0115 {c |}{res}   0.2946   0.2009   0.1260   1.0000
+    {txt}ind_0116 {c |}{res}   0.3424   0.2951   0.4389   0.3236   1.0000
 
 {txt}
 {com}. 
@@ -454,11 +453,10 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 . alpha $xlist
 
 {txt}Test scale = mean(unstandardized items)
-Reversed item: {res: ind_0116}
 
-Average interitem covariance:{col 34}{res} .1961526
+Average interitem covariance:{col 34}{res} .1094204
 {txt}Number of items in the scale:{col 34}{res}        5
-{txt}Scale reliability coefficient:{col 34}{res}   0.5496
+{txt}Scale reliability coefficient:{col 34}{res}   0.6155
 {txt}
 {com}. 
 . 
@@ -473,24 +471,24 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {txt}{col 5}{hline 13}{c TT}{hline 60}
 {col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
 {col 5}{hline 13}{c +}{hline 60}
-{col 5}{ralign 11:Factor1}  {c |}{res}      1.99198      0.72744            0.3984       0.3984
-{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      1.26454      0.52666            0.2529       0.6513
-{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.73788      0.19461            0.1476       0.7989
-{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.54327      0.08095            0.1087       0.9075
-{txt}{col 5}{ralign 11:Factor5}  {c |}{res}      0.46232            .            0.0925       1.0000
+{col 5}{ralign 11:Factor1}  {c |}{res}      1.99972      0.93464            0.3999       0.3999
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      1.06507      0.27036            0.2130       0.6130
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.79472      0.10556            0.1589       0.7719
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.68916      0.23783            0.1378       0.9097
+{txt}{col 5}{ralign 11:Factor5}  {c |}{res}      0.45133            .            0.0903       1.0000
 {txt}{col 5}{hline 13}{c BT}{hline 60}
-{col 5}LR test: independent vs. saturated:  chi2({res}10{txt}) ={res}  150.45{txt} Prob>chi2 ={res} 0.0000
+{col 5}LR test: independent vs. saturated:  chi2({res}10{txt}) ={res}  126.71{txt} Prob>chi2 ={res} 0.0000
 
 {txt}Factor loadings (pattern matrix) and unique variances
 
 {space 4}{hline 13}{c  TT}{hline 10}{hline 10}{c  TT}{hline 14}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
 {space 4}{hline 13}{c   +}{hline 10}{hline 10}{c   +}{hline 14}
-{space 4}{space 0}{ralign 12:ind_0112}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.7349}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.1310}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.4427}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0113}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.6354}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.5636}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2786}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0114}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.5959}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.3971}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.4872}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0115}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8324}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0393}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.3055}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0116}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.0086}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.8778}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2294}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0112}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.6405}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.3859}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.4408}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0113}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.5534}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.4344}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.5050}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0114}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4992}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.7817}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1397}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0115}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.6230}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.2001}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.5718}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0116}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8036}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2763}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2779}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 10}{hline 10}{c  BT}{hline 14}
 
 {com}. 
@@ -508,11 +506,11 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {space 4}{hline 13}{c  TT}{hline 10}{hline 10}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}
 {space 4}{hline 13}{c   +}{hline 10}{hline 10}
-{space 4}{space 0}{ralign 12:ind_0112}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.36895}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.10361}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0113}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.31899}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.44570}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0114}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.29915}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.31401}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0115}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.41788}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.03110}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0116}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.00430}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.69415}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0112}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.32032}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.36230}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0113}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.27674}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.40788}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0114}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.24965}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.73396}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0115}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.31156}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.18789}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0116}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.40185}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.25938}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 10}{hline 10}
 
 
@@ -525,13 +523,13 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {space 4}{hline 13}{c  TT}{hline 9}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:ind_0112}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6993}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0113}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5879}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0114}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6887}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0115}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6385}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0116}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4264}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0112}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6911}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0113}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6994}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0114}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5110}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0115}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7498}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0116}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5977}}}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6251}}}{space 1}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6330}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 9}
 
 {com}. 
@@ -545,7 +543,7 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 . gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 {txt}
 {com}. 
-. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+. import excel "$ruta/00_ips_wide_norm_complete_abs.xlsx", sheet("Sheet 1") firstrow
 {res}{text}(58 vars, 200 obs)
 
 {com}. 
@@ -571,11 +569,11 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 
 {txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 4}ind_0217 {c |}{res}        200   -2.23e-18           1  -2.722122   3.492255
-{txt}{space 4}ind_0218 {c |}{res}        200   -1.57e-16           1  -11.61071   1.223618
-{txt}{space 4}ind_0219 {c |}{res}        200    6.31e-16           1  -3.513053    4.16322
-{txt}{space 4}ind_0220 {c |}{res}        200   -1.68e-16           1  -2.932517   3.317119
-{txt}{space 4}ind_0221 {c |}{res}        200   -1.38e-16           1   -4.61131   2.372218
+{space 4}ind_0217 {c |}{res}        200     .755204       .6533   .0007522   3.492255
+{txt}{space 4}ind_0218 {c |}{res}        200    .4921141    .8698314   .0082078   11.61071
+{txt}{space 4}ind_0219 {c |}{res}        200    .7124518    .6999012     .00226    4.16322
+{txt}{space 4}ind_0220 {c |}{res}        200    .8095142    .5842891   .0047395   3.317119
+{txt}{space 4}ind_0221 {c |}{res}        200    .7179213    .6942615   .0001436    4.61131
 {txt}
 {com}. corr $xlist
 {txt}(obs=200)
@@ -583,10 +581,10 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
              {c |} ind_0217 ind_0218 ind_0219 ind_0220 ind_0221
 {hline 13}{c +}{hline 45}
     ind_0217 {c |}{res}   1.0000
-    {txt}ind_0218 {c |}{res}  -0.1049   1.0000
-    {txt}ind_0219 {c |}{res}   0.8168  -0.0138   1.0000
-    {txt}ind_0220 {c |}{res}   0.5885   0.0672   0.7088   1.0000
-    {txt}ind_0221 {c |}{res}  -0.1102   0.4283   0.0268   0.1797   1.0000
+    {txt}ind_0218 {c |}{res}   0.3591   1.0000
+    {txt}ind_0219 {c |}{res}   0.6874   0.4401   1.0000
+    {txt}ind_0220 {c |}{res}   0.2989   0.3163   0.4595   1.0000
+    {txt}ind_0221 {c |}{res}   0.4451   0.4602   0.5107   0.2515   1.0000
 
 {txt}
 {com}. 
@@ -595,11 +593,10 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 . alpha $xlist
 
 {txt}Test scale = mean(unstandardized items)
-Reversed item: {res: ind_0218}
 
-Average interitem covariance:{col 34}{res} .1833727
+Average interitem covariance:{col 34}{res} .2078962
 {txt}Number of items in the scale:{col 34}{res}        5
-{txt}Scale reliability coefficient:{col 34}{res}   0.5289
+{txt}Scale reliability coefficient:{col 34}{res}   0.7810
 {txt}
 {com}. 
 . 
@@ -608,31 +605,31 @@ Average interitem covariance:{col 34}{res} .1833727
 {txt}(obs=200)
 
 Factor analysis/correlation{col 50}Number of obs    = {res}       200
-{col 5}{txt}Method: principal-component factors{col 50}Retained factors =   {res}       2
-{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}       9
+{col 5}{txt}Method: principal-component factors{col 50}Retained factors =   {res}       1
+{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}       5
 
 {txt}{col 5}{hline 13}{c TT}{hline 60}
 {col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
 {col 5}{hline 13}{c +}{hline 60}
-{col 5}{ralign 11:Factor1}  {c |}{res}      2.41554      0.93697            0.4831       0.4831
-{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      1.47856      0.89194            0.2957       0.7788
-{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.58663      0.22594            0.1173       0.8961
-{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.36069      0.20210            0.0721       0.9683
-{txt}{col 5}{ralign 11:Factor5}  {c |}{res}      0.15859            .            0.0317       1.0000
+{col 5}{ralign 11:Factor1}  {c |}{res}      2.72206      1.93956            0.5444       0.5444
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.78250      0.07305            0.1565       0.7009
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.70945      0.20482            0.1419       0.8428
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.50463      0.22327            0.1009       0.9437
+{txt}{col 5}{ralign 11:Factor5}  {c |}{res}      0.28135            .            0.0563       1.0000
 {txt}{col 5}{hline 13}{c BT}{hline 60}
-{col 5}LR test: independent vs. saturated:  chi2({res}10{txt}) ={res}  419.01{txt} Prob>chi2 ={res} 0.0000
+{col 5}LR test: independent vs. saturated:  chi2({res}10{txt}) ={res}  303.99{txt} Prob>chi2 ={res} 0.0000
 
 {txt}Factor loadings (pattern matrix) and unique variances
 
-{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{c  TT}{hline 14}
-{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
-{space 4}{hline 13}{c   +}{hline 10}{hline 10}{c   +}{hline 14}
-{space 4}{space 0}{ralign 12:ind_0217}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8951}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1836}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1652}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0218}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.0200}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.8284}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.3134}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0219}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9431}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0183}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1102}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0220}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8497}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.1832}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2444}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0221}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.0501}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.8513}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2727}}}{space 1}
-{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{c  BT}{hline 14}
+{space 4}{hline 13}{c  TT}{hline 10}{c  TT}{hline 14}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{c   +}{hline 14}
+{space 4}{space 0}{ralign 12:ind_0217}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.7810}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.3900}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0218}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.6887}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.5257}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0219}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8640}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2535}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0220}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.5991}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6411}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0221}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.7296}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.4677}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{c  BT}{hline 14}
 
 {com}. 
 . * Scree plot of the eigenvalues
@@ -646,15 +643,15 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 
 {p 0 0 2}Scoring coefficients (method = regression){p_end}
 
-{space 4}{hline 13}{c  TT}{hline 10}{hline 10}
-{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}
-{space 4}{hline 13}{c   +}{hline 10}{hline 10}
-{space 4}{space 0}{ralign 12:ind_0217}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.37054}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.12419}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0218}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.00830}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.56025}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0219}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.39044}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.01241}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0220}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.35178}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.12388}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0221}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.02072}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.57579}}}{space 1}
-{space 4}{hline 13}{c  BT}{hline 10}{hline 10}
+{space 4}{hline 13}{c  TT}{hline 10}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}
+{space 4}{space 0}{ralign 12:ind_0217}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.28693}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0218}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.25300}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0219}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.31740}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0220}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.22010}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0221}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.26804}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}
 
 
 {com}. 
@@ -666,13 +663,13 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {space 4}{hline 13}{c  TT}{hline 9}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:ind_0217}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6612}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0218}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5510}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0219}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6275}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0220}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7723}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0221}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4880}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0217}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7276}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0218}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8306}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0219}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7014}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0220}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7902}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0221}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8228}}}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6508}}}{space 1}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7586}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 9}
 
 {com}. 
@@ -686,7 +683,7 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 . gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 {txt}
 {com}. 
-. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+. import excel "$ruta/00_ips_wide_norm_complete_abs.xlsx", sheet("Sheet 1") firstrow
 {res}{text}(58 vars, 200 obs)
 
 {com}. 
@@ -711,10 +708,10 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 
 {txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 4}ind_0222 {c |}{res}        200   -2.35e-16           1  -3.507266   2.889367
-{txt}{space 4}ind_0223 {c |}{res}        200   -2.31e-16           1  -4.212429   5.273456
-{txt}{space 4}ind_0224 {c |}{res}        200    1.34e-16           1  -3.134394   3.104332
-{txt}{space 4}ind_0225 {c |}{res}        200    5.79e-17           1  -5.615054   1.668491
+{space 4}ind_0222 {c |}{res}        200    .7871141    .6142785    .011727   3.507266
+{txt}{space 4}ind_0223 {c |}{res}        200    .7364691    .6744536   .0006958   5.273456
+{txt}{space 4}ind_0224 {c |}{res}        200    .8009913    .5959773   .0057039   3.134394
+{txt}{space 4}ind_0225 {c |}{res}        200    .6922915    .7199472   .0186786   5.615054
 {txt}
 {com}. corr $xlist
 {txt}(obs=200)
@@ -722,9 +719,9 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
              {c |} ind_0222 ind_0223 ind_0224 ind_0225
 {hline 13}{c +}{hline 36}
     ind_0222 {c |}{res}   1.0000
-    {txt}ind_0223 {c |}{res}   0.8623   1.0000
-    {txt}ind_0224 {c |}{res}   0.8672   0.8087   1.0000
-    {txt}ind_0225 {c |}{res}   0.2729   0.2676   0.1616   1.0000
+    {txt}ind_0223 {c |}{res}   0.6928   1.0000
+    {txt}ind_0224 {c |}{res}   0.7413   0.6399   1.0000
+    {txt}ind_0225 {c |}{res}   0.3686   0.3282   0.3121   1.0000
 
 {txt}
 {com}. 
@@ -734,9 +731,9 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 
 {txt}Test scale = mean(unstandardized items)
 
-Average interitem covariance:{col 34}{res} .5400596
+Average interitem covariance:{col 34}{res} .2119854
 {txt}Number of items in the scale:{col 34}{res}        4
-{txt}Scale reliability coefficient:{col 34}{res}   0.8245
+{txt}Scale reliability coefficient:{col 34}{res}   0.7981
 {txt}
 {com}. 
 . 
@@ -751,22 +748,22 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {txt}{col 5}{hline 13}{c TT}{hline 60}
 {col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
 {col 5}{hline 13}{c +}{hline 60}
-{col 5}{ralign 11:Factor1}  {c |}{res}      2.78484      1.86746            0.6962       0.6962
-{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.91739      0.73294            0.2293       0.9256
-{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.18444      0.07111            0.0461       0.9717
-{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.11333            .            0.0283       1.0000
+{col 5}{ralign 11:Factor1}  {c |}{res}      2.59641      1.80734            0.6491       0.6491
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.78906      0.42238            0.1973       0.8464
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.36669      0.11885            0.0917       0.9380
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.24784            .            0.0620       1.0000
 {txt}{col 5}{hline 13}{c BT}{hline 60}
-{col 5}LR test: independent vs. saturated:  chi2({res}6{txt})  ={res}  579.64{txt} Prob>chi2 ={res} 0.0000
+{col 5}LR test: independent vs. saturated:  chi2({res}6{txt})  ={res}  332.56{txt} Prob>chi2 ={res} 0.0000
 
 {txt}Factor loadings (pattern matrix) and unique variances
 
 {space 4}{hline 13}{c  TT}{hline 10}{c  TT}{hline 14}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
 {space 4}{hline 13}{c   +}{hline 10}{c   +}{hline 14}
-{space 4}{space 0}{ralign 12:ind_0222}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9579}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.0825}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0223}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9367}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1226}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0224}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9234}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1474}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0225}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.3705}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.8627}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0222}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9006}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1890}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0223}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8523}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2735}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0224}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8679}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2467}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0225}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.5529}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6943}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 10}{c  BT}{hline 14}
 
 {com}. 
@@ -784,10 +781,10 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {space 4}{hline 13}{c  TT}{hline 10}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}
 {space 4}{hline 13}{c   +}{hline 10}
-{space 4}{space 0}{ralign 12:ind_0222}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.34396}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0223}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.33636}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0224}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.33157}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0225}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.13304}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0222}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.34685}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0223}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.32827}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0224}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.33427}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0225}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.21293}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 10}
 
 
@@ -800,12 +797,12 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {space 4}{hline 13}{c  TT}{hline 9}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:ind_0222}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7104}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0223}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8090}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0224}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7659}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0225}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7004}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0222}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7163}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0223}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8088}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0224}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7551}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0225}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.9061}}}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7560}}}{space 1}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7680}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 9}
 
 {com}. 
@@ -819,7 +816,7 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 . gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 {txt}
 {com}. 
-. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+. import excel "$ruta/00_ips_wide_norm_complete_abs.xlsx", sheet("Sheet 1") firstrow
 {res}{text}(58 vars, 200 obs)
 
 {com}. 
@@ -845,11 +842,11 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 
 {txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 4}ind_0226 {c |}{res}        200    2.14e-15           1  -3.925131   3.128803
-{txt}{space 4}ind_0227 {c |}{res}        200    2.57e-16           1  -4.223994   2.778268
-{txt}{space 4}ind_0228 {c |}{res}        200    7.28e-17           1  -6.207335   1.222523
-{txt}{space 4}ind_0229 {c |}{res}        200   -3.06e-16           1  -4.715199   2.301944
-{txt}{space 4}ind_0230 {c |}{res}        200   -2.05e-16           1  -3.583226   3.120719
+{space 4}ind_0226 {c |}{res}        200    .7133055    .6990268   .0104189   3.925131
+{txt}{space 4}ind_0227 {c |}{res}        200    .7935891    .6058478   .0107247   4.223994
+{txt}{space 4}ind_0228 {c |}{res}        200    .3924206    .9193651    .004693   6.207335
+{txt}{space 4}ind_0229 {c |}{res}        200    .7447877    .6652096   .0258365   4.715199
+{txt}{space 4}ind_0230 {c |}{res}        200    .7646424    .6421712   .0003112   3.583226
 {txt}
 {com}. corr $xlist
 {txt}(obs=200)
@@ -857,10 +854,10 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
              {c |} ind_0226 ind_0227 ind_0228 ind_0229 ind_0230
 {hline 13}{c +}{hline 45}
     ind_0226 {c |}{res}   1.0000
-    {txt}ind_0227 {c |}{res}  -0.1080   1.0000
-    {txt}ind_0228 {c |}{res}   0.1267   0.0737   1.0000
-    {txt}ind_0229 {c |}{res}   0.1991  -0.1640   0.2601   1.0000
-    {txt}ind_0230 {c |}{res}   0.4000  -0.0803   0.1250   0.0878   1.0000
+    {txt}ind_0227 {c |}{res}   0.4473   1.0000
+    {txt}ind_0228 {c |}{res}   0.0429   0.0578   1.0000
+    {txt}ind_0229 {c |}{res}   0.1646   0.1656   0.1184   1.0000
+    {txt}ind_0230 {c |}{res}   0.4015   0.1848   0.0824   0.0350   1.0000
 
 {txt}
 {com}. 
@@ -869,11 +866,10 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 . alpha $xlist
 
 {txt}Test scale = mean(unstandardized items)
-Reversed item: {res: ind_0227}
 
-Average interitem covariance:{col 34}{res}  .147737
+Average interitem covariance:{col 34}{res}  .078059
 {txt}Number of items in the scale:{col 34}{res}        5
-{txt}Scale reliability coefficient:{col 34}{res}   0.4643
+{txt}Scale reliability coefficient:{col 34}{res}   0.4740
 {txt}
 {com}. 
 . 
@@ -882,31 +878,31 @@ Average interitem covariance:{col 34}{res}  .147737
 {txt}(obs=200)
 
 Factor analysis/correlation{col 50}Number of obs    = {res}       200
-{col 5}{txt}Method: principal-component factors{col 50}Retained factors =   {res}       3
-{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}      10
+{col 5}{txt}Method: principal-component factors{col 50}Retained factors =   {res}       2
+{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}       9
 
 {txt}{col 5}{hline 13}{c TT}{hline 60}
 {col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
 {col 5}{hline 13}{c +}{hline 60}
-{col 5}{ralign 11:Factor1}  {c |}{res}      1.64548      0.56290            0.3291       0.3291
-{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      1.08258      0.05590            0.2165       0.5456
-{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      1.02669      0.35239            0.2053       0.7510
-{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.67429      0.10334            0.1349       0.8858
-{txt}{col 5}{ralign 11:Factor5}  {c |}{res}      0.57095            .            0.1142       1.0000
+{col 5}{ralign 11:Factor1}  {c |}{res}      1.78467      0.73425            0.3569       0.3569
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      1.05043      0.11981            0.2101       0.5670
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.93062      0.17547            0.1861       0.7531
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.75515      0.27603            0.1510       0.9042
+{txt}{col 5}{ralign 11:Factor5}  {c |}{res}      0.47912            .            0.0958       1.0000
 {txt}{col 5}{hline 13}{c BT}{hline 60}
-{col 5}LR test: independent vs. saturated:  chi2({res}10{txt}) ={res}   69.29{txt} Prob>chi2 ={res} 0.0000
+{col 5}LR test: independent vs. saturated:  chi2({res}10{txt}) ={res}   90.87{txt} Prob>chi2 ={res} 0.0000
 
 {txt}Factor loadings (pattern matrix) and unique variances
 
-{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{hline 10}{c  TT}{hline 14}
-{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{space 1}{ralign 8:Factor3}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
-{space 4}{hline 13}{c   +}{hline 10}{hline 10}{hline 10}{c   +}{hline 14}
-{space 4}{space 0}{ralign 12:ind_0226}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.7368}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.2153}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2976}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.3222}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0227}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.3007}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.6121}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.6222}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1478}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0228}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4752}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.7228}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0562}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2486}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0229}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.5857}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2795}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.5598}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2655}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0230}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.6658}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.2471}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.4842}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2612}}}{space 1}
-{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{hline 10}{c  BT}{hline 14}
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{c  TT}{hline 14}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{c   +}{hline 14}
+{space 4}{space 0}{ralign 12:ind_0226}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8233}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.2114}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2775}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0227}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.7155}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0627}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.4842}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0228}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.2220}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.7310}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.4164}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0229}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.3853}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.6196}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.4676}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0230}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.6302}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.2890}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.5193}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{c  BT}{hline 14}
 
 {com}. 
 . * Scree plot of the eigenvalues
@@ -920,15 +916,15 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 
 {p 0 0 2}Scoring coefficients (method = regression){p_end}
 
-{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{hline 10}
-{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{space 1}{ralign 8:Factor3}{space 1}
-{space 4}{hline 13}{c   +}{hline 10}{hline 10}{hline 10}
-{space 4}{space 0}{ralign 12:ind_0226}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.44778}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.19886}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.28991}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0227}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.18276}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.56541}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.60602}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0228}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.28882}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.66762}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.05478}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0229}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.35594}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.25822}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.54522}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0230}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.40460}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.22824}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.47163}}}{space 1}
-{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{hline 10}
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}
+{space 4}{space 0}{ralign 12:ind_0226}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.46132}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.20126}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0227}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.40089}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.05966}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0228}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.12439}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.69588}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0229}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.21590}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.58990}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0230}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.35314}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.27512}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}
 
 
 {com}. 
@@ -940,13 +936,13 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {space 4}{hline 13}{c  TT}{hline 9}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:ind_0226}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5648}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0227}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4806}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0228}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5246}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0229}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5407}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0230}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5473}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0226}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5617}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0227}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6090}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0228}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5701}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0229}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6560}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0230}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5914}}}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5426}}}{space 1}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5870}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 9}
 
 {com}. 
@@ -961,7 +957,7 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 . gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 {txt}
 {com}. 
-. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+. import excel "$ruta/00_ips_wide_norm_complete_abs.xlsx", sheet("Sheet 1") firstrow
 {res}{text}(58 vars, 200 obs)
 
 {com}. 
@@ -986,10 +982,10 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 
 {txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 4}ind_0231 {c |}{res}        200    1.14e-16           1  -4.030562   2.472074
-{txt}{space 4}ind_0232 {c |}{res}        200   -7.13e-17           1  -2.147327   8.673853
-{txt}{space 4}ind_0233 {c |}{res}        200   -3.51e-16           1  -1.533478   10.16193
-{txt}{space 4}ind_0234 {c |}{res}        200    9.19e-18           1  -1.832862   11.38572
+{space 4}ind_0231 {c |}{res}        200    .7388946    .6717821    .004211   4.030562
+{txt}{space 4}ind_0232 {c |}{res}        200    .6758315    .7354975   .0057197   8.673853
+{txt}{space 4}ind_0233 {c |}{res}        200    .5848547    .8100778   .0124915   10.16193
+{txt}{space 4}ind_0234 {c |}{res}        200     .512225    .8580834   .0051297   11.38572
 {txt}
 {com}. corr $xlist
 {txt}(obs=200)
@@ -997,9 +993,9 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
              {c |} ind_0231 ind_0232 ind_0233 ind_0234
 {hline 13}{c +}{hline 36}
     ind_0231 {c |}{res}   1.0000
-    {txt}ind_0232 {c |}{res}  -0.6639   1.0000
-    {txt}ind_0233 {c |}{res}  -0.2234   0.6719   1.0000
-    {txt}ind_0234 {c |}{res}  -0.2982   0.6758   0.6858   1.0000
+    {txt}ind_0232 {c |}{res}   0.5043   1.0000
+    {txt}ind_0233 {c |}{res}   0.4671   0.7571   1.0000
+    {txt}ind_0234 {c |}{res}   0.3918   0.7296   0.8094   1.0000
 
 {txt}
 {com}. 
@@ -1008,11 +1004,10 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 . alpha $xlist
 
 {txt}Test scale = mean(unstandardized items)
-Reversed item: {res: ind_0231}
 
-Average interitem covariance:{col 34}{res} .5364893
+Average interitem covariance:{col 34}{res} .3672397
 {txt}Number of items in the scale:{col 34}{res}        4
-{txt}Scale reliability coefficient:{col 34}{res}   0.8224
+{txt}Scale reliability coefficient:{col 34}{res}   0.8652
 {txt}
 {com}. 
 . 
@@ -1027,22 +1022,22 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {txt}{col 5}{hline 13}{c TT}{hline 60}
 {col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
 {col 5}{hline 13}{c +}{hline 60}
-{col 5}{ralign 11:Factor1}  {c |}{res}      2.64781      1.76289            0.6620       0.6620
-{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.88492      0.57107            0.2212       0.8832
-{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.31385      0.16044            0.0785       0.9616
-{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.15342            .            0.0384       1.0000
+{col 5}{ralign 11:Factor1}  {c |}{res}      2.86360      2.17994            0.7159       0.7159
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.68366      0.41588            0.1709       0.8868
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.26778      0.08282            0.0669       0.9538
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.18496            .            0.0462       1.0000
 {txt}{col 5}{hline 13}{c BT}{hline 60}
-{col 5}LR test: independent vs. saturated:  chi2({res}6{txt})  ={res}  431.67{txt} Prob>chi2 ={res} 0.0000
+{col 5}LR test: independent vs. saturated:  chi2({res}6{txt})  ={res}  461.63{txt} Prob>chi2 ={res} 0.0000
 
 {txt}Factor loadings (pattern matrix) and unique variances
 
 {space 4}{hline 13}{c  TT}{hline 10}{c  TT}{hline 14}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
 {space 4}{hline 13}{c   +}{hline 10}{c   +}{hline 14}
-{space 4}{space 0}{ralign 12:ind_0231}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.6385}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.5924}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0232}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9337}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1282}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0233}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8161}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.3340}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0234}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8381}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2976}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0231}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.6587}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.5661}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0232}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8974}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1948}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0233}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9150}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1627}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0234}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8872}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2128}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 10}{c  BT}{hline 14}
 
 {com}. 
@@ -1060,10 +1055,10 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {space 4}{hline 13}{c  TT}{hline 10}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}
 {space 4}{hline 13}{c   +}{hline 10}
-{space 4}{space 0}{ralign 12:ind_0231}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.24113}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0232}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.35262}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0233}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.30821}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0234}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.31653}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0231}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.23003}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0232}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.31337}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0233}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.31954}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0234}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.30983}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 10}
 
 
@@ -1076,12 +1071,12 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {space 4}{hline 13}{c  TT}{hline 9}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:ind_0231}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4848}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0232}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6078}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0233}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6704}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0234}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7847}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0231}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8642}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0232}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8240}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0233}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7502}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0234}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7570}}}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6358}}}{space 1}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7859}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 9}
 
 {com}. 
@@ -1096,7 +1091,7 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 . gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 {txt}
 {com}. 
-. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+. import excel "$ruta/00_ips_wide_norm_complete_abs.xlsx", sheet("Sheet 1") firstrow
 {res}{text}(58 vars, 200 obs)
 
 {com}. 
@@ -1122,11 +1117,11 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 
 {txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 4}ind_0335 {c |}{res}        200   -3.35e-16           1  -5.953926   2.925489
-{txt}{space 4}ind_0336 {c |}{res}        200    9.56e-17           1   -3.20567   2.771073
-{txt}{space 4}ind_0337 {c |}{res}        199   -1.48e-16           1  -2.268608   9.211493
-{txt}{space 4}ind_0338 {c |}{res}        200   -8.40e-17           1  -1.967014   5.691056
-{txt}{space 4}ind_0339 {c |}{res}        200    1.73e-16           1  -3.031144   8.963926
+{space 4}ind_0335 {c |}{res}        200      .79705    .6012644   .0265372   5.953926
+{txt}{space 4}ind_0336 {c |}{res}        200    .8111506    .5820037   .0210094    3.20567
+{txt}{space 4}ind_0337 {c |}{res}        199    .6171419    .7856286   .0200664   9.211493
+{txt}{space 4}ind_0338 {c |}{res}        200    .6839852    .7278828   .0104927   5.691056
+{txt}{space 4}ind_0339 {c |}{res}        200    .6464176    .7616065   .0131961   8.963926
 {txt}
 {com}. corr $xlist
 {txt}(obs=199)
@@ -1134,10 +1129,10 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
              {c |} ind_0335 ind_0336 ind_0337 ind_0338 ind_0339
 {hline 13}{c +}{hline 45}
     ind_0335 {c |}{res}   1.0000
-    {txt}ind_0336 {c |}{res}   0.5268   1.0000
-    {txt}ind_0337 {c |}{res}   0.1610   0.2504   1.0000
-    {txt}ind_0338 {c |}{res}  -0.1228  -0.1088   0.3596   1.0000
-    {txt}ind_0339 {c |}{res}   0.2649   0.0804   0.4480   0.3388   1.0000
+    {txt}ind_0336 {c |}{res}   0.0923   1.0000
+    {txt}ind_0337 {c |}{res}   0.3825   0.2665   1.0000
+    {txt}ind_0338 {c |}{res}   0.2658   0.1680   0.3938   1.0000
+    {txt}ind_0339 {c |}{res}   0.3347   0.3669   0.7183   0.3592   1.0000
 
 {txt}
 {com}. 
@@ -1147,9 +1142,9 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 
 {txt}Test scale = mean(unstandardized items)
 
-Average interitem covariance:{col 34}{res} .2206939
+Average interitem covariance:{col 34}{res} .1688609
 {txt}Number of items in the scale:{col 34}{res}        5
-{txt}Scale reliability coefficient:{col 34}{res}   0.5861
+{txt}Scale reliability coefficient:{col 34}{res}   0.7274
 {txt}
 {com}. 
 . 
@@ -1158,31 +1153,31 @@ Average interitem covariance:{col 34}{res} .2206939
 {txt}(obs=199)
 
 Factor analysis/correlation{col 50}Number of obs    = {res}       199
-{col 5}{txt}Method: principal-component factors{col 50}Retained factors =   {res}       2
-{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}       9
+{col 5}{txt}Method: principal-component factors{col 50}Retained factors =   {res}       1
+{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}       5
 
 {txt}{col 5}{hline 13}{c TT}{hline 60}
 {col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
 {col 5}{hline 13}{c +}{hline 60}
-{col 5}{ralign 11:Factor1}  {c |}{res}      1.93510      0.44910            0.3870       0.3870
-{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      1.48600      0.81812            0.2972       0.6842
-{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.66789      0.12489            0.1336       0.8178
-{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.54300      0.17500            0.1086       0.9264
-{txt}{col 5}{ralign 11:Factor5}  {c |}{res}      0.36800            .            0.0736       1.0000
+{col 5}{ralign 11:Factor1}  {c |}{res}      2.41817      1.48651            0.4836       0.4836
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.93166      0.20545            0.1863       0.6700
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.72621      0.07334            0.1452       0.8152
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.65287      0.38179            0.1306       0.9458
+{txt}{col 5}{ralign 11:Factor5}  {c |}{res}      0.27108            .            0.0542       1.0000
 {txt}{col 5}{hline 13}{c BT}{hline 60}
-{col 5}LR test: independent vs. saturated:  chi2({res}10{txt}) ={res}  188.19{txt} Prob>chi2 ={res} 0.0000
+{col 5}LR test: independent vs. saturated:  chi2({res}10{txt}) ={res}  243.54{txt} Prob>chi2 ={res} 0.0000
 
 {txt}Factor loadings (pattern matrix) and unique variances
 
-{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{c  TT}{hline 14}
-{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
-{space 4}{hline 13}{c   +}{hline 10}{hline 10}{c   +}{hline 14}
-{space 4}{space 0}{ralign 12:ind_0335}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.5939}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.6232}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2589}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0336}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.5522}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.6448}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2793}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0337}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.7584}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2732}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.3502}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0338}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4135}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.7169}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.3150}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0339}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.7289}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.3053}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.3755}}}{space 1}
-{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{c  BT}{hline 14}
+{space 4}{hline 13}{c  TT}{hline 10}{c  TT}{hline 14}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{c   +}{hline 14}
+{space 4}{space 0}{ralign 12:ind_0335}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.5796}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6640}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0336}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4922}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.7578}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0337}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8531}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2722}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0338}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.6199}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6157}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0339}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8532}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2721}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{c  BT}{hline 14}
 
 {com}. 
 . * Scree plot of the eigenvalues
@@ -1196,15 +1191,15 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       199
 
 {p 0 0 2}Scoring coefficients (method = regression){p_end}
 
-{space 4}{hline 13}{c  TT}{hline 10}{hline 10}
-{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}
-{space 4}{hline 13}{c   +}{hline 10}{hline 10}
-{space 4}{space 0}{ralign 12:ind_0335}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.30690}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.41939}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0336}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.28537}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.43392}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0337}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.39192}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.18387}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0338}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.21368}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.48245}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0339}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.37668}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.20544}}}{space 1}
-{space 4}{hline 13}{c  BT}{hline 10}{hline 10}
+{space 4}{hline 13}{c  TT}{hline 10}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}
+{space 4}{space 0}{ralign 12:ind_0335}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.23970}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0336}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.20353}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0337}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.35278}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0338}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.25635}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0339}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.35282}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}
 
 
 {com}. 
@@ -1216,13 +1211,13 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       199
 {space 4}{hline 13}{c  TT}{hline 9}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:ind_0335}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5081}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0336}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5011}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0337}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6034}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0338}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6010}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0339}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5690}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0335}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8464}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0336}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7744}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0337}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6622}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0338}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8660}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0339}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6558}}}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5518}}}{space 1}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7115}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 9}
 
 {com}. 
@@ -1237,7 +1232,7 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       199
 . gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 {txt}
 {com}. 
-. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+. import excel "$ruta/00_ips_wide_norm_complete_abs.xlsx", sheet("Sheet 1") firstrow
 {res}{text}(58 vars, 200 obs)
 
 {com}. 
@@ -1263,11 +1258,11 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       199
 
 {txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 4}ind_0340 {c |}{res}        200   -3.84e-16           1  -.9862161   12.92865
-{txt}{space 4}ind_0341 {c |}{res}        200    6.26e-16           1  -3.190313   4.254022
-{txt}{space 4}ind_0342 {c |}{res}        200   -8.55e-17           1  -4.132358   2.136568
-{txt}{space 4}ind_0343 {c |}{res}        200    8.07e-17           1  -1.498728   9.401226
-{txt}{space 4}ind_0344 {c |}{res}        200    1.65e-16           1  -5.311771    1.94895
+{space 4}ind_0340 {c |}{res}        200     .358724    .9330972   .0005607   12.92865
+{txt}{space 4}ind_0341 {c |}{res}        200    .7318203    .6795203   .0181656   4.254022
+{txt}{space 4}ind_0342 {c |}{res}        200    .7698989    .6358279   .0034983   4.132358
+{txt}{space 4}ind_0343 {c |}{res}        200    .6555361    .7537327    .001494   9.401226
+{txt}{space 4}ind_0344 {c |}{res}        200    .6709239    .7399994   .0108125   5.311771
 {txt}
 {com}. corr $xlist
 {txt}(obs=200)
@@ -1275,10 +1270,10 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       199
              {c |} ind_0340 ind_0341 ind_0342 ind_0343 ind_0344
 {hline 13}{c +}{hline 45}
     ind_0340 {c |}{res}   1.0000
-    {txt}ind_0341 {c |}{res}  -0.0226   1.0000
-    {txt}ind_0342 {c |}{res}  -0.2438   0.4656   1.0000
-    {txt}ind_0343 {c |}{res}   0.7761   0.0350  -0.1720   1.0000
-    {txt}ind_0344 {c |}{res}  -0.3650  -0.1648   0.0434  -0.0593   1.0000
+    {txt}ind_0341 {c |}{res}   0.3121   1.0000
+    {txt}ind_0342 {c |}{res}   0.3564   0.2387   1.0000
+    {txt}ind_0343 {c |}{res}   0.8423   0.3708   0.2936   1.0000
+    {txt}ind_0344 {c |}{res}   0.4568   0.3590   0.3758   0.3205   1.0000
 
 {txt}
 {com}. 
@@ -1287,11 +1282,10 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       199
 . alpha $xlist
 
 {txt}Test scale = mean(unstandardized items)
-Reversed items: {res: ind_0341 ind_0342 ind_0344}
 
-Average interitem covariance:{col 34}{res} .1948093
+Average interitem covariance:{col 34}{res} .2286998
 {txt}Number of items in the scale:{col 34}{res}        5
-{txt}Scale reliability coefficient:{col 34}{res}   0.5475
+{txt}Scale reliability coefficient:{col 34}{res}   0.7699
 {txt}
 {com}. 
 . 
@@ -1300,31 +1294,31 @@ Average interitem covariance:{col 34}{res} .1948093
 {txt}(obs=200)
 
 Factor analysis/correlation{col 50}Number of obs    = {res}       200
-{col 5}{txt}Method: principal-component factors{col 50}Retained factors =   {res}       2
-{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}       9
+{col 5}{txt}Method: principal-component factors{col 50}Retained factors =   {res}       1
+{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}       5
 
 {txt}{col 5}{hline 13}{c TT}{hline 60}
 {col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
 {col 5}{hline 13}{c +}{hline 60}
-{col 5}{ralign 11:Factor1}  {c |}{res}      1.97916      0.52512            0.3958       0.3958
-{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      1.45404      0.52460            0.2908       0.6866
-{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.92944      0.44766            0.1859       0.8725
-{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.48177      0.32619            0.0964       0.9689
-{txt}{col 5}{ralign 11:Factor5}  {c |}{res}      0.15559            .            0.0311       1.0000
+{col 5}{ralign 11:Factor1}  {c |}{res}      2.61709      1.73218            0.5234       0.5234
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.88491      0.11954            0.1770       0.7004
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.76537      0.16911            0.1531       0.8535
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.59626      0.45989            0.1193       0.9727
+{txt}{col 5}{ralign 11:Factor5}  {c |}{res}      0.13637            .            0.0273       1.0000
 {txt}{col 5}{hline 13}{c BT}{hline 60}
-{col 5}LR test: independent vs. saturated:  chi2({res}10{txt}) ={res}  317.38{txt} Prob>chi2 ={res} 0.0000
+{col 5}LR test: independent vs. saturated:  chi2({res}10{txt}) ={res}  382.58{txt} Prob>chi2 ={res} 0.0000
 
 {txt}Factor loadings (pattern matrix) and unique variances
 
-{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{c  TT}{hline 14}
-{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
-{space 4}{hline 13}{c   +}{hline 10}{hline 10}{c   +}{hline 14}
-{space 4}{space 0}{ralign 12:ind_0340}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9345}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.1744}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.0962}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0341}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.1477}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.8653}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2295}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0342}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.4684}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.6963}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2958}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0343}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8417}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.1542}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2678}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0344}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.3952}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.4078}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6775}}}{space 1}
-{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{c  BT}{hline 14}
+{space 4}{hline 13}{c  TT}{hline 10}{c  TT}{hline 14}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{c   +}{hline 14}
+{space 4}{space 0}{ralign 12:ind_0340}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8707}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2419}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0341}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.5969}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6437}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0342}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.5892}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.6528}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0343}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8322}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.3074}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0344}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.6804}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.5371}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{c  BT}{hline 14}
 
 {com}. 
 . * Scree plot of the eigenvalues
@@ -1338,15 +1332,15 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 
 {p 0 0 2}Scoring coefficients (method = regression){p_end}
 
-{space 4}{hline 13}{c  TT}{hline 10}{hline 10}
-{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}
-{space 4}{hline 13}{c   +}{hline 10}{hline 10}
-{space 4}{space 0}{ralign 12:ind_0340}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.47219}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.11993}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0341}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.07462}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.59508}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0342}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.23664}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.47888}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0343}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.42528}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.10602}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0344}{space 1}{c |}{space 1}{ralign 8:{res:{sf:-0.19969}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.28047}}}{space 1}
-{space 4}{hline 13}{c  BT}{hline 10}{hline 10}
+{space 4}{hline 13}{c  TT}{hline 10}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}
+{space 4}{space 0}{ralign 12:ind_0340}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.33270}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0341}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.22807}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0342}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.22515}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0343}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.31800}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0344}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.25997}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}
 
 
 {com}. 
@@ -1358,13 +1352,13 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 {space 4}{hline 13}{c  TT}{hline 9}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:ind_0340}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4562}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0341}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4355}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0342}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5626}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0343}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4289}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0344}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.2522}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0340}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5848}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0341}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7278}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0342}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8521}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0343}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5740}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0344}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6780}}}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4306}}}{space 1}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6328}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 9}
 
 {com}. 
@@ -1378,7 +1372,7 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 . gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 {txt}
 {com}. 
-. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+. import excel "$ruta/00_ips_wide_norm_complete_abs.xlsx", sheet("Sheet 1") firstrow
 {res}{text}(58 vars, 200 obs)
 
 {com}. 
@@ -1404,11 +1398,11 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 
 {txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 4}ind_0345 {c |}{res}        200   -3.08e-16           1   -1.28888   12.34667
-{txt}{space 4}ind_0346 {c |}{res}        168   -1.60e-16           1  -5.515207   1.706043
-{txt}{space 4}ind_0347 {c |}{res}        200    3.17e-18           1  -2.266013   8.318961
-{txt}{space 4}ind_0348 {c |}{res}        200    1.94e-16           1  -2.087823   12.08363
-{txt}{space 4}ind_0349 {c |}{res}        200    4.28e-16           1  -2.148016   10.42194
+{space 4}ind_0345 {c |}{res}        200    .4293482    .9026261   .0106281   12.34667
+{txt}{space 4}ind_0346 {c |}{res}        168    .6217538    .7817336   .0146453   5.515207
+{txt}{space 4}ind_0347 {c |}{res}        200    .6560722    .7532638   .0021961   8.318961
+{txt}{space 4}ind_0348 {c |}{res}        200    .4242456    .9050476   .0058951   12.08363
+{txt}{space 4}ind_0349 {c |}{res}        200    .5742504     .817667    .008252   10.42194
 {txt}
 {com}. corr $xlist
 {txt}(obs=168)
@@ -1416,10 +1410,10 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
              {c |} ind_0345 ind_0346 ind_0347 ind_0348 ind_0349
 {hline 13}{c +}{hline 45}
     ind_0345 {c |}{res}   1.0000
-    {txt}ind_0346 {c |}{res}   0.1409   1.0000
-    {txt}ind_0347 {c |}{res}   0.6679   0.2757   1.0000
-    {txt}ind_0348 {c |}{res}   0.8611   0.1579   0.6474   1.0000
-    {txt}ind_0349 {c |}{res}   0.8196   0.1835   0.6922   0.8961   1.0000
+    {txt}ind_0346 {c |}{res}   0.0489   1.0000
+    {txt}ind_0347 {c |}{res}   0.7584   0.0631   1.0000
+    {txt}ind_0348 {c |}{res}   0.9127   0.0128   0.7229   1.0000
+    {txt}ind_0349 {c |}{res}   0.8805   0.0332   0.6965   0.9253   1.0000
 
 {txt}
 {com}. 
@@ -1429,9 +1423,9 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       200
 
 {txt}Test scale = mean(unstandardized items)
 
-Average interitem covariance:{col 34}{res} .5522083
+Average interitem covariance:{col 34}{res} .3761182
 {txt}Number of items in the scale:{col 34}{res}        5
-{txt}Scale reliability coefficient:{col 34}{res}   0.8605
+{txt}Scale reliability coefficient:{col 34}{res}   0.8535
 {txt}
 {com}. 
 . 
@@ -1446,24 +1440,24 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       168
 {txt}{col 5}{hline 13}{c TT}{hline 60}
 {col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
 {col 5}{hline 13}{c +}{hline 60}
-{col 5}{ralign 11:Factor1}  {c |}{res}      3.36076      2.39251            0.6722       0.6722
-{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.96824      0.57394            0.1936       0.8658
-{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.39430      0.21010            0.0789       0.9447
-{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.18420      0.09171            0.0368       0.9815
-{txt}{col 5}{ralign 11:Factor5}  {c |}{res}      0.09250            .            0.0185       1.0000
+{col 5}{ralign 11:Factor1}  {c |}{res}      3.45863      2.45876            0.6917       0.6917
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.99987      0.63781            0.2000       0.8917
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.36206      0.24909            0.0724       0.9641
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.11297      0.04649            0.0226       0.9867
+{txt}{col 5}{ralign 11:Factor5}  {c |}{res}      0.06648            .            0.0133       1.0000
 {txt}{col 5}{hline 13}{c BT}{hline 60}
-{col 5}LR test: independent vs. saturated:  chi2({res}10{txt}) ={res}  632.71{txt} Prob>chi2 ={res} 0.0000
+{col 5}LR test: independent vs. saturated:  chi2({res}10{txt}) ={res}  772.35{txt} Prob>chi2 ={res} 0.0000
 
 {txt}Factor loadings (pattern matrix) and unique variances
 
 {space 4}{hline 13}{c  TT}{hline 10}{c  TT}{hline 14}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
 {space 4}{hline 13}{c   +}{hline 10}{c   +}{hline 14}
-{space 4}{space 0}{ralign 12:ind_0345}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9176}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1580}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0346}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.2866}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.9178}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0347}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8249}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.3196}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0348}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9361}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1237}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0349}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9380}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1201}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0345}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9582}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.0818}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0346}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.0586}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.9966}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0347}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8477}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2815}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0348}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9612}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.0761}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0349}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.9458}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1054}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 10}{c  BT}{hline 14}
 
 {com}. 
@@ -1481,11 +1475,11 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       168
 {space 4}{hline 13}{c  TT}{hline 10}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}
 {space 4}{hline 13}{c   +}{hline 10}
-{space 4}{space 0}{ralign 12:ind_0345}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.27303}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0346}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.08529}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0347}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.24544}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0348}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.27855}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0349}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.27911}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0345}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.27705}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0346}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.01694}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0347}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.24509}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0348}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.27791}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0349}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.27347}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 10}
 
 
@@ -1498,13 +1492,13 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       168
 {space 4}{hline 13}{c  TT}{hline 9}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:ind_0345}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8535}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0346}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7433}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0347}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8853}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0348}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7533}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0349}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7990}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0345}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8465}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0346}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.3429}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0347}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.9301}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0348}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7747}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0349}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8297}}}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8128}}}{space 1}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8345}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 9}
 
 {com}. 
@@ -1519,7 +1513,7 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       168
 . gl ruta=        "C:/Users/axelo/Documents/GitHub/ips/03_ips_clean"
 {txt}
 {com}. 
-. import excel "$ruta/00_ips_wide_norm_complete.xlsx", sheet("Sheet 1") firstrow
+. import excel "$ruta/00_ips_wide_norm_complete_abs.xlsx", sheet("Sheet 1") firstrow
 {res}{text}(58 vars, 200 obs)
 
 {com}. 
@@ -1546,13 +1540,13 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       168
 
 {txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 4}ind_0350 {c |}{res}        200    2.62e-16           1  -3.332877   3.464869
-{txt}{space 4}ind_0351 {c |}{res}        200   -3.37e-16           1  -3.035843   5.034373
-{txt}{space 4}ind_0352 {c |}{res}        200   -4.34e-16           1  -3.409002   3.360877
-{txt}{space 4}ind_0353 {c |}{res}        200   -2.69e-17           1  -3.671455   2.395198
-{txt}{space 4}ind_0354 {c |}{res}        200    4.13e-16           1  -3.200031   3.053163
+{space 4}ind_0350 {c |}{res}        200     .803107    .5931089   .0030735   3.464869
+{txt}{space 4}ind_0351 {c |}{res}        200    .6464661    .7615652   .0018541   5.034373
+{txt}{space 4}ind_0352 {c |}{res}        200    .7422088    .6681002   .0018851   3.409002
+{txt}{space 4}ind_0353 {c |}{res}        200    .8346136    .5476493   .0018602   3.671455
+{txt}{space 4}ind_0354 {c |}{res}        200    .8185079    .5715576   .0032187   3.200031
 {txt}{hline 13}{c +}{hline 57}
-{space 4}ind_0355 {c |}{res}        199    1.12e-16           1  -1.231748   6.129417
+{space 4}ind_0355 {c |}{res}        199    .4135584    .9100031   .0104091   6.129417
 {txt}
 {com}. corr $xlist
 {txt}(obs=199)
@@ -1560,11 +1554,11 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       168
              {c |} ind_0350 ind_0351 ind_0352 ind_0353 ind_0354 ind_0355
 {hline 13}{c +}{hline 54}
     ind_0350 {c |}{res}   1.0000
-    {txt}ind_0351 {c |}{res}   0.5833   1.0000
-    {txt}ind_0352 {c |}{res}   0.4690   0.7593   1.0000
-    {txt}ind_0353 {c |}{res}   0.1904   0.3457   0.3521   1.0000
-    {txt}ind_0354 {c |}{res}   0.1550   0.0160   0.0819   0.4863   1.0000
-    {txt}ind_0355 {c |}{res}   0.1423   0.3084   0.1910   0.2463   0.0894   1.0000
+    {txt}ind_0351 {c |}{res}   0.4214   1.0000
+    {txt}ind_0352 {c |}{res}   0.4117   0.7313   1.0000
+    {txt}ind_0353 {c |}{res}   0.1456   0.3016   0.2701   1.0000
+    {txt}ind_0354 {c |}{res}   0.1071   0.0879   0.1858   0.0927   1.0000
+    {txt}ind_0355 {c |}{res}   0.1176   0.1828   0.0660   0.0523   0.0276   1.0000
 
 {txt}
 {com}. 
@@ -1574,9 +1568,9 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       168
 
 {txt}Test scale = mean(unstandardized items)
 
-Average interitem covariance:{col 34}{res} .2889734
+Average interitem covariance:{col 34}{res} .0982472
 {txt}Number of items in the scale:{col 34}{res}        6
-{txt}Scale reliability coefficient:{col 34}{res}   0.7092
+{txt}Scale reliability coefficient:{col 34}{res}   0.6121
 {txt}
 {com}. 
 . 
@@ -1585,33 +1579,33 @@ Average interitem covariance:{col 34}{res} .2889734
 {txt}(obs=199)
 
 Factor analysis/correlation{col 50}Number of obs    = {res}       199
-{col 5}{txt}Method: principal-component factors{col 50}Retained factors =   {res}       2
-{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}      11
+{col 5}{txt}Method: principal-component factors{col 50}Retained factors =   {res}       1
+{col 5}{txt}Rotation: (unrotated){col 50}Number of params =   {res}       6
 
 {txt}{col 5}{hline 13}{c TT}{hline 60}
 {col 5}     Factor  {c |} {ralign 12:Eigenvalue}   Difference        Proportion   Cumulative
 {col 5}{hline 13}{c +}{hline 60}
-{col 5}{ralign 11:Factor1}  {c |}{res}      2.60174      1.31927            0.4336       0.4336
-{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      1.28247      0.38114            0.2137       0.6474
-{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.90133      0.27352            0.1502       0.7976
-{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.62781      0.24402            0.1046       0.9022
-{txt}{col 5}{ralign 11:Factor5}  {c |}{res}      0.38379      0.18094            0.0640       0.9662
-{txt}{col 5}{ralign 11:Factor6}  {c |}{res}      0.20285            .            0.0338       1.0000
+{col 5}{ralign 11:Factor1}  {c |}{res}      2.29063      1.29634            0.3818       0.3818
+{txt}{col 5}{ralign 11:Factor2}  {c |}{res}      0.99429      0.04829            0.1657       0.5475
+{txt}{col 5}{ralign 11:Factor3}  {c |}{res}      0.94600      0.07858            0.1577       0.7052
+{txt}{col 5}{ralign 11:Factor4}  {c |}{res}      0.86742      0.21727            0.1446       0.8497
+{txt}{col 5}{ralign 11:Factor5}  {c |}{res}      0.65016      0.39865            0.1084       0.9581
+{txt}{col 5}{ralign 11:Factor6}  {c |}{res}      0.25150            .            0.0419       1.0000
 {txt}{col 5}{hline 13}{c BT}{hline 60}
-{col 5}LR test: independent vs. saturated:  chi2({res}15{txt}) ={res}  376.13{txt} Prob>chi2 ={res} 0.0000
+{col 5}LR test: independent vs. saturated:  chi2({res}15{txt}) ={res}  232.55{txt} Prob>chi2 ={res} 0.0000
 
 {txt}Factor loadings (pattern matrix) and unique variances
 
-{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{c  TT}{hline 14}
-{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
-{space 4}{hline 13}{c   +}{hline 10}{hline 10}{c   +}{hline 14}
-{space 4}{space 0}{ralign 12:ind_0350}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.7005}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.2430}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.4502}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0351}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8661}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.3388}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.1351}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0352}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8211}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.2681}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2538}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0353}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.6189}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.5922}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2663}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0354}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.3310}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.8219}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2150}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0355}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4406}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.1029}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.7953}}}{space 1}
-{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{c  BT}{hline 14}
+{space 4}{hline 13}{c  TT}{hline 10}{c  TT}{hline 14}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{c |}{space 1}{ralign 12:Uniqueness}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{c   +}{hline 14}
+{space 4}{space 0}{ralign 12:ind_0350}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.6567}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.5688}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0351}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8671}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2482}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0352}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.8552}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.2686}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0353}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4858}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.7640}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0354}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.2770}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.9233}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0355}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.2519}}}{space 1}{c |}{space 1}{center 12:{res:{sf:    0.9365}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{c  BT}{hline 14}
 
 {com}. 
 . * Scree plot of the eigenvalues
@@ -1625,16 +1619,16 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       199
 
 {p 0 0 2}Scoring coefficients (method = regression){p_end}
 
-{space 4}{hline 13}{c  TT}{hline 10}{hline 10}
-{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}{space 1}{ralign 8:Factor2}{space 1}
-{space 4}{hline 13}{c   +}{hline 10}{hline 10}
-{space 4}{space 0}{ralign 12:ind_0350}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.26926}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.18945}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0351}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.33288}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.26421}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0352}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.31561}}}{space 1}{space 1}{ralign 8:{res:{sf:-0.20907}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0353}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.23787}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.46176}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0354}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.12720}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.64085}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0355}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.16933}}}{space 1}{space 1}{ralign 8:{res:{sf: 0.08021}}}{space 1}
-{space 4}{hline 13}{c  BT}{hline 10}{hline 10}
+{space 4}{hline 13}{c  TT}{hline 10}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Factor1}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}
+{space 4}{space 0}{ralign 12:ind_0350}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.28668}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0351}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.37853}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0352}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.37336}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0353}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.21207}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0354}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.12091}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0355}{space 1}{c |}{space 1}{ralign 8:{res:{sf: 0.10998}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}
 
 
 {com}. 
@@ -1646,14 +1640,14 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       199
 {space 4}{hline 13}{c  TT}{hline 9}
 {space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 7:kmo}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:ind_0350}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7231}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0351}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6097}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0352}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6911}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0353}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6281}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0354}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.4336}}}{space 1}
-{space 4}{space 0}{ralign 12:ind_0355}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.7252}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0350}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8601}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0351}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6119}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0352}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6158}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0353}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.8628}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0354}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5994}}}{space 1}
+{space 4}{space 0}{ralign 12:ind_0355}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.5219}}}{space 1}
 {space 4}{hline 13}{c   +}{hline 9}
-{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6354}}}{space 1}
+{space 4}{space 0}{ralign 12:Overall}{space 1}{c |}{space 1}{ralign 7:{res:{sf: 0.6577}}}{space 1}
 {space 4}{hline 13}{c  BT}{hline 9}
 
 {com}. 
@@ -1661,4 +1655,4 @@ Factor analysis/correlation{col 50}Number of obs    = {res}       199
 . 
 {txt}end of do-file
 
-{com}. 
+{com}. exit, clear
