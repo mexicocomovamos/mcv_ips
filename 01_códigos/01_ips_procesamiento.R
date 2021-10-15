@@ -135,6 +135,11 @@ for(x in 1:6){
     
     
 }
+ips_long <- ips_long %>% 
+    select(-contains("..."))
+
+ips_direccion <- ips_direccion %>% 
+    select(-contains("..."))
 
 openxlsx::write.xlsx(ips_long, "03_ips_clean/01_ips_long.xlsx")
 openxlsx::write.xlsx(ips_wide, "03_ips_clean/02_ips_wide.xlsx")
@@ -175,11 +180,15 @@ utop_distop_long <- ips_direccion %>%
         utopia_final = case_when(
             is.na(utopia) & direccion == -1 ~ max+sd,
             is.na(utopia) & direccion == 1 ~ max+sd,
+            !(is.na(utopia)) & direccion == -1 ~ utopia*direccion,
+            !(is.na(utopia)) & direccion == 1 ~ utopia*direccion,
             T ~ utopia
         ),
         distopia_final = case_when(
             is.na(distopia) & direccion == -1 ~ min-sd,
             is.na(distopia) & direccion == 1 ~ min-sd,
+            !(is.na(distopia)) & direccion == -1 ~ distopia*direccion,
+            !(is.na(distopia)) & direccion == 1 ~ distopia*direccion,
             T ~ distopia
         )
         
