@@ -243,16 +243,15 @@ openxlsx::write.xlsx(ips_wide_norm %>%
 ids_comp <- ips_uto_disto_discrecionales %>% 
     mutate(id_comp = paste0(id_dimension, id_indicador, "_", id_componente, "comp")) %>% 
     select(id_comp) %>% 
-    dplyr::distinct(id_comp) %>% 
-    as.character()
+    dplyr::distinct(id_comp) 
 
 names(ips_wide_norm)[4:58] <- ids_comp$id_comp
 
 ips_comp <- ips_wide_norm %>% 
-    mutate_at(
-        vars(starts_with("ind")),
-        ~abs(.)
-    ) %>% 
+    # mutate_at(
+    #     vars(starts_with("ind")),
+    #     ~abs(.)
+    # ) %>% 
     select(ends_with("comp"))
 
 ids_comp_vec <- str_sub(ids_comp$id_comp, -6) %>% as_tibble() %>% distinct() 
@@ -279,7 +278,7 @@ for(i in 1:length(ids_comp_vec)){
 
 for(i in 1:12){
     
-    print(kmos[[i]])
+    print(alphas[[i]])
     
 }
     
