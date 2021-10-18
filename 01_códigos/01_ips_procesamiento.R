@@ -21,7 +21,7 @@ if(!require("openxlsx")) install.packages("openxlsx") & require("openxlsx")
 if(!require("ggalt")) install.packages("ggalt") & require("ggalt")
 if(!require("googledrive")) install.packages("googledrive") & require("googledrive")
 if(!require("googlesheets4")) install.packages("googlesheets4") & require("googlesheets4")
-
+if(!require("psych")) install.packages("psych") & require("psych")
 
 # Tidyverse <3
 require(tidyverse)
@@ -238,4 +238,52 @@ openxlsx::write.xlsx(ips_wide_norm %>%
                          ),
                      paste0("03_ips_clean/00_ips_wide_norm_complete_abs.xlsx"))
 
+
+# 6. Alfas de Cronbach ----
+ids_comp <- ips_uto_disto_discrecionales %>% 
+    mutate(id_comp = paste0(id_dimension, id_indicador, "_", id_componente, "comp")) %>% 
+    select(id_comp) %>% 
+    dplyr::distinct(id_comp) %>% 
+    as.character()
+
+names(ips_wide_norm)[4:58] <- ids_comp$id_comp
+
+ips_comp <- ips_wide_norm %>% 
+    mutate_at(
+        vars(starts_with("ind")),
+        ~abs(.)
+    ) %>% 
+    select(ends_with("comp"))
+
+ids_comp_vec <- str_sub(ids_comp$id_comp, -6) %>% as_tibble() %>% distinct() 
+ids_comp_vec <- as.character(ids_comp_vec$value)
+
+alphas <- list()
+kmos <- list()
+
+for(i in 1:length(ids_comp_vec)){
+    
+    tempo <- ips_comp %>% 
+        select(ends_with(ids_comp_vec[i]))
+    
+    alpha_tempo <- psych::alpha(tempo)
+    kmo_tempo <- psych::KMO(tempo)
+    
+    alphas[i] <- list(alpha_tempo)
+    kmos[i] <- list(kmo_tempo)
+    
+    
+    
+}
+
+
+for(i in 1:12){
+    
+    print(kmos[[i]])
+    
+}
+    
+    
+    
+    
 
