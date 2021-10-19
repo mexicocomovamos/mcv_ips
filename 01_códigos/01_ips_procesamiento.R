@@ -136,6 +136,12 @@ for(x in 1:6){
     
 }
 
+ips_direccion <- ips_direccion %>% 
+    select(-contains("topia")) %>% 
+    left_join(
+        imp_dv(v_id, 2) %>% 
+            select(id_dimension:id_indicador,utopia,distopia)
+    )
 
 openxlsx::write.xlsx(ips_long, "03_ips_clean/01_ips_long.xlsx")
 openxlsx::write.xlsx(ips_wide, "03_ips_clean/02_ips_wide.xlsx")
@@ -239,8 +245,9 @@ openxlsx::write.xlsx(ips_wide_norm %>%
                      paste0("03_ips_clean/00_ips_wide_norm_complete_abs.xlsx"))
 
 
-# 6. Alfas de Cronbach ----
-ids_comp <- ips_uto_disto_discrecionales %>% 
+# 6. Alfas de Cronbach y KMO ----
+ids_comp <- imp_dv(v_id, 2) %>% 
+    select(id_dimension:direccion,utopia,distopia) %>% 
     mutate(id_comp = paste0(id_dimension, id_indicador, "_", id_componente, "comp")) %>% 
     select(id_comp) %>% 
     dplyr::distinct(id_comp) 
@@ -252,7 +259,7 @@ ips_comp <- ips_wide_norm %>%
     #     vars(starts_with("ind")),
     #     ~abs(.)
     # ) %>% 
-    select(ends_with("comp"))
+    select(ends_with("comp")) 
 
 ids_comp_vec <- str_sub(ids_comp$id_comp, -6) %>% as_tibble() %>% distinct() 
 ids_comp_vec <- as.character(ids_comp_vec$value)
@@ -268,21 +275,91 @@ for(i in 1:length(ids_comp_vec)){
     alpha_tempo <- psych::alpha(tempo)
     kmo_tempo <- psych::KMO(tempo)
     
+    
     alphas[i] <- list(alpha_tempo)
     kmos[i] <- list(kmo_tempo)
     
     
     
+    
 }
 
 
+# Output alphas y KMO
+for(i in 1:12){
+    print(paste0("COMPONENTE ", i))
+    print(alphas[[i]])
+    print(kmos[[i]])
+    
+}
+
+# 7. Estimación de factores ----
+drop_names <- unique(paste0(str_sub(ids_comp$id_comp,1,2), str_sub(ids_comp$id_comp,-7)))
+coefs <- data.frame()
+valores_esperados <- ips_wide[1:3]
+valores_esperados_norm <- ips_wide[1:3]
 for(i in 1:12){
     
-    print(alphas[[i]])
+    tempo <- ips_comp %>% 
+        select(ends_with(ids_comp_vec[i]))
+    
+    
+    coefs_tempo <- 
+    fa(tempo, nfactors = 1, scores="regression", rotate = "varimax")$weights %>% 
+        as_data_frame() %>% 
+        rename(coefs = MR1) %>% 
+        mutate(id_comp = str_pad(i, 2, "l", "0"))
+    
+    tempo_fac <- fa(tempo, nfactors = 1, scores="regression", rotate = "varimax")$scores %>% 
+        as_data_frame()
+    
+    valores_esperados_tempo <- tempo_fac %>% 
+        rename_all(~paste0(drop_names[i]))
+    
+    valores_esperados_norm_tempo <- 
+        scales::rescale(as.numeric(tempo_fac$MR1), to = c(0,100)) %>% 
+            as_data_frame() %>% 
+            rename_all(~paste0(drop_names[i]))
+    
+    coefs <- bind_rows(coefs, coefs_tempo)
+    valores_esperados <- bind_cols(valores_esperados, valores_esperados_tempo)
+    valores_esperados_norm <- bind_cols(valores_esperados_norm, valores_esperados_norm_tempo)
+    
     
 }
-    
-    
-    
-    
+
+
+
+rm(drop_names)
+
+ips_final <- 
+valores_esperados_norm %>% 
+    select(cve_ent, anio, entidad_abr_m, starts_with("0")) %>% 
+    pivot_longer(
+        starts_with("0"),
+        names_to = "id_comp"
+    )  %>% 
+    mutate(id_dim = str_sub(id_comp,1,2)) %>% 
+    group_by(cve_ent, anio, entidad_abr_m, id_dim) %>% 
+    summarise(dim_value = mean(value)) %>% 
+    bind_rows(
+        
+        valores_esperados_norm %>% 
+            select(cve_ent, anio, entidad_abr_m, starts_with("0")) %>% 
+            pivot_longer(
+                starts_with("0"),
+                names_to = "id_comp"
+            )  %>% 
+            mutate(id_dim = str_sub(id_comp,1,2)) %>% 
+            group_by(cve_ent, anio, entidad_abr_m, id_dim) %>% 
+            summarise(dim_value = mean(value)) %>% 
+            group_by(cve_ent, anio, entidad_abr_m) %>% 
+            summarise(dim_value = mean(dim_value)) %>% 
+            mutate(id_dim = "00")
+        
+    ) %>% 
+    arrange(cve_ent, anio)
+
+
+openxlsx::write.xlsx(ips_final, "03_ips_clean/10_IPS_COMPLETE.xlsx")
 
