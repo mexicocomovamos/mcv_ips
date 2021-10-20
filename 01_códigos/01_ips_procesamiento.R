@@ -26,6 +26,20 @@ if(!require("psych")) install.packages("psych") & require("psych")
 # Tidyverse <3
 require(tidyverse)
 
+# Colores MCV -----
+mcv_discrete <- c(
+    "#6950d8", "#3CEAFA", "#00b783", "#ff6260", "#ffaf84", "#ffbd41"
+)
+
+mcv_semaforo <- c(
+    "#00b783", # verde
+    "#E8D92E", # amarillo
+    "#ffbd41", # naranja
+    "#ff6260" # rojo
+)
+
+mcv_blacks <- c("black", "#D2D0CD", "#777777")
+
 ## 0.2. Tokens ----
 google_token <- "AIzaSyDF4E80nih1fBMPg785wYO-ruAKgJiEdW0"
 
@@ -332,8 +346,7 @@ for(i in 1:12){
 
 rm(drop_names)
 
-ips_final <- 
-valores_esperados_norm %>% 
+ips_final <- valores_esperados_norm %>% 
     select(cve_ent, anio, entidad_abr_m, starts_with("0")) %>% 
     pivot_longer(
         starts_with("0"),
@@ -361,5 +374,57 @@ valores_esperados_norm %>%
     arrange(cve_ent, anio)
 
 
+
+
+
+
 openxlsx::write.xlsx(ips_final, "03_ips_clean/10_IPS_COMPLETE.xlsx")
+openxlsx::write.xlsx(ips_final %>% 
+                         pivot_wider(
+                             names_from = id_dim,
+                             values_from = dim_value
+                         ) %>% 
+                         arrange(anio, cve_ent), 
+                     "03_ips_clean/11_IPS_COMPLETE_WIDE.xlsx")
+
+openxlsx::write.xlsx(coefs, "03_ips_clean/99_coefs.xlsx")
+
+
+# 8. Heatmap ----
+
+
+ggplot(data = ips_final %>% 
+           # filter(id_dim == "02") %>% 
+           filter(!as.numeric(cve_ent) > 33),
+       aes(x = anio, 
+           #y = reorder(entidad_abr_m, dim_value),
+           y = fct_rev(entidad_abr_m),
+           fill = dim_value)) +
+    geom_tile(col = "white") +
+    geom_text(aes(label = round(dim_value,1)))+
+    facet_wrap(~id_dim)+
+    scale_fill_gradient2(low = mcv_semaforo[4], mid = mcv_semaforo[2], high = mcv_semaforo[1],midpoint = 62)
+    theme(legend.position="bottom") +
+    theme_hc() +
+    labs(x = "", y = "",
+         title = str_wrap(fiuf, width = 100),
+         caption = fiuffi) +
+    scale_y_discrete(position = "right") +
+    scale_x_discrete(position = "bottom",
+                     breaks = as.character(seq(2005,2019,14)),
+                     labels = as.character(seq(2005,2019,14))) +
+    coord_fixed()
+    
+    
+ips_cambios_2019_2020 <- ips_final %>% 
+    filter(id_dim == "03", anio >2018)%>% 
+    filter(!as.numeric(cve_ent) > 33) %>% 
+    pivot_wider(
+        names_from = "anio",
+        names_prefix = "anio_",
+        values_from = "dim_value"
+    ) %>% 
+    mutate(
+        dif = anio_2020-anio_2019
+    )
 
