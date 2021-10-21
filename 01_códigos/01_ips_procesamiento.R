@@ -393,7 +393,7 @@ openxlsx::write.xlsx(coefs, "03_ips_clean/99_coefs.xlsx")
 
 # 8. Infobites ----
 # Colores MCV
-mcv_discrete <- c("#6950d8", "#3CEAFA", "#00b783", "#ff6260", "#ffaf84", "#ffbd41")
+mcv_discrete <- c("#6950d8", "#00b783", "#ff6260", "#ffaf84", "#ffbd41", "#3CEAFA")
 mcv_semaforo <- c("#00b783", "#E8D92E", "#ffbd41", "#ff6260") # Verde, amarillo, naranja y rojo
 mcv_blacks   <- c("black"  , "#D2D0CD", "#777777")            # Negros
 mcv_morados  <- c("#6950D8", "#A99BE9")                       # Morados
@@ -622,7 +622,7 @@ g <-
 ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
 ggsave(filename = "05_infobites/03_OP_heatmap.png", width = 23, height = 12, dpi = 100)
 
-# 2. Sankeys ----
+# 2. Sankeys (rankings) ----
 d <- ips_final %>% 
     filter(!as.numeric(cve_ent) > 33) %>% 
     filter(!cve_ent == "00") %>% 
@@ -654,7 +654,7 @@ g <-
     scale_x_discrete(expand = c(.1, .1)) +
     geom_flow() +
     geom_stratum(alpha = .7, show.legend = F) +
-    geom_text(stat = "stratum", size = 4) +
+    geom_text(stat = "stratum", size = 4, family = "Ubuntu") +
     scale_fill_gradient2("", high = mcv_semaforo[4], mid = mcv_semaforo[2], low = mcv_semaforo[1],midpoint = 16)  +
     # Etiquetas
     labs(
@@ -706,7 +706,7 @@ g <-
     scale_x_discrete(expand = c(.1, .1)) +
     geom_flow() +
     geom_stratum(alpha = .7, show.legend = F) +
-    geom_text(stat = "stratum", size = 4) +
+    geom_text(stat = "stratum", size = 4, family = "Ubuntu") +
     scale_fill_gradient2("", high = mcv_semaforo[4], mid = mcv_semaforo[2], low = mcv_semaforo[1],midpoint = 16)  +
     # Etiquetas
     labs(
@@ -758,7 +758,7 @@ g <-
     scale_x_discrete(expand = c(.1, .1)) +
     geom_flow() +
     geom_stratum(alpha = .7, show.legend = F) +
-    geom_text(stat = "stratum", size = 4) +
+    geom_text(stat = "stratum", size = 4, family = "Ubuntu") +
     scale_fill_gradient2("", high = mcv_semaforo[4], mid = mcv_semaforo[2], low = mcv_semaforo[1],midpoint = 16)  +
     # Etiquetas
     labs(
@@ -811,7 +811,7 @@ g <-
     scale_x_discrete(expand = c(.1, .1)) +
     geom_flow() +
     geom_stratum(alpha = .7, show.legend = F) +
-    geom_text(stat = "stratum", size = 4) +
+    geom_text(stat = "stratum", size = 4, family = "Ubuntu") +
     scale_fill_gradient2("", high = mcv_semaforo[4], mid = mcv_semaforo[2], low = mcv_semaforo[1],midpoint = 16)  +
     # Etiquetas
     labs(
@@ -841,9 +841,80 @@ g <-
 ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
 ggsave(filename = "05_infobites/07_OP_sankey.png", width = 23, height = 12, dpi = 100)
 
+# 3. Scores por entidades ----
+cves <- unique(ips_final$cve_ent)[1:33]
+
+for(i in 1:33){
     
+    a <- ips_final  %>% 
+        mutate(dim = case_when(
+            id_dim == "00" ~ "0. Índice de Progreso Social",
+            id_dim == "01" ~ "1. Necesidades Básicas Humanas",
+            id_dim == "02" ~ "2. Salud y Bienestar",
+            T ~ "3. Oportunidades"
+        )) %>% 
+        filter(cve_ent == cves[i]) %>% 
+        glimpse
+    
+    titulo <- "Puntaje en el IPS y dimensiones"
+    subtitulo <- paste0(unique(a$entidad_abr_m), " | 2015 - 2020")
+    eje_x <- "Años"
+    eje_y <- "Puntaje"
+    
+    g <- 
+        ggplot(
+            a,
+            aes(
+                x = anio,
+                y = dim_value,
+                group = 1,
+                col = id_dim
+            )
+        ) +
+        geom_line(size = 3.7, alpha = 0.7, show.legend = F) +
+        geom_point(size = 6.7)  +
+        geom_text(
+            aes(label = round(dim_value,1)), 
+            vjust = -1.5, size = 4, fontface = "bold", family = "Ubuntu", show.legend = F
+        ) +
+        facet_wrap(~dim)  +
+        scale_color_manual(values = mcv_discrete)+
+        ylim(30,90)+
+        # Etiquetas
+        labs(
+            title = titulo, 
+            subtitle = subtitulo, 
+            x = eje_x, 
+            y = eje_y, 
+            color = ""
+        )   + 
+        theme_minimal() +
+        theme(
+            plot.title         = element_text(size = 40, family = "Ubuntu", face = "bold", colour = "#6950D8"),
+            plot.subtitle      = element_text(size = 35, family = "Ubuntu", colour = "#777777", margin=margin(0,0,30,0)),
+            plot.caption       = element_text(size = 20),
+            plot.margin        = margin(0.3, 0.3, 2, 0.3, "cm"), # margin(top,right, bottom,left)
+            strip.text.x       = element_text(size = 25, colour = "#777777"),
+            panel.grid.minor   = element_blank(),
+            #panel.grid.major.x = element_blank(),
+            panel.background   = element_rect(fill = "transparent", colour = NA),
+            text               = element_text(family = "Ubuntu"),
+            axis.title.x       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+            axis.title.y       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+            axis.text.x        = element_text(family = "Ubuntu", size = 15, colour = "#777777"),
+            axis.text.y        = element_text(family = "Ubuntu", size = 15, colour = "#777777"),
+            legend.text        = element_text(family = "Ubuntu", size = 35, colour = "#777777"),
+            legend.position    = "none") 
+    ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
+    ggsave(filename = paste0("05_infobites/01_entidades/", unique(a$cve_ent), "_", unique(a$entidad_abr_m), ".png"), width = 23, height = 12, dpi = 100)
+    
+    
+}
+
+ips_final <- readxl::read_excel("03_ips_clean/10_IPS_COMPLETE.xlsx")
+
 ips_cambios_2019_2020 <- ips_final %>% 
-    filter(id_dim == "03", anio >2018)%>% 
+    filter(id_dim == "02", anio >2018)%>% 
     filter(!as.numeric(cve_ent) > 33) %>% 
     pivot_wider(
         names_from = "anio",
