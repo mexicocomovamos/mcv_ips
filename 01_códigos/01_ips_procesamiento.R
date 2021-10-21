@@ -22,6 +22,7 @@ if(!require("ggalt")) install.packages("ggalt") & require("ggalt")
 if(!require("googledrive")) install.packages("googledrive") & require("googledrive")
 if(!require("googlesheets4")) install.packages("googlesheets4") & require("googlesheets4")
 if(!require("psych")) install.packages("psych") & require("psych")
+if(!require("ggalluvial")) install.packages("ggalluvial") & require("ggalluvial")
 
 # Tidyverse <3
 require(tidyverse)
@@ -390,31 +391,456 @@ openxlsx::write.xlsx(ips_final %>%
 openxlsx::write.xlsx(coefs, "03_ips_clean/99_coefs.xlsx")
 
 
-# 8. Heatmap ----
+# 8. Infobites ----
+# Colores MCV
+mcv_discrete <- c("#6950d8", "#3CEAFA", "#00b783", "#ff6260", "#ffaf84", "#ffbd41")
+mcv_semaforo <- c("#00b783", "#E8D92E", "#ffbd41", "#ff6260") # Verde, amarillo, naranja y rojo
+mcv_blacks   <- c("black"  , "#D2D0CD", "#777777")            # Negros
+mcv_morados  <- c("#6950D8", "#A99BE9")                       # Morados
 
+## 1. Heatmaps ----
+### 1.0. IPS ----
+titulo <- "Índice de progreso social"
+subtitulo <- "2015 - 2020"
+eje_x <- ""
+eje_y <- "Años"
 
-ggplot(data = ips_final %>% 
-           # filter(id_dim == "02") %>% 
-           filter(!as.numeric(cve_ent) > 33),
-       aes(x = anio, 
-           #y = reorder(entidad_abr_m, dim_value),
-           y = fct_rev(entidad_abr_m),
+g <- 
+ggplot(data = 
+           ips_final %>% 
+           filter(!as.numeric(cve_ent) > 33) %>% 
+           filter(id_dim == "00") %>% 
+           mutate(dim = case_when(
+               id_dim == "00" ~ "0. Índice de Progreso Social",
+               id_dim == "01" ~ "1. Necesidades Básicas Humanas",
+               id_dim == "02" ~ "2. Salud y Bienestar",
+               T ~ "3. Oportunidades"
+           )),
+       aes(y = reorder(anio, -anio), 
+           x = reorder(entidad_abr_m, as.numeric(cve_ent)),
            fill = dim_value)) +
-    geom_tile(col = "white") +
-    geom_text(aes(label = round(dim_value,1)))+
-    facet_wrap(~id_dim)+
-    scale_fill_gradient2(low = mcv_semaforo[4], mid = mcv_semaforo[2], high = mcv_semaforo[1],midpoint = 62)
+    geom_tile(col = "white", show.legend = F) +
+    geom_text(aes(label = round(dim_value,1)), family = "Ubuntu", size = 4) +
+    scale_fill_gradient2("", low = mcv_semaforo[4], mid = mcv_semaforo[2], high = mcv_semaforo[1],midpoint = 62)  +
+    guides(label = "none") +
+    scale_x_discrete(position = "top")+
+    # Etiquetas
+    labs(
+        title = titulo, 
+        subtitle = subtitulo, 
+        x = eje_x, 
+        y = eje_y, 
+        color = ""
+    )   + 
+    coord_fixed() +
     theme(legend.position="bottom") +
-    theme_hc() +
-    labs(x = "", y = "",
-         title = str_wrap(fiuf, width = 100),
-         caption = fiuffi) +
-    scale_y_discrete(position = "right") +
-    scale_x_discrete(position = "bottom",
-                     breaks = as.character(seq(2005,2019,14)),
-                     labels = as.character(seq(2005,2019,14))) +
-    coord_fixed()
-    
+        theme_minimal() +
+        theme(
+            plot.title         = element_text(size = 40, family = "Ubuntu", face = "bold", colour = "#6950D8"),
+            plot.subtitle      = element_text(size = 35, family = "Ubuntu", colour = "#777777", margin=margin(0,0,30,0)),
+            plot.caption       = element_text(size = 20),
+            plot.margin        = margin(0.3, 0.3, 2, 0.3, "cm"), # margin(top,right, bottom,left)
+            strip.text.x       = element_text(size = 25, colour = "#777777"),
+            panel.grid.minor   = element_blank(),
+            panel.grid.major.x = element_blank(),
+            panel.background   = element_rect(fill = "transparent", colour = NA),
+            text               = element_text(family = "Ubuntu"),
+            axis.title.x       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+            axis.title.y       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+            axis.text.x        = element_text(family = "Ubuntu", size = 15, colour = "#777777"),
+            axis.text.y        = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+            legend.text        = element_text(family = "Ubuntu", size = 35, colour = "#777777"),
+            legend.position    = "top")  
+
+ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
+ggsave(filename = "05_infobites/00_IPS_heatmap.png", width = 23, height = 12, dpi = 100)
+
+### 1.1. Necesidades Básicas Humanas ----
+titulo <- "Dim 1. Necesidades Básicas Humanas"
+subtitulo <- "2015 - 2020"
+eje_x <- ""
+eje_y <- "Años"
+
+g <- 
+    ggplot(data = 
+               ips_final %>% 
+               filter(!as.numeric(cve_ent) > 33) %>% 
+               filter(id_dim == "01") %>% 
+               mutate(dim = case_when(
+                   id_dim == "00" ~ "0. Índice de Progreso Social",
+                   id_dim == "01" ~ "1. Necesidades Básicas Humanas",
+                   id_dim == "02" ~ "2. Salud y Bienestar",
+                   T ~ "3. Oportunidades"
+               )),
+           aes(y = reorder(anio, -anio), 
+               x = reorder(entidad_abr_m, as.numeric(cve_ent)),
+               fill = dim_value)) +
+    geom_tile(col = "white", show.legend = F) +
+    geom_text(aes(label = round(dim_value,1)), family = "Ubuntu", size = 4) +
+    scale_fill_gradient2("", low = mcv_semaforo[4], mid = mcv_semaforo[2], high = mcv_semaforo[1],midpoint = 62)  +
+    guides(label = "none") +
+    scale_x_discrete(position = "top")+
+    # Etiquetas
+    labs(
+        title = titulo, 
+        subtitle = subtitulo, 
+        x = eje_x, 
+        y = eje_y, 
+        color = ""
+    )   + 
+    coord_fixed() +
+    theme(legend.position="bottom") +
+    theme_minimal() +
+    theme(
+        plot.title         = element_text(size = 40, family = "Ubuntu", face = "bold", colour = "#6950D8"),
+        plot.subtitle      = element_text(size = 35, family = "Ubuntu", colour = "#777777", margin=margin(0,0,30,0)),
+        plot.caption       = element_text(size = 20),
+        plot.margin        = margin(0.3, 0.3, 2, 0.3, "cm"), # margin(top,right, bottom,left)
+        strip.text.x       = element_text(size = 25, colour = "#777777"),
+        panel.grid.minor   = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.background   = element_rect(fill = "transparent", colour = NA),
+        text               = element_text(family = "Ubuntu"),
+        axis.title.x       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+        axis.title.y       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+        axis.text.x        = element_text(family = "Ubuntu", size = 15, colour = "#777777"),
+        axis.text.y        = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+        legend.text        = element_text(family = "Ubuntu", size = 35, colour = "#777777"),
+        legend.position    = "top")  
+
+ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
+ggsave(filename = "05_infobites/01_NHB_heatmap.png", width = 23, height = 12, dpi = 100)
+
+### 1.2. Salud y Bienestar ----
+titulo <- "Dim 2. Salud y Bienestar"
+subtitulo <- "2015 - 2020"
+eje_x <- ""
+eje_y <- "Años"
+
+g <- 
+    ggplot(data = 
+               ips_final %>% 
+               filter(!as.numeric(cve_ent) > 33) %>% 
+               filter(id_dim == "02") %>% 
+               mutate(dim = case_when(
+                   id_dim == "00" ~ "0. Índice de Progreso Social",
+                   id_dim == "01" ~ "1. Necesidades Básicas Humanas",
+                   id_dim == "02" ~ "2. Salud y Bienestar",
+                   T ~ "3. Oportunidades"
+               )),
+           aes(y = reorder(anio, -anio), 
+               x = reorder(entidad_abr_m, as.numeric(cve_ent)),
+               fill = dim_value)) +
+    geom_tile(col = "white", show.legend = F) +
+    geom_text(aes(label = round(dim_value,1)), family = "Ubuntu", size = 4) +
+    scale_fill_gradient2("", low = mcv_semaforo[4], mid = mcv_semaforo[2], high = mcv_semaforo[1],midpoint = 62)  +
+    guides(label = "none") +
+    scale_x_discrete(position = "top")+
+    # Etiquetas
+    labs(
+        title = titulo, 
+        subtitle = subtitulo, 
+        x = eje_x, 
+        y = eje_y, 
+        color = ""
+    )   + 
+    coord_fixed() +
+    theme(legend.position="bottom") +
+    theme_minimal() +
+    theme(
+        plot.title         = element_text(size = 40, family = "Ubuntu", face = "bold", colour = "#6950D8"),
+        plot.subtitle      = element_text(size = 35, family = "Ubuntu", colour = "#777777", margin=margin(0,0,30,0)),
+        plot.caption       = element_text(size = 20),
+        plot.margin        = margin(0.3, 0.3, 2, 0.3, "cm"), # margin(top,right, bottom,left)
+        strip.text.x       = element_text(size = 25, colour = "#777777"),
+        panel.grid.minor   = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.background   = element_rect(fill = "transparent", colour = NA),
+        text               = element_text(family = "Ubuntu"),
+        axis.title.x       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+        axis.title.y       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+        axis.text.x        = element_text(family = "Ubuntu", size = 15, colour = "#777777"),
+        axis.text.y        = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+        legend.text        = element_text(family = "Ubuntu", size = 35, colour = "#777777"),
+        legend.position    = "top")  
+
+ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
+ggsave(filename = "05_infobites/02_SB_heatmap.png", width = 23, height = 12, dpi = 100)
+
+### 1.3. Oportunidades ----
+titulo <- "Dim 3. Oportunidades"
+subtitulo <- "2015 - 2020"
+eje_x <- ""
+eje_y <- "Años"
+
+g <- 
+    ggplot(data = 
+               ips_final %>% 
+               filter(!as.numeric(cve_ent) > 33) %>% 
+               filter(id_dim == "03") %>% 
+               mutate(dim = case_when(
+                   id_dim == "00" ~ "0. Índice de Progreso Social",
+                   id_dim == "01" ~ "1. Necesidades Básicas Humanas",
+                   id_dim == "02" ~ "2. Salud y Bienestar",
+                   T ~ "3. Oportunidades"
+               )),
+           aes(y = reorder(anio, -anio), 
+               x = reorder(entidad_abr_m, as.numeric(cve_ent)),
+               fill = dim_value)) +
+    geom_tile(col = "white", show.legend = F) +
+    geom_text(aes(label = round(dim_value,1)), family = "Ubuntu", size = 4) +
+    scale_fill_gradient2("", low = mcv_semaforo[4], mid = mcv_semaforo[2], high = mcv_semaforo[1],midpoint = 62)  +
+    guides(label = "none") +
+    scale_x_discrete(position = "top")+
+    # Etiquetas
+    labs(
+        title = titulo, 
+        subtitle = subtitulo, 
+        x = eje_x, 
+        y = eje_y, 
+        color = ""
+    )   + 
+    coord_fixed() +
+    theme_minimal() +
+    theme(
+        plot.title         = element_text(size = 40, family = "Ubuntu", face = "bold", colour = "#6950D8"),
+        plot.subtitle      = element_text(size = 35, family = "Ubuntu", colour = "#777777", margin=margin(0,0,30,0)),
+        plot.caption       = element_text(size = 20),
+        plot.margin        = margin(0.3, 0.3, 2, 0.3, "cm"), # margin(top,right, bottom,left)
+        strip.text.x       = element_text(size = 25, colour = "#777777"),
+        panel.grid.minor   = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.background   = element_rect(fill = "transparent", colour = NA),
+        text               = element_text(family = "Ubuntu"),
+        axis.title.x       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+        axis.title.y       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+        axis.text.x        = element_text(family = "Ubuntu", size = 15, colour = "#777777"),
+        axis.text.y        = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+        legend.text        = element_text(family = "Ubuntu", size = 35, colour = "#777777"),
+        legend.position    = "top")  
+
+ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
+ggsave(filename = "05_infobites/03_OP_heatmap.png", width = 23, height = 12, dpi = 100)
+
+# 2. Sankeys ----
+d <- ips_final %>% 
+    filter(!as.numeric(cve_ent) > 33) %>% 
+    filter(!cve_ent == "00") %>% 
+    group_by(anio, id_dim) %>% 
+    arrange(desc(dim_value), .by_group = T) %>% 
+    mutate(ranking = 1:32,
+           ranking = str_pad(ranking, 2, "l", "0")) %>% 
+    ungroup()
+
+## 2.0. IPS ----
+titulo <- "Ranking del Índice de Progreso Social"
+subtitulo <- "2015 - 2020"
+eje_x <- "Años"
+eje_y <- "Ranking"
+
+g <- 
+    ggplot(
+        d %>% 
+            filter(id_dim == "00"), 
+        aes(
+            y = 100, 
+            x = as.character(anio),
+            stratum = ranking, 
+            alluvium = cve_ent, 
+            fill = as.numeric(ranking), 
+            label = paste0(as.numeric(ranking), ". ", entidad_abr_m)
+        )
+    )  +
+    scale_x_discrete(expand = c(.1, .1)) +
+    geom_flow() +
+    geom_stratum(alpha = .7, show.legend = F) +
+    geom_text(stat = "stratum", size = 4) +
+    scale_fill_gradient2("", high = mcv_semaforo[4], mid = mcv_semaforo[2], low = mcv_semaforo[1],midpoint = 16)  +
+    # Etiquetas
+    labs(
+        title = titulo, 
+        subtitle = subtitulo, 
+        x = eje_x, 
+        y = eje_y, 
+        color = ""
+    )   + 
+    theme_minimal() +
+    theme(
+        plot.title         = element_text(size = 40, family = "Ubuntu", face = "bold", colour = "#6950D8"),
+        plot.subtitle      = element_text(size = 35, family = "Ubuntu", colour = "#777777", margin=margin(0,0,30,0)),
+        plot.caption       = element_text(size = 20),
+        plot.margin        = margin(0.3, 0.3, 2, 0.3, "cm"), # margin(top,right, bottom,left)
+        strip.text.x       = element_text(size = 25, colour = "#777777"),
+        panel.grid.minor   = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.background   = element_rect(fill = "transparent", colour = NA),
+        text               = element_text(family = "Ubuntu"),
+        axis.title.x       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+        axis.title.y       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+        axis.text.x        = element_text(family = "Ubuntu", size = 15, colour = "#777777"),
+        axis.text.y        = element_blank(),
+        legend.text        = element_text(family = "Ubuntu", size = 35, colour = "#777777"),
+        legend.position    = "none")  
+ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
+ggsave(filename = "05_infobites/04_IPS_sankey.png", width = 23, height = 12, dpi = 100)
+
+## 2.1. NHB ----
+titulo <- "Ranking de la Dim 1. Necesidades Humanas Básicas"
+subtitulo <- "2015 - 2020"
+eje_x <- "Años"
+eje_y <- "Ranking"
+
+g <- 
+    ggplot(
+        d %>% 
+            filter(id_dim == "01"), 
+        aes(
+            y = 100, 
+            x = as.character(anio),
+            stratum = ranking, 
+            alluvium = cve_ent, 
+            fill = as.numeric(ranking), 
+            label = paste0(as.numeric(ranking), ". ", entidad_abr_m)
+        )
+    )  +
+    scale_x_discrete(expand = c(.1, .1)) +
+    geom_flow() +
+    geom_stratum(alpha = .7, show.legend = F) +
+    geom_text(stat = "stratum", size = 4) +
+    scale_fill_gradient2("", high = mcv_semaforo[4], mid = mcv_semaforo[2], low = mcv_semaforo[1],midpoint = 16)  +
+    # Etiquetas
+    labs(
+        title = titulo, 
+        subtitle = subtitulo, 
+        x = eje_x, 
+        y = eje_y, 
+        color = ""
+    )   + 
+    theme_minimal() +
+    theme(
+        plot.title         = element_text(size = 40, family = "Ubuntu", face = "bold", colour = "#6950D8"),
+        plot.subtitle      = element_text(size = 35, family = "Ubuntu", colour = "#777777", margin=margin(0,0,30,0)),
+        plot.caption       = element_text(size = 20),
+        plot.margin        = margin(0.3, 0.3, 2, 0.3, "cm"), # margin(top,right, bottom,left)
+        strip.text.x       = element_text(size = 25, colour = "#777777"),
+        panel.grid.minor   = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.background   = element_rect(fill = "transparent", colour = NA),
+        text               = element_text(family = "Ubuntu"),
+        axis.title.x       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+        axis.title.y       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+        axis.text.x        = element_text(family = "Ubuntu", size = 15, colour = "#777777"),
+        axis.text.y        = element_blank(),
+        legend.text        = element_text(family = "Ubuntu", size = 35, colour = "#777777"),
+        legend.position    = "none")  
+ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
+ggsave(filename = "05_infobites/05_NHB_sankey.png", width = 23, height = 12, dpi = 100)
+
+## 2.2. SB ----
+titulo <- "Ranking de la Dim 2. Salud y Bienestar"
+subtitulo <- "2015 - 2020"
+eje_x <- "Años"
+eje_y <- "Ranking"
+
+g <- 
+    ggplot(
+        d %>% 
+            filter(id_dim == "02"), 
+        aes(
+            y = 100, 
+            x = as.character(anio),
+            stratum = ranking, 
+            alluvium = cve_ent, 
+            fill = as.numeric(ranking), 
+            label = paste0(as.numeric(ranking), ". ", entidad_abr_m)
+        )
+    )  +
+    scale_x_discrete(expand = c(.1, .1)) +
+    geom_flow() +
+    geom_stratum(alpha = .7, show.legend = F) +
+    geom_text(stat = "stratum", size = 4) +
+    scale_fill_gradient2("", high = mcv_semaforo[4], mid = mcv_semaforo[2], low = mcv_semaforo[1],midpoint = 16)  +
+    # Etiquetas
+    labs(
+        title = titulo, 
+        subtitle = subtitulo, 
+        x = eje_x, 
+        y = eje_y, 
+        color = ""
+    )   + 
+    theme_minimal() +
+    theme(
+        plot.title         = element_text(size = 40, family = "Ubuntu", face = "bold", colour = "#6950D8"),
+        plot.subtitle      = element_text(size = 35, family = "Ubuntu", colour = "#777777", margin=margin(0,0,30,0)),
+        plot.caption       = element_text(size = 20),
+        plot.margin        = margin(0.3, 0.3, 2, 0.3, "cm"), # margin(top,right, bottom,left)
+        strip.text.x       = element_text(size = 25, colour = "#777777"),
+        panel.grid.minor   = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.background   = element_rect(fill = "transparent", colour = NA),
+        text               = element_text(family = "Ubuntu"),
+        axis.title.x       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+        axis.title.y       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+        axis.text.x        = element_text(family = "Ubuntu", size = 15, colour = "#777777"),
+        axis.text.y        = element_blank(),
+        legend.text        = element_text(family = "Ubuntu", size = 35, colour = "#777777"),
+        legend.position    = "none")  
+ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
+ggsave(filename = "05_infobites/06_SB_sankey.png", width = 23, height = 12, dpi = 100)
+
+
+## 2.3. OP ----
+titulo <- "Ranking de la Dim 3. Oportunidades"
+subtitulo <- "2015 - 2020"
+eje_x <- "Años"
+eje_y <- "Ranking"
+
+g <- 
+    ggplot(
+        d %>% 
+            filter(id_dim == "03"), 
+        aes(
+            y = 100, 
+            x = as.character(anio),
+            stratum = ranking, 
+            alluvium = cve_ent, 
+            fill = as.numeric(ranking), 
+            label = paste0(as.numeric(ranking), ". ", entidad_abr_m)
+        )
+    )  +
+    scale_x_discrete(expand = c(.1, .1)) +
+    geom_flow() +
+    geom_stratum(alpha = .7, show.legend = F) +
+    geom_text(stat = "stratum", size = 4) +
+    scale_fill_gradient2("", high = mcv_semaforo[4], mid = mcv_semaforo[2], low = mcv_semaforo[1],midpoint = 16)  +
+    # Etiquetas
+    labs(
+        title = titulo, 
+        subtitle = subtitulo, 
+        x = eje_x, 
+        y = eje_y, 
+        color = ""
+    )   + 
+    theme_minimal() +
+    theme(
+        plot.title         = element_text(size = 40, family = "Ubuntu", face = "bold", colour = "#6950D8"),
+        plot.subtitle      = element_text(size = 35, family = "Ubuntu", colour = "#777777", margin=margin(0,0,30,0)),
+        plot.caption       = element_text(size = 20),
+        plot.margin        = margin(0.3, 0.3, 2, 0.3, "cm"), # margin(top,right, bottom,left)
+        strip.text.x       = element_text(size = 25, colour = "#777777"),
+        panel.grid.minor   = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.background   = element_rect(fill = "transparent", colour = NA),
+        text               = element_text(family = "Ubuntu"),
+        axis.title.x       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+        axis.title.y       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+        axis.text.x        = element_text(family = "Ubuntu", size = 15, colour = "#777777"),
+        axis.text.y        = element_blank(),
+        legend.text        = element_text(family = "Ubuntu", size = 35, colour = "#777777"),
+        legend.position    = "none")  
+ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
+ggsave(filename = "05_infobites/07_OP_sankey.png", width = 23, height = 12, dpi = 100)
+
     
 ips_cambios_2019_2020 <- ips_final %>% 
     filter(id_dim == "03", anio >2018)%>% 
