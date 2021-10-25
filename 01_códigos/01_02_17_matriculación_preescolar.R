@@ -6,11 +6,13 @@
 # Correos:                    regimedina19@gmail.com
 # 
 # Fecha de creación:          27 de septiembre de 2021
-# Última actualización:       27 de septiembre de 2021
+# Última actualización:       25 de octubre    de 2021
 #------------------------------------------------------------------------------#
 
 # Fuente: https://www.planeacion.sep.gob.mx/principalescifras/
 # Cada año corresponde a aquel en que terminó el ciclo escolar.  
+
+# Rango de edad para preescolar: 3 a 5
 
 # 0. Configuración inicial -----------------------------------------------------
 
@@ -198,10 +200,20 @@ df_limpio    <- df_unida                            %>%
 
 unique(df_limpio$entidad_abr_m)
 
-# Agregar población 
-# Población total por entidad
-df_pop      <- imp_dv("1hi5qzhpZz1S7_TFe68lqMQCYUFOEQjRejMOlvSTjw0w/edit#gid=1859408845")
+# Procesar información de población
+load("02_datos_crudos/df_pop_state_age.Rdata") # Población total por entidad y edad
 
+df_pop <- df_pop_state_age                          %>% 
+    filter(age %in% 3:5)                            %>% 
+    group_by(state, CVE_GEO, year)                  %>% 
+    summarise(pob_tot = sum(population))            %>% 
+    ungroup()                                       %>% 
+    mutate(
+        cve_ent = str_pad(CVE_GEO, 2, pad = "0"), 
+        grupo = "Población de 3 a 5 años")          %>% 
+    select(anio = year, cve_ent, state, grupo, pob_tot)
+
+# Agregar población 
 df_final    <- df_limpio                            %>% 
     left_join(df_pop, by = c("cve_ent", "anio"))    %>% 
     filter(anio < 2021)                             %>% 
