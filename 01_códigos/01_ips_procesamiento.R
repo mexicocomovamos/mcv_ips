@@ -85,7 +85,8 @@ for(x in 1:6){
             ) %>% 
             filter(anio_dist<=0) %>% 
             mutate(anio_dist = abs(anio_dist)) %>% 
-            filter(anio_dist == min(anio_dist))
+            filter(anio_dist == min(anio_dist)) %>% 
+            select(-contains("drop"))
         
         
         ips_complete <- bind_rows(ips_complete, ips_tempo)
