@@ -20,7 +20,8 @@ Sys.setlocale("LC_TIME", "es_ES")
 
 # Cargar paquetería 
 require(pacman)
-p_load(readxl, tidyverse, dplyr, googledrive, googlesheets4, lubridate, janitor, beepr)
+p_load(readxl, tidyverse, dplyr, googledrive, 
+    googlesheets4, lubridate, janitor, beepr)
 
 # Desactiva notación científica
 options(scipen=999)
@@ -210,7 +211,7 @@ df_pop <- df_pop_state_age                          %>%
     ungroup()                                       %>% 
     mutate(
         cve_ent = str_pad(CVE_GEO, 2, pad = "0"), 
-        grupo = "Población de 3 a 5 años")          %>% 
+        grupo   = "Población de 3 a 5 años")        %>% 
     select(anio = year, cve_ent, state, grupo, pob_tot)
 
 # Agregar población 
