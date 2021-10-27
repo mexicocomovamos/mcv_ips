@@ -393,6 +393,7 @@ openxlsx::write.xlsx(coefs, "03_ips_clean/99_coefs.xlsx")
 
 
 # 8. Infobites ----
+ips_final <- readxl::read_excel("03_ips_clean/10_IPS_COMPLETE.xlsx")
 # Colores MCV
 mcv_discrete <- c("#6950d8", "#00b783", "#ff6260", "#ffaf84", "#ffbd41", "#3CEAFA")
 mcv_semaforo <- c("#00b783", "#E8D92E", "#ffbd41", "#ff6260") # Verde, amarillo, naranja y rojo
@@ -915,7 +916,7 @@ for(i in 1:33){
 ips_final <- readxl::read_excel("03_ips_clean/10_IPS_COMPLETE.xlsx")
 
 ips_cambios_2019_2020 <- ips_final %>% 
-    filter(id_dim == "02", anio >2018)%>% 
+    filter(id_dim == "01", anio >2018)%>% 
     filter(!as.numeric(cve_ent) > 33) %>% 
     pivot_wider(
         names_from = "anio",
