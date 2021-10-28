@@ -52,7 +52,7 @@ imp_dv <- function(x){
 
 # 1. Importar datos ------------------------------------------------------------
 
-df_crudo <- read_excel(paste0(inp, "INEGI_exporta_27_10_2021_14_22_5.xlsx"), 
+df_crudo <- read_excel(paste0(inp, "INEGI_exporta_28_10_2021_9_58_0_inf.xlsx"), 
     skip = 4)
 
 

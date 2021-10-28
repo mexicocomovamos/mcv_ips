@@ -53,12 +53,12 @@ imp_dv <- function(x){
 # 1. Importar datos ------------------------------------------------------------
 
 # Muertes infantiles 
-df_crudo <- read_excel(paste0(inp, "INEGI_exporta_27_10_2021_13_35_37.xlsx"), 
-    skip = 5)
+df_crudo <- read_excel(paste0(
+    inp, "INEGI_exporta_28_10_2021_10_9_1_infantil.xlsx"), skip = 4)
 
 # Nacimientos 
 df_crudo_nac <- read_excel(paste0(
-    inp, "INEGI_exporta_27_10_2021_20_16_15_nacimientos.xlsx"), skip = 4)
+    inp, "INEGI_exporta_28_10_2021_10_15_18_nacimientos.xlsx"), skip = 4)
 
 # 2. Procesamiento de datos ----------------------------------------------------
 
