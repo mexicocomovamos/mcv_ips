@@ -59,7 +59,7 @@ anio_vec <- 2015:2020
 ips_wide <- data.frame()
 ips_long <- data.frame()
 ips_direccion <- data.frame()
-for(x in 1:6){
+for(x in 5:6){
     
     print(
         paste0(
@@ -91,6 +91,7 @@ for(x in 1:6){
         
         ips_complete <- bind_rows(ips_complete, ips_tempo)
         
+        #Sys.sleep(5) 
         
     }
     
@@ -99,9 +100,10 @@ for(x in 1:6){
         select(-contains("dist"))
     
     ips_long <- bind_rows(
-        ips_long, ips_complete 
-    ) %>% 
-        mutate(anio = anio_vec[x])
+        ips_long, 
+        ips_complete %>% 
+            mutate(anio = anio_vec[x])
+    ) 
     
     # 2. Direcciones ----
     ips_uto_disto_discrecionales <- imp_dv(v_id, 2) %>% 
@@ -123,22 +125,6 @@ for(x in 1:6){
         mutate(indicador_value_abs = round(indicador_value_abs,4)) %>% 
         mutate(id_unica = paste0("ind_",id_dimension, id_indicador)) %>% 
         select(cve_ent, entidad_abr_m, id_unica, indicador_value_abs) %>% 
-        filter(!id_unica == "ind_0346") %>% 
-        bind_rows(
-            # Proceso para limpiar indicador 03_46
-            ips_direccion_tempo %>% 
-                arrange(desc(anio)) %>% 
-                distinct(cve_ent, id_dimension, indicador_value_abs, .keep_all = T) %>% 
-                select(cve_ent:indicador_value_abs) %>% 
-                drop_na(indicador_value_abs) %>% 
-                mutate(indicador_value_abs = round(indicador_value_abs,4)) %>% 
-                mutate(id_unica = paste0("ind_",id_dimension, id_indicador)) %>% 
-                select(cve_ent, entidad_abr_m, id_unica, indicador_value_abs) %>% 
-                arrange(id_unica) %>% 
-                filter(id_unica == "ind_0346") %>% 
-                distinct(cve_ent, entidad_abr_m, .keep_all = T)
-            
-        ) %>% 
         arrange(id_unica) %>% 
         pivot_wider(names_from = id_unica, values_from = indicador_value_abs) %>% 
         mutate(anio = anio_vec[x]) %>% 
@@ -167,7 +153,7 @@ ips_long <- readxl::read_excel("03_ips_clean/01_ips_long.xlsx")
 ips_wide <- readxl::read_excel("03_ips_clean/02_ips_wide.xlsx")
 ips_direccion <- readxl::read_excel("03_ips_clean/03_ips_direccion.xlsx")
 
-
+ips_wide_sinnorm <- readxl::read_excel("03_ips_clean/02_ips_wide.xlsx")
 
 # 3. Estadística descriptiva ----
 ## 3.1. Estadísticos ----
@@ -198,15 +184,15 @@ utop_distop_long <- ips_direccion %>%
         utopia_final = case_when(
             is.na(utopia) & direccion == -1 ~ max+sd,
             is.na(utopia) & direccion == 1 ~ max+sd,
-            !(is.na(utopia)) & direccion == -1 ~ utopia*direccion,
-            !(is.na(utopia)) & direccion == 1 ~ utopia*direccion,
+            !(is.na(utopia)) & direccion == -1 & utopia>0 ~ utopia*direccion,
+            !(is.na(utopia)) & direccion == 1 & utopia>0 ~ utopia*direccion,
             T ~ utopia
         ),
         distopia_final = case_when(
             is.na(distopia) & direccion == -1 ~ min-sd,
             is.na(distopia) & direccion == 1 ~ min-sd,
-            !(is.na(distopia)) & direccion == -1 ~ distopia*direccion,
-            !(is.na(distopia)) & direccion == 1 ~ distopia*direccion,
+            !(is.na(distopia)) & direccion == -1 & distopia>0 ~ distopia*direccion,
+            !(is.na(distopia)) & direccion == 1 & distopia>0 ~ distopia*direccion,
             T ~ distopia
         )
         
@@ -249,16 +235,6 @@ ips_wide_norm <- bind_cols(
 
 
 openxlsx::write.xlsx(ips_wide_norm, paste0("03_ips_clean/00_ips_wide_norm_complete.xlsx"))
-
-
-
-
-openxlsx::write.xlsx(ips_wide_norm %>% 
-                         mutate_at(
-                             vars(starts_with("ind")),
-                             ~abs(.)
-                         ),
-                     paste0("03_ips_clean/00_ips_wide_norm_complete_abs.xlsx"))
 
 
 # 6. Alfas de Cronbach y KMO ----
@@ -916,7 +892,7 @@ for(i in 1:33){
 ips_final <- readxl::read_excel("03_ips_clean/10_IPS_COMPLETE.xlsx")
 
 ips_cambios_2019_2020 <- ips_final %>% 
-    filter(id_dim == "01", anio >2018)%>% 
+    filter(id_dim == "02", anio >2018)%>% 
     filter(!as.numeric(cve_ent) > 33) %>% 
     pivot_wider(
         names_from = "anio",

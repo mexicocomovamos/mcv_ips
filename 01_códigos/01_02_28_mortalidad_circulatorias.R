@@ -37,8 +37,10 @@ mcv_morados  <- c("#6950D8", "#A99BE9")                       # Morados
 inp <- "02_datos_crudos/01_01_mortalidad/"
 
 # Activar las credenciales de google
-googledrive::drive_auth("regimedina19@gmail.com")
-googlesheets4::gs4_auth("regimedina19@gmail.com")
+# googledrive::drive_auth("regimedina19@gmail.com")
+googledrive::drive_auth("katia@mexicocomovamos.mx")
+# googlesheets4::gs4_auth("regimedina19@gmail.com")
+googlesheets4::gs4_auth("katia@mexicocomovamos.mx")
 
 # Verificar credenciales 
 googledrive::drive_user()
@@ -80,83 +82,12 @@ df_limpio   <- df_crudo         %>%
         total = as.numeric(str_remove_all(total, ",")))
 
 
-# Guardar nombres de las entidades
-v_entidad   <- unique(df_limpio$entidad)
-
 # Renombrar entidades
 df_entidad  <- df_limpio        %>% 
-    # Valores de entidades federativas 
-    mutate(
-        cve_ent = case_when(
-            entidad == v_entidad[1]  ~ "00", # Nacional
-            entidad == v_entidad[2]  ~ "01", 
-            entidad == v_entidad[3]  ~ "02", 
-            entidad == v_entidad[4]  ~ "03", 
-            entidad == v_entidad[5]  ~ "04",
-            entidad == v_entidad[8]  ~ "05", 
-            entidad == v_entidad[9]  ~ "06", 
-            entidad == v_entidad[6]  ~ "07", 
-            entidad == v_entidad[7]  ~ "08", 
-            entidad == v_entidad[10] ~ "09", 
-            entidad == v_entidad[11] ~ "10", 
-            entidad == v_entidad[12] ~ "11", 
-            entidad == v_entidad[13] ~ "12", 
-            entidad == v_entidad[14] ~ "13", 
-            entidad == v_entidad[15] ~ "14", 
-            entidad == v_entidad[16] ~ "15", 
-            entidad == v_entidad[17] ~ "16", # Michoacán 
-            entidad == v_entidad[18] ~ "17", 
-            entidad == v_entidad[19] ~ "18", 
-            entidad == v_entidad[20] ~ "19", # Nuevo León
-            entidad == v_entidad[21] ~ "20", 
-            entidad == v_entidad[22] ~ "21", 
-            entidad == v_entidad[23] ~ "22", 
-            entidad == v_entidad[24] ~ "23", 
-            entidad == v_entidad[25] ~ "24", 
-            entidad == v_entidad[26] ~ "25", 
-            entidad == v_entidad[27] ~ "26", 
-            entidad == v_entidad[28] ~ "27", 
-            entidad == v_entidad[29] ~ "28", 
-            entidad == v_entidad[30] ~ "29", 
-            entidad == v_entidad[31] ~ "30", 
-            entidad == v_entidad[32] ~ "31", 
-            entidad == v_entidad[33] ~ "32")) %>% 
-    # Generar identificador abreviado 
-    mutate(
-        entidad_abr_m = case_when(
-            cve_ent == "00" ~ "Nacional", 
-            cve_ent == "01" ~ "AGS", 
-            cve_ent == "02" ~ "BC",
-            cve_ent == "03" ~ "BCS",
-            cve_ent == "04" ~ "CAMP",
-            cve_ent == "05" ~ "COAH",
-            cve_ent == "06" ~ "COL", 
-            cve_ent == "07" ~ "CHPS",
-            cve_ent == "08" ~ "CHIH",
-            cve_ent == "09" ~ "CDMX",
-            cve_ent == "10" ~ "DGO",
-            cve_ent == "11" ~ "GTO",
-            cve_ent == "12" ~ "GRO", 
-            cve_ent == "13" ~ "HGO",
-            cve_ent == "14" ~ "JAL",
-            cve_ent == "15" ~ "MEX",
-            cve_ent == "16" ~ "MICH",
-            cve_ent == "17" ~ "MOR", 
-            cve_ent == "18" ~ "NAY",
-            cve_ent == "19" ~ "NL",
-            cve_ent == "20" ~ "OAX",
-            cve_ent == "21" ~ "PUE",
-            cve_ent == "22" ~ "QRO", 
-            cve_ent == "23" ~ "QROO",
-            cve_ent == "24" ~ "SLP",
-            cve_ent == "25" ~ "SIN",
-            cve_ent == "26" ~ "SON",
-            cve_ent == "27" ~ "TAB", 
-            cve_ent == "28" ~ "TAM",
-            cve_ent == "29" ~ "TLAX",
-            cve_ent == "30" ~ "VER",
-            cve_ent == "31" ~ "YUC",
-            cve_ent == "32" ~ "ZAC"))  %>% 
+    left_join(
+        readxl::read_excel("02_datos_crudos/00_cve_ent.xlsx") %>% 
+            rename(ent = entidad, entidad = entidad_comp)
+    ) %>% 
     # Seleccionar variables finales 
     select(cve_ent, entidad_abr_m, anio, id_dimension, id_indicador, total)
 
