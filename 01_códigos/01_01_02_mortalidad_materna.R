@@ -37,8 +37,11 @@ mcv_morados  <- c("#6950D8", "#A99BE9")                       # Morados
 inp <- "02_datos_crudos/01_01_mortalidad/"
 
 # Activar las credenciales de google
-googledrive::drive_auth("regimedina19@gmail.com")
-googlesheets4::gs4_auth("regimedina19@gmail.com")
+# googledrive::drive_auth("regimedina19@gmail.com")
+# googlesheets4::gs4_auth("regimedina19@gmail.com")
+
+googledrive::drive_auth("katia@mexicocomovamos.mx")
+googlesheets4::gs4_auth("katia@mexicocomovamos.mx")
 
 # Verificar credenciales 
 googledrive::drive_user()
@@ -53,7 +56,7 @@ imp_dv <- function(x){
 # 1. Importar datos ------------------------------------------------------------
 
 # Muertes infantiles 
-df_crudo <- read_excel(paste0(inp, "INEGI_exporta_27_10_2021_17_5_30.xlsx"), 
+df_crudo <- read_excel(paste0(inp, "INEGI_exporta_28_10_2021_9_26_24.xlsx"), 
     skip = 3)
 
 # Nacimientos 
