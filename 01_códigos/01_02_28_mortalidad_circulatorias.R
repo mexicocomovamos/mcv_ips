@@ -75,8 +75,8 @@ df_limpio   <- df_crudo         %>%
         values_to = "total")    %>% 
     # Agregar variables de identificación 
     mutate(
-        id_dimension = "01", 
-        id_indicador = "04", 
+        id_dimension = "02", 
+        id_indicador = "28", 
         total = as.numeric(str_remove_all(total, ",")))
 
 
