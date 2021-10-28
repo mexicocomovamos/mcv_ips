@@ -1,6 +1,6 @@
 #------------------------------------------------------------------------------#
 # Proyecto:                   ÍNDICE DE PROGRESO SOCIAL
-# Objetivo:                   Mortalidad infantil
+# Objetivo:                   Mortalidad materna
 #
 # Encargada:                  Regina Isabel Medina Rosales     
 # Correos:                    regimedina19@gmail.com
@@ -53,8 +53,8 @@ imp_dv <- function(x){
 # 1. Importar datos ------------------------------------------------------------
 
 # Muertes infantiles 
-df_crudo <- read_excel(paste0(inp, "INEGI_exporta_27_10_2021_13_35_37.xlsx"), 
-    skip = 5)
+df_crudo <- read_excel(paste0(inp, "INEGI_exporta_27_10_2021_17_5_30.xlsx"), 
+    skip = 3)
 
 # Nacimientos 
 df_crudo_nac <- read_excel(paste0(
@@ -78,8 +78,9 @@ df_limpio   <- df_crudo         %>%
     # Agregar variables de identificación 
     mutate(
         id_dimension = "01", 
-        id_indicador = "03", 
+        id_indicador = "02", 
         total = as.numeric(str_remove_all(total, ",")))
+
 
 # Guardar nombres de las entidades
 v_entidad   <- unique(df_limpio$entidad)
@@ -202,6 +203,6 @@ v_id <- as.character(
 
 # Guardar en la base en el Drive
 googlesheets4::range_write(ss = v_id, data = df_final,
-    sheet = "01_03_mortalidad_infantil")
+    sheet = "01_02_mortalidad_materna")
 
 # FIN. -------------------------------------------------------------------------
