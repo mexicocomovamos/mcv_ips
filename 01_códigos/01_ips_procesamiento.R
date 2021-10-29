@@ -153,7 +153,6 @@ ips_long <- readxl::read_excel("03_ips_clean/01_ips_long.xlsx")
 ips_wide <- readxl::read_excel("03_ips_clean/02_ips_wide.xlsx")
 ips_direccion <- readxl::read_excel("03_ips_clean/03_ips_direccion.xlsx")
 
-ips_wide_sinnorm <- readxl::read_excel("03_ips_clean/02_ips_wide.xlsx")
 
 # 3. Estadística descriptiva ----
 ## 3.1. Estadísticos ----
@@ -234,7 +233,7 @@ ips_wide_norm <- bind_cols(
 )
 
 
-openxlsx::write.xlsx(ips_wide_norm, paste0("03_ips_clean/00_ips_wide_norm_complete.xlsx"))
+openxlsx::write.xlsx(ips_wide_norm, paste0("03_ips_clean/07_ips_wide_norm_complete.xlsx"))
 
 
 # 6. Alfas de Cronbach y KMO ----
@@ -242,18 +241,22 @@ ids_comp <- imp_dv(v_id, 2) %>%
     select(id_dimension:direccion,utopia,distopia) %>% 
     mutate(id_comp = paste0(id_dimension, id_indicador, "_", id_componente, "comp")) %>% 
     select(id_comp) %>% 
-    dplyr::distinct(id_comp) 
+    dplyr::distinct(id_comp) %>% 
+    filter(!id_comp=="0231_08comp") %>% 
+    glimpse
 
-names(ips_wide_norm)[4:58] <- ids_comp$id_comp
+ips_wide_norm <- ips_wide_norm %>% 
+    select(-ind_0231)
+
+names(ips_wide_norm)[4:57] <- ids_comp$id_comp
 
 ips_comp <- ips_wide_norm %>% 
-    # mutate_at(
-    #     vars(starts_with("ind")),
-    #     ~abs(.)
-    # ) %>% 
     select(ends_with("comp")) 
 
-ids_comp_vec <- str_sub(ids_comp$id_comp, -6) %>% as_tibble() %>% distinct() 
+ids_comp_vec <- str_sub(ids_comp$id_comp, -6) %>% 
+    as_tibble() %>%
+    distinct() 
+
 ids_comp_vec <- as.character(ids_comp_vec$value)
 
 alphas <- list()
@@ -264,7 +267,7 @@ for(i in 1:length(ids_comp_vec)){
     tempo <- ips_comp %>% 
         select(ends_with(ids_comp_vec[i]))
     
-    alpha_tempo <- psych::alpha(tempo)
+    alpha_tempo <- psych::alpha(tempo, check.keys=TRUE)
     kmo_tempo <- psych::KMO(tempo)
     
     
@@ -290,7 +293,7 @@ drop_names <- unique(paste0(str_sub(ids_comp$id_comp,1,2), str_sub(ids_comp$id_c
 coefs <- data.frame()
 valores_esperados <- ips_wide[1:3]
 valores_esperados_norm <- ips_wide[1:3]
-for(i in 1:12){
+for(i in 1:length(ids_comp_vec)){
     
     tempo <- ips_comp %>% 
         select(ends_with(ids_comp_vec[i]))
@@ -354,22 +357,65 @@ ips_final <- valores_esperados_norm %>%
 
 
 
+# Guardar base larga
+wb = createWorkbook()
+addWorksheet(wb, "01_IPS_DIM")
+addWorksheet(wb, "02_IPS_COMP")
+writeData(
+    wb    = wb, 
+    sheet = 1, 
+    x = ips_final, 
+    colNames = T, 
+    rowNames = F
+)
+
+writeData(
+    wb    = wb, 
+    sheet = 2, 
+    x = valores_esperados_norm %>% 
+        pivot_longer(
+            ends_with("comp"),
+            names_to = "id_comp",
+            values_to = "comp_value"
+        ), 
+    colNames = T, 
+    rowNames = F
+)
+
+saveWorkbook(wb, "03_ips_clean/00_IPS_COMPLETE_LONG.xlsx", overwrite = T)
+
+# Guardar base ancha
+wb = createWorkbook()
+addWorksheet(wb, "01_IPS_DIM")
+addWorksheet(wb, "02_IPS_COMP")
+writeData(
+    wb    = wb, 
+    sheet = 1, 
+    x = ips_final %>% 
+        pivot_wider(
+            names_from = id_dim,
+            values_from = dim_value
+        ) %>% 
+        arrange(anio, cve_ent), 
+    colNames = T, 
+    rowNames = F
+)
+
+writeData(
+    wb    = wb, 
+    sheet = 2, 
+    x = valores_esperados_norm, 
+    colNames = T, 
+    rowNames = F
+)
+
+saveWorkbook(wb, "03_ips_clean/00_IPS_COMPLETE_WIDE.xlsx", overwrite = T)
 
 
-openxlsx::write.xlsx(ips_final, "03_ips_clean/10_IPS_COMPLETE.xlsx")
-openxlsx::write.xlsx(ips_final %>% 
-                         pivot_wider(
-                             names_from = id_dim,
-                             values_from = dim_value
-                         ) %>% 
-                         arrange(anio, cve_ent), 
-                     "03_ips_clean/11_IPS_COMPLETE_WIDE.xlsx")
-
-openxlsx::write.xlsx(coefs, "03_ips_clean/99_coefs.xlsx")
 
 
 # 8. Infobites ----
-ips_final <- readxl::read_excel("03_ips_clean/10_IPS_COMPLETE.xlsx")
+ips_final <- readxl::read_excel("03_ips_clean/00_IPS_COMPLETE_LONG.xlsx")
 # Colores MCV
 mcv_discrete <- c("#6950d8", "#00b783", "#ff6260", "#ffaf84", "#ffbd41", "#3CEAFA")
 mcv_semaforo <- c("#00b783", "#E8D92E", "#ffbd41", "#ff6260") # Verde, amarillo, naranja y rojo
@@ -889,10 +935,10 @@ for(i in 1:33){
     
 }
 
-ips_final <- readxl::read_excel("03_ips_clean/10_IPS_COMPLETE.xlsx")
+
 
 ips_cambios_2019_2020 <- ips_final %>% 
-    filter(id_dim == "02", anio >2018)%>% 
+    filter(id_dim == "01", anio >2018)%>% 
     filter(!as.numeric(cve_ent) > 33) %>% 
     pivot_wider(
         names_from = "anio",
