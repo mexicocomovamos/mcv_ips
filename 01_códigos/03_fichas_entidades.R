@@ -59,10 +59,13 @@ df_pibr <- read_excel(paste0(inp_pib, "03_pib_per_capita.xlsx"))
 # Puntajes de las dimensiones del IPS 
 df_ipsr <- read_excel(paste0(inp_ips, "00_IPS_COMPLETE_LONG.xlsx"))
 
-# Puntajes de los indicadores (componentes) específicos del IPS
+# Puntajes de los componentes del IPS 
+df_ips_componentesr <- read_excel(paste0(inp_ips, "00_IPS_COMPLETE_LONG.xlsx"), 
+    sheet = "02_IPS_COMP")
+
+# Puntajes de los indicadores específicos del IPS
 df_ips_indicadoresr <- read_excel(paste0(inp_ips, "01_ips_long.xlsx"))
 
-v
 # Clasificar grupos de entidades según el PIB (tres grupos)
 df_pib  <- df_pibr                                          %>% 
     filter(cve_ent != "00", tipo_pib != "PIB per cápita")   %>% 
@@ -109,12 +112,66 @@ df_ips <- df_ipsr                                           %>%
         ips_mean_grupal = dim_mean_grupal, ips_rank_grupal = dim_rank_grupal, 
         ips_fort_deb_gr = dim_fort_deb_gr)
 
-# Controles de calidad
-table(df_ips$dim_rank_nacional)
-table(df_ips$dim_rank_grupal)
-table(df_ips$dim_fort_deb_gr)
 
-# Unir IPS con PIB y hacer rankings (agregado a nivel indicador/componente)
+# Unir IPS con PIB y hacer rankings (agregado a nivel indicador)
+df_ips_componentes <- df_ips_componentesr                   %>% 
+    left_join(df_pib, by = c("cve_ent"))                    %>% 
+    # Dejar solo datos del año más reciente                 
+    filter(cve_ent != "00", anio == 2020)                   %>% 
+    # Varibales nacionales              
+    group_by(anio, id_comp)                                 %>% 
+    mutate(
+        comp_mean_nacional = mean(comp_value), 
+        comp_rank_nacional = rank(
+            desc(comp_value),ties.method = "min"))          %>% 
+    # Variables grupales (según grupo del pib)
+    group_by(anio, id_comp, grupo_pib)                      %>% 
+    mutate(
+        comp_mean_grupal   = mean(comp_value), 
+        comp_rank_grupal   = rank(desc(comp_value),ties.method = "min"), 
+        comp_fort_deb_gr   = case_when(
+            comp_value > (mean(comp_value) + sd(comp_value)) ~ "Desempeño superior", 
+            comp_value < (mean(comp_value) - sd(comp_value)) ~ "Desempeño inferior", 
+            T ~ "Desempeño esperado"))                      %>% 
+    ungroup()                                               %>% 
+    # Agregar nombre de los componentes 
+    mutate(
+        id_comp = str_sub(id_comp, 4, 5),
+        comp_name = case_when(
+            id_comp == "01" ~ "Nutrición y cuidados médicos básicos", 
+            id_comp == "02" ~ "Agua y saneamiento", 
+            id_comp == "03" ~ "Vivienda", 
+            id_comp == "04" ~ "Seguridad personal", 
+            id_comp == "05" ~ "Acceso a conocimientos básicos", 
+            id_comp == "06" ~ "Acceso a información y comunicaciones", 
+            id_comp == "07" ~ "Salud y bienestar", 
+            id_comp == "08" ~ "Calidad medioambiental", 
+            id_comp == "09" ~ "Derechos personales", 
+            id_comp == "10" ~ "Libertad personal y de elección", 
+            id_comp == "11" ~ "Inclusión", 
+            id_comp == "12" ~ "Acceso a educación superior"), 
+        id = case_when(
+            id_comp == "01" ~ "0101", 
+            id_comp == "02" ~ "0102", 
+            id_comp == "03" ~ "0103", 
+            id_comp == "04" ~ "0104", 
+            id_comp == "05" ~ "0205", 
+            id_comp == "06" ~ "0206", 
+            id_comp == "07" ~ "0207", 
+            id_comp == "08" ~ "0208", 
+            id_comp == "09" ~ "0309", 
+            id_comp == "10" ~ "0310", 
+            id_comp == "11" ~ "0311", 
+            id_comp == "12" ~ "0312"), 
+        nivel = "Componente")                               %>% 
+    select(
+        anio, cve_ent, entidad_abr_m, nivel, id = id_comp, name = comp_name, 
+        value = comp_value, ips_mean_nacional = comp_mean_nacional, 
+        ips_rank_nacional = comp_rank_nacional, grupo_pib, value_pib, ranking_pib, 
+        ips_mean_grupal = comp_mean_grupal, ips_rank_grupal = comp_rank_grupal, 
+        ips_fort_deb_gr = comp_fort_deb_gr)
+
+# Unir IPS con PIB y hacer rankings (agregado a nivel indicador)
 df_ips_indicadores <- df_ips_indicadoresr                   %>% 
     left_join(df_pib, by = c("cve_ent"))                    %>% 
     rename(ind_value     = indicador_value)                 %>% 
@@ -194,7 +251,8 @@ df_ips_indicadores <- df_ips_indicadoresr                   %>%
             id_dim_ind == "0353" ~ "Paridad de género en posgrado", 
             id_dim_ind == "0354" ~ "Paridad de género en licenciatura",
             id_dim_ind == "0355" ~ "Posgrados nacionales de calidad"), 
-        nivel = "Indicador") %>% 
+        nivel = "Indicador", 
+        id_ind = str_sub(id_dim_ind, 3, 4)) %>% 
     select(
         anio, cve_ent, entidad_abr_m, nivel, id = id_dim_ind, name = ind_name, 
         value = ind_value, ips_mean_nacional = ind_mean_nacional, 
@@ -202,20 +260,14 @@ df_ips_indicadores <- df_ips_indicadoresr                   %>%
         ips_mean_grupal = ind_mean_grupal, ips_rank_grupal = ind_rank_grupal, 
         ips_fort_deb_gr = ind_fort_deb_gr)
 
-
-# Controles de calidad
-table(df_ips_indicadores$ind_rank_nacional)
-table(df_ips_indicadores$ind_rank_grupal)
-table(df_ips_indicadores$ind_fort_deb_gr)
-
 # Unir base de dimensiones e indicadores 
-
-df_ranking_ips <- df_ips %>% 
-    bind_rows(df_ips_indicadores) %>% 
+df_ranking_ips <- df_ips            %>%
+    bind_rows(df_ips_componentes)   %>% 
+    bind_rows(df_ips_indicadores)   %>% 
     arrange(cve_ent)
 
 # 3. Guardar -------------------------------------------------------------------
 
-openxlsx::write.xlsx(df_ranking_ips, "03_ips_clean/08_ips_ranking.xlsx")
+openxlsx::write.xlsx(df_ranking_ips, "03_ips_clean/08_ips_ranking.xlsx", overwrite = T)
 
 # FIN. -------------------------------------------------------------------------
