@@ -437,7 +437,7 @@ ggplot(data =
            mutate(dim = case_when(
                id_dim == "00" ~ "0. Índice de Progreso Social",
                id_dim == "01" ~ "1. Necesidades Básicas Humanas",
-               id_dim == "02" ~ "2. Salud y Bienestar",
+               id_dim == "02" ~ "2. Fundamentos del Bienestar",
                T ~ "3. Oportunidades"
            )),
        aes(y = reorder(anio, -anio), 
@@ -493,7 +493,7 @@ g <-
                mutate(dim = case_when(
                    id_dim == "00" ~ "0. Índice de Progreso Social",
                    id_dim == "01" ~ "1. Necesidades Básicas Humanas",
-                   id_dim == "02" ~ "2. Salud y Bienestar",
+                   id_dim == "02" ~ "2. Fundamentos del Bienestar",
                    T ~ "3. Oportunidades"
                )),
            aes(y = reorder(anio, -anio), 
@@ -535,8 +535,8 @@ g <-
 ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
 ggsave(filename = "05_infobites/01_NHB_heatmap.png", width = 23, height = 12, dpi = 100)
 
-### 1.2. Salud y Bienestar ----
-titulo <- "Dim 2. Salud y Bienestar"
+### 1.2. Fundamentos del Bienestar ----
+titulo <- "Dim 2. Fundamentos del Bienestar"
 subtitulo <- "2015 - 2020"
 eje_x <- ""
 eje_y <- "Años"
@@ -549,7 +549,7 @@ g <-
                mutate(dim = case_when(
                    id_dim == "00" ~ "0. Índice de Progreso Social",
                    id_dim == "01" ~ "1. Necesidades Básicas Humanas",
-                   id_dim == "02" ~ "2. Salud y Bienestar",
+                   id_dim == "02" ~ "2. Fundamentos del Bienestar",
                    T ~ "3. Oportunidades"
                )),
            aes(y = reorder(anio, -anio), 
@@ -605,7 +605,7 @@ g <-
                mutate(dim = case_when(
                    id_dim == "00" ~ "0. Índice de Progreso Social",
                    id_dim == "01" ~ "1. Necesidades Básicas Humanas",
-                   id_dim == "02" ~ "2. Salud y Bienestar",
+                   id_dim == "02" ~ "2. Fundamentos del Bienestar",
                    T ~ "3. Oportunidades"
                )),
            aes(y = reorder(anio, -anio), 
@@ -761,7 +761,7 @@ ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
 ggsave(filename = "05_infobites/05_NHB_sankey.png", width = 23, height = 12, dpi = 100)
 
 ### 2.2. SB ----
-titulo <- "Ranking de la Dim 2. Salud y Bienestar"
+titulo <- "Ranking de la Dim 2. Fundamentos del Bienestar"
 subtitulo <- "2015 - 2020"
 eje_x <- "Años"
 eje_y <- "Ranking"
@@ -874,7 +874,7 @@ for(i in 1:33){
         mutate(dim = case_when(
             id_dim == "00" ~ "0. Índice de Progreso Social",
             id_dim == "01" ~ "1. Necesidades Básicas Humanas",
-            id_dim == "02" ~ "2. Salud y Bienestar",
+            id_dim == "02" ~ "2. Fundamentos del Bienestar",
             T ~ "3. Oportunidades"
         )) %>% 
         filter(cve_ent == cves[i]) %>% 
