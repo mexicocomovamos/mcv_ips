@@ -6,7 +6,7 @@
 # Correos:                    regimedina19@gmail.com
 # 
 # Fecha de creación:          29 de octubre   de 2021
-# Última actualización:       03 de noviembre de 2021
+# Última actualización:       04 de noviembre de 2021
 #------------------------------------------------------------------------------#
 
 # 0. Configuración inicial -----------------------------------------------------
@@ -47,7 +47,7 @@ googlesheets4::gs4_auth("katia@mexicocomovamos.mx")
 
 # Verificar credenciales 
 googledrive::drive_user()
-googlesheets4::gs4_user() 
+googlesheets4::gs4_user()
 
 # Función para importar de manera más corta desde drive
 imp_dv <- function(x){
@@ -200,10 +200,10 @@ df_ips_indicadores <- df_ips_indicadoresr                   %>%
     # Agregar nombre de los indicadores
     mutate(
         ind_name = case_when(
-            id_dim_ind == "0101" ~ "Carencia por acceso a la alimentación", 
-            id_dim_ind == "0102" ~ "Mortalidad materna (razón de muerte materna)", 
-            id_dim_ind == "0103" ~ "Mortalidad infantil (tasa por cada 100,000 nacidxs vivxs)",
-            id_dim_ind == "0104" ~ "Mortalidad por enfermedades infecciosas (tasa por cada 100,000 habitantes)", 
+            id_dim_ind == "0101" ~ "Carencia por acceso a la alimentación (% de personas)", 
+            id_dim_ind == "0102" ~ "Mortalidad materna (muertes / 100,000 nacimientos)", 
+            id_dim_ind == "0103" ~ "Mortalidad infantil (muertes / 100,000 nacidxs vivxs)",
+            id_dim_ind == "0104" ~ "Mortalidad por enfermedades infecciosas (muertes / 100,000 habitantes)", 
             id_dim_ind == "0105" ~ "Hogares con disponibilidad de agua dentro de la vivienda (%)", 
             id_dim_ind == "0106" ~ "Hogares con dotación diaria de agua (%)",
             id_dim_ind == "0107" ~ "Hogares con servicio sanitario exclusivo para la vivienda (%)",
@@ -211,50 +211,50 @@ df_ips_indicadores <- df_ips_indicadoresr                   %>%
             id_dim_ind == "0109" ~ "Hogares con piso de tierra (%)",
             id_dim_ind == "0110" ~ "Hogares que cocinan con leña o carbón (%)",
             id_dim_ind == "0111" ~ "Hogares en hacinamiento (%)",
-            id_dim_ind == "0112" ~ "Homicidios (tasa de homicidios por cada 100 mil habitantes)",
-            id_dim_ind == "0113" ~ "Peligrosidad de accidentes de tránsito", 
-            id_dim_ind == "0114" ~ "Crimen violento", 
-            id_dim_ind == "0115" ~ "Crimen organizado",
-            id_dim_ind == "0116" ~ "Percepción de inseguridad en la entidad (%)", 
-            id_dim_ind == "0217" ~ "Matriculación educación preescolar", 
-            id_dim_ind == "0218" ~ "Analfabetismo (%)",
-            id_dim_ind == "0219" ~ "Matriculación educación primaria", 
-            id_dim_ind == "0220" ~ "Matriculación educación secundaria", 
-            id_dim_ind == "0221" ~ "Paridad de género en educación secundaria",
-            id_dim_ind == "0222" ~ "Usuarios de telefonía móvil (%)",
+            id_dim_ind == "0112" ~ "Homicidios (muertes / 100,000 habitantes)",
+            id_dim_ind == "0113" ~ "Muertes por accidentes dde tráfico (accidente con muertes / 100,000 habitantes)", 
+            id_dim_ind == "0114" ~ "Nivel de crimen violento (1 = bajo, 5 = alto)", 
+            id_dim_ind == "0115" ~ "Presencia de crimen organizado (1 = bajo, 5 = alto)",
+            id_dim_ind == "0116" ~ "Inseguridad percibida (% de población adulta)", 
+            id_dim_ind == "0217" ~ "Matriculación educación preescolar (%)", 
+            id_dim_ind == "0218" ~ "Analfabetismo (% población)",
+            id_dim_ind == "0219" ~ "Matriculación educación primaria (%)", 
+            id_dim_ind == "0220" ~ "Matriculación educación secundaria (%)", 
+            id_dim_ind == "0221" ~ "Paridad de género en educación secundaria (diferencia absoluta de 1)",
+            id_dim_ind == "0222" ~ "Usuarios de telefonía móvil (% población)",
             id_dim_ind == "0223" ~ "Hogares con computadoras (%)",
             id_dim_ind == "0224" ~ "Hogares con conexión a internet (%)",
-            id_dim_ind == "0225" ~ "Tasa de agresión a periodistas", 
-            id_dim_ind == "0226" ~ "Esperanza de vida", 
-            id_dim_ind == "0227" ~ "Tasa de suicidios (tasa por cada 100 mil hbaitantes)",
-            id_dim_ind == "0228" ~ "Mortalidad por enfermedades circulatorias (tasa por cada 100 mil habitantes)", 
-            id_dim_ind == "0229" ~ "Mortalidad por diabetes (tasa por cada 100 mil habitantes)", 
-            id_dim_ind == "0230" ~ "Tasa de obesidad (prevalencia de obsesidad como porcentaje de la población)",
+            id_dim_ind == "0225" ~ "Tasa de agresión a periodistas (agresión / 100,000)", 
+            id_dim_ind == "0226" ~ "Esperanza de vida (años)", 
+            id_dim_ind == "0227" ~ "Tasa de suicidios (suicidios / 100,000)",
+            id_dim_ind == "0228" ~ "Mortalidad por enfermedades circulatorias (muertes / 100,000)", 
+            id_dim_ind == "0229" ~ "Mortalidad por diabetes (muertes / 100,000)", 
+            id_dim_ind == "0230" ~ "Tasa de obesidad (% de la población)",
             id_dim_ind == "0231" ~ "Grado de presión del agua", 
-            id_dim_ind == "0232" ~ "Enterrar o quemar basura (%)", 
-            id_dim_ind == "0233" ~ "Satisfacción con áreas verdes (%)",
-            id_dim_ind == "0234" ~ "Uso de focos ahorradores (%)", 
+            id_dim_ind == "0232" ~ "Enterrar o quemar basura (% hogares)", 
+            id_dim_ind == "0233" ~ "Satisfacción con áreas verdes (% adultos)",
+            id_dim_ind == "0234" ~ "Uso de focos ahorradores (% hogares)", 
             id_dim_ind == "0335" ~ "Hogares con titulo de propiedad (%)", 
             id_dim_ind == "0336" ~ "Participación electoral (% de lista nominal)",
             id_dim_ind == "0337" ~ "Interacción con gobierno electrónico (%)", 
-            id_dim_ind == "0338" ~ "Participación ciudadana en el gobierno", 
+            id_dim_ind == "0338" ~ "Participación ciudadana en el gobierno (# espacios)", 
             id_dim_ind == "0339" ~ "Percepción de corrupción en instituciones que imparten justicia (%)",
-            id_dim_ind == "0340" ~ "Jóvenes de 15 a 24 años que no estudian ni trabajan (%)", 
+            id_dim_ind == "0340" ~ "Jóvenes que no estudian ni trabajan (% población de 15 a 24 años)", 
             id_dim_ind == "0341" ~ "Embarazo adolescente (tasa por cada 100,000 nacidxs vivxs)", 
-            id_dim_ind == "0342" ~ "Incidencia de corrupción",
+            id_dim_ind == "0342" ~ "Incidencia de corrupción (incidencia / 100,000)",
             id_dim_ind == "0343" ~ "Informalidad laboral (% de la población ocupada)", 
-            id_dim_ind == "0344" ~ "Porcentaje de la población ocupada que tarda más de dos horas en el traslado a su trabajo (% de la población ocupada)", 
+            id_dim_ind == "0344" ~ "Tiempo de traslado (% de la población ocupada que toma > 2 hrs)", 
             id_dim_ind == "0345" ~ "Confianza en los vecinos (%)",
-            id_dim_ind == "0346" ~ "Paridad de género en congresos locales", 
+            id_dim_ind == "0346" ~ "Paridad de género en congresos locales (diferencia absoluta de 1)", 
             id_dim_ind == "0347" ~ "Inclusión personas LGBT+ (% que aprueba el matrimonio igualitario)", 
             id_dim_ind == "0348" ~ "Tasa de analfabetización en personas indígenas",
             id_dim_ind == "0349" ~ "Tasa de analfabetización en personas con discapacidad", 
-            id_dim_ind == "0350" ~ "Absorción en eduación superior", 
-            id_dim_ind == "0351" ~ "Cobertura educación superior",
-            id_dim_ind == "0352" ~ "Escolaridad promedio mujeres", 
-            id_dim_ind == "0353" ~ "Paridad de género en posgrado", 
-            id_dim_ind == "0354" ~ "Paridad de género en licenciatura",
-            id_dim_ind == "0355" ~ "Posgrados nacionales de calidad"), 
+            id_dim_ind == "0350" ~ "Absorción en eduación superior (% sigue estudios)", 
+            id_dim_ind == "0351" ~ "Cobertura educación superior (% pob 18-23 años)",
+            id_dim_ind == "0352" ~ "Escolaridad promedio mujeres (# años)", 
+            id_dim_ind == "0353" ~ "Paridad de género en posgrado (diferencia absoluta de 1)", 
+            id_dim_ind == "0354" ~ "Paridad de género en licenciatura (diferencia absoluta de 1)",
+            id_dim_ind == "0355" ~ "Posgrados nacionales de calidad (# / 100,000 habitantes)"), 
         id_dim_ind = case_when(
             id_dim_ind == "0101" ~ "010101",
             id_dim_ind == "0102" ~ "010102",
