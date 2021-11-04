@@ -15,8 +15,9 @@ Sys.setlocale("LC_TIME", "es_ES")
 
 # Cargar paquetería 
 require(pacman)
-p_load(readxl, tidyverse, dplyr, googledrive, 
-    googlesheets4, lubridate, janitor, beepr)
+p_load(readxl, tidyverse, googledrive, 
+    googlesheets4, lubridate, janitor, beepr,
+    gt, data.table, formattable, tidyr)
 
 # Desactiva notación científica
 options(scipen=999)
@@ -29,17 +30,20 @@ mcv_discrete <- c("#6950d8", "#3CEAFA", "#00b783", "#ff6260", "#ffaf84", "#ffbd4
 mcv_semaforo <- c("#00b783", "#E8D92E", "#ffbd41", "#ff6260") # Verde, amarillo, naranja y rojo
 mcv_blacks   <- c("black"  , "#D2D0CD", "#777777")            # Negros
 mcv_morados  <- c("#6950D8", "#A99BE9")                       # Morados
+ips_discrete <- c(
+    '#00B7CE', '#F7943F', '#ACCC4A', '#5A494E', '#C64736'
+)
 
 # Vectores para directorio 
 inp_pib <- "02_datos_crudos/"
 inp_ips <- "03_ips_clean/"
 
 # Activar las credenciales de google
-googledrive::drive_auth("regimedina19@gmail.com")
-googlesheets4::gs4_auth("regimedina19@gmail.com")
+# googledrive::drive_auth("regimedina19@gmail.com")
+# googlesheets4::gs4_auth("regimedina19@gmail.com")
 
-# googledrive::drive_auth("katia@mexicocomovamos.mx")
-# googlesheets4::gs4_auth("katia@mexicocomovamos.mx")
+googledrive::drive_auth("katia@mexicocomovamos.mx")
+googlesheets4::gs4_auth("katia@mexicocomovamos.mx")
 
 # Verificar credenciales 
 googledrive::drive_user()
@@ -72,8 +76,8 @@ df_pib  <- df_pibr                                          %>%
     arrange(desc(value_pib))                                %>% 
     mutate(
         grupo_pib = case_when(
-                                 value_pib >  150000 ~ "PIB per cápita alto" , 
-            value_pib >= 95000 & value_pib <= 150000 ~ "PIB per cápita medio", 
+                                 value_pib >=  150000 ~ "PIB per cápita alto" , 
+            value_pib >= 95000 & value_pib < 150000 ~ "PIB per cápita medio", 
             value_pib <  95000                       ~ "PIB per cápita bajo"), 
         ranking_pib = rank(desc(value_pib)))
 
@@ -95,8 +99,8 @@ df_ips <- df_ipsr                                           %>%
         dim_mean_grupal   = mean(dim_value), 
         dim_rank_grupal   = rank(desc(dim_value)), 
         dim_fort_deb_gr   = case_when(
-            dim_value > (mean(dim_value) + sd(dim_value)) ~ "Desempeño superior", 
-            dim_value < (mean(dim_value) - sd(dim_value)) ~ "Desempeño inferior", 
+            dim_value > (quantile(dim_value, 0.5) + sd(dim_value)) ~ "Desempeño superior", 
+            dim_value < (quantile(dim_value, 0.5) - sd(dim_value)) ~ "Desempeño inferior", 
             T ~ "Desempeño esperado"), 
         dim_name = case_when(
             id_dim == "01" ~ "Necesidades Humanas Básicas", 
@@ -130,8 +134,8 @@ df_ips_componentes <- df_ips_componentesr                   %>%
         comp_mean_grupal   = mean(comp_value), 
         comp_rank_grupal   = rank(desc(comp_value),ties.method = "min"), 
         comp_fort_deb_gr   = case_when(
-            comp_value > (mean(comp_value) + sd(comp_value)) ~ "Desempeño superior", 
-            comp_value < (mean(comp_value) - sd(comp_value)) ~ "Desempeño inferior", 
+            comp_value > (quantile(comp_value, 0.5) + sd(comp_value)) ~ "Desempeño superior", 
+            comp_value < (quantile(comp_value, 0.5) - sd(comp_value)) ~ "Desempeño inferior", 
             T ~ "Desempeño esperado"))                      %>% 
     ungroup()                                               %>% 
     # Agregar nombre de los componentes 
@@ -150,7 +154,7 @@ df_ips_componentes <- df_ips_componentesr                   %>%
             id_comp == "10" ~ "Libertad personal y de elección", 
             id_comp == "11" ~ "Inclusión", 
             id_comp == "12" ~ "Acceso a educación superior"), 
-        id = case_when(
+        id_comp = case_when(
             id_comp == "01" ~ "0101", 
             id_comp == "02" ~ "0102", 
             id_comp == "03" ~ "0103", 
@@ -189,8 +193,8 @@ df_ips_indicadores <- df_ips_indicadoresr                   %>%
         ind_mean_grupal   = mean(ind_value), 
         ind_rank_grupal   = rank(desc(ind_value),ties.method = "min"), 
         ind_fort_deb_gr   = case_when(
-            ind_value > (mean(ind_value) + sd(ind_value)) ~ "Desempeño superior", 
-            ind_value < (mean(ind_value) - sd(ind_value)) ~ "Desempeño inferior", 
+            ind_value > (quantile(ind_value, 0.5) + sd(ind_value)) ~ "Desempeño superior", 
+            ind_value < (quantile(ind_value, 0.5) - sd(ind_value)) ~ "Desempeño inferior", 
             T ~ "Desempeño esperado"))                      %>% 
     ungroup() %>% 
     # Agregar nombre de los indicadores
@@ -198,49 +202,49 @@ df_ips_indicadores <- df_ips_indicadoresr                   %>%
         ind_name = case_when(
             id_dim_ind == "0101" ~ "Carencia por acceso a la alimentación", 
             id_dim_ind == "0102" ~ "Mortalidad materna (razón de muerte materna)", 
-            id_dim_ind == "0103" ~ "Mortalidad infantil",
-            id_dim_ind == "0104" ~ "Mortalidad por enfermedades infecciosas", 
-            id_dim_ind == "0105" ~ "Hogares con disponibilidad de agua dentro de la vivienda", 
-            id_dim_ind == "0106" ~ "Hogares con dotación diaria de agua",
-            id_dim_ind == "0107" ~ "Hogares con servicio sanitario exclusivo para la vivienda", 
-            id_dim_ind == "0108" ~ "Hogares con paredes material frágil", 
-            id_dim_ind == "0109" ~ "Hogares con piso de tierra",
-            id_dim_ind == "0110" ~ "Hogares que cocinan con leña o carbón", 
-            id_dim_ind == "0111" ~ "Hogares en hacinamiento", 
-            id_dim_ind == "0112" ~ "Homicidios (Tasa de homicidios por cada 100 mil habitantes)",
+            id_dim_ind == "0103" ~ "Mortalidad infantil (tasa por cada 100,000 nacidxs vivxs)",
+            id_dim_ind == "0104" ~ "Mortalidad por enfermedades infecciosas (tasa por cada 100,000 habitantes)", 
+            id_dim_ind == "0105" ~ "Hogares con disponibilidad de agua dentro de la vivienda (%)", 
+            id_dim_ind == "0106" ~ "Hogares con dotación diaria de agua (%)",
+            id_dim_ind == "0107" ~ "Hogares con servicio sanitario exclusivo para la vivienda (%)",
+            id_dim_ind == "0108" ~ "Hogares con paredes material frágil (%)",
+            id_dim_ind == "0109" ~ "Hogares con piso de tierra (%)",
+            id_dim_ind == "0110" ~ "Hogares que cocinan con leña o carbón (%)",
+            id_dim_ind == "0111" ~ "Hogares en hacinamiento (%)",
+            id_dim_ind == "0112" ~ "Homicidios (tasa de homicidios por cada 100 mil habitantes)",
             id_dim_ind == "0113" ~ "Peligrosidad de accidentes de tránsito", 
             id_dim_ind == "0114" ~ "Crimen violento", 
             id_dim_ind == "0115" ~ "Crimen organizado",
-            id_dim_ind == "0116" ~ "Percepción de inseguridad en la entidad", 
+            id_dim_ind == "0116" ~ "Percepción de inseguridad en la entidad (%)", 
             id_dim_ind == "0217" ~ "Matriculación educación preescolar", 
-            id_dim_ind == "0218" ~ "Analfabetismo",
+            id_dim_ind == "0218" ~ "Analfabetismo (%)",
             id_dim_ind == "0219" ~ "Matriculación educación primaria", 
             id_dim_ind == "0220" ~ "Matriculación educación secundaria", 
             id_dim_ind == "0221" ~ "Paridad de género en educación secundaria",
-            id_dim_ind == "0222" ~ "Usuarios de telefonía móvil", 
-            id_dim_ind == "0223" ~ "Hogares con computadoras", 
-            id_dim_ind == "0224" ~ "Hogares con conexión a internet",
+            id_dim_ind == "0222" ~ "Usuarios de telefonía móvil (%)",
+            id_dim_ind == "0223" ~ "Hogares con computadoras (%)",
+            id_dim_ind == "0224" ~ "Hogares con conexión a internet (%)",
             id_dim_ind == "0225" ~ "Tasa de agresión a periodistas", 
             id_dim_ind == "0226" ~ "Esperanza de vida", 
-            id_dim_ind == "0227" ~ "Tasa de suicidios",
-            id_dim_ind == "0228" ~ "Mortalidad por enfermedades circulatorias", 
-            id_dim_ind == "0229" ~ "Mortalidad por diabetes", 
-            id_dim_ind == "0230" ~ "Tasa de obesidad",
+            id_dim_ind == "0227" ~ "Tasa de suicidios (tasa por cada 100 mil hbaitantes)",
+            id_dim_ind == "0228" ~ "Mortalidad por enfermedades circulatorias (tasa por cada 100 mil habitantes)", 
+            id_dim_ind == "0229" ~ "Mortalidad por diabetes (tasa por cada 100 mil habitantes)", 
+            id_dim_ind == "0230" ~ "Tasa de obesidad (prevalencia de obsesidad como porcentaje de la población)",
             id_dim_ind == "0231" ~ "Grado de presión del agua", 
-            id_dim_ind == "0232" ~ "Enterrar o quemar basura", 
-            id_dim_ind == "0233" ~ "Satisfacción con áreas verdes",
-            id_dim_ind == "0234" ~ "Uso de focos ahorradores", 
-            id_dim_ind == "0335" ~ "Hogares con titulo de propiedad", 
-            id_dim_ind == "0336" ~ "Participación electoral",
-            id_dim_ind == "0337" ~ "Interacción con gobierno electrónico", 
+            id_dim_ind == "0232" ~ "Enterrar o quemar basura (%)", 
+            id_dim_ind == "0233" ~ "Satisfacción con áreas verdes (%)",
+            id_dim_ind == "0234" ~ "Uso de focos ahorradores (%)", 
+            id_dim_ind == "0335" ~ "Hogares con titulo de propiedad (%)", 
+            id_dim_ind == "0336" ~ "Participación electoral (% de lista nominal)",
+            id_dim_ind == "0337" ~ "Interacción con gobierno electrónico (%)", 
             id_dim_ind == "0338" ~ "Participación ciudadana en el gobierno", 
-            id_dim_ind == "0339" ~ "Percepción de corrupción en instituciones que imparten justicia",
-            id_dim_ind == "0340" ~ "Jóvenes de 15 a 24 años que no estudian ni trabajan", 
-            id_dim_ind == "0341" ~ "Embarazo adolescente", 
+            id_dim_ind == "0339" ~ "Percepción de corrupción en instituciones que imparten justicia (%)",
+            id_dim_ind == "0340" ~ "Jóvenes de 15 a 24 años que no estudian ni trabajan (%)", 
+            id_dim_ind == "0341" ~ "Embarazo adolescente (tasa por cada 100,000 nacidxs vivxs)", 
             id_dim_ind == "0342" ~ "Incidencia de corrupción",
-            id_dim_ind == "0343" ~ "Informalidad laboral", 
-            id_dim_ind == "0344" ~ "Porcentaje de la población ocupada que tarda más de dos horas en el traslado a su trabajo", 
-            id_dim_ind == "0345" ~ "Confianza en los vecinos",
+            id_dim_ind == "0343" ~ "Informalidad laboral (% de la población ocupada)", 
+            id_dim_ind == "0344" ~ "Porcentaje de la población ocupada que tarda más de dos horas en el traslado a su trabajo (% de la población ocupada)", 
+            id_dim_ind == "0345" ~ "Confianza en los vecinos (%)",
             id_dim_ind == "0346" ~ "Paridad de género en congresos locales", 
             id_dim_ind == "0347" ~ "Inclusión personas LGBT+ (% que aprueba el matrimonio igualitario)", 
             id_dim_ind == "0348" ~ "Tasa de analfabetización en personas indígenas",
@@ -251,6 +255,63 @@ df_ips_indicadores <- df_ips_indicadoresr                   %>%
             id_dim_ind == "0353" ~ "Paridad de género en posgrado", 
             id_dim_ind == "0354" ~ "Paridad de género en licenciatura",
             id_dim_ind == "0355" ~ "Posgrados nacionales de calidad"), 
+        id_dim_ind = case_when(
+            id_dim_ind == "0101" ~ "010101",
+            id_dim_ind == "0102" ~ "010102",
+            id_dim_ind == "0103" ~ "010103",
+            id_dim_ind == "0104" ~ "010104",
+            id_dim_ind == "0105" ~ "010205",
+            id_dim_ind == "0106" ~ "010206",
+            id_dim_ind == "0107" ~ "010207",
+            id_dim_ind == "0108" ~ "010308",
+            id_dim_ind == "0109" ~ "010309",
+            id_dim_ind == "0110" ~ "010310",
+            id_dim_ind == "0111" ~ "010311",
+            id_dim_ind == "0112" ~ "010412",
+            id_dim_ind == "0113" ~ "010413",
+            id_dim_ind == "0114" ~ "010414",
+            id_dim_ind == "0115" ~ "010415",
+            id_dim_ind == "0116" ~ "010416",
+            id_dim_ind == "0217" ~ "020517",
+            id_dim_ind == "0218" ~ "020518",
+            id_dim_ind == "0219" ~ "020519",
+            id_dim_ind == "0220" ~ "020520",
+            id_dim_ind == "0221" ~ "020521",
+            id_dim_ind == "0222" ~ "020622",
+            id_dim_ind == "0223" ~ "020623",
+            id_dim_ind == "0224" ~ "020624",
+            id_dim_ind == "0225" ~ "020625",
+            id_dim_ind == "0226" ~ "020726",
+            id_dim_ind == "0227" ~ "020727",
+            id_dim_ind == "0228" ~ "020728",
+            id_dim_ind == "0229" ~ "020729",
+            id_dim_ind == "0230" ~ "020730",
+            id_dim_ind == "0231" ~ "020831",
+            id_dim_ind == "0232" ~ "020832",
+            id_dim_ind == "0233" ~ "020833",
+            id_dim_ind == "0234" ~ "020834",
+            id_dim_ind == "0335" ~ "030935",
+            id_dim_ind == "0336" ~ "030936",
+            id_dim_ind == "0337" ~ "030937",
+            id_dim_ind == "0338" ~ "030938",
+            id_dim_ind == "0339" ~ "030939",
+            id_dim_ind == "0340" ~ "031040",
+            id_dim_ind == "0341" ~ "031041",
+            id_dim_ind == "0342" ~ "031042",
+            id_dim_ind == "0343" ~ "031043",
+            id_dim_ind == "0344" ~ "031044",
+            id_dim_ind == "0345" ~ "031145",
+            id_dim_ind == "0346" ~ "031146",
+            id_dim_ind == "0347" ~ "031147",
+            id_dim_ind == "0348" ~ "031148",
+            id_dim_ind == "0349" ~ "031149",
+            id_dim_ind == "0350" ~ "031250",
+            id_dim_ind == "0351" ~ "031251",
+            id_dim_ind == "0352" ~ "031252",
+            id_dim_ind == "0353" ~ "031253",
+            id_dim_ind == "0354" ~ "031254",
+            id_dim_ind == "0355" ~ "031255",
+        ),
         nivel = "Indicador", 
         id_ind = str_sub(id_dim_ind, 3, 4)) %>% 
     select(
@@ -264,10 +325,201 @@ df_ips_indicadores <- df_ips_indicadoresr                   %>%
 df_ranking_ips <- df_ips            %>%
     bind_rows(df_ips_componentes)   %>% 
     bind_rows(df_ips_indicadores)   %>% 
-    arrange(cve_ent)
+    arrange(cve_ent) %>% 
+    mutate(value = abs(value))
 
 # 3. Guardar -------------------------------------------------------------------
 
 openxlsx::write.xlsx(df_ranking_ips, "03_ips_clean/08_ips_ranking.xlsx", overwrite = T)
+
+# 4. Hacer tablas --------------------------------------------------------------
+grupos <- unique(df_ranking_ips$grupo_pib)
+
+x = 1
+
+tempo_grupo <- df_ranking_ips %>%
+    filter(grupo_pib==grupos[x]) %>% 
+    glimpse
+
+cves <- unique(tempo_grupo$cve_ent)
+i = 1
+tempo_ent <- tempo_grupo %>% 
+    filter(cve_ent==cves[i]) %>% 
+    glimpse
+
+name_ent <- unique(tempo_ent$entidad_abr_m)
+ips_ent <- round(tempo_ent$value[tempo_ent$id=="00"],2)
+ips_ent_rank <- tempo_ent$ips_rank_nacional[tempo_ent$id=="00"]
+ips_ent_fort_deb <- ifelse(
+    unique(tempo_ent$value[tempo_ent$id=="00"]) > as.numeric(quantile(unique(tempo_grupo$value[tempo_ent$id=="00"]), 0.5)+sd(unique(tempo_grupo$value[tempo_ent$id=="00"]))),
+    "Desempeño superior", ifelse(
+        unique(tempo_ent$value[tempo_ent$id=="00"]) < as.numeric(quantile(unique(tempo_grupo$value[tempo_ent$id=="00"]), 0.5)-sd(unique(tempo_grupo$value[tempo_ent$id=="00"]))),
+        "Desempeño inferior", "Desempeño esperado"
+    )
+)
+pib_p_cap <- paste0("$", prettyNum(round(unique(tempo_ent$value_pib)), big.mark = ","))
+pib_p_cap_rank <- unique(tempo_ent$ranking_pib)
+
+tempo_table <- tempo_ent %>% 
+    select(-c(anio, cve_ent, entidad_abr_m, ips_mean_nacional:ips_mean_grupal)) %>% 
+    #filter(!id=="00") %>% 
+    arrange(id) %>% 
+    glimpse
+
+
+
+tempo_table_id <- tempo_table %>% 
+    #filter(str_starts(id, "01")) %>% 
+    mutate(
+        value = prettyNum(round(value, 1), big.mark = ","),
+        ips_fort_deb_gr = ifelse(ips_fort_deb_gr == "Desempeño superior", 1,
+                                 ifelse(ips_fort_deb_gr == "Desempeño esperado", 2, 3))
+    ) %>% 
+    rename(
+        ` ` = name,
+        Puntaje = value, 
+        Posición = ips_rank_grupal,
+        `Fortaleza/debilidad` = ips_fort_deb_gr
+    ) %>% 
+    glimpse
+
+
+tempo_table_id %>% 
+    gt %>% 
+    data_color(
+        columns = `Fortaleza/debilidad`,
+        colors = c(mcv_semaforo[1], mcv_semaforo[3], mcv_semaforo[4])
+    ) %>% 
+    tab_style(
+        style = list(
+            cell_text(weight = "bold", size = "x-large", align = "center")
+        ),
+        locations = cells_body(
+            columns = c(` `, "Puntaje", "Posición"),
+            rows = nchar(id) == 2
+        )
+    ) %>% 
+    tab_style(
+        style = list(
+            cell_text(weight = "bold", size = "large", align = "center")
+        ),
+        locations = cells_body(
+            columns = c(` `, "Puntaje", "Posición"),
+            rows = nchar(id) == 4
+        )
+    ) %>% 
+    tab_style(
+        style = list(
+            cell_text(align = "right")
+        ),
+        locations = cells_body(
+            columns = ` `,
+            rows = nchar(id) == 6
+        )
+    ) %>% 
+    tab_style(
+        style = list(
+            cell_fill(color = ips_discrete[1], alpha = 0.5)
+        ),
+        locations = cells_body(
+            columns = c(` `, "Puntaje", "Posición"),
+            rows = id == "01"
+        ) 
+    ) %>%
+    tab_style(
+        style = list(
+            cell_fill(color = ips_discrete[1], alpha = 0.3)
+        ),
+        locations = cells_body(
+            columns = c(` `, "Puntaje", "Posición"),
+            rows = (nivel == "Componente" & str_sub(id, 1, 2) == "01")
+        ) 
+    )  %>% 
+    tab_style(
+        style = list(
+            cell_fill(color = ips_discrete[2], alpha = 0.5)
+        ),
+        locations = cells_body(
+            columns = c(` `, "Puntaje", "Posición"),
+            rows = id == "02"
+        ) 
+    ) %>%
+    tab_style(
+        style = list(
+            cell_fill(color = ips_discrete[2], alpha = 0.3)
+        ),
+        locations = cells_body(
+            columns = c(` `, "Puntaje", "Posición"),
+            rows = (nivel == "Componente" & str_sub(id, 1, 2) == "02")
+        ) 
+    ) %>%
+    tab_style(
+        style = list(
+            cell_fill(color = ips_discrete[3], alpha = 0.7)
+        ),
+        locations = cells_body(
+            columns = c(` `, "Puntaje", "Posición"),
+            rows = id == "03"
+        ) 
+    ) %>%
+    tab_style(
+        style = list(
+            cell_fill(color = ips_discrete[3], alpha = 0.3)
+        ),
+        locations = cells_body(
+            columns = c(` `, "Puntaje", "Posición"),
+            rows = (nivel == "Componente" & str_sub(id, 1, 2) == "03")
+        ) 
+    ) %>%
+    tab_style(
+        style = list(
+            cell_text(align = "center")
+        ),
+        locations = cells_body(
+            columns = c("Puntaje", "Posición", "Fortaleza/debilidad")
+        )
+    ) %>% 
+    tab_style(
+        style = list(
+            cell_text(color = mcv_semaforo[1])
+        ),
+        locations = cells_body(
+            columns = c("Fortaleza/debilidad"),
+            rows = `Fortaleza/debilidad` == 1
+        )
+    ) %>%
+    tab_style(
+        style = list(
+            cell_text(color = mcv_semaforo[3])
+        ),
+        locations = cells_body(
+            columns = c("Fortaleza/debilidad"),
+            rows = `Fortaleza/debilidad` == 2
+        )
+    ) %>%
+    tab_style(
+        style = list(
+            cell_text(color = mcv_semaforo[4])
+        ),
+        locations = cells_body(
+            columns = c("Fortaleza/debilidad"),
+            rows = `Fortaleza/debilidad` == 3
+        )
+    ) %>%
+    tab_header(
+        title = md(name_ent),
+        subtitle = md(paste0("PIB per cápita ", pib_p_cap, " [", pib_p_cap_rank,"/32]"))
+    ) %>%
+    tab_options(
+        heading.title.font.size = "xx-large",
+        heading.title.font.weight = "bold",
+        heading.subtitle.font.size = "x-large",
+        heading.subtitle.font.weight = "italic",
+    ) %>% 
+    cols_hide(c(nivel, id)) %>% 
+    gtsave("~/desktop/99_test_gt.html")
+
+
+
 
 # FIN. -------------------------------------------------------------------------
