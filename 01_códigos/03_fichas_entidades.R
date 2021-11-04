@@ -201,7 +201,7 @@ df_ips_indicadores <- df_ips_indicadoresr                   %>%
     mutate(
         ind_name = case_when(
             id_dim_ind == "0101" ~ "Carencia por acceso a la alimentación (% de personas)", 
-            id_dim_ind == "0102" ~ "Mortalidad materna (muertes / 100,000 nacimientos)", 
+            id_dim_ind == "0102" ~ "Mortalidad materna (muertes / 100,000 nacidxs vivxs)", 
             id_dim_ind == "0103" ~ "Mortalidad infantil (muertes / 100,000 nacidxs vivxs)",
             id_dim_ind == "0104" ~ "Mortalidad por enfermedades infecciosas (muertes / 100,000 habitantes)", 
             id_dim_ind == "0105" ~ "Hogares con disponibilidad de agua dentro de la vivienda (%)", 
@@ -335,189 +335,203 @@ openxlsx::write.xlsx(df_ranking_ips, "03_ips_clean/08_ips_ranking.xlsx", overwri
 # 4. Hacer tablas --------------------------------------------------------------
 grupos <- unique(df_ranking_ips$grupo_pib)
 
-x = 1
-
-tempo_grupo <- df_ranking_ips %>%
-    filter(grupo_pib==grupos[x]) %>% 
-    glimpse
-
-cves <- unique(tempo_grupo$cve_ent)
-i = 1
-tempo_ent <- tempo_grupo %>% 
-    filter(cve_ent==cves[i]) %>% 
-    glimpse
-
-name_ent <- unique(tempo_ent$entidad_abr_m)
-ips_ent <- round(tempo_ent$value[tempo_ent$id=="00"],2)
-ips_ent_rank <- tempo_ent$ips_rank_nacional[tempo_ent$id=="00"]
-ips_ent_fort_deb <- ifelse(
-    unique(tempo_ent$value[tempo_ent$id=="00"]) > as.numeric(quantile(unique(tempo_grupo$value[tempo_ent$id=="00"]), 0.5)+sd(unique(tempo_grupo$value[tempo_ent$id=="00"]))),
-    "Desempeño superior", ifelse(
-        unique(tempo_ent$value[tempo_ent$id=="00"]) < as.numeric(quantile(unique(tempo_grupo$value[tempo_ent$id=="00"]), 0.5)-sd(unique(tempo_grupo$value[tempo_ent$id=="00"]))),
-        "Desempeño inferior", "Desempeño esperado"
-    )
-)
-pib_p_cap <- paste0("$", prettyNum(round(unique(tempo_ent$value_pib)), big.mark = ","))
-pib_p_cap_rank <- unique(tempo_ent$ranking_pib)
-
-tempo_table <- tempo_ent %>% 
-    select(-c(anio, cve_ent, entidad_abr_m, ips_mean_nacional:ips_mean_grupal)) %>% 
-    #filter(!id=="00") %>% 
-    arrange(id) %>% 
-    glimpse
 
 
-
-tempo_table_id <- tempo_table %>% 
-    #filter(str_starts(id, "01")) %>% 
-    mutate(
-        value = prettyNum(round(value, 1), big.mark = ","),
-        ips_fort_deb_gr = ifelse(ips_fort_deb_gr == "Desempeño superior", 1,
-                                 ifelse(ips_fort_deb_gr == "Desempeño esperado", 2, 3))
-    ) %>% 
-    rename(
-        ` ` = name,
-        Puntaje = value, 
-        Posición = ips_rank_grupal,
-        `Fortaleza/debilidad` = ips_fort_deb_gr
-    ) %>% 
-    glimpse
-
-
-tempo_table_id %>% 
-    gt %>% 
-    data_color(
-        columns = `Fortaleza/debilidad`,
-        colors = c(mcv_semaforo[1], mcv_semaforo[3], mcv_semaforo[4])
-    ) %>% 
-    tab_style(
-        style = list(
-            cell_text(weight = "bold", size = "x-large", align = "center")
-        ),
-        locations = cells_body(
-            columns = c(` `, "Puntaje", "Posición"),
-            rows = nchar(id) == 2
+for(x in 1:length(grupos)){
+    
+    print(grupos[x])
+    
+    tempo_grupo <- df_ranking_ips %>%
+        filter(grupo_pib==grupos[x]) %>% 
+        glimpse
+    cves <- unique(tempo_grupo$cve_ent)
+    
+    for(i in 1:length(cves)){
+        
+        
+        
+        tempo_ent <- tempo_grupo %>% 
+            filter(cve_ent==cves[i]) %>% 
+            glimpse
+        
+        name_ent <- unique(tempo_ent$entidad_abr_m)
+        
+        print(name_ent)
+        
+        ips_ent <- round(tempo_ent$value[tempo_ent$id=="00"],2)
+        ips_ent_rank <- tempo_ent$ips_rank_nacional[tempo_ent$id=="00"]
+        ips_ent_fort_deb <- ifelse(
+            unique(tempo_ent$value[tempo_ent$id=="00"]) > as.numeric(quantile(unique(tempo_grupo$value[tempo_ent$id=="00"]), 0.5)+sd(unique(tempo_grupo$value[tempo_ent$id=="00"]))),
+            "Desempeño superior", ifelse(
+                unique(tempo_ent$value[tempo_ent$id=="00"]) < as.numeric(quantile(unique(tempo_grupo$value[tempo_ent$id=="00"]), 0.5)-sd(unique(tempo_grupo$value[tempo_ent$id=="00"]))),
+                "Desempeño inferior", "Desempeño esperado"
+            )
         )
-    ) %>% 
-    tab_style(
-        style = list(
-            cell_text(weight = "bold", size = "large", align = "center")
-        ),
-        locations = cells_body(
-            columns = c(` `, "Puntaje", "Posición"),
-            rows = nchar(id) == 4
-        )
-    ) %>% 
-    tab_style(
-        style = list(
-            cell_text(align = "right")
-        ),
-        locations = cells_body(
-            columns = ` `,
-            rows = nchar(id) == 6
-        )
-    ) %>% 
-    tab_style(
-        style = list(
-            cell_fill(color = ips_discrete[1], alpha = 0.5)
-        ),
-        locations = cells_body(
-            columns = c(` `, "Puntaje", "Posición"),
-            rows = id == "01"
-        ) 
-    ) %>%
-    tab_style(
-        style = list(
-            cell_fill(color = ips_discrete[1], alpha = 0.3)
-        ),
-        locations = cells_body(
-            columns = c(` `, "Puntaje", "Posición"),
-            rows = (nivel == "Componente" & str_sub(id, 1, 2) == "01")
-        ) 
-    )  %>% 
-    tab_style(
-        style = list(
-            cell_fill(color = ips_discrete[2], alpha = 0.5)
-        ),
-        locations = cells_body(
-            columns = c(` `, "Puntaje", "Posición"),
-            rows = id == "02"
-        ) 
-    ) %>%
-    tab_style(
-        style = list(
-            cell_fill(color = ips_discrete[2], alpha = 0.3)
-        ),
-        locations = cells_body(
-            columns = c(` `, "Puntaje", "Posición"),
-            rows = (nivel == "Componente" & str_sub(id, 1, 2) == "02")
-        ) 
-    ) %>%
-    tab_style(
-        style = list(
-            cell_fill(color = ips_discrete[3], alpha = 0.7)
-        ),
-        locations = cells_body(
-            columns = c(` `, "Puntaje", "Posición"),
-            rows = id == "03"
-        ) 
-    ) %>%
-    tab_style(
-        style = list(
-            cell_fill(color = ips_discrete[3], alpha = 0.3)
-        ),
-        locations = cells_body(
-            columns = c(` `, "Puntaje", "Posición"),
-            rows = (nivel == "Componente" & str_sub(id, 1, 2) == "03")
-        ) 
-    ) %>%
-    tab_style(
-        style = list(
-            cell_text(align = "center")
-        ),
-        locations = cells_body(
-            columns = c("Puntaje", "Posición", "Fortaleza/debilidad")
-        )
-    ) %>% 
-    tab_style(
-        style = list(
-            cell_text(color = mcv_semaforo[1])
-        ),
-        locations = cells_body(
-            columns = c("Fortaleza/debilidad"),
-            rows = `Fortaleza/debilidad` == 1
-        )
-    ) %>%
-    tab_style(
-        style = list(
-            cell_text(color = mcv_semaforo[3])
-        ),
-        locations = cells_body(
-            columns = c("Fortaleza/debilidad"),
-            rows = `Fortaleza/debilidad` == 2
-        )
-    ) %>%
-    tab_style(
-        style = list(
-            cell_text(color = mcv_semaforo[4])
-        ),
-        locations = cells_body(
-            columns = c("Fortaleza/debilidad"),
-            rows = `Fortaleza/debilidad` == 3
-        )
-    ) %>%
-    tab_header(
-        title = md(name_ent),
-        subtitle = md(paste0("PIB per cápita ", pib_p_cap, " [", pib_p_cap_rank,"/32]"))
-    ) %>%
-    tab_options(
-        heading.title.font.size = "xx-large",
-        heading.title.font.weight = "bold",
-        heading.subtitle.font.size = "x-large",
-        heading.subtitle.font.weight = "italic",
-    ) %>% 
-    cols_hide(c(nivel, id)) %>% 
-    gtsave("~/desktop/99_test_gt.html")
+        pib_p_cap <- paste0("$", prettyNum(round(unique(tempo_ent$value_pib)), big.mark = ","))
+        pib_p_cap_rank <- unique(tempo_ent$ranking_pib)
+        
+        tempo_table <- tempo_ent %>% 
+            select(-c(anio, cve_ent, entidad_abr_m, ips_mean_nacional:ips_mean_grupal)) %>% 
+            #filter(!id=="00") %>% 
+            arrange(id) %>% 
+            glimpse
+        
+        
+        
+        tempo_table_id <- tempo_table %>% 
+            #filter(str_starts(id, "01")) %>% 
+            mutate(
+                value = prettyNum(round(value, 1), big.mark = ","),
+                ips_fort_deb_gr = ifelse(ips_fort_deb_gr == "Desempeño superior", 1,
+                                         ifelse(ips_fort_deb_gr == "Desempeño esperado", 2, 3))
+            ) %>% 
+            rename(
+                ` ` = name,
+                Puntaje = value, 
+                Posición = ips_rank_grupal,
+                `Fortaleza/debilidad` = ips_fort_deb_gr
+            ) %>% 
+            glimpse
+        
+        
+        tempo_table_id %>% 
+            gt %>% 
+            data_color(
+                columns = `Fortaleza/debilidad`,
+                colors = c(mcv_semaforo[1], mcv_semaforo[3], mcv_semaforo[4])
+            ) %>% 
+            tab_style(
+                style = list(
+                    cell_text(weight = "bold", size = "x-large", align = "center")
+                ),
+                locations = cells_body(
+                    columns = c(` `, "Puntaje", "Posición"),
+                    rows = nchar(id) == 2
+                )
+            ) %>% 
+            tab_style(
+                style = list(
+                    cell_text(weight = "bold", size = "large", align = "center")
+                ),
+                locations = cells_body(
+                    columns = c(` `, "Puntaje", "Posición"),
+                    rows = nchar(id) == 4
+                )
+            ) %>% 
+            tab_style(
+                style = list(
+                    cell_text(align = "right")
+                ),
+                locations = cells_body(
+                    columns = ` `,
+                    rows = nchar(id) == 6
+                )
+            ) %>% 
+            tab_style(
+                style = list(
+                    cell_fill(color = ips_discrete[1], alpha = 0.5)
+                ),
+                locations = cells_body(
+                    columns = c(` `, "Puntaje", "Posición"),
+                    rows = id == "01"
+                ) 
+            ) %>%
+            tab_style(
+                style = list(
+                    cell_fill(color = ips_discrete[1], alpha = 0.3)
+                ),
+                locations = cells_body(
+                    columns = c(` `, "Puntaje", "Posición"),
+                    rows = (nivel == "Componente" & str_sub(id, 1, 2) == "01")
+                ) 
+            )  %>% 
+            tab_style(
+                style = list(
+                    cell_fill(color = ips_discrete[2], alpha = 0.5)
+                ),
+                locations = cells_body(
+                    columns = c(` `, "Puntaje", "Posición"),
+                    rows = id == "02"
+                ) 
+            ) %>%
+            tab_style(
+                style = list(
+                    cell_fill(color = ips_discrete[2], alpha = 0.3)
+                ),
+                locations = cells_body(
+                    columns = c(` `, "Puntaje", "Posición"),
+                    rows = (nivel == "Componente" & str_sub(id, 1, 2) == "02")
+                ) 
+            ) %>%
+            tab_style(
+                style = list(
+                    cell_fill(color = ips_discrete[3], alpha = 0.7)
+                ),
+                locations = cells_body(
+                    columns = c(` `, "Puntaje", "Posición"),
+                    rows = id == "03"
+                ) 
+            ) %>%
+            tab_style(
+                style = list(
+                    cell_fill(color = ips_discrete[3], alpha = 0.3)
+                ),
+                locations = cells_body(
+                    columns = c(` `, "Puntaje", "Posición"),
+                    rows = (nivel == "Componente" & str_sub(id, 1, 2) == "03")
+                ) 
+            ) %>%
+            tab_style(
+                style = list(
+                    cell_text(align = "center")
+                ),
+                locations = cells_body(
+                    columns = c("Puntaje", "Posición", "Fortaleza/debilidad")
+                )
+            ) %>% 
+            tab_style(
+                style = list(
+                    cell_text(color = mcv_semaforo[1])
+                ),
+                locations = cells_body(
+                    columns = c("Fortaleza/debilidad"),
+                    rows = `Fortaleza/debilidad` == 1
+                )
+            ) %>%
+            tab_style(
+                style = list(
+                    cell_text(color = mcv_semaforo[3])
+                ),
+                locations = cells_body(
+                    columns = c("Fortaleza/debilidad"),
+                    rows = `Fortaleza/debilidad` == 2
+                )
+            ) %>%
+            tab_style(
+                style = list(
+                    cell_text(color = mcv_semaforo[4])
+                ),
+                locations = cells_body(
+                    columns = c("Fortaleza/debilidad"),
+                    rows = `Fortaleza/debilidad` == 3
+                )
+            ) %>%
+            tab_header(
+                title = md(name_ent),
+                subtitle = md(paste0("PIB per cápita ", pib_p_cap, " [", pib_p_cap_rank,"/32]"))
+            ) %>%
+            tab_options(
+                heading.title.font.size = "xx-large",
+                heading.title.font.weight = "bold",
+                heading.subtitle.font.size = "x-large",
+                heading.subtitle.font.weight = "italic",
+            ) %>% 
+            cols_hide(c(nivel, id)) %>% 
+            gtsave(paste0("06_fichas_entidades/0", x, "_", unique(tempo_ent$cve_ent), "_", name_ent, ".html"))
+        
+    }
+    
+}
 
 
 
