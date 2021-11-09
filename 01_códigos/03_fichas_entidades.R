@@ -333,6 +333,8 @@ df_ranking_ips <- df_ips            %>%
 openxlsx::write.xlsx(df_ranking_ips, "03_ips_clean/08_ips_ranking.xlsx", overwrite = T)
 
 # 4. Hacer tablas --------------------------------------------------------------
+
+
 grupos <- unique(df_ranking_ips$grupo_pib)
 
 
@@ -343,6 +345,7 @@ for(x in 1:length(grupos)){
     
     tempo_grupo <- df_ranking_ips %>%
         filter(grupo_pib==grupos[x]) %>% 
+        filter(!id == "020831") %>% 
         glimpse
     cves <- unique(tempo_grupo$cve_ent)
     
@@ -381,7 +384,7 @@ for(x in 1:length(grupos)){
         tempo_table_id <- tempo_table %>% 
             #filter(str_starts(id, "01")) %>% 
             mutate(
-                value = prettyNum(round(value, 1), big.mark = ","),
+                value = ifelse(value>=1, prettyNum(round(value, 1), big.mark = ","), prettyNum(round(value, 3), big.mark = ",")),
                 ips_fort_deb_gr = ifelse(ips_fort_deb_gr == "Desempeño superior", 1,
                                          ifelse(ips_fort_deb_gr == "Desempeño esperado", 2, 3))
             ) %>% 
