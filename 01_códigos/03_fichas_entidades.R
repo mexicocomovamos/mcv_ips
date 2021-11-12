@@ -335,9 +335,16 @@ openxlsx::write.xlsx(df_ranking_ips, "03_ips_clean/08_ips_ranking.xlsx", overwri
 # 4. Hacer tablas --------------------------------------------------------------
 
 
+
+df_ranking_ips <- df_ranking_ips %>% 
+    select(-entidad_abr_m) %>% 
+    left_join(
+        readxl::read_excel("02_datos_crudos/00_cve_ent.xlsx") %>% 
+            select(cve_ent, entidad)
+    ) %>% 
+    select(anio, cve_ent, entidad, everything()) 
+
 grupos <- unique(df_ranking_ips$grupo_pib)
-
-
 
 for(x in 1:length(grupos)){
     
@@ -357,7 +364,7 @@ for(x in 1:length(grupos)){
             filter(cve_ent==cves[i]) %>% 
             glimpse
         
-        name_ent <- unique(tempo_ent$entidad_abr_m)
+        name_ent <- unique(tempo_ent$entidad)
         
         print(name_ent)
         
@@ -374,7 +381,7 @@ for(x in 1:length(grupos)){
         pib_p_cap_rank <- unique(tempo_ent$ranking_pib)
         
         tempo_table <- tempo_ent %>% 
-            select(-c(anio, cve_ent, entidad_abr_m, ips_mean_nacional:ips_mean_grupal)) %>% 
+            select(-c(anio, cve_ent, entidad, ips_mean_nacional:ips_mean_grupal)) %>% 
             #filter(!id=="00") %>% 
             arrange(id) %>% 
             glimpse

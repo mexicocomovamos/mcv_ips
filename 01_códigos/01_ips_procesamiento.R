@@ -436,7 +436,7 @@ ggplot(data =
            filter(id_dim == "00") %>% 
            mutate(dim = case_when(
                id_dim == "00" ~ "0. Índice de Progreso Social",
-               id_dim == "01" ~ "1. Necesidades Básicas Humanas",
+               id_dim == "01" ~ "1. Necesidades Humanas Básicas",
                id_dim == "02" ~ "2. Fundamentos del Bienestar",
                T ~ "3. Oportunidades"
            )),
@@ -479,8 +479,8 @@ ggplot(data =
 ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
 ggsave(filename = "05_infobites/00_IPS_heatmap.png", width = 23, height = 12, dpi = 100)
 
-### 1.1. Necesidades Básicas Humanas ----
-titulo <- "Dim 1. Necesidades Básicas Humanas"
+### 1.1. Necesidades Humanas Básicas  ----
+titulo <- "Dim 1. Necesidades Humanas Básicas"
 subtitulo <- "2015 - 2020"
 eje_x <- ""
 eje_y <- "Años"
@@ -492,7 +492,7 @@ g <-
                filter(id_dim == "01") %>% 
                mutate(dim = case_when(
                    id_dim == "00" ~ "0. Índice de Progreso Social",
-                   id_dim == "01" ~ "1. Necesidades Básicas Humanas",
+                   id_dim == "01" ~ "1. Necesidades Humanas Básicas",
                    id_dim == "02" ~ "2. Fundamentos del Bienestar",
                    T ~ "3. Oportunidades"
                )),
@@ -548,7 +548,7 @@ g <-
                filter(id_dim == "02") %>% 
                mutate(dim = case_when(
                    id_dim == "00" ~ "0. Índice de Progreso Social",
-                   id_dim == "01" ~ "1. Necesidades Básicas Humanas",
+                   id_dim == "01" ~ "1. Necesidades Humanas Básicas",
                    id_dim == "02" ~ "2. Fundamentos del Bienestar",
                    T ~ "3. Oportunidades"
                )),
@@ -604,7 +604,7 @@ g <-
                filter(id_dim == "03") %>% 
                mutate(dim = case_when(
                    id_dim == "00" ~ "0. Índice de Progreso Social",
-                   id_dim == "01" ~ "1. Necesidades Básicas Humanas",
+                   id_dim == "01" ~ "1. Necesidades Humanas Básicas",
                    id_dim == "02" ~ "2. Fundamentos del Bienestar",
                    T ~ "3. Oportunidades"
                )),
@@ -873,7 +873,7 @@ for(i in 1:33){
     a <- ips_final  %>% 
         mutate(dim = case_when(
             id_dim == "00" ~ "0. Índice de Progreso Social",
-            id_dim == "01" ~ "1. Necesidades Básicas Humanas",
+            id_dim == "01" ~ "1. Necesidades Humanas Básicas",
             id_dim == "02" ~ "2. Fundamentos del Bienestar",
             T ~ "3. Oportunidades"
         )) %>% 
@@ -1099,3 +1099,49 @@ ips_cambios_2019_2020 <- ips_final %>%
         dif = anio_2020-anio_2019
     )
 
+# 5. Transformación para Omar ----
+ips_final <- readxl::read_excel("03_ips_clean/00_IPS_COMPLETE_LONG.xlsx") %>% 
+    glimpse
+
+
+
+
+openxlsx::write.xlsx(
+    ips_final %>% 
+        filter(id_dim=="00", as.numeric(cve_ent) < 33) %>% 
+        select(anio, entidad_abr_m, value = dim_value) %>% 
+        pivot_wider(
+            names_from = entidad_abr_m, values_from = value
+        ),
+    "03_ips_clean/09_data_web/00_ips.xlsx"
+)
+
+openxlsx::write.xlsx(
+    ips_final %>% 
+        filter(id_dim=="01", as.numeric(cve_ent) < 33) %>% 
+        select(anio, entidad_abr_m, value = dim_value) %>% 
+        pivot_wider(
+            names_from = entidad_abr_m, values_from = value
+        ),
+    "03_ips_clean/09_data_web/01_nhb.xlsx"
+)
+
+openxlsx::write.xlsx(
+    ips_final %>% 
+        filter(id_dim=="02", as.numeric(cve_ent) < 33) %>% 
+        select(anio, entidad_abr_m, value = dim_value) %>% 
+        pivot_wider(
+            names_from = entidad_abr_m, values_from = value
+        ),
+    "03_ips_clean/09_data_web/02_fb.xlsx"
+)
+
+openxlsx::write.xlsx(
+    ips_final %>% 
+        filter(id_dim=="03", as.numeric(cve_ent) < 33) %>% 
+        select(anio, entidad_abr_m, value = dim_value) %>% 
+        pivot_wider(
+            names_from = entidad_abr_m, values_from = value
+        ),
+    "03_ips_clean/09_data_web/03_op.xlsx"
+)
