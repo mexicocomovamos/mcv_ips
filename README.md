@@ -10,7 +10,7 @@
 El **Índice de Progreso Social (IPS)** es una sólida medición del desempeño social en los estados del país y es independiente de factores que miden ingreso o gasto. El **Índice** se calcula a partir de un rango de indicadores sociales y ambientales que capturan tres dimensiones del progreso social:
 
 **Necesidades Humanas Básicas, Fundamentos del Bienestar y Oportunidades.**
-> Aunque esta medida es independiente de indicadores monetizables –como ingreso, gasto pú blico o actividad económica–, el IPS no busca reemplazarlos sino complementarlos. Su propó sito principal es evaluar aquellas preguntas que realmente importan en la vida de las personas: ¿tengo un hogar que me brinde protección? ¿Tengo suficiente para comer? ¿Tengo acceso a educación? 
+> Aunque esta medida es independiente de indicadores monetizables –como ingreso, gasto público o actividad económica–, el IPS no busca reemplazarlos sino complementarlos. Su propósito principal es evaluar aquellas preguntas que realmente importan en la vida de las personas: ¿tengo un hogar que me brinde protección? ¿Tengo suficiente para comer? ¿Tengo acceso a educación? 
 
 
 <p>&nbsp;</p>
@@ -24,7 +24,7 @@ El IPS es un modelo integral para medir el **desarrollo humano** que no incluye 
 3. Indicadores relevantes para el contexto.
 4. Indicadores que puedan ser objetivo de políticas públicas o intervenciones sociales.
 
->El modelo del Índice de Progreso Social sintetiza una gran cantidad de investigaciones, que en fatizan la importancia de ir más allá del PIB para medir el desarrollo de un país, estado o de marcación, y que identifican los elementos sociales y ambientales dentro del desempeño de las sociedades.
+>El modelo del Índice de Progreso Social sintetiza una gran cantidad de investigaciones, que enfatizan la importancia de ir más allá del PIB para medir el desarrollo de un país, estado o demarcación, y que identifican los elementos sociales y ambientales dentro del desempeño de las sociedades.
 
 
 
