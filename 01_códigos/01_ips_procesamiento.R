@@ -1,9 +1,10 @@
-# 0. Configuración inicial ----
+# 0. Configuración inicial -----------------------------------------------------
 
 options(scipen=999)
 Sys.setlocale("LC_TIME", "es_ES")
 
-## 0.1. Paquetes ----
+## 0.1. Paquetes ---------------------------------------------------------------
+
 if(!require("lubridate")) install.packages("lubridate") & require("lubridate")
 if(!require("readxl")) install.packages("readxl") & require("readxl")
 if(!require("zoo")) install.packages("zoo") & require("zoo")
@@ -43,108 +44,128 @@ mcv_semaforo <- c(
 mcv_blacks <- c("black", "#D2D0CD", "#777777")
 
 ## 0.2. Tokens ----
-google_token <- "TU TOKEN"
+google_token <- "AIzaSyDF4E80nih1fBMPg785wYO-ruAKgJiEdW0"
+
+# ---- Activar las credenciales de google
+# v_usuaria <- "regina"
+# v_usuaria <- "katia"
+v_usuaria <- "juvenal"
+
+googledrive::drive_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
+googlesheets4::gs4_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
+
 
 # Obtener identificador de la base de del IPS 
+# Liga actual de la base!!! 
 v_id <- as.character(
     googledrive::drive_get(
         "https://docs.google.com/spreadsheets/d/1hi5qzhpZz1S7_TFe68lqMQCYUFOEQjRejMOlvSTjw0w/edit#gid=1859408845")[1, 2])
-1
+
 # Función para importar de manera más corta desde drive
 imp_dv <- function(x, y){
     googlesheets4::read_sheet(
         paste0("https://docs.google.com/spreadsheets/d/", x), sheet = y)}
 
-# 1. Consolidación de bd ----
-anio_vec <- 2015:2021
+# 1. Consolidación de bd -------------------------------------------------------
+anio_vec <- 2015:2022
 ips_wide <- data.frame()
 ips_long <- data.frame()
 ips_direccion <- data.frame()
+# x = 2
+# unique(ips_tempo$id_indicador)
+# ips_tempo <-
+#     readxl::read_excel("02_datos_crudos/00_IPS_bd.xlsx", sheet = 2)
 for(x in 1:length(anio_vec)){
-    
     print(
         paste0(
             "Proceso para ",
             anio_vec[x]
         )
     )
-    
     ips_complete <- data.frame()
+    # i = 6
     for(i in 3:58){
         print(i)
-        ips_tempo <- readxl::read_excel("02_datos_crudos/00_IPS_bd.xlsx", sheet = i) %>% 
-            # imp_dv(v_id, i) %>% 
+        ips_tempo <-
+            readxl::read_excel("02_datos_crudos/00_IPS_bd.xlsx", sheet = i) %>%
+            mutate(cve_ent = as.character(cve_ent)) %>%
+            mutate(cve_ent = str_remove_all(cve_ent, "\\.\\d+")) %>%
+            # imp_dv(v_id, i) %>%
             mutate_at(
                 vars(c(contains("value"),contains("anio"))),
                 ~as.numeric(str_remove_all(as.character(.),"[[:blank:]]"))
-            ) %>% 
+            ) %>%
             mutate_at(
                 vars(c(starts_with("id"), starts_with("cve"))),
-                ~as.character(str_pad(.,2,"l","0"))
-            ) %>% 
+                ~as.character(str_pad(.,2,"left","0"))
+            ) %>%
             mutate(
                 anio_dist = anio-anio_vec[x]
-            ) %>% 
-            filter(anio_dist<=0) %>% 
-            mutate(anio_dist = abs(anio_dist)) %>% 
-            filter(anio_dist == min(anio_dist)) %>% 
+            ) %>%
+            filter(anio_dist<=0) %>%
+            mutate(anio_dist = abs(anio_dist)) %>%
+            filter(anio_dist == min(anio_dist)) %>%
             select(-contains("drop"))
-        
-        
-        ips_complete <- bind_rows(ips_complete, ips_tempo)
-        
-        # Sys.sleep(2.5) 
-        
+        ips_complete <- bind_rows(ips_complete, ips_tempo) %>%
+            as_tibble()
+        # is.na(ips_complete$indicador_value) %>% table()
+        # %>%
+        #     as_tibble() %>%
+        #     mutate(cve_ent = str_remove_all(cve_ent, pattern = "\\.0"))
+        # Sys.sleep(2.5)
     }
-    
-    ips_complete <- ips_complete %>% 
-        select(-contains("drop")) %>% 
+    ips_complete <- ips_complete %>%
+        select(-contains("drop")) %>%
         select(-contains("dist"))
-    
     ips_long <- bind_rows(
-        ips_long, 
-        ips_complete %>% 
-            mutate(anio = anio_vec[x], id_dim_ind = paste0(id_dimension, id_indicador)) %>% 
-            select(cve_ent, anio, entidad_abr_m, id_dim_ind, indicador_value) %>% 
+        ips_long,
+        ips_complete %>%
+            mutate(anio = anio_vec[x], id_dim_ind = paste0(id_dimension, id_indicador)) %>%
+            select(cve_ent, anio, entidad_abr_m, id_dim_ind, indicador_value) %>%
             drop_na(id_dim_ind)
-    ) 
-    
-    ips_wide_tempo <- ips_complete %>% 
+    )
+    # is.na(ips_long$indicador_value) %>% table()
+    ips_wide_tempo <- ips_complete %>%
         left_join(
-            readxl::read_excel("02_datos_crudos/00_IPS_bd.xlsx", sheet = 2) %>%  
-            # imp_dv(v_id, 2) %>% 
-                select(id_dimension:direccion,utopia,distopia)
-        ) %>% 
+            readxl::read_excel("02_datos_crudos/00_IPS_bd.xlsx", sheet = 2) %>%
+                # imp_dv(v_id, 2) %>%
+                select(id_dimension:direccion, utopia, distopia)
+        ) %>%
+        mutate(cve_ent = as.character(cve_ent)) %>%
         mutate(
             indicador_value_abs = indicador_value*direccion
-        ) %>% 
-        arrange(desc(anio)) %>% 
-        distinct(cve_ent, id_dimension, indicador_value_abs, .keep_all = T) %>% 
-        select(cve_ent:indicador_value_abs) %>% 
-        drop_na(indicador_value_abs) %>% 
-        mutate(indicador_value_abs = round(indicador_value_abs,4)) %>% 
-        mutate(id_unica = paste0("ind_",id_dimension, id_indicador)) %>% 
-        select(cve_ent, entidad_abr_m, id_unica, indicador_value_abs) %>% 
-        arrange(id_unica) %>% 
-        pivot_wider(names_from = id_unica, values_from = indicador_value_abs) %>% 
-        mutate(anio = anio_vec[x]) %>% 
-        select(cve_ent, anio, everything()) 
-    
+        ) %>%
+        arrange(desc(anio)) %>%
+        # distinct(cve_ent, anio, id_dimension, indicador_value_abs, .keep_all = T) %>%
+        select(cve_ent:indicador_value_abs) %>%
+        drop_na(indicador_value_abs) %>%
+        mutate(indicador_value_abs = round(indicador_value_abs,4)) %>%
+        mutate(id_unica = paste0("ind_",id_dimension, id_indicador)) %>%
+        select(cve_ent, entidad_abr_m, id_unica, indicador_value_abs) %>%
+        arrange(id_unica) %>%
+        pivot_wider(names_from = id_unica, values_from = indicador_value_abs) %>%
+        mutate(anio = anio_vec[x]) %>%
+        select(cve_ent, anio, everything())
     ips_wide <- bind_rows(
         ips_wide, ips_wide_tempo
     )
-    
-    
 }
+
+ips_wide
+
+# ips_long[(as.numeric(ips_long$cve_ent) > 32),]
 
 table(ips_long$id_dim_ind)
 table(is.na(ips_long$indicador_value))
+table(is.na(ips_wide$indicador_value))
 
-# 2. Direcciones ----
+# 2. Direcciones ---------------------------------------------------------------
+
 ips_uto_disto_discrecionales <- imp_dv(v_id, 2) %>% 
     select(id_dimension:direccion,utopia,distopia)
-1
+
 ips_direccion <- ips_long %>% 
+    # filter(id_dim_ind == "0103") %>% 
     left_join(
         ips_uto_disto_discrecionales %>% 
             mutate(id_dim_ind = paste0(id_dimension, id_indicador))
@@ -160,7 +181,9 @@ ips_direccion <- ips_long %>%
     select(
         cve_ent, entidad_abr_m, anio, id_dimension, id_indicador, indicador_value,
         id_componente, direccion, indicador_value_abs, utopia, distopia
-    )
+    ) %>% 
+    as_tibble()
+
 table(is.na(ips_direccion$indicador_value_abs))
 openxlsx::write.xlsx(ips_long, "03_ips_clean/01_ips_long.xlsx")
 openxlsx::write.xlsx(ips_wide, "03_ips_clean/02_ips_wide.xlsx")
@@ -170,24 +193,26 @@ ips_long <- readxl::read_excel("03_ips_clean/01_ips_long.xlsx")
 ips_wide <- readxl::read_excel("03_ips_clean/02_ips_wide.xlsx") 
 ips_direccion <- readxl::read_excel("03_ips_clean/03_ips_direccion.xlsx")
 
+# ips_wide$ind_0256
 
-# 3. Estadística descriptiva ----
-## 3.1. Estadísticos ----
+# 3. Estadística descriptiva ---------------------------------------------------
+## 3.1. Estadísticos -----------------------------------------------------------
+# ips_wide$ind_0102
+
 ips_stats <- ips_wide %>% 
     psych::describe(quant=c(.25,.5,.75,1)) %>%
     as_tibble(rownames="indicador")  %>%
     print()
 
 openxlsx::write.xlsx(ips_stats, "03_ips_clean/04_ips_stats.xlsx")
-
 ips_stats <- readxl::read_excel("03_ips_clean/04_ips_stats.xlsx")
 
-## 3.2. Histogramas ----
+## 3.2. Histogramas ------------------------------------------------------------
 ggplot(
     ips_long %>% 
         filter(!cve_ent == "00"),
     aes(x = indicador_value)
-) + 
+) + labs(title = "Histograma de los valores de la variable") + 
     facet_wrap(~id_dim_ind,scales = "free")+
     geom_density()
 
@@ -225,7 +250,6 @@ utop_distop_long <- ips_direccion %>%
 
 openxlsx::write.xlsx(utop_distop_long, "03_ips_clean/05_ips_utop_distop_long.xlsx")
 
-
 utop_distop_wide <- bind_cols(
     tribble(~cve_ent, ~entidad_abr_m,
             "98", "Utopía",
@@ -237,6 +261,7 @@ utop_distop_wide <- bind_cols(
                 as_data_frame() 
         )
 )
+
 length(names(utop_distop_wide)[3:length(names(utop_distop_wide))])==length(unique(utop_distop_long$id_unica))
 names(utop_distop_wide)[3:length(names(utop_distop_wide))] <- unique(utop_distop_long$id_unica)
 
@@ -247,18 +272,16 @@ ips_wide <- ips_wide %>%
         utop_distop_wide
     )
 
-
-# 5. Normalización ----
+# 5. Normalización -------------------------------------------------------------
 ips_wide_norm <- bind_cols(
     ips_wide[1:3],
     as.data.frame(scale(ips_wide[4:59])) 
 )
 
-
 openxlsx::write.xlsx(ips_wide_norm, paste0("03_ips_clean/07_ips_wide_norm_complete.xlsx"))
 
+# 6. Alfas de Cronbach y KMO ---------------------------------------------------
 
-# 6. Alfas de Cronbach y KMO ----
 ids_comp <- imp_dv(v_id, 2) %>% 
     select(id_dimension:direccion,utopia,distopia) %>% 
     mutate(id_comp = paste0(id_dimension, id_indicador, "_", id_componente, "comp")) %>% 
@@ -288,25 +311,57 @@ ids_comp_vec <- str_sub(ids_comp$id_comp, -6) %>%
 
 ids_comp_vec <- as.character(ids_comp_vec$value)
 
-alphas <- list()
-kmos <- list()
+alphas  <- list()
+kmos    <- list()
 
+# i = 1
 for(i in 1:length(ids_comp_vec)){
     
-    tempo <- ips_comp %>% 
+    tempo       <- ips_comp %>% 
         select(ends_with(ids_comp_vec[i]))
     
     alpha_tempo <- psych::alpha(tempo, check.keys=TRUE)
-    kmo_tempo <- psych::KMO(tempo)
+    kmo_tempo   <- psych::KMO(tempo)
     
     
-    alphas[i] <- list(alpha_tempo)
-    kmos[i] <- list(kmo_tempo)
-    
-    
-    
+    alphas[i]   <- list(alpha_tempo)
+    # El análisis de KMO debería ser después del PCA
+    kmos[i]     <- list(kmo_tempo)
     
 }
+
+tabla_alfas <- lapply(1:length(alphas), function(i){
+    vcj = alphas[[i]]$feldt %>% as.vector()
+    attributes(vcj) <- NULL
+    vcj = (vcj %>% unlist())[1:3]
+    names(vcj) <- NULL
+    tibble(componente = i, 
+           lim_inf = vcj[1], 
+           alpha = vcj[2],
+           lim_sup = vcj[3]) %>% return()
+}) %>% 
+    do.call(rbind, .)
+
+# i = 1
+tabla_kmos <- lapply(1:length(kmos), function(i){
+    vcj = kmos[[i]]$MSA  %>% as.vector()
+    vcj_i <- kmos[[i]]$MSAi
+    attributes(vcj_i) <- NULL
+    
+    tibble(componente = i, 
+           names = c(names(kmos[[i]]$MSAi), str_c("componente ", i)), 
+           values = c(vcj_i, vcj))
+    
+           }) %>% 
+    do.call(rbind, .)
+
+tabla_kmos %>% 
+    filter(str_detect(names, "componente"))
+tabla_kmos %>% 
+    arrange(-values)
+
+openxlsx::write.xlsx(tabla_alfas, "04_análisis_factorial/01_solo_alphas.xlsx")
+openxlsx::write.xlsx(tabla_kmos, "04_análisis_factorial/02_tablas_kmos.xlsx")
 
 
 # Output alphas y KMO
@@ -314,34 +369,50 @@ for(i in 1:12){
     print(paste0("COMPONENTE ", i))
     print(alphas[[i]])
     print(kmos[[i]])
-    
 }
 
-# 7. Estimación de factores ----
+# 7. Estimación de factores ----------------------------------------------------
+
 drop_names <- unique(paste0(str_sub(ids_comp$id_comp,1,2), str_sub(ids_comp$id_comp,-7)))
 coefs <- data.frame()
 ips_wide_fac <- ips_wide # %>% 
     # filter(!anio == 2021)
-valores_esperados <- ips_wide_fac[1:3]
-valores_esperados_norm <- ips_wide_fac[1:3]
+
+valores_esperados       <- ips_wide_fac[1:3]
+valores_esperados_norm  <- ips_wide_fac[1:3]
+
+## 1. Modelo PCA
+## 2. Estimar KMOs
+## 3. Pondear y reescalar
+
+# i = 1
 for(i in 1:length(ids_comp_vec)){
     
+    # COn los normalizados: 
     tempo <- ips_comp %>% 
         select(ends_with(ids_comp_vec[i]))
-    
-    
+    # cor(tempo)
     coefs_tempo <- 
-    fa(tempo, nfactors = 1, scores="regression", rotate = "varimax")$weights %>% 
+    fa(tempo, nfactors = 1, 
+       scores="regression", 
+       rotate = "varimax")$weights %>% 
         as_data_frame() %>% 
         rename(coefs = MR1) %>% 
-        mutate(id_comp = str_pad(i, 2, "l", "0"))
+        mutate(id_comp = str_pad(i, 2, "left", "0"))
     
-    tempo_fac <- fa(tempo, nfactors = 1, scores="regression", rotate = "varimax")$scores %>% 
+    tempo_fac <- fa(tempo, nfactors = 1,
+                    scores="regression",
+                    rotate = "varimax")$scores %>% 
         as_data_frame()
+    # tempo_fac$MR1 %>% is.na() %>% table() # Aqui
     
     valores_esperados_tempo <- tempo_fac %>% 
         rename_all(~paste0(drop_names[i]))
+    # is.na(tempo[,4]) %>%
+    #     as.vector() %>%
+    #     table()
     
+    # Reescalar a valores entre 0 y 100 
     valores_esperados_norm_tempo <- 
         scales::rescale(as.numeric(tempo_fac$MR1), to = c(0,100)) %>% 
             as_data_frame() %>% 
@@ -351,13 +422,24 @@ for(i in 1:length(ids_comp_vec)){
     valores_esperados <- bind_cols(valores_esperados, valores_esperados_tempo)
     valores_esperados_norm <- bind_cols(valores_esperados_norm, valores_esperados_norm_tempo)
     
-    
 }
 
-
-
+valores_esperados_norm
+table(is.na(valores_esperados_norm$`01_01comp`))
 rm(drop_names)
 
+# h = 1
+
+# Checar componente 8
+# valores_esperados_norm$`02_08comp`
+lapply(1:ncol(valores_esperados_norm), function(h){
+    is.na(valores_esperados_norm[h]) %>% 
+        as.vector() %>% 
+        table()
+})
+
+
+# Sacar promedios para estimar el puntaje de las dimensiones y del IPS
 ips_final <- valores_esperados_norm %>% 
     select(cve_ent, anio, entidad_abr_m, starts_with("0")) %>% 
     pivot_longer(
@@ -368,7 +450,7 @@ ips_final <- valores_esperados_norm %>%
     group_by(cve_ent, anio, entidad_abr_m, id_dim) %>% 
     summarise(dim_value = mean(value)) %>% 
     bind_rows(
-        
+        # IPS completo 
         valores_esperados_norm %>% 
             select(cve_ent, anio, entidad_abr_m, starts_with("0")) %>% 
             pivot_longer(
@@ -386,6 +468,7 @@ ips_final <- valores_esperados_norm %>%
     arrange(cve_ent, anio) %>% 
     ungroup()
 
+ips_final[is.na(ips_final$dim_value),]
 table(is.na(ips_final$dim_value))
 
 
@@ -443,10 +526,8 @@ writeData(
 
 saveWorkbook(wb, "03_ips_clean/00_IPS_COMPLETE_WIDE.xlsx", overwrite = T)
 
+# 8. Infobites -----------------------------------------------------------------
 
-
-
-# 8. Infobites ----
 ips_final <- readxl::read_excel("03_ips_clean/00_IPS_COMPLETE_LONG.xlsx")
 # Colores MCV
 mcv_discrete <- c("#6950d8", "#00b783", "#ff6260", "#ffaf84", "#ffbd41", "#3CEAFA")
@@ -459,7 +540,7 @@ mxmap <- mxstate.map %>%
     rename(cve_ent = region) %>% 
     left_join(
         ips_final %>% 
-            filter(anio == 2021, id_dim == "00", !cve_ent == "00") %>% 
+            filter(anio == 2022, id_dim == "00", !cve_ent == "00") %>% 
             select(cve_ent, id_dim, entidad_abr_m, dim_value) 
     ) 
 
@@ -491,7 +572,7 @@ g1 <-
 
 d <- 
     ips_final %>% 
-    filter(anio == 2021, id_dim == "00", !cve_ent == "00") %>% 
+    filter(anio == 2022, id_dim == "00", !cve_ent == "00") %>% 
     select(cve_ent, id_dim, entidad_abr_m, dim_value) %>% 
     arrange(desc(dim_value)) %>% 
     glimpse
@@ -533,7 +614,7 @@ g_plot <-
     ggpubr::ggarrange(g1, g2, widths = c(2,0.7))
 
 titulo <- "Índice de Progreso Social"
-subtitulo <- "2021"
+subtitulo <- "2022"
 
 g_plot <- 
     ggpubr::annotate_figure(
@@ -545,10 +626,11 @@ g_plot <- ggimage::ggbackground(g_plot, "05_infobites/00_plantillas/00_IPS.pdf")
 ggsave(filename = "05_infobites/00_IPS_mapa.png", width = 23, height = 12, dpi = 100)
 ggsave(filename = "05_infobites/00_IPS_mapa.svg", width = 23, height = 12, dpi = 100)
 
-## 1. Heatmaps ----
-### 1.0. IPS ----
+## 1. Heatmaps -----------------------------------------------------------------
+### 1.0. IPS -------------------------------------------------------------------
+
 titulo <- "Índice de Progreso Social"
-subtitulo <- "2015 - 2021"
+subtitulo <- "2015 - 2022"
 eje_x <- ""
 eje_y <- "Años"
 
@@ -570,7 +652,7 @@ ggplot(data =
     geom_text(aes(label = round(dim_value,1)), family = "Ubuntu", size = 4) +
     scale_fill_gradient2("", low = mcv_semaforo[4], mid = mcv_semaforo[2], high = mcv_semaforo[1],midpoint = 62)  +
     guides(label = "none") +
-    scale_x_discrete(position = "top")+
+    scale_x_discrete(position = "bottom")+
     # Etiquetas
     labs(
         title = titulo, 
@@ -621,7 +703,8 @@ ggplot(data =
     geom_text(aes(label = round(dim_value,1)), family = "Ubuntu", size = 4) +
     scale_fill_gradient2("", low = mcv_semaforo[4], mid = mcv_semaforo[2], high = mcv_semaforo[1],midpoint = 62)  +
     guides(label = "none") +
-    scale_x_discrete(position = "top")+
+    scale_x_continuous(position = "bottom", 
+                       breaks = min(ips_final$anio, na.rm = T):max(ips_final$anio, na.rm = T)) +
     # Etiquetas
     labs(
         title = titulo, 
@@ -658,7 +741,7 @@ ggsave(filename = "05_infobites/00_en_cifras_ips/00_IPS.svg",
 
 ### 1.1. Necesidades Humanas Básicas  ----
 titulo <- "Dim 1. Necesidades Humanas Básicas"
-subtitulo <- "2015 - 2021"
+subtitulo <- "2015 - 2022"
 eje_x <- ""
 eje_y <- "Años"
 
@@ -731,7 +814,8 @@ ggplot(data =
     geom_text(aes(label = round(dim_value,1)), family = "Ubuntu", size = 4) +
     scale_fill_gradient2("", low = mcv_semaforo[4], mid = mcv_semaforo[2], high = mcv_semaforo[1],midpoint = 62)  +
     guides(label = "none") +
-    scale_x_discrete(position = "top")+
+    scale_x_continuous(position = "bottom", 
+                       breaks = min(ips_final$anio, na.rm = T):max(ips_final$anio, na.rm = T)) +
     # Etiquetas
     labs(
         title = titulo, 
@@ -766,9 +850,10 @@ ggsave(filename = "05_infobites/00_en_cifras_ips/01_00_NHB.png",
 ggsave(filename = "05_infobites/00_en_cifras_ips/01_00_NHB.svg", 
        width = 12, height = 23, dpi = 200)
 
-### 1.2. Fundamentos del Bienestar ----
+### 1.2. Fundamentos del Bienestar ---------------------------------------------
+
 titulo <- "Dim 2. Fundamentos del Bienestar"
-subtitulo <- "2015 - 2021"
+subtitulo <- "2015 - 2022"
 eje_x <- ""
 eje_y <- "Años"
 
@@ -841,7 +926,8 @@ ggplot(data =
     geom_text(aes(label = round(dim_value,1)), family = "Ubuntu", size = 4) +
     scale_fill_gradient2("", low = mcv_semaforo[4], mid = mcv_semaforo[2], high = mcv_semaforo[1],midpoint = 62)  +
     guides(label = "none") +
-    scale_x_discrete(position = "top")+
+    scale_x_continuous(position = "bottom", 
+                       breaks = min(ips_final$anio, na.rm = T):max(ips_final$anio, na.rm = T)) +
     # Etiquetas
     labs(
         title = titulo, 
@@ -878,7 +964,7 @@ ggsave(filename = "05_infobites/00_en_cifras_ips/02_00_FB.svg",
 
 ### 1.3. Oportunidades ----
 titulo <- "Dim 3. Oportunidades"
-subtitulo <- "2015 - 2021"
+subtitulo <- "2015 - 2022"
 eje_x <- ""
 eje_y <- "Años"
 
@@ -950,7 +1036,8 @@ ggplot(data =
     geom_text(aes(label = round(dim_value,1)), family = "Ubuntu", size = 4) +
     scale_fill_gradient2("", low = mcv_semaforo[4], mid = mcv_semaforo[2], high = mcv_semaforo[1],midpoint = 62)  +
     guides(label = "none") +
-    scale_x_discrete(position = "top")+
+    scale_x_continuous(position = "bottom", 
+                       breaks = min(ips_final$anio, na.rm = T):max(ips_final$anio, na.rm = T)) +
     # Etiquetas
     labs(
         title = titulo, 
@@ -986,19 +1073,21 @@ ggsave(filename = "05_infobites/00_en_cifras_ips/03_00_OP.svg",
        width = 12, height = 23, dpi = 200)
 
 
-## 2. Sankeys (rankings) ----
+## 2. Sankeys (rankings) -------------------------------------------------------
+
 d <- ips_final %>% 
     filter(!as.numeric(cve_ent) > 33) %>% 
     filter(!cve_ent == "00") %>% 
     group_by(anio, id_dim) %>% 
     arrange(desc(dim_value), .by_group = T) %>% 
     mutate(ranking = 1:32,
-           ranking = str_pad(ranking, 2, "l", "0")) %>% 
+           ranking = str_pad(ranking, 2, "left", "0")) %>% 
     ungroup()
 
-### 2.0. IPS ----
+### 2.0. IPS -------------------------------------------------------------------
+
 titulo <- "Ranking del Índice de Progreso Social"
-subtitulo <- "2015 - 2021"
+subtitulo <- "2015 - 2022"
 eje_x <- "Años"
 eje_y <- "Ranking"
 
@@ -1049,9 +1138,10 @@ g <- ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
 ggsave(filename = "05_infobites/04_IPS_sankey.png", width = 23, height = 12, dpi = 100)
 ggsave(filename = "05_infobites/04_IPS_sankey.svg", width = 23, height = 12, dpi = 100)
 
-### 2.1. NHB ----
+### 2.1. NHB -------------------------------------------------------------------
+
 titulo <- "Ranking de la Dim 1. Necesidades Humanas Básicas"
-subtitulo <- "2015 - 2021"
+subtitulo <- "2015 - 2022"
 eje_x <- "Años"
 eje_y <- "Ranking"
 
@@ -1102,9 +1192,10 @@ g <- ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
 ggsave(filename = "05_infobites/05_NHB_sankey.png", width = 23, height = 12, dpi = 100)
 ggsave(filename = "05_infobites/05_NHB_sankey.svg", width = 23, height = 12, dpi = 100)
 
-### 2.2. SB ----
+### 2.2. SB --------------------------------------------------------------------
+
 titulo <- "Ranking de la Dim 2. Fundamentos del Bienestar"
-subtitulo <- "2015 - 2021"
+subtitulo <- "2015 - 2022"
 eje_x <- "Años"
 eje_y <- "Ranking"
 
@@ -1156,9 +1247,10 @@ ggsave(filename = "05_infobites/06_SB_sankey.png", width = 23, height = 12, dpi 
 ggsave(filename = "05_infobites/06_SB_sankey.svg", width = 23, height = 12, dpi = 100)
 
 
-### 2.3. OP ----
+### 2.3. OP --------------------------------------------------------------------
+
 titulo <- "Ranking de la Dim 3. Oportunidades"
-subtitulo <- "2015 - 2021"
+subtitulo <- "2015 - 2022"
 eje_x <- "Años"
 eje_y <- "Ranking"
 
@@ -1209,7 +1301,8 @@ g <- ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
 ggsave(filename = "05_infobites/07_OP_sankey.png", width = 23, height = 12, dpi = 100)
 ggsave(filename = "05_infobites/07_OP_sankey.svg", width = 23, height = 12, dpi = 100)
 
-## 3. Scores por entidades ----
+## 3. Scores por entidades -----------------------------------------------------
+
 cves <- unique(ips_final$cve_ent)[1:33]
 
 for(i in 1:33){
@@ -1225,7 +1318,7 @@ for(i in 1:33){
         glimpse
     
     titulo <- "Puntaje en el IPS y dimensiones"
-    subtitulo <- paste0(unique(a$entidad_abr_m), " | 2015 - 2021")
+    subtitulo <- paste0(unique(a$entidad_abr_m), " | 2015 - 2022")
     eje_x <- "Años"
     eje_y <- "Puntaje"
     
@@ -1281,7 +1374,8 @@ for(i in 1:33){
 }
 
 
-## 4. Componentes ----
+## 4. Componentes --------------------------------------------------------------
+
 ips_comp <- readxl::read_excel("03_ips_clean/00_IPS_COMPLETE_LONG.xlsx", sheet = 2) %>% 
     left_join(
         readxl::read_excel("02_datos_crudos/00_diccionario_componentes.xlsx")
@@ -1292,7 +1386,8 @@ ips_comp <- readxl::read_excel("03_ips_clean/00_IPS_COMPLETE_LONG.xlsx", sheet =
 id_comp_vec <- unique(ips_comp$id_comp)
 
 
-### 4.1. Heatmaps ----
+### 4.1. Heatmaps --------------------------------------------------------------
+# i = 1
 for(i in 1:length(id_comp_vec)){
     
     a <- ips_comp %>% 
@@ -1307,7 +1402,7 @@ for(i in 1:length(id_comp_vec)){
         unique(a$name_comp)
     )
     
-    subtitulo <- "2015 - 2021"
+    subtitulo <- "2015 - 2022"
     eje_x <- ""
     eje_y <- "Años"
     
@@ -1359,7 +1454,8 @@ for(i in 1:length(id_comp_vec)){
     
 }
 
-### 4.2. Sankeys (rankings) ----
+### 4.2. Sankeys (rankings) ----------------------------------------------------
+
 for(i in 1:length(id_comp_vec)){
     
     a <- ips_comp %>% 
@@ -1369,7 +1465,7 @@ for(i in 1:length(id_comp_vec)){
         group_by(anio) %>% 
         arrange(desc(comp_value), .by_group = T) %>% 
         mutate(ranking = 1:32,
-               ranking = str_pad(ranking, 2, "l", "0")) %>% 
+               ranking = str_pad(ranking, 2, "left", "0")) %>% 
         ungroup()
     
     titulo <- paste0(
@@ -1381,7 +1477,7 @@ for(i in 1:length(id_comp_vec)){
         ),
         unique(a$name_comp)
     )
-    subtitulo <- "2015 - 2021"
+    subtitulo <- "2015 - 2022"
     eje_x <- "Años"
     eje_y <- "Ranking"
     
@@ -1433,7 +1529,8 @@ for(i in 1:length(id_comp_vec)){
     
 }
 
-### 4.3. Heatmaps verticales ----
+### 4.3. Heatmaps verticales ---------------------------------------------------
+
 for(i in 1:length(id_comp_vec)){
     
     a <- ips_comp %>% 
@@ -1449,7 +1546,7 @@ for(i in 1:length(id_comp_vec)){
         unique(a$name_comp)
     )
     
-    subtitulo <- "2015 - 2021"
+    subtitulo <- "2015 - 2022"
     eje_y <- ""
     eje_x <- "Años"
     
@@ -1502,7 +1599,8 @@ for(i in 1:length(id_comp_vec)){
 
 
 
-# 5. Gráfica gasto en salud ----
+# 5. Gráfica gasto en salud ----------------------------------------------------
+
 d_plot <- 
 tribble(
     ~decil, ~prop,	~anio,
@@ -1594,12 +1692,10 @@ ggsave(filename = "07_gráficas_en_texto/13_gasto_promedio_salud_deciles.svg",
        width = 16, height = 9, dpi = 200)
 
 
-# 5. Transformación para Omar ----
+# 5. Transformación para Omar --------------------------------------------------
+
 ips_final <- readxl::read_excel("03_ips_clean/00_IPS_COMPLETE_LONG.xlsx") %>% 
     glimpse
-
-
-
 
 openxlsx::write.xlsx(
     ips_final %>% 
@@ -1651,7 +1747,7 @@ openxlsx::write.xlsx(
             ips_final %>% 
                 filter(id_dim == "00") %>% 
                 filter(!as.numeric(cve_ent) > 33) %>% 
-                filter(anio == 2021) 
+                filter(anio == 2022) 
         ) %>% 
         pivot_wider(
             names_from = "anio",
@@ -1659,11 +1755,11 @@ openxlsx::write.xlsx(
             values_from = "dim_value"
         ) %>% 
         mutate(
-            dif = round(anio_2021-anio_2020,2)
+            dif = round(anio_2022-anio_2020,2)
         ) %>% 
         filter(!cve_ent == "00", dif >= 0) %>% 
         arrange(desc(dif))%>% 
-        select(Entidad = entidad_abr_m, `Diferencia en puntuación entre 2020 y 2021` = dif),
+        select(Entidad = entidad_abr_m, `Diferencia en puntuación entre 2020 y 2022` = dif),
     "03_ips_clean/09_data_web/04_01_entidades_ganaron.xlsx"
     
 )
@@ -1679,7 +1775,7 @@ openxlsx::write.xlsx(
             ips_final %>% 
                 filter(id_dim == "00") %>% 
                 filter(!as.numeric(cve_ent) > 33) %>% 
-                filter(anio == 2021) 
+                filter(anio == 2022) 
         ) %>% 
         pivot_wider(
             names_from = "anio",
@@ -1687,11 +1783,13 @@ openxlsx::write.xlsx(
             values_from = "dim_value"
         ) %>% 
         mutate(
-            dif = round(anio_2021-anio_2020,2)
+            dif = round(anio_2022-anio_2020,2)
         ) %>% 
         filter(!cve_ent == "00", dif < 0) %>% 
         arrange(dif) %>% 
-        select(Entidad = entidad_abr_m, `Diferencia en puntuación entre 2020 y 2021` = dif),
+        select(Entidad = entidad_abr_m, `Diferencia en puntuación entre 2020 y 2022` = dif),
     "03_ips_clean/09_data_web/04_02_entidades_perdieron.xlsx"
     
 )
+
+# FIN. -------------------------------------------------------------------------

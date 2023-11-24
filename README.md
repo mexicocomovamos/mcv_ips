@@ -37,7 +37,7 @@ El IPS es un modelo integral para medir el **desarrollo humano** que no incluye 
 |----------------------------------------|--------------------------------------|-----------------------------|
 | Proporciona un panorama de la calidad y disponibilidad de servicios y condiciones necesarias para otorgar un nivel de vida adecuado a la población de cada entidad. | Evalúa la calidad de la educación y la información disponible en cada entidad, al mismo tiempo que evalúa componentes ambientales y relevantes para la salud de sus habitantes. | Evalúa las posibilidades y herramientas a las que los habitantes de cada entidad pueden acceder para lograr un mayor desarrollo personal y profesional.
 **Nutrición y Cuidados Médicos, Agua y Saneamiento, Vivienda, Seguridad Personal** |**Acceso a Conocimientos Básicos, Acceso a Información y Comunicaciones, Salud y Bienestar, Calidad MedioAmbiental** |**Derechos Personales, Libertad Personal y de Elección, Inclusión, Acceso a Educación Superior.**
-[Descripción](https://mexicocomovamos.mx/wp-content/uploads/2022/11/MCV_IPS_2015_2021.pdf)| [Descripción](https://mexicocomovamos.mx/wp-content/uploads/2022/11/MCV_IPS_2015_2021.pdf) |[Descripción](https://mexicocomovamos.mx/wp-content/uploads/2022/11/MCV_IPS_2015_2021.pdf)
+[Descripción](https://mexicocomovamos.mx/wp-content/uploads/2023/11/MCV_2023_IPS2015-2022.pdf)| [Descripción](https://mexicocomovamos.mx/wp-content/uploads/2023/11/MCV_2023_IPS2015-2022.pdf) |[Descripción](https://mexicocomovamos.mx/wp-content/uploads/2023/11/MCV_2023_IPS2015-2022.pdf)
 
 
 <p>&nbsp;</p>
@@ -58,13 +58,13 @@ Somos un colectivo de científicos sociales, principalmente economistas, que se 
 <p>&nbsp;</p>
 
 # Enlaces relevantes 🔗
-[Estudio IPS 2015-2021](https://mexicocomovamos.mx/wp-content/uploads/2022/11/MCV_IPS_2015_2021.pdf)
+[Estudio IPS 2015-2022](https://mexicocomovamos.mx/wp-content/uploads/2023/11/MCV_2023_IPS2015-2022.pdf)
 
 [Sitio IPS](https://mexicocomovamos.mx/indice-de-progreso-social/)
 
-[IPS en cifras](https://mexicocomovamos.mx/indice-de-progreso-social/)
+[IPS en cifras](https://mexicocomovamos.mx/wp-content/uploads/2023/11/MCV_2023_IPS2015-2022-ENCIFRAS.pdf)
 
-[Comunicado IPS 2021](https://mexicocomovamos.mx/indice-de-progreso-social/)
+[Comunicado IPS 2022](https://mexicocomovamos.mx/wp-content/uploads/2023/11/02_Comunicado_IPS2022.docx.pdf)
 
 [Sitio México ¿Cómo vamos?](https://mexicocomovamos.mx)
 

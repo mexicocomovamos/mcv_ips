@@ -1,0 +1,109 @@
+﻿Índice de nombres y contenido de archivos
+
+PIBE_2.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Total Nacional
+PIBE_3.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades primarias|Agricultura, cría y explotación de animales, aprovechamiento forestal, pesca y caza
+PIBE_6.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades secundarias|Total
+PIBE_7.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades secundarias|Minería|Minería
+PIBE_8.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades secundarias|Minería|Minería petrolera
+PIBE_9.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades secundarias|Minería|Minería no petrolera
+PIBE_10.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades secundarias|Generación, transmisión y distribución de energía eléctrica, suministro de agua y de gas por ductos al consumidor final
+PIBE_11.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades secundarias|Construcción
+PIBE_12.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades secundarias|Industrias manufactureras|Industrias manufactureras
+PIBE_13.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades secundarias|Industrias manufactureras|Industria alimentaria
+PIBE_14.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades secundarias|Industrias manufactureras|Industria de las bebidas y del tabaco
+PIBE_15.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades secundarias|Industrias manufactureras|Fabricación de insumos textiles y acabado de textiles; Fabricación de productos textiles, excepto prendas de vestir
+PIBE_16.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades secundarias|Industrias manufactureras|Fabricación de prendas de vestir; Curtido y acabado de cuero y piel, y fabricación de productos de cuero, piel y materiales sucedáneos
+PIBE_17.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades secundarias|Industrias manufactureras|Industria de la madera
+PIBE_18.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades secundarias|Industrias manufactureras|Industria del papel; Impresión e industrias conexas
+PIBE_19.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades secundarias|Industrias manufactureras|Fabricación de productos derivados del petróleo y del carbón; Industria química; Industria del plástico y del hule
+PIBE_20.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades secundarias|Industrias manufactureras|Fabricación de productos a base de minerales no metálicos
+PIBE_21.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades secundarias|Industrias manufactureras|Industrias metálicas básicas; Fabricación de productos metálicos
+PIBE_22.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades secundarias|Industrias manufactureras| Fabricación de maquinaria y equipo; Fabricación de equipo de computación, comunicación, medición y de otros equipos, componentes y accesorios electrónicos; Fabricación de accesorios, aparatos eléctricos y equipo de generación de energía eléctrica; Fabricación de equipo de transporte
+PIBE_23.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades secundarias|Industrias manufactureras|Fabricación de muebles, colchones y persianas
+PIBE_24.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades secundarias|Industrias manufactureras|Otras industrias manufactureras
+PIBE_25.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades terciarias|Actividades terciarias
+PIBE_26.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades terciarias|Comercio al por mayor
+PIBE_27.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades terciarias|Comercio al por menor
+PIBE_28.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades terciarias|Transportes, correos y almacenamiento
+PIBE_29.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades terciarias|Información en medios masivos
+PIBE_30.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades terciarias|Servicios financieros y de seguros
+PIBE_31.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades terciarias|Servicios inmobiliarios y de alquiler de bienes muebles e intangibles
+PIBE_32.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades terciarias|Servicios profesionales, científicos y técnicos
+PIBE_33.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades terciarias|Corporativos
+PIBE_34.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades terciarias|Servicios de apoyo a los negocios y manejo de residuos y desechos, y servicios de remediación
+PIBE_35.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades terciarias|Servicios educativos
+PIBE_36.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades terciarias|Servicios de salud y de asistencia social
+PIBE_37.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades terciarias|Servicios de esparcimiento culturales y deportivos, y otros servicios recreativos
+PIBE_38.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades terciarias|Servicios de alojamiento temporal y de preparación de alimentos y bebidas
+PIBE_39.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades terciarias| Otros servicios excepto actividades gubernamentales
+PIBE_40.xlsx/Series originales|Serie detallada|PIB de las actividades económicas por entidad federativa|Actividades terciarias|Actividades legislativas, gubernamentales, de impartición de justicia y de organismos internacionales y extraterritoriales
+PIBE_42.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Estados Unidos Mexicanos
+PIBE_43.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Aguascalientes
+PIBE_44.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Baja California
+PIBE_45.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Baja California Sur
+PIBE_46.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Campeche
+PIBE_47.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Coahuila de Zaragoza
+PIBE_48.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Colima
+PIBE_49.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Chiapas
+PIBE_50.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Chihuahua
+PIBE_51.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Ciudad de México
+PIBE_52.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Durango
+PIBE_53.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Guanajuato
+PIBE_54.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Guerrero
+PIBE_55.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Hidalgo
+PIBE_56.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Jalisco
+PIBE_57.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|México
+PIBE_58.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Michoacán de Ocampo
+PIBE_59.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Morelos
+PIBE_60.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Nayarit
+PIBE_61.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Nuevo León
+PIBE_62.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Oaxaca
+PIBE_63.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Puebla
+PIBE_64.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Querétaro
+PIBE_65.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Quintana Roo
+PIBE_66.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|San Luis Potosí
+PIBE_67.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Sinaloa
+PIBE_68.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Sonora
+PIBE_69.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Tabasco
+PIBE_70.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Tamaulipas
+PIBE_71.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Tlaxcala
+PIBE_72.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Veracruz de Ignacio de la Llave
+PIBE_73.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Yucatán
+PIBE_74.xlsx/Series originales|Serie detallada|PIB de las entidades federativas por actividad económica|Zacatecas
+PIBER_2.xlsx/Series originales|Serie retropolada reducida|PIB de las actividades económicas por entidad federativa|Total Nacional
+PIBER_3.xlsx/Series originales|Serie retropolada reducida|PIB de las actividades económicas por entidad federativa|Actividades primarias
+PIBER_4.xlsx/Series originales|Serie retropolada reducida|PIB de las actividades económicas por entidad federativa|Actividades secundarias
+PIBER_5.xlsx/Series originales|Serie retropolada reducida|PIB de las actividades económicas por entidad federativa|Actividades terciarias
+PIBER_7.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Estados Unidos Mexicanos
+PIBER_8.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Aguascalientes
+PIBER_9.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Baja California
+PIBER_10.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Baja California Sur
+PIBER_11.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Campeche
+PIBER_12.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Coahuila de Zaragoza
+PIBER_13.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Colima
+PIBER_14.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Chiapas
+PIBER_15.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Chihuahua 
+PIBER_16.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Ciudad de México 
+PIBER_17.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Durango
+PIBER_18.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Guanajuato
+PIBER_19.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Guerrero
+PIBER_20.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Hidalgo
+PIBER_21.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Jalisco
+PIBER_22.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|México 
+PIBER_23.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Michoacán de Ocampo
+PIBER_24.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Morelos
+PIBER_25.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Nayarit
+PIBER_26.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Nuevo León
+PIBER_27.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Oaxaca
+PIBER_28.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Puebla
+PIBER_29.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Querétaro
+PIBER_30.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Quintana Roo
+PIBER_31.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|San Luis Potosí
+PIBER_32.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Sinaloa
+PIBER_33.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Sonora
+PIBER_34.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Tabasco
+PIBER_35.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Tamaulipas
+PIBER_36.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Tlaxcala
+PIBER_37.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Veracruz de Ignacio de la Llave
+PIBER_38.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Yucatán
+PIBER_39.xlsx/Series originales|Serie retropolada reducida|PIB de las entidades federativas por actividad económica|Zacatecas

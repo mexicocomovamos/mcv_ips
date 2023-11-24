@@ -1,0 +1,86 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2758
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+Repositorio IPS \
+\
+Repositorio de c\'e1lculos para realizar durante la ejecuci\'f3n del proyecto del \'cdndice de Progreso Social. \
+\
+## Contenidos\
+\
+* **01_C\'f3digos**\
+Esta carpeta contiene los c\'f3digos para procesar los datos y las visualizaciones necesarias para el proyecto del IPS.\
+\
+## Recomendaciones para el c\'e1lculo: \
+\
+1. Verificar que en tus datos del drive no tengas `NAs`. \
+2. Ejecutar el c\'f3digo `01_ips_procesamiento.R` para generar todas las bases, el an\'e1lisis factorial, los an\'e1lisis estad\'edsticos y los primeros infobites.\
+3. Ejecutar `03_fichas_entidades.R` para obtener los HTMLs de las fichas de la situaci\'f3n por entidad.\
+4. Ejecutar `06_en_cifras_ips.R` para sacar los datos que van a ir en el documento de **EN CIFRAS**. Para terminar las visualizaciones de dicho documento, ejecutar `06_03_heatmaps_ips_componentes.R` para los heatmaps de los componentes. Verificar siempre que los datos no muestren ninguna anomalidad extra\'f1a. \
+5. Ejecutar `07_analisis_grupos_pib.R` para realizar el an\'e1lisis por grupos del PIB. \
+\
+## Para las visualizaciones: \
+\
+Varios de los c\'f3digos, como `01_ips_procesamiento` o `03_fichas_entidades.R` ya generan visualizaciones desde su ejecuci\'f3n. De manera adicional, los siguientes c\'f3digos generan varias de las visualizaciones que se incluyen dentro de los productos finales del IPS de **M\'e9xico \'bfC\'f3mo vamos?**\
+\
+* `02_bis_vs_indicadores_2022.R` Es el c\'f3digo para hacer las gr\'e1ficas de cruce del IPS contra variables de inter\'e9s, dado el contexto que exista durante su publicaci\'f3n. En este c\'f3digo se grafican, a trav\'e9s de _scatterplots_, las variables que se cruzan con el IPS, adem\'e1s de generar un modelo (y su correspondiente informaci\'f3n estad\'edstica) de regresi\'f3n para intentar modelar la relaci\'f3n entre las variables.\
+\
+* `05_generacion_Mapas_2022_\{version\}.R` son c\'f3digos para generar varios de los mapas utilizados. No todos generan los mismos mapas, por lo que hay que ejecutar cada uno de ellos. Se requiere ejecutar previamente el c\'f3digo `07_analisis_grupos_pib.R` para que funcione adecuadamente. \
+\
+## Datos finales \
+\
+La carpeta `02_bases_procesadas` contiene las bases finales generadas para el proyecto del IPS del presente a\'f1o, as\'ed como informaci\'f3n necesaria para poder realizar varios de los an\'e1lisis que se incluyen en los reportes finales.\
+\
+* `00_pob_pib_per_capita.xlsx` contiene los datos del PIB per c\'e1pita. \
+\
+* `01_ips_complete_long.xlsx` contiene los datos de los indicadores, componentes, dimensiones y estimaci\'f3n final del IPS en formato largo (cada unidad de observaci\'f3n es el valor de un indicador). \
+\
+* `01_ips_complete_wide.xlsx` contiene los datos de los indicadores, componentes, dimensiones y estimaci\'f3n final del IPS en formato ancho (cada unidad de observaci\'f3n es una entidad). \
+\
+* `02_cambios_grupos_pib.xlsx` contiene los valores y los cambios en los IPS entre distintos periodos. \
+\
+* `02_fichas_grupos_pib.xlsx` contiene la informaci\'f3n necesaria para poder generar las fichas por grupos de entidades de acuerdo a su PIB. \
+\
+**Estos datos se pueden encontrar tambi\'e9n en la carpeta `03_ips_clean`**. \
+\
+* Los datos en formato largo est\'e1n en el archivo `00_IPS_COMPLETE_LONG.xlsx`.\
+\
+* Los datos en formato ancho est\'e1n en el archivo `00_IPS_COMPLETE_WIDE.xlsx`.\
+\
+As\'ed como distintos archivos intermedios requeridos para poder realizar c\'e1lculos en el proceso del IPS. \
+\
+## Anexos estad\'edsticos: \
+\
+En la carpeta `04 an\'e1lisis factorial` se pueden encontrar los datos de los estad\'edsticos calculados en el proceso del an\'e1lisis factorial, como las medidas KMO y las Alfas por componente y dimensi\'f3n. \
+\
+## Infobites \
+\
+Las gr\'e1ficas generadas durante la ejecuci\'f3n de este c\'f3digo se guardan en la carpeta `05_infobites`.\
+\
+## Fichas de entidades \
+\
+Las visualizaciones a partir de las cuales se realizan las fichas de las entidades se pueden encontrar en la carpeta `06_fichas_entidades` como archivos `*html`\
+\
+## Gr\'e1ficas texto \
+\
+Las gr\'e1ficas utilizadas en el texto y los reportes del IPS se pueden encontrar en la carpeta `07_gr\'e1ficas_en_texto`. \
+\
+## GIF\
+\
+Para hacer un gif con los resultados (u otras variables) este se puede generar con el c\'f3digo `08_generar_gif`.\
+\
+## Shiny de revisi\'f3n \
+\
+La carpeta `10_shiny_revisi\'f3n`tiene el c\'f3digo necesario para poder ejecutar (con los permisos correspondientes) el shiny de revisi\'f3n de los datos para generar el IPS. \
+\
+\
+\
+\
+\
+\
+\
+}
