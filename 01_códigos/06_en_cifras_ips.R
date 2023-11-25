@@ -41,18 +41,7 @@ mcv_semaforo <- c(
 
 mcv_blacks <- c("black", "#D2D0CD", "#777777")
 
-## 0.2. Tokens ----
-google_token <- "AIzaSyDF4E80nih1fBMPg785wYO-ruAKgJiEdW0"
 
-# Obtener identificador de la base de del IPS 
-v_id <- as.character(
-    googledrive::drive_get(
-        "https://docs.google.com/spreadsheets/d/1hi5qzhpZz1S7_TFe68lqMQCYUFOEQjRejMOlvSTjw0w/edit#gid=1859408845")[1, 2])
-1
-# Función para importar de manera más corta desde drive
-imp_dv <- function(x, y){
-    googlesheets4::read_sheet(
-        paste0("https://docs.google.com/spreadsheets/d/", x), sheet = y)}
 
 # 1. Datos ----
 ips_complete <- data.frame()

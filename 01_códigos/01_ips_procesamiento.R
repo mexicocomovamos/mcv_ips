@@ -43,28 +43,7 @@ mcv_semaforo <- c(
 
 mcv_blacks <- c("black", "#D2D0CD", "#777777")
 
-## 0.2. Tokens ----
-google_token <- "AIzaSyDF4E80nih1fBMPg785wYO-ruAKgJiEdW0"
 
-# ---- Activar las credenciales de google
-# v_usuaria <- "regina"
-# v_usuaria <- "katia"
-v_usuaria <- "juvenal"
-
-googledrive::drive_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
-googlesheets4::gs4_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
-
-
-# Obtener identificador de la base de del IPS 
-# Liga actual de la base!!! 
-v_id <- as.character(
-    googledrive::drive_get(
-        "https://docs.google.com/spreadsheets/d/1hi5qzhpZz1S7_TFe68lqMQCYUFOEQjRejMOlvSTjw0w/edit#gid=1859408845")[1, 2])
-
-# Función para importar de manera más corta desde drive
-imp_dv <- function(x, y){
-    googlesheets4::read_sheet(
-        paste0("https://docs.google.com/spreadsheets/d/", x), sheet = y)}
 
 # 1. Consolidación de bd -------------------------------------------------------
 anio_vec <- 2015:2022
@@ -75,6 +54,8 @@ ips_direccion <- data.frame()
 # unique(ips_tempo$id_indicador)
 # ips_tempo <-
 #     readxl::read_excel("02_datos_crudos/00_IPS_bd.xlsx", sheet = 2)
+
+
 for(x in 1:length(anio_vec)){
     print(
         paste0(
