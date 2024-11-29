@@ -7,7 +7,7 @@
 </p> 
 
 # Índice de Progreso Social 👥
-El **Índice de Progreso Social (IPS)** es una sólida medición del desempeño social en los estados del país y es independiente de factores que miden ingreso o gasto. El **Índice** se calcula a partir de un rango de indicadores sociales y ambientales que capturan tres dimensiones del progreso social:
+El **Índice de Progreso Social (IPS)** es una medición del desempeño social en los estados del país y es independiente de factores que miden ingreso o gasto. El **Índice** se calcula a partir de un rango de indicadores sociales y ambientales que capturan tres dimensiones del progreso social:
 
 **Necesidades Humanas Básicas, Fundamentos del Bienestar y Oportunidades.**
 > Aunque esta medida es independiente de indicadores monetizables –como ingreso, gasto público o actividad económica–, el IPS no busca reemplazarlos sino complementarlos. Su propósito principal es evaluar aquellas preguntas que realmente importan en la vida de las personas: ¿tengo un hogar que me brinde protección? ¿Tengo suficiente para comer? ¿Tengo acceso a educación? 
@@ -37,7 +37,7 @@ El IPS es un modelo integral para medir el **desarrollo humano** que no incluye 
 |----------------------------------------|--------------------------------------|-----------------------------|
 | Proporciona un panorama de la calidad y disponibilidad de servicios y condiciones necesarias para otorgar un nivel de vida adecuado a la población de cada entidad. | Evalúa la calidad de la educación y la información disponible en cada entidad, al mismo tiempo que evalúa componentes ambientales y relevantes para la salud de sus habitantes. | Evalúa las posibilidades y herramientas a las que los habitantes de cada entidad pueden acceder para lograr un mayor desarrollo personal y profesional.
 **Nutrición y Cuidados Médicos, Agua y Saneamiento, Vivienda, Seguridad Personal** |**Acceso a Conocimientos Básicos, Acceso a Información y Comunicaciones, Salud y Bienestar, Calidad MedioAmbiental** |**Derechos Personales, Libertad Personal y de Elección, Inclusión, Acceso a Educación Superior.**
-[Descripción](https://mexicocomovamos.mx/wp-content/uploads/2023/11/MCV_2023_IPS2015-2022.pdf)| [Descripción](https://mexicocomovamos.mx/wp-content/uploads/2023/11/MCV_2023_IPS2015-2022.pdf) |[Descripción](https://mexicocomovamos.mx/wp-content/uploads/2023/11/MCV_2023_IPS2015-2022.pdf)
+[Descripción](https://mexicocomovamos.mx/indice-de-progreso-social/)| [Descripción](https://mexicocomovamos.mx/indice-de-progreso-social/) |[Descripción](https://mexicocomovamos.mx/indice-de-progreso-social/)
 
 
 <p>&nbsp;</p>
@@ -58,13 +58,13 @@ Somos un colectivo de científicos sociales, principalmente economistas, que se 
 <p>&nbsp;</p>
 
 # Enlaces relevantes 🔗
-[Estudio IPS 2015-2022](https://mexicocomovamos.mx/wp-content/uploads/2023/11/MCV_2023_IPS2015-2022.pdf)
+[Estudio IPS 2015-2023](hhttps://mexicocomovamos.mx/wp-content/uploads/2024/11/22112024_Indice-de-Progreso-Social-2024.pdf)
 
 [Sitio IPS](https://mexicocomovamos.mx/indice-de-progreso-social/)
 
-[IPS en cifras](https://mexicocomovamos.mx/wp-content/uploads/2023/11/MCV_2023_IPS2015-2022-ENCIFRAS.pdf)
+[IPS en cifras](https://mexicocomovamos.mx/wp-content/uploads/2024/11/22112024_EnCifras_IPS2024.pdf)
 
-[Comunicado IPS 2022](https://mexicocomovamos.mx/wp-content/uploads/2023/11/02_Comunicado_IPS2022.docx.pdf)
+[Comunicado IPS](https://mexicocomovamos.mx/wp-content/uploads/2024/11/Comunicado-IPS_2024-version-final.pdf)
 
 [Sitio México ¿Cómo vamos?](https://mexicocomovamos.mx)
 

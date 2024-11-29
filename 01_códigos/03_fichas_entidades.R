@@ -43,25 +43,6 @@ ips_discrete <- c(
 inp_pib <- "02_datos_crudos/"
 inp_ips <- "03_ips_clean/"
 
-# Activar las credenciales de google
-# googledrive::drive_auth("regimedina19@gmail.com")
-# googlesheets4::gs4_auth("regimedina19@gmail.com")
-# 
-# googledrive::drive_auth("katia@mexicocomovamos.mx")
-# googlesheets4::gs4_auth("katia@mexicocomovamos.mx")
-# 
-# # Verificar credenciales 
-# googledrive::drive_user()
-# googlesheets4::gs4_user()
-
-# # Función para importar de manera más corta desde drive
-# imp_dv <- function(x){
-#     googlesheets4::read_sheet(
-#         paste0("https://docs.google.com/spreadsheets/d/", x))}
-imp_dv <- function(x, y){
-    googlesheets4::read_sheet(
-        paste0("https://docs.google.com/spreadsheets/d/", x), sheet = y)}
-
 
 # 1. Importar datos ------------------------------------------------------------
 
@@ -69,8 +50,8 @@ imp_dv <- function(x, y){
 # df_pibr <- read_excel(paste0(inp_pib, "03_pib_per_capita.xlsx")) %>%
 #     glimpse
 
-df_pibr <- read_excel("02_datos_crudos/bd_pib_pc.xlsx") %>%
-    rename(value_pib_pc = indicador_value)
+df_pibr <- read_excel("02_datos_crudos/03_pib_per_capita.xlsx") %>%
+    rename(value_pib_pc = PIB_pc)
 
 # Puntajes de las dimensiones del IPS 
 df_ipsr <- read_excel(paste0(inp_ips, "00_IPS_COMPLETE_LONG.xlsx"))
@@ -81,9 +62,14 @@ df_ips_componentesr <- read_excel(paste0(inp_ips, "00_IPS_COMPLETE_LONG.xlsx"),
 
 # Puntajes de los indicadores específicos del IPS
 df_ips_indicadoresr <- read_excel(paste0(inp_ips, "01_ips_long.xlsx"))
+# Correccion para multiplicaciones x 100
+# df_ips_indicadoresr <- rbind(df_ips_indicadoresr %>% filter(id_dim_ind == "0346") %>% mutate(indicador_value = indicador_value*100),
+#       df_ips_indicadoresr %>% filter(id_dim_ind != "0346")) %>% 
+#     arrange(id_dim_ind)
 
 qua <- df_pibr %>% 
-    filter(anio == 2021) %>% 
+    filter(cve_ent != "00") %>% 
+    filter(anio == 2022) %>% 
     pull(value_pib_pc) %>% 
     quantile(c(0.333, 0.6666, 1))
 
@@ -91,44 +77,24 @@ umbral_bajo <- qua[1]
 umbral_medio <- qua[2]
 
 # Clasificar grupos de entidades según el PIB (tres grupos)
-df_pib  <- 
-    # df_pibr                                          %>% 
-    # filter(cve_ent != "00"
-    #        # , tipo != "Serie desestacionalizada"
-    #        )   %>% 
-    # mutate(
-    #     grupo_pib = case_when(
-    #         value_pib_pc >=  umbral_medio ~ "PIB per cápita alto" , 
-    #         value_pib_pc >= umbral_bajo & value_pib_pc <   umbral_medio ~ "PIB per cápita medio", 
-    #         value_pib_pc <  umbral_bajo                        ~ "PIB per cápita bajo")
-    # ) %>% 
-    # bind_rows(
-        df_pibr                                          %>% 
+df_pib  <- df_pibr                                          %>% 
             filter(cve_ent != "00",
                    # tipo != "Serie desestacionalizada",
-                   anio == 2021)   %>% 
+                   anio == 2022)   %>% 
             mutate(
-                anio = 2022,
+                anio = 2023,
                 grupo_pib = case_when(
                     value_pib_pc >=  umbral_medio ~ "PIB per cápita alto" , 
                     value_pib_pc >= umbral_bajo & value_pib_pc <   umbral_medio ~ "PIB per cápita medio", 
                     value_pib_pc <  umbral_bajo                        ~ "PIB per cápita bajo")) %>% 
             select(cve_ent, grupo_pib, value_pib_pc) %>% 
     mutate(ranking_pib   = rank(desc(value_pib_pc)))
-    # ) 
-# %>% 
-#     group_by(anio) %>% 
-#     arrange(desc(value_pib_pc))                                %>% 
-#     mutate(ranking_pib   = rank(desc(value_pib_pc))) %>% 
-#     ungroup() %>% 
-#     select(cve_ent, anio, grupo_pib, value_pib_pc, ranking_pib) %>% 
-#     glimpse
-
+    
 table(df_pib$grupo_pib)
 
 # Unir IPS con PIB y hacer rankings (agregado a nivel dimensión)
 df_ips <- df_ipsr                                           %>% 
-    filter(anio == 2022) %>% 
+    filter(anio == 2023) %>% 
     filter(cve_ent != "00")                   %>% 
     left_join(df_pib, by  = c("cve_ent"))           %>% 
     group_by(id_dim)                                  %>% 
@@ -162,7 +128,7 @@ df_ips <- df_ipsr                                           %>%
 
 # Unir IPS con PIB y hacer rankings (agregado a nivel indicador)
 df_ips_componentes <- df_ips_componentesr                   %>% 
-    filter(anio == 2022) %>% 
+    filter(anio == 2023) %>% 
     filter(cve_ent != "00")                                 %>% 
     left_join(df_pib, by  = c("cve_ent"))           %>% 
     # Dejar solo datos del año más reciente                 
@@ -219,25 +185,21 @@ df_ips_componentes <- df_ips_componentesr                   %>%
         ips_fort_deb_gr = comp_fort_deb_gr) %>% 
     glimpse
 
-# Unir IPS con PIB y hacer rankings (agregado a nivel indicador)
-v_id <- as.character(
-    googledrive::drive_get(
-        "https://docs.google.com/spreadsheets/d/1hi5qzhpZz1S7_TFe68lqMQCYUFOEQjRejMOlvSTjw0w/edit#gid=1859408845")[1, 2])
+
 # 1
-df_ind_names <- imp_dv(v_id, 2) %>% 
+df_ind_names <- metadatos %>% 
+    # imp_dv(v_id, 2) %>% 
     select(id_dimension:id_indicador, indicador_name, direccion) %>% 
     mutate(id_dim_ind = paste0(id_dimension, id_indicador)) %>% 
     select(id_dim_ind, indicador_name, direccion) %>% 
     glimpse
 # 1
 df_ips_indicadores <- df_ips_indicadoresr                   %>% 
-    filter(anio == 2022) %>% 
+    filter(anio == 2023) %>% 
     filter(cve_ent != "00")                                 %>% 
     left_join(df_pib, by  = c("cve_ent"))           %>% 
     rename(ind_value     = indicador_value)                 %>% 
-    left_join(
-        df_ind_names
-    ) %>% 
+    left_join(df_ind_names) %>% 
     # Dejar solo datos del año más reciente                 
     filter(cve_ent != "00")                   %>% 
     mutate(ind_value_direccion = ind_value*direccion) %>% 
@@ -255,7 +217,6 @@ df_ips_indicadores <- df_ips_indicadoresr                   %>%
         ind_fort_deb_gr   = case_when(
             direccion == 1 & ind_value_direccion > (quantile(ind_value_direccion, 0.5) + sd(ind_value_direccion)) ~ "Desempeño superior", 
             direccion == 1 & ind_value_direccion < (quantile(ind_value_direccion, 0.5) - sd(ind_value_direccion)) ~ "Desempeño inferior",
-            
             direccion == -1 & ind_value_direccion > (quantile(ind_value_direccion, 0.5) + sd(ind_value_direccion)) ~ "Desempeño superior", 
             direccion == -1 & ind_value_direccion < (quantile(ind_value_direccion, 0.5) - sd(ind_value_direccion)) ~ "Desempeño inferior", 
             T ~ "Desempeño esperado"))                      %>% 
@@ -342,7 +303,7 @@ df_ranking_ips_all <- df_ips        %>%
 
 # Filtrar solo datos del último año 
 df_ranking_ips <-  df_ranking_ips_all %>% 
-    filter(anio == 2022) %>% 
+    filter(anio == 2023) %>% 
     glimpse
 
 openxlsx::write.xlsx(df_ranking_ips, "03_ips_clean/08_ips_ranking.xlsx", overwrite = T)
@@ -352,13 +313,15 @@ openxlsx::write.xlsx(df_ranking_ips_all, "03_ips_clean/08_02_ips_ranking_series.
 
 # 4. Hacer tablas --------------------------------------------------------------
 
-df_ranking_ips <- df_ranking_ips %>% 
+df_ranking_ips <- df_ranking_ips %>%
     select(-entidad_abr_m) %>% 
     left_join(
         readxl::read_excel("02_datos_crudos/00_cve_ent.xlsx") %>% 
             select(cve_ent, entidad)
     ) %>% 
-    select(anio, cve_ent, entidad, everything()) 
+    select(anio, cve_ent, entidad, everything()) %>% 
+    # BORRAMOS INDICADORES NO UTILIZADOS EN ESTA EDICIÓN
+    filter(!(id %in% c("010104", "020727", "020831", "030939", "031253")))
 
 grupos <- unique(df_ranking_ips$grupo_pib)
 
@@ -375,6 +338,7 @@ for(x in 1:length(grupos)){
         glimpse
     cves <- unique(tempo_grupo$cve_ent)
     
+    # i = 1
     for(i in 1:length(cves)){
         tempo_ent <- tempo_grupo %>% 
             filter(cve_ent==cves[i]) %>% 
@@ -553,9 +517,8 @@ for(x in 1:length(grupos)){
             ) %>% 
             cols_hide(c(nivel, id)) %>% 
             gtsave(paste0("06_fichas_entidades/0", x, "_", unique(tempo_ent$cve_ent), "_", name_ent, ".html"))
-        
     }
-    
 }
+
 
 # FIN. -------------------------------------------------------------------------

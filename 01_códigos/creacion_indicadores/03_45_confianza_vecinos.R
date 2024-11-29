@@ -22,7 +22,7 @@ Sys.setlocale("LC_TIME", "es_ES")
 # Cargar paquetería 
 require(pacman)
 p_load(readxl, tidyverse, dplyr, googledrive, 
-       googlesheets4, lubridate, janitor, beepr, foreign)
+       googlesheets4, lubridate, janitor, beepr, foreign, srvyr)
 
 # Desactiva notación científica
 options(scipen=999)
@@ -57,11 +57,14 @@ df_data <- df_crudo                                                         %>%
   select(cve_ent,
          entidad_abr_m = nom_ent,
          #pregunta
-         ap5_2_1)                                                           %>% 
-  #Filtramos para no seleccionar respuestas "No aplica y "NS/NR"
+         ap5_2_1, 
+         factor = fac_ele)                                                  %>% 
+  #Filtramos para no seleccionar respuestas "No aplica = 5 y "NS/NR = 9"
   filter(!ap5_2_1 %in% c(5,9))                                              %>% 
+    #ponderador 
+  as_survey_design(weights = factor)                                        %>% 
   group_by(entidad_abr_m, ap5_2_1, cve_ent)                                 %>% 
-  count(ap5_2_1)                                                            %>%
+    summarise(n= survey_total())                                            %>% 
   ungroup()                                                                 %>% 
   group_by(entidad_abr_m, cve_ent)                                          %>% 
   #calcular proporción
@@ -72,7 +75,7 @@ df_data <- df_crudo                                                         %>%
   summarise(indicador_value = formatC(sum(prop_respuesta*100), 
                                       digits = 1,
                                       format = "f"
-                                      ))  %>%
+                                      ))                                    %>%
   # Agregar identificador del indicador
   mutate(id_dimension = "03",
          id_indicador = "45", 
@@ -116,7 +119,7 @@ df_data <- df_crudo                                                         %>%
   # Seleccionar variables finales 
   select(cve_ent, entidad_abr_m, anio, id_dimension, id_indicador, indicador_value) 
 
-
+df_data
 # 3. Guardar en drive ----------------------------------------------------------
 
 # Obtener identificador de la base del IPS 
@@ -129,3 +132,4 @@ googlesheets4::sheet_append(ss = v_id, data = df_data,
                            sheet = "03_45_confianza_vecinos")
 
 # FIN. -------------------------------------------------------------------------
+

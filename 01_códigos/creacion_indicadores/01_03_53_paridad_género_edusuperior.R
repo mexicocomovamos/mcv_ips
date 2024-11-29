@@ -12,7 +12,7 @@
 # Fuente: https://www.planeacion.sep.gob.mx/principalescifras/
 # Cada año corresponde a aquel en que terminó el ciclo escolar.  
 
-# Para educación superior se toman todas as categorías del portal
+# Para educación superior se toman todas las categorías del portal
 # Para posgrado se toma solo la categoría de posgrados
 
 # 0. Configuración inicial -----------------------------------------------------
@@ -36,7 +36,7 @@ mcv_blacks   <- c("black"  , "#D2D0CD", "#777777")            # Negros
 mcv_morados  <- c("#6950D8", "#A99BE9")                       # Morados
 
 # Activar las credenciales de google
-v_usuaria <- "regina"
+v_usuaria <- "sandra"
 
 googledrive::drive_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
 googlesheets4::gs4_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
@@ -53,7 +53,7 @@ v_time      <- c(
                 "2009-2010", "2010-2011", "2011-2012", "2012-2013", 
                 "2013-2014", "2014-2015", "2015-2016", "2016-2017", 
                 "2018-2019", "2019-2020", "2020-2021", "2021-2022", 
-                "2022-2023")
+                "2022-2023", "2023-2024")
 
 v_formato   <- c(".xlsx")
 
@@ -120,10 +120,10 @@ v_time      <- c(
     "2009-2010", "2010-2011", "2011-2012", "2012-2013", 
     "2013-2014", "2014-2015", "2015-2016", "2016-2017", 
     "2017-2018", "2018-2019", "2019-2020", "2020-2021", 
-    "2021-2022", "2022-2023")
+    "2021-2022", "2022-2023", "2023-2024")
 
 v_formato   <- c(".xlsx")
-v_years     <- c(2009:2023)
+v_years     <- c(2009:2024)
 
 # Base vacía 
 df_unida <- data.frame()
@@ -284,7 +284,14 @@ df_final    <- df_unida                             %>%
             entidad == v_entidad[38] ~ "24", # San Luis Potosí 
             entidad == v_entidad[39] ~ "30", # Veracruz
             entidad == v_entidad[40] ~ "31", # Yucatán 
-            entidad == v_entidad[41] ~ "09"  # Ciudad de México
+            entidad == v_entidad[41] ~ "09", # Ciudad de México
+            entidad == v_entidad[42] ~ "09", # Ciudad de México
+            entidad == v_entidad[43] ~ "15", #Estado de México
+            entidad == v_entidad[44] ~ "16", # Michoacán 
+            entidad == v_entidad[45] ~ "19", # Nuevo León
+            entidad == v_entidad[46] ~ "22", # Querétaro
+            entidad == v_entidad[47] ~ "24", # San Luis Potosí 
+            entidad == v_entidad[48] ~ "31", # Yucatán 
                 )) %>% 
     # Generar identificador abreviado 
     mutate(

@@ -27,17 +27,11 @@ options(scipen=999)
 # Vaciar espacio de trabajo 
 rm(list=ls())
 
-# Colores MCV
-mcv_discrete <- c("#6950d8", "#3CEAFA", "#00b783", "#ff6260", "#ffaf84", "#ffbd41")
-mcv_semaforo <- c("#00b783", "#E8D92E", "#ffbd41", "#ff6260") # Verde, amarillo, naranja y rojo
-mcv_blacks   <- c("black"  , "#D2D0CD", "#777777")            # Negros
-mcv_morados  <- c("#6950D8", "#A99BE9")                       # Morados
-
 # Vectores para directorio 
 inp <- "02_datos_crudos/03_53_paridad_educ/"
 
 # Activar las credenciales de google
-v_usuaria <- "regina"
+v_usuaria <- "sandra"
 
 googledrive::drive_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
 googlesheets4::gs4_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
@@ -60,7 +54,7 @@ v_time      <- c(
     "2009-2010", "2010-2011", "2011-2012", "2012-2013", 
     "2013-2014", "2014-2015", "2015-2016", "2016-2017", 
     "2017-2018", "2018-2019", "2019-2020", "2020-2021", 
-    "2021-2022", "2022-2023")
+    "2021-2022", "2022-2023", "2023-2024")
 
 v_formato   <- c(".xlsx")
 
@@ -73,17 +67,17 @@ v_names     <- names(df_crudo)
 # Renombrar variables
 df_estudiantes <- df_crudo                                  %>%
     slice(1:33)                                             %>% 
-    select(v_names[1], v_names[3])                          %>%
+    select(v_names[1], v_names[4])                          %>%
     rename(                 
         entidad       = v_names[1],                   
-        estudiantes   = v_names[3])                         %>% 
+        estudiantes   = v_names[4])                         %>% 
     mutate(anio       = 2015)
 
 ## 1.2. Limpieza en bucle ------------------------------------------------------
 
 # Vectores de texto
 v_formato   <- c(".xlsx")
-v_years     <- c(2009:2023)
+v_years     <- c(2009:2024)
 
 # Base vacía 
 df_unida <- data.frame()
@@ -103,7 +97,8 @@ for(i in 1:length(v_time)){
     
     v_names     <- names(df_crudo)
     
-    x <- ifelse(v_time[i] %in% v_time[1:5], 3, 4) 
+    x <- ifelse(v_time[i] %in% v_time[1:5], 3, #nota: aquí revisar la base nueva y el orden de las columnas 
+                ifelse(v_time[i] %in% v_time[15], 3,4)) 
     
     df_estudiantes <- df_crudo                                  %>%
         slice(1:33)                                             %>% 
@@ -174,7 +169,14 @@ df_limpio    <- df_unida                            %>%
             entidad == v_entidad[38] ~ "24", # San Luis Potosí 
             entidad == v_entidad[39] ~ "30", # Veracruz
             entidad == v_entidad[40] ~ "31", # Yucatán 
-            entidad == v_entidad[41] ~ "09"  # Ciudad de México
+            entidad == v_entidad[41] ~ "09",  # Ciudad de México
+            entidad == v_entidad[42] ~ "09",  # Ciudad de México
+            entidad == v_entidad[43] ~ "15", # Estado de México
+            entidad == v_entidad[44] ~ "16", # Michoacán 
+            entidad == v_entidad[45] ~ "19", # Nuevo León
+            entidad == v_entidad[46] ~ "22", # Querétaro
+            entidad == v_entidad[47] ~ "24", # San Luis Potosí 
+            entidad == v_entidad[48] ~ "31" # Yucatán 
         )) %>% 
     # Generar identificador abreviado 
     mutate(
@@ -226,7 +228,7 @@ load("02_datos_crudos/df_pop_state_age.RData")
 
 # Filtrar por años y edades de interés
 df_pop <- df_pop_state_age              %>% 
-    filter(year > 2008 & year < 2023)   %>% 
+    filter(year > 2008 & year < 2024)   %>% 
     filter(age  > 17   & age  < 24)     %>%  # Este rango de edad da lo más similar a lo reportado por la SEP
     group_by(year, CVE_GEO, state)      %>% 
     summarise(pop = sum(population))    %>% 

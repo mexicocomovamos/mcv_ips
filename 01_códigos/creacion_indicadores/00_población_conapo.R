@@ -31,8 +31,9 @@ mcv_blacks   <- c("black"  , "#D2D0CD", "#777777")            # Negros
 mcv_morados  <- c("#6950D8", "#A99BE9")                       # Morados
 
 # Activar las credenciales de google
-v_usuaria <- "regina"
+# v_usuaria <- "regina"
 # v_usuaria <- "katia"
+v_usuaria <- "axel"
 
 googledrive::drive_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
 googlesheets4::gs4_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
@@ -53,20 +54,51 @@ paste_out <- function(x){paste0("05_infobites/"   , x)}
 
 
 # 1. Cargar datos --------------------------------------------------------------
+# 
+# Cargar proyección conapo
+df_pop_state_age_sex <- read_excel(
+    paste_inp("0_Pob_Inicio_1950_2070.xlsx"))   %>% 
+    filter(AÑO >= 1990)                        %>%
+    select(year = AÑO, state = ENTIDAD, CVE_GEO, pop_tot = POBLACION,
+           age = EDAD, sex = SEXO )    
+    
+save(df_pop_state_age_sex, 
+     file = paste_inp("df_pop_state_age_sex.RData"))
 
-# Cargar proyecciones de  CONAPO (preprocesadas por Dr. Alarid - PADECI)
+
+df_pop_state_age <- df_pop_state_age_sex          %>%
+    group_by(year, state, CVE_GEO, age)               %>%
+    summarise(pop_tot = sum(pop_tot))                %>%
+    ungroup()
+    
+save(df_pop_state_age, 
+     file = paste_inp("df_pop_state_age.RData")) 
+
+
+df_pop_state <- df_pop_state_age           %>%
+    group_by(year, state, CVE_GEO)               %>%
+    summarise(pop_tot = sum(pop_tot))                %>%
+    ungroup()
+
+save(df_pop_state, 
+    file = paste_inp("df_pop_state.RData")) 
+
+
+# Cargar proyecciones de  CONAPO 
 
 load(paste_inp("df_pop_state.RData"))
+
+
 
 # 2. Procesar datos ------------------------------------------------------------
 
 df_data <- df_pop_state                                             %>% 
     # Desagrupar para poder seleccionar variables sin que meta STATE
-    ungroup()                                                       %>% 
+    # ungroup()                                                       %>% 
     # Seleccionar variables de interés y renombrar 
-    select(anio = year, cve_ent = CVE_GEO, pob_tot = population)    %>% 
+    select(anio = year, cve_ent = CVE_GEO, pop_tot )    %>% 
     # Filtrar y dejar solo años de interés 
-    filter(anio %in% c(2010:2025))                                  %>% 
+    filter(anio %in% c(2010:2030))                                  %>% 
     # Cambiar el identificador de la entidad para que sea compatible con el 
     # resto de bases y así tenga numeración "01" en vez de "1"
     mutate(cve_ent = str_pad(cve_ent, width = 2, pad = "0")) %>% 

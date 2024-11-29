@@ -6,12 +6,11 @@
 # Correos:                    regimedina19@gmail.com
 # 
 # Fecha de creación:          27 de septiembre de 2021
-# Última actualización:       07 de octubre    de 2022
+# Última actualización:       10 de septiembre de 2024
 #------------------------------------------------------------------------------#
 
-# Fuente: https://www.planeacion.sep.gob.mx/principalescifras/
-# Cada año corresponde a aquel en que terminó el ciclo escolar.  
-# La cobertura incluye los posgrados 
+# Fuente: en esta liga se comparte la fuente de datos para las elecciones 2024 - hay entidades que todavía no tienen el dato debido a que no ha iniciado la legislatura 
+#https://docs.google.com/spreadsheets/d/1eC3rZ2IrEJTA7R92m3iBZ2EN7nZhUjpygPerxu1ZF8w/edit?usp=sharing
 
 # 0. Configuración inicial -----------------------------------------------------
 
@@ -37,8 +36,7 @@ mcv_morados  <- c("#6950D8", "#A99BE9")                       # Morados
 inp <- "02_datos_crudos/03_46_paridad_congresos_locales/"
 
 # Activar las credenciales de google
-v_usuaria <- "regina"
-# v_usuaria <- "katia"
+v_usuaria <- "sandra"
 
 googledrive::drive_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
 googlesheets4::gs4_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
@@ -53,12 +51,13 @@ imp_dv <- function(x){
         paste0("https://docs.google.com/spreadsheets/d/", x))}
 # 1. Procesamiento de datos ----------------------------------------------------
 
-# Ya fue actualizado por Daniela hasta 2022
-df_crudo    <- read_excel(paste0(inp, "paridad_congresos_locales.xlsx"))
+# Ya fue actualizado hasta 2023 y sigue proceso de actualización 2024
+df_crudo    <- read_excel(paste0(inp, "paridad_congresos_locales_nuevo.xlsx"))
 
 df_crudo <- df_crudo %>% 
     arrange(cve_ent, anio)
-openxlsx::write.xlsx(df_crudo, paste0(inp, "paridad_congresos_locales2.xlsx"))
+
+#openxlsx::write.xlsx(df_crudo, paste0(inp, "paridad_congresos_locales2.xlsx"))
 
 # Procesamiento de la info 
 df_limpio   <- df_crudo         %>% 

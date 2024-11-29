@@ -376,35 +376,16 @@ primeros infobites.</li>
 <li>Ejecutar <code>03_fichas_entidades.R</code> para obtener los HTMLs
 de las fichas de la situación por entidad.</li>
 <li>Ejecutar <code>06_en_cifras_ips.R</code> para sacar los datos que
-van a ir en el documento de <strong>EN CIFRAS</strong>. Para terminar
-las visualizaciones de dicho documento, ejecutar
-<code>06_03_heatmaps_ips_componentes.R</code> para los heatmaps de los
-componentes. Verificar siempre que los datos no muestren ninguna
-anomalidad extraña.</li>
+van a ir en el documento de <strong>EN CIFRAS</strong>. 
 <li>Ejecutar <code>07_analisis_grupos_pib.R</code> para realizar el
 análisis por grupos del PIB.</li>
 </ol>
 </div>
 <div id="para-las-visualizaciones" class="section level2">
 <h2>Para las visualizaciones:</h2>
-<p>Varios de los códigos, como <code>01_ips_procesamiento</code> o
-<code>03_fichas_entidades.R</code> ya generan visualizaciones desde su
-ejecución. De manera adicional, los siguientes códigos generan varias de
-las visualizaciones que se incluyen dentro de los productos finales del
-IPS de <strong>México ¿Cómo vamos?</strong></p>
-<ul>
-<li><p><code>02_bis_vs_indicadores_2022.R</code> Es el código para hacer
-las gráficas de cruce del IPS contra variables de interés, dado el
-contexto que exista durante su publicación. En este código se grafican,
-a través de <em>scatterplots</em>, las variables que se cruzan con el
-IPS, además de generar un modelo (y su correspondiente información
-estadística) de regresión para intentar modelar la relación entre las
-variables.</p></li>
-<li><p><code>05_generacion_Mapas_2022_{version}.R</code> son códigos
-para generar varios de los mapas utilizados. No todos generan los mismos
-mapas, por lo que hay que ejecutar cada uno de ellos. Se requiere
-ejecutar previamente el código <code>07_analisis_grupos_pib.R</code>
-para que funcione adecuadamente.</p></li>
+<p>En los códigos <code>01_ips_procesamiento</code> y
+<code>03_fichas_entidades.R</code> se generan las visualizaciones desde su
+ejecución. </p></li>
 </ul>
 </div>
 <div id="datos-finales" class="section level2">
@@ -457,23 +438,6 @@ en la carpeta <code>05_infobites</code>.</p>
 <p>Las visualizaciones a partir de las cuales se realizan las fichas de
 las entidades se pueden encontrar en la carpeta
 <code>06_fichas_entidades</code> como archivos <code>*html</code></p>
-</div>
-<div id="gráficas-texto" class="section level2">
-<h2>Gráficas texto</h2>
-<p>Las gráficas utilizadas en el texto y los reportes del IPS se pueden
-encontrar en la carpeta <code>07_gráficas_en_texto</code>.</p>
-</div>
-<div id="gif" class="section level2">
-<h2>GIF</h2>
-<p>Para hacer un gif con los resultados (u otras variables) este se
-puede generar con el código <code>08_generar_gif</code>.</p>
-</div>
-<div id="shiny-de-revisión" class="section level2">
-<h2>Shiny de revisión</h2>
-<p>La carpeta <code>10_shiny_revisión</code>tiene el código necesario
-para poder ejecutar (con los permisos correspondientes) el shiny de
-revisión de los datos para generar el IPS.</p>
-</div>
 </div>
 
 

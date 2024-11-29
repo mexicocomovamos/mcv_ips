@@ -41,15 +41,15 @@ paste_out <- function(x){paste0("02_bases_procesadas/00_02_tasa_suicidios/", x)}
 
 
 # Activar las credenciales de google
-googledrive::drive_auth("samantha@mexicocomovamos.mx")
-googlesheets4::gs4_auth("samantha@mexicocomovamos.mx")
+#googledrive::drive_auth("samantha@mexicocomovamos.mx")
+#googlesheets4::gs4_auth("samantha@mexicocomovamos.mx")
 
 #Usuarios
 
-#v_usuaria <- "regina"
+v_usuaria <- "axel"
 
-#googledrive::drive_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
-#googlesheets4::gs4_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
+googledrive::drive_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
+googlesheets4::gs4_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
 
 
 # Verificar credenciales 
@@ -64,7 +64,7 @@ imp_dv <- function(x){
 
 # 1. Importar datos ------------------------------------------------------------
 
-df_crudo    <- read_excel(paste_inp("INEGI_exporta_tasa_defunciones_suicidio.xlsx"), skip = 5)
+df_crudo    <- read_excel(paste_inp("INEGI_exporta_tasa_defunciones_suicidio.xlsx"), skip = 7)
 
 # 2. Procesamiento de datos ----------------------------------------------------
 
@@ -96,9 +96,9 @@ df_limpio   <- df_crudo                       %>%
     rename(anio = anio)              %>% 
     # Agregar variables de identificación 
     mutate(
-        id_dimension = "01", 
-        id_indicador = "12") %>% 
-    filter(anio %in% c(1990:2021)) 
+        id_dimension = "02", 
+        id_indicador = "27") %>% 
+    filter(anio %in% c(1990:2023)) 
 
 # Renombrar entidades
 df_entidad  <- df_limpio %>% 
@@ -119,7 +119,7 @@ load("02_datos_crudos/df_pop_state_age.Rdata")
 
 df_pop <- df_pop_state_age                          %>% 
     group_by(state, CVE_GEO, year)                  %>% 
-    summarise(pob_tot = sum(population))            %>% 
+    summarise(pob_tot = sum(pop_tot))            %>% 
     ungroup()                                       %>% 
     mutate(
         year    = as.character(year), 
@@ -130,13 +130,13 @@ df_pop <- df_pop_state_age                          %>%
 # Agregar población 
 df_final    <- df_entidad                           %>% 
     left_join(df_pop, by = c("cve_ent", "anio"))    %>% 
-    filter(anio %in% 2000:2022)                     %>% 
+    filter(anio %in% 2000:2023)                     %>% 
     mutate(
         indicador_value = total*100000/pob_tot)     %>% 
     arrange(anio, cve_ent)                          %>% 
     # Seleccionar variables finales 
     select(
-        entidad,	cve_ent,	entidad_abr_m,
+        	cve_ent,	entidad_abr_m,
         anio,	id_dimension,	id_indicador,	indicador_value) %>% 
     drop_na(cve_ent)
 

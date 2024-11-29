@@ -53,8 +53,9 @@ paste_out <- function(x){paste0("02_bases_procesadas/00_01_mortalidad/", x)}
 
 
 # Activar las credenciales de google
-v_usuaria <- "regina"
+# v_usuaria <- "regina"
 # v_usuaria <- "katia"
+v_usuaria <- "axel"
 
 googledrive::drive_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
 googlesheets4::gs4_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
@@ -68,11 +69,16 @@ imp_dv <- function(x){
 # 1. Importar datos ------------------------------------------------------------
 
 # Muertes infantiles 
+# Defunciones registradas (mortalidad general)
+# Consulta de: Defunciones infantiles Por: Año de registro y Año de ocurrencia Según: Ent y mun de residencia
+
 df_crudo <- read_excel(
     paste_inp("INEGI_exporta_defunciones_infantiles.xlsx"), skip = 4)
 
+
+
 # Nacimientos 
-df_crudo_nac <- read_excel(paste_inp("INEGI_exporta_nacimientos.xlsx"), skip = 4)
+#df_crudo_nac <- read_excel(paste_inp("INEGI_exporta_nacimientos.xlsx"), skip = 4)
 
 # 2. Procesamiento de datos ----------------------------------------------------
 
@@ -103,7 +109,7 @@ df_limpio   <- df_crudo                         %>%
     mutate(
         id_dimension = "01", 
         id_indicador = "03") %>% 
-    filter(anio %in% c(1990:2022))
+    filter(anio %in% c(1990:2023))
 
 
 
@@ -118,42 +124,66 @@ df_entidad  <- df_limpio        %>%
 
 
 # Procesar datos de nacimientos 
-v_names         <- names(df_crudo_nac)
+#v_names         <- names(df_crudo_nac)
 
-df_nacimientos  <- df_crudo_nac                                     %>% 
-    rename(
-        # Distinguir entre año de registro y año de ocurrencia
-        anio_registro   = v_names[1], 
-        anio_ocurrencia = v_names[2],
-        # Columna con nivel nacional
-        Nacional        = v_names[3])                               %>% 
-    pivot_longer(
-        cols      = -c(anio_registro, anio_ocurrencia), 
-        names_to  = "entidad", 
-        values_to = "total")                                        %>% 
-    mutate(nacimientos = as.numeric(str_remove_all(total, ",")))    %>% 
-    rename(anio = anio_ocurrencia)                                  %>% 
-    group_by(anio, entidad)                                         %>% 
-    summarise(nacimientos = sum(nacimientos, na.rm = TRUE))         %>% 
-    filter(anio %in% c(1990:2022))                                  %>% 
-    left_join(
-        readxl::read_excel("02_datos_crudos/00_cve_ent.xlsx") %>% 
-            rename(ent = entidad, entidad = entidad_comp)
-    )
+# df_nacimientos  <- df_crudo_nac                                     %>% 
+#     rename(
+#         # Distinguir entre año de registro y año de ocurrencia
+#         anio_registro   = v_names[1], 
+#         anio_ocurrencia = v_names[2],
+#         # Columna con nivel nacional
+#         Nacional        = v_names[3])                               %>% 
+#     pivot_longer(
+#         cols      = -c(anio_registro, anio_ocurrencia), 
+#         names_to  = "entidad", 
+#         values_to = "total")                                        %>% 
+#     mutate(nacimientos = as.numeric(str_remove_all(total, ",")))    %>% 
+#     rename(anio = anio_ocurrencia)                                  %>% 
+#     group_by(anio, entidad)                                         %>% 
+#     summarise(nacimientos = sum(nacimientos, na.rm = TRUE))         %>% 
+#     filter(anio %in% c(1990:2023))                                  %>% 
+#     left_join(
+#         readxl::read_excel("02_datos_crudos/00_cve_ent.xlsx") %>% 
+#             rename(ent = entidad, entidad = entidad_comp)
+#     )
+
+# Procesar información de población
+load("02_datos_crudos/df_pop_state_age.Rdata") # Población total por entidad y edad
+
+
+df_pop <- df_pop_state_age                          %>% 
+    filter (age == 0)                               %>% 
+    mutate(
+        year    = as.character(year), 
+        cve_ent = str_pad(CVE_GEO, 2, pad = "0"))  %>% 
+        #grupo   = "Población total")                  %>% 
+    select(anio = year, cve_ent, state,  pop_tot)
 
 # Agregar número de nacimientos  
+# df_final    <- df_entidad                                       %>% 
+#     left_join(df_nacimientos, 
+#               by = c("cve_ent", "entidad_abr_m", "anio"))       %>% 
+#     filter(anio %in% 2000:2023)                                 %>% 
+#     mutate(         
+#         indicador_value = total*1000/nacimientos)             %>% 
+#     arrange(anio, cve_ent)                                      %>% 
+#     # Seleccionar variables finales 
+#     select(
+#         cve_ent, entidad_abr_m, anio, id_dimension, id_indicador, indicador_value) %>% 
+#     drop_na(cve_ent)
+
+
 df_final    <- df_entidad                                       %>% 
-    left_join(df_nacimientos, 
-              by = c("cve_ent", "entidad_abr_m", "anio"))       %>% 
-    filter(anio %in% 2000:2021)                                 %>% 
+    left_join(df_pop, 
+              by = c("cve_ent", "anio"))       %>% 
+    filter(anio %in% 1990:2023)                                 %>% 
     mutate(         
-        indicador_value = total*100000/nacimientos)             %>% 
+        indicador_value = total*1000 / pop_tot)             %>% 
     arrange(anio, cve_ent)                                      %>% 
     # Seleccionar variables finales 
     select(
         cve_ent, entidad_abr_m, anio, id_dimension, id_indicador, indicador_value) %>% 
     drop_na(cve_ent)
-
 
 # 2. Guardar -------------------------------------------------------------------
 

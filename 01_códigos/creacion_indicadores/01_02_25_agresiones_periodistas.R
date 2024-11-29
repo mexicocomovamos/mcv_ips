@@ -68,9 +68,6 @@ df_crudo21  <- read_excel(paste0(inp, "Agresiones 2021_Final.xlsx"), sheet = 2)
 # Base 2022
 df_crudo22  <- read_excel(paste0(inp, "Corte FINAL Agresiones 30 de enero 2023 PUBLIC.xlsx"))
 
-# Base 2023
-df_crudo23  <- read_excel(paste0(inp, "Agresiones2023_Mexicocomovamos.xls"))
-
 
 # Población total por entidad
 df_pop      <- imp_dv("1hi5qzhpZz1S7_TFe68lqMQCYUFOEQjRejMOlvSTjw0w/edit#gid=1859408845")
@@ -130,24 +127,17 @@ df_22 <- df_crudo22                                     %>%
     mutate(anio = 2022)                                 %>% 
     select(Estado = `Entidad Federativa`, anio, total)
 
-df_23 <- df_crudo23                                     %>% 
-    group_by(`event_state_properties_state_name`)                      %>% 
-    summarise(total = n())                              %>% 
-    mutate(anio = 2023)                                 %>% 
-    select(Estado = `event_state_properties_state_name`, anio, total)
-
 
 # Unir todos los años disponibles 
 df_unida    <- df_0714                                  %>% 
-    bind_rows(df_15, df_18, df_19, df_20, df_21, df_22, df_23) %>% 
+    bind_rows(df_15, df_18, df_19, df_20, df_21, df_22) %>% 
     # Agregar nivel nacional 
     filter(!(Estado %in% c("Extranjero", "Exterior")))  %>% 
     group_by(anio) %>% 
-    #bind_rows(
-    #    summarise_all(.), 
-    #    ~if(is.numeric(.) sum(.) else ("Nacional"))
-    #    )
-    bind_rows(summarise_all(., ~ `if`(is.numeric(.), sum(.), "Nacional")))
+    bind_rows(
+        summarise_all(.), 
+        ~if(is.numeric(.) sum(.) else ("Nacional"))
+        )
 
 
 # Homologar nombres e identificadores de las entidades
@@ -206,11 +196,10 @@ table(df_entidad$cve_ent)
 df_expanded <- df_entidad               %>% 
     complete(cve_ent, anio = full_seq(anio, period = 1), fill = list(total = 0))
 
-#Filtrar año 2016 y 2017 ya que no se incluye en la base de datos
+#Filtrar año 2017 ya que no se incluye en la base de datos
 # Remove rows with a specific year (e.g., 2022)
 df_filtered <- df_expanded %>%
-    filter(anio != 2017) %>%
-    filter(anio != 2016)
+    filter(anio != 2017)
 
 # Ahora todas las entidades tienen los años registrados (con 0 incidentes)
 table(df_expanded$cve_ent)

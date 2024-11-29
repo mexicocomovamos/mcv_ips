@@ -16,7 +16,7 @@
 Sys.setlocale("LC_TIME", "es_ES")
 
 # Cargar paquetería 
-# devtools::install_github("munichrocker/DatawRappr")
+#devtools::install_github("munichrocker/DatawRappr")
 
 require(pacman)
 p_load(readxl, inegiR, tidyverse, dplyr, DatawRappr, mxmaps, sf, 
@@ -42,23 +42,7 @@ mcv_morados  <- c("#6950D8", "#A99BE9")                       # Morados
 # Vectores para directorio 
 inp <- "02_datos_crudos/"
 
-# # Activar las credenciales de google
-# v_usuaria <- "regina"
-# v_usuaria <- "katia"
-v_usuaria <- "axel"
 
-googledrive::drive_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
-googlesheets4::gs4_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
-
-
-# Verificar credenciales
-googledrive::drive_user()
-googlesheets4::gs4_user()
-
-# Función para importar de manera más corta desde drive
-imp_dv <- function(x){
-    googlesheets4::read_sheet(
-        paste0("https://docs.google.com/spreadsheets/d/", x))}
 
 # ----- Funciones de importación y exportación
 paste_inp <- function(x){paste0("03_ips_clean/"       , x)}
@@ -68,10 +52,10 @@ paste_fig <- function(x){paste0("05_infobites/12_grupos_pib/", x)}
 # 1. Importar datos ------------------------------------------------------------
 
 # ---- Población por entidad
-#load(("02_datos_crudos/df_pop_state.RData"))
+load(("02_datos_crudos/df_pop_state.RData"))
 
-# ---- IPS 2022
-df_ips2022 <- read_excel(paste_inp("08_ips_ranking.xlsx"))
+# ---- IPS 2023
+df_ips2023 <- read_excel(paste_inp("08_ips_ranking.xlsx"))
 
 # ---- Bases históricas
 # Dimensiones
@@ -95,14 +79,14 @@ df_pob <- df_pop_state                                              %>%
     # Desagrupar para poder seleccionar variables sin que meta STATE
     ungroup()                                                       %>% 
     # Seleccionar variables de interés y renombrar 
-    select(anio = year, cve_ent = CVE_GEO, pob_tot = population)    %>% 
+    select(anio = year, cve_ent = CVE_GEO, pob_tot = pop_tot)    %>% 
     # Filtrar y dejar solo años de interés 
     filter(anio %in% c(2010:2025))                                  %>% 
     # Cambiar el identificador de la entidad para que sea compatible con el 
     # resto de bases y así tenga numeración "01" en vez de "1"
     mutate(cve_ent = str_pad(cve_ent, width = 2, pad = "0"))        %>% 
     arrange(anio, cve_ent)                                          %>% 
-    filter(anio == 2021)
+    filter(anio == 2023)
 
 # Población nacional total
 v_pob_nacional <- df_pob$pob_tot[df_pob$cve_ent == "00"]
@@ -112,7 +96,7 @@ v_pob_nacional <- df_pob$pob_tot[df_pob$cve_ent == "00"]
 
 # ---- Identificar entidades en cada grupo 
 # Identificar entidades según su grupo del PIB
-df_registro_pib <- df_ips2022                       %>% 
+df_registro_pib <- df_ips2023                       %>% 
     distinct(cve_ent, entidad_abr_m, grupo_pib)
 
 # Extraer entidades en cada grupo del PIB
@@ -122,7 +106,7 @@ v_pib_bajo  <- df_registro_pib$entidad_abr_m[str_detect(df_registro_pib$grupo_pi
 
 
 # ---- Entidades con PIB per cápita alto
-df_pib_alto <- df_ips2022           %>%
+df_pib_alto <- df_ips2023           %>%
     filter(
         entidad_abr_m %in% v_pib_alto,  # Dejar solo entidades que pertenecen al grupo
         id == "00"                # Solo IPS
@@ -142,7 +126,7 @@ df_pib_alto <- df_ips2022           %>%
 
 
 # ---- Entidades con PIB per cápita medio
-df_pib_medio <- df_ips2022          %>%
+df_pib_medio <- df_ips2023          %>%
     filter(
         entidad_abr_m %in% v_pib_medio, # Dejar solo entidades que pertenecen al grupo
         id == "00"                # Solo IPS
@@ -161,7 +145,7 @@ df_pib_medio <- df_ips2022          %>%
         promedio_grupal, max_ips, min_ips)
 
 # ---- Entidades con PIB per cápita alto
-df_pib_bajo <- df_ips2022           %>%
+df_pib_bajo <- df_ips2023           %>%
     filter(
         entidad_abr_m %in% v_pib_bajo,  # Dejar solo entidades que pertenecen al grupo
         id == "00"                # Solo IPS
@@ -274,6 +258,9 @@ df_ips_grupos_pib <- df_ips                 %>%
         diff_2022_2019 = value_2022-value_2019,
         diff_2022_2021 = value_2022-value_2021,
         diff_2021_2019 = value_2021-value_2019,
+        diff_2023_2019 = value_2023-value_2019,
+        diff_2023_2015 = value_2023-value_2015,
+        diff_2023_2022 = value_2023-value_2022
     ) %>% 
     arrange(grupo_pib, id_dim) %>% 
     select(grupo_pib, id_dim, everything())
@@ -294,13 +281,20 @@ df_data <- df_ips_grupos_pib %>%
         cols = -c("grupo_pib", "id_dim"), 
         names_to = "periodo", 
         values_to = "diff") %>% 
-    filter(periodo %in% c("diff_2019_2015", "diff_2021_2019",
-                          "diff_2022_2021")) %>%
+    filter(periodo %in% c("diff_2019_2015",
+                          "diff_2023_2019", 
+                          "diff_2023_2015", 
+                          "diff_2021_2019")) %>%
     mutate(
         periodo = case_when(
+            periodo == "diff_2023_2015" ~ "Cambio 2015-2023",
             periodo == "diff_2019_2015" ~ "Cambio 2015-2019", 
-            periodo == "diff_2021_2019" ~ "Cambio 2019-2021",
-            periodo == "diff_2022_2021" ~ "Cambio 2021-2022"), 
+            periodo == "diff_2023_2019" ~ "Cambio 2019-2023", 
+            periodo == "diff_2021_2019" ~ "Cambio 2019-2021"), 
+        periodo = factor(periodo, levels = c("Cambio 2015-2023", 
+                                             "Cambio 2015-2019",
+                                             "Cambio 2019-2021", 
+                                             "Cambio 2019-2023")),
         grupo_pib = factor(grupo_pib, levels = c("PIB per cápita bajo", 
                                                  "PIB per cápita medio", 
                                                  "PIB per cápita alto"))
@@ -326,32 +320,32 @@ g <- ggplot(
               (label = if_else(diff < 0, round(diff,2), NA)), 
               position = position_dodge2(0.4), 
               vjust = -1.1, 
-              family = "Ubuntu", size = 10, color = "white", fontface = "bold"
+              family = "Ubuntu", size = 7.8, color = "white", fontface = "bold"
     ) +
     geom_text(aes
               (label = if_else(diff > 0, round(diff,2), NA)), 
               position = position_dodge2(0.4), 
               vjust = 1.1, 
-              family = "Ubuntu", size = 10, color = "white", fontface = "bold"
+              family = "Ubuntu", size = 7.8, color = "white", fontface = "bold"
     ) +
     # Etiquetas
     labs(
-        title    = "Ganancias y pérdidas entre 2015 y 2022", 
+        title    = "Ganancias y pérdidas entre 2015 y 2023", 
         subtitle = "Índice de Progreso Social", 
         y = "Cambio en el puntaje del IPS", 
         fill = ""
     ) +
     # Escalas 
-    scale_fill_manual(values = c(mcv_semaforo[1], mcv_semaforo[4], mcv_semaforo[2])) +
+    scale_fill_manual(values = c(mcv_semaforo[1], mcv_semaforo[3], mcv_semaforo[4], mcv_semaforo[2])) +
     scale_x_discrete(position = "top") +
-    scale_y_continuous(limits = c(-2.5, 4), breaks = seq(-2,4,2))+
+    scale_y_continuous(limits = c(-2.5, 5.2), breaks = seq(-2,5.2,2))+
     # Tema 
     tema +
     theme(
         axis.text.x = element_text(angle = 0), 
         legend.text = element_text(size = 25, family = "Ubuntu"),
         )
-
+g
 # ---- Guardar figura
 ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
 
@@ -379,32 +373,32 @@ g <- ggplot(
               (label = if_else(diff < 0, round(diff,2), NA)), 
               position = position_dodge2(0.4), 
               vjust = -1.1, 
-              family = "Ubuntu", size = 10, color = "white", fontface = "bold"
+              family = "Ubuntu", size = 7.6, color = "white", fontface = "bold"
     ) +
     geom_text(aes
               (label = if_else(diff > 0, round(diff,2), NA)), 
               position = position_dodge2(0.4), 
               vjust = 1.1, 
-              family = "Ubuntu", size = 10, color = "white", fontface = "bold"
+              family = "Ubuntu", size = 7.6, color = "white", fontface = "bold"
     ) +
     # Etiquetas
     labs(
-        title    = "Ganancias y pérdidas entre 2015 y 2022", 
+        title    = "Ganancias y pérdidas entre 2015 y 2023", 
         subtitle = "Índice de Progreso Social", 
         y = "Cambio en el puntaje del IPS", 
         fill = ""
     ) +
     # Escalas 
-    scale_fill_manual(values = c(mcv_semaforo[1], mcv_semaforo[4], mcv_semaforo[2])) +
+    scale_fill_manual(values = c(mcv_semaforo[1], mcv_semaforo[3], mcv_semaforo[4], mcv_semaforo[2])) +
     scale_x_discrete(position = "top") +
-    scale_y_continuous(limits = c(-2.5, 4), breaks = seq(-2,4,2))+
+    scale_y_continuous(limits = c(-2.5, 5.2), breaks = seq(-2,5.2,2))+
     # Tema 
     tema +
     theme(
         axis.text.x = element_text(angle = 0), 
         legend.text = element_text(size = 25, family = "Ubuntu"),
     )
-
+g
 # ---- Guardar figura
 ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
 
@@ -432,25 +426,25 @@ g <- ggplot(
               (label = if_else(diff < 0, round(diff,2), NA)), 
               position = position_dodge2(0.4), 
               vjust = -1.1, 
-              family = "Ubuntu", size = 10, color = "white", fontface = "bold"
+              family = "Ubuntu", size = 7.8, color = "white", fontface = "bold"
     ) +
     geom_text(aes
               (label = if_else(diff > 0, round(diff,2), NA)), 
               position = position_dodge2(0.4), 
               vjust = 1.1, 
-              family = "Ubuntu", size = 10, color = "white", fontface = "bold"
+              family = "Ubuntu", size = 7.8, color = "white", fontface = "bold"
     ) +
     # Etiquetas
     labs(
-        title    = "Ganancias y pérdidas entre 2015 y 2022", 
+        title    = "Ganancias y pérdidas entre 2015 y 2023", 
         subtitle = "Índice de Progreso Social", 
         y = "Cambio en el puntaje del IPS", 
         fill = ""
     ) +
     # Escalas 
-    scale_fill_manual(values = c(mcv_semaforo[1], mcv_semaforo[4], mcv_semaforo[2])) +
+    scale_fill_manual(values = c(mcv_semaforo[1], mcv_semaforo[3], mcv_semaforo[4],mcv_semaforo[2])) +
     scale_x_discrete(position = "top") +
-    scale_y_continuous(limits = c(-2.5, 4), breaks = seq(-2,4,2))+
+    scale_y_continuous(limits = c(-2.5, 5.2), breaks = seq(-2,5.2,2))+
     # Tema 
     tema +
     theme(
@@ -484,15 +478,26 @@ tempo <- df_mxmap %>%
     st_as_sf(coords = c("long", "lat"), crs = 4326) %>%
     group_by(cve_ent) %>%
     summarise(geometry = st_combine(geometry)) %>%
+    #summarise(geometry = st_union(geometry)) %>%
     st_cast("POLYGON") 
 
 # Catálogo de etiquetas por entidad
+sf_use_s2(FALSE)
+
+centroide <- tempo %>% 
+   # st_make_valid() %>% 
+   # as.data.frame(st_centroid(geometry) %>% 
+    mutate(
+        centroid = st_centroid(geometry),
+        long = st_coordinates(centroid)[, 1],  
+        lat = st_coordinates(centroid)[, 2])
+
 mxmap_labs <- df_mxmap %>% 
     distinct(cve_ent, entidad_abr_m, value) %>% 
-    bind_cols(
-        as.data.frame(rgeos::gCentroid(as(tempo, "Spatial"), byid = TRUE))
-    )
+    left_join(
+        centroide)
 
+sf_use_s2(T) 
 # ---- Visualización del mapa 
 ggplot(
     # Datos
@@ -504,7 +509,9 @@ ggplot(
     geom_polygon(color = "black", size = .2, show.legend = F, alpha = 0.8) +
     geom_label(
         data = mxmap_labs,
-        aes(x, y, group = cve_ent,
+        aes(long,
+            lat,
+            group = cve_ent,
             label = if_else(
                 !(entidad_abr_m %in% v_pib_alto), NA_character_,
                 paste0(entidad_abr_m, "\n[", round(value, 1), "]"))
@@ -551,11 +558,22 @@ tempo <- df_mxmap %>%
     st_cast("POLYGON") 
 
 # Catálogo de etiquetas por entidad
+sf_use_s2(FALSE)
+
+centroide <- tempo %>% 
+    # st_make_valid() %>% 
+    # as.data.frame(st_centroid(geometry) %>% 
+    mutate(
+        centroid = st_centroid(geometry),
+        long = st_coordinates(centroid)[, 1],  
+        lat = st_coordinates(centroid)[, 2])
+
 mxmap_labs <- df_mxmap %>% 
     distinct(cve_ent, entidad_abr_m, value) %>% 
-    bind_cols(
-        as.data.frame(rgeos::gCentroid(as(tempo, "Spatial"), byid = TRUE))
-    )
+    left_join(
+        centroide)
+
+sf_use_s2(T) 
 
 # ---- Visualización del mapa 
 ggplot(
@@ -568,7 +586,8 @@ ggplot(
     geom_polygon(color = "black", size = .2, show.legend = F, alpha = 0.8) +
     geom_label(
         data = mxmap_labs,
-        aes(x, y, group = cve_ent,
+        aes(long, 
+            lat, group = cve_ent,
             label = if_else(
                 !(entidad_abr_m %in% v_pib_medio), NA_character_,
                 paste0(entidad_abr_m, "\n[", round(value, 1), "]"))
@@ -617,11 +636,22 @@ tempo <- df_mxmap %>%
     st_cast("POLYGON") 
 
 # Catálogo de etiquetas por entidad
+sf_use_s2(FALSE)
+
+centroide <- tempo %>% 
+    # st_make_valid() %>% 
+    # as.data.frame(st_centroid(geometry) %>% 
+    mutate(
+        centroid = st_centroid(geometry),
+        long = st_coordinates(centroid)[, 1],  
+        lat = st_coordinates(centroid)[, 2])
+
 mxmap_labs <- df_mxmap %>% 
     distinct(cve_ent, entidad_abr_m, value) %>% 
-    bind_cols(
-        as.data.frame(rgeos::gCentroid(as(tempo, "Spatial"), byid = TRUE))
-    )
+    left_join(
+        centroide)
+
+sf_use_s2(T) 
 
 # ---- Visualización del mapa 
 ggplot(
@@ -634,7 +664,8 @@ ggplot(
     geom_polygon(color = "black", size = .2, show.legend = F, alpha = 0.8) +
     geom_label(
         data = mxmap_labs,
-        aes(x, y, group = cve_ent,
+        aes(long,
+            lat, group = cve_ent,
             label = if_else(
                 !(entidad_abr_m %in% v_pib_bajo), NA_character_,
                 paste0(entidad_abr_m, "\n[", round(value, 1), "]"))
@@ -664,4 +695,87 @@ ggsave(
     width = 23, height = 12, dpi = 200
 )
 
+
+
+
+## 4. Mapas DW -----------------------------------------------------------------
+
+# Crear catálogo de nombres de entidades en ISO para Data Wrapper
+df_iso <- dplyr::tribble(
+    ~cve_ent,	~iso_entidad,
+    "01",		"MX-AGU",
+    "02",		"MX-BCN",
+    "03",		"MX-BCS",
+    "04",		"MX-CAM",
+    "05",		"MX-COA",
+    "06",		"MX-COL",
+    "07",		"MX-CHP",
+    "08",		"MX-CHH",
+    "09",		"MX-CMX",
+    "10",		"MX-DUR",
+    "12",		"MX-GRO",
+    "11",		"MX-GUA",
+    "13",		"MX-HID",
+    "14",		"MX-JAL",
+    "15",		"MX-MEX",
+    "16",		"MX-MIC",
+    "17",		"MX-MOR",
+    "18",		"MX-NAY",
+    "19",		"MX-NLE",
+    "20",		"MX-OAX",
+    "21",		"MX-PUE",
+    "22",		"MX-QUE",
+    "23",		"MX-ROO",
+    "24",		"MX-SLP",
+    "25",		"MX-SIN",
+    "26",		"MX-SON",
+    "27",		"MX-TAB",
+    "28",		"MX-TAM",
+    "29",		"MX-TLA",
+    "30",		"MX-VER",
+    "31",		"MX-YUC",
+    "32",		"MX-ZAC")
+
+# ---- Crear base para mapa de PIB alto 
+df_mapa_alto <- df_pib_alto             %>% 
+    full_join(df_iso, by = "cve_ent")   %>% 
+    mutate(
+        value = round(value, 1), 
+        id_dim = 0, 
+        cve_ent = as.numeric(cve_ent))  %>% 
+    arrange(cve_ent)                    %>% 
+    # Seleccionar con nombres y orden de años anteriores 
+    select(
+        cve_ent, anio, iso_entidad, id_dim, value, 
+        ranking = ips_rank_nacional, entidad_abr_m)
+
+# ---- Crear base para mapa de PIB medio 
+df_mapa_medio <- df_pib_medio           %>% 
+    full_join(df_iso, by = "cve_ent")   %>% 
+    mutate(
+        value = round(value, 1), 
+        id_dim = 0, 
+        cve_ent = as.numeric(cve_ent))  %>% 
+    arrange(cve_ent)                    %>% 
+    # Seleccionar con nombres y orden de años anteriores 
+    select(
+        cve_ent, anio, iso_entidad, id_dim, value, 
+        ranking = ips_rank_nacional, entidad_abr_m)
+
+# ---- Crear base para mapa de PIB bajo 
+df_mapa_bajo <- df_pib_bajo             %>% 
+    full_join(df_iso, by = "cve_ent")   %>% 
+    mutate(
+        value = round(value, 1), 
+        id_dim = 0, 
+        cve_ent = as.numeric(cve_ent))  %>% 
+    arrange(cve_ent)                    %>% 
+    # Seleccionar con nombres y orden de años anteriores 
+    select(
+        cve_ent, anio, iso_entidad, id_dim, value, 
+        ranking = ips_rank_nacional, entidad_abr_m)
+
+
+
+# FIN. -------------------------------------------------------------------------
 

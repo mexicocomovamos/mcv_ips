@@ -11,11 +11,12 @@
 
 # Fuente 2022: Solicitud de acceso a la información con folio 330010922000496 
 # Fuente 2023: Solicitud de acceso a la información con folio 330010923000734 
+# Fuente 2024: Solicitud de acceso a la información con folio 330010924000525
 
-# El programa cambió de nombre en 2022
+# El programa cambió en 2022
     # Antes: Programa Nacional de Posgrados de Calidad
     # Ahora Sistema Nacional de Posgrados de Conacyt
-        #Debido al cambio de criterios para ingresar al SNP...el # de posgrados
+        #Debido al cambio de criterios para ingresar al SNP, el # de posgrados
         #incrementó de manera considerable en todas las entidades para 2022
 
 
@@ -61,7 +62,9 @@ imp_dv <- function(x){
 # Datos de posgrados nacionales de calidad
 #df_crudo <- read_excel(paste0(inp, "CA000-730-2022 - Anexo.xlsx"))
 #Datos desde 2021 a 2023 del SNP:
-df_crudo  <- imp_dv("10I0C_qSfk0Ou8RVXZMBCPgmDumL1BlyUQ1W-IWUIaR0/edit#gid=0")
+#df_crudo  <- imp_dv("10I0C_qSfk0Ou8RVXZMBCPgmDumL1BlyUQ1W-IWUIaR0/edit#gid=0")
+#Datos solicitados en 2024:
+df_crudo  <- imp_dv("1xHFp4pHJl_wPnKrcsJ2MkFW4nUZrLx1aSHwImduJBoM/edit?gid=0#gid=0")
 
 # Datos de población 
 load("02_datos_crudos/df_pop_state.Rdata")
@@ -96,7 +99,7 @@ df_pob <- df_pop_state |>
 #--------- PROCESO  2023
  df_limpio <- df_crudo                       |> 
      rename(anio = 1, entidad = 3)           |> 
-     filter(anio == 2022)                    |> 
+     filter(anio == 2023)                    |> 
      group_by(anio, entidad)                 |> 
      summarise(indicador = n())              |> 
          # Limpiar formato del resto de variables

@@ -54,7 +54,7 @@ paste_out <- function(x){paste0("02_bases_procesadas/00_01_mortalidad/", x)}
 
 
 # Activar las credenciales de google
-v_usuaria <- "regina"
+v_usuaria <- "axel"
 # v_usuaria <- "katia"
 
 googledrive::drive_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
@@ -70,6 +70,10 @@ imp_dv <- function(x){
 
 
 # 1. Importar datos ------------------------------------------------------------
+# Defunciones registradas (mortalidad general)
+# Lista de tabulación 1 para mortalidad de la CIE : Enfermedades del sistema circulatorio
+# Consulta de: Defunciones registradas Por: Año de registro y Año de ocurrencia Según: Ent y mun de residencia
+
 
 df_crudo <- read_excel(paste_inp("INEGI_exporta_circulatorias.xlsx"), skip = 4)
 
@@ -102,7 +106,7 @@ df_limpio   <- df_crudo                         %>%
     mutate(
         id_dimension = "02", 
         id_indicador = "28") %>% 
-    filter(anio %in% c(1990:2022))
+    filter(anio %in% c(1990:2023))
 
 # Renombrar entidades
 df_entidad  <- df_limpio        %>% 
@@ -120,7 +124,7 @@ load("02_datos_crudos/df_pop_state_age.Rdata") # Población total por entidad y 
 df_pop <- df_pop_state_age                          %>% 
     # filter(age %in% 0)                              %>% 
     group_by(state, CVE_GEO, year)                  %>% 
-    summarise(pob_tot = sum(population))            %>% 
+    summarise(pob_tot = sum(pop_tot))            %>% 
     ungroup()                                       %>% 
     mutate(
         year    = as.character(year), 
@@ -131,7 +135,7 @@ df_pop <- df_pop_state_age                          %>%
 # Agregar población 
 df_final    <- df_entidad                           %>% 
     left_join(df_pop, by = c("cve_ent", "anio"))    %>% 
-    filter(anio %in% 2000:2021)                     %>% 
+    filter(anio %in% 2000:2023)                     %>% 
     mutate(
         indicador_value = total*100000/pob_tot)     %>% 
     arrange(anio, cve_ent)                          %>% 
