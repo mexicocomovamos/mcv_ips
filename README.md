@@ -58,7 +58,7 @@ Somos un colectivo de científicos sociales, principalmente economistas, que se 
 <p>&nbsp;</p>
 
 # Enlaces relevantes 🔗
-[Estudio IPS 2015-2023](hhttps://mexicocomovamos.mx/wp-content/uploads/2024/11/22112024_Indice-de-Progreso-Social-2024.pdf)
+[Estudio IPS 2015-2023](https://mexicocomovamos.mx/wp-content/uploads/2024/11/22112024_Indice-de-Progreso-Social-2024.pdf)
 
 [Sitio IPS](https://mexicocomovamos.mx/indice-de-progreso-social/)
 
