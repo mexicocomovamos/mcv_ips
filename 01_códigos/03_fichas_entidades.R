@@ -43,6 +43,25 @@ ips_discrete <- c(
 inp_pib <- "02_datos_crudos/"
 inp_ips <- "03_ips_clean/"
 
+# Activar las credenciales de google
+# googledrive::drive_auth("regimedina19@gmail.com")
+# googlesheets4::gs4_auth("regimedina19@gmail.com")
+# 
+# googledrive::drive_auth("katia@mexicocomovamos.mx")
+# googlesheets4::gs4_auth("katia@mexicocomovamos.mx")
+# 
+# # Verificar credenciales 
+# googledrive::drive_user()
+# googlesheets4::gs4_user()
+
+# # Función para importar de manera más corta desde drive
+# imp_dv <- function(x){
+#     googlesheets4::read_sheet(
+#         paste0("https://docs.google.com/spreadsheets/d/", x))}
+imp_dv <- function(x, y){
+    googlesheets4::read_sheet(
+        paste0("https://docs.google.com/spreadsheets/d/", x), sheet = y)}
+
 
 # 1. Importar datos ------------------------------------------------------------
 
@@ -50,8 +69,8 @@ inp_ips <- "03_ips_clean/"
 # df_pibr <- read_excel(paste0(inp_pib, "03_pib_per_capita.xlsx")) %>%
 #     glimpse
 
-df_pibr <- read_excel("02_datos_crudos/03_pib_per_capita.xlsx") %>%
-    rename(value_pib_pc = PIB_pc)
+df_pibr <- read_excel("02_datos_crudos/03_pib_per_capita.xlsx") %>% 
+    mutate(cve_ent = str_pad(cve_ent, width = 2, side = "left", pad = "0"))
 
 # Puntajes de las dimensiones del IPS 
 df_ipsr <- read_excel(paste0(inp_ips, "00_IPS_COMPLETE_LONG.xlsx"))
@@ -63,13 +82,15 @@ df_ips_componentesr <- read_excel(paste0(inp_ips, "00_IPS_COMPLETE_LONG.xlsx"),
 # Puntajes de los indicadores específicos del IPS
 df_ips_indicadoresr <- read_excel(paste0(inp_ips, "01_ips_long.xlsx"))
 # Correccion para multiplicaciones x 100
-# df_ips_indicadoresr <- rbind(df_ips_indicadoresr %>% filter(id_dim_ind == "0346") %>% mutate(indicador_value = indicador_value*100),
+# df_ips_indicadoresr <- rbind(df_ips_indicadoresr %>% filter(id_dim_ind == "0346") %>%
+# mutate(indicador_value = indicador_value*100),
 #       df_ips_indicadoresr %>% filter(id_dim_ind != "0346")) %>% 
 #     arrange(id_dim_ind)
 
+# Para sacar los grupos del PIB pc
 qua <- df_pibr %>% 
     filter(cve_ent != "00") %>% 
-    filter(anio == 2022) %>% 
+    filter(anio == 2023) %>% 
     pull(value_pib_pc) %>% 
     quantile(c(0.333, 0.6666, 1))
 
@@ -92,9 +113,16 @@ df_pib  <- df_pibr                                          %>%
     
 table(df_pib$grupo_pib)
 
+cat_edos <- read_csv("https://raw.githubusercontent.com/JuveCampos/Shapes_Resiliencia_CDMX_CIDE/master/Datos/cat_edos.csv")
+
+df_pib %>% 
+    select(cve_ent, grupo_pib) %>% 
+    left_join(cat_edos) %>% 
+    openxlsx::write.xlsx("02_bases_procesadas/03_catalogo_estados_grupo_pib_pc.xlsx")
+
 # Unir IPS con PIB y hacer rankings (agregado a nivel dimensión)
 df_ips <- df_ipsr                                           %>% 
-    filter(anio == 2023) %>% 
+    filter(anio == 2024) %>% 
     filter(cve_ent != "00")                   %>% 
     left_join(df_pib, by  = c("cve_ent"))           %>% 
     group_by(id_dim)                                  %>% 
@@ -128,7 +156,7 @@ df_ips <- df_ipsr                                           %>%
 
 # Unir IPS con PIB y hacer rankings (agregado a nivel indicador)
 df_ips_componentes <- df_ips_componentesr                   %>% 
-    filter(anio == 2023) %>% 
+    filter(anio == 2024) %>% 
     filter(cve_ent != "00")                                 %>% 
     left_join(df_pib, by  = c("cve_ent"))           %>% 
     # Dejar solo datos del año más reciente                 
@@ -164,6 +192,7 @@ df_ips_componentes <- df_ips_componentesr                   %>%
             id_comp == "11" ~ "Inclusión", 
             id_comp == "12" ~ "Acceso a educación superior"), 
         id_comp = case_when(
+            # # # # SI SE AÑADEN NUEVOS INDICADORES, DEFINIRLOS MANUALMENTE EN ESTE VECTOR # # # #
             id_comp == "01" ~ "0101", 
             id_comp == "02" ~ "0102", 
             id_comp == "03" ~ "0103", 
@@ -185,6 +214,19 @@ df_ips_componentes <- df_ips_componentesr                   %>%
         ips_fort_deb_gr = comp_fort_deb_gr) %>% 
     glimpse
 
+# Unir IPS con PIB y hacer rankings (agregado a nivel indicador)
+# v_id <- as.character(
+#     googledrive::drive_get(
+#         "https://docs.google.com/spreadsheets/d/1hi5qzhpZz1S7_TFe68lqMQCYUFOEQjRejMOlvSTjw0w/edit#gid=1859408845")[1, 2])
+
+v_usuaria <- "juvenal"
+googlesheets4::gs4_auth(cache = ".secrets",
+                        email = paste0(v_usuaria, "@mexicocomovamos.mx"))
+options(gargle_oauth_cache = ".secrets")
+gargle::gargle_oauth_cache()
+list.files(".secrets/")
+
+metadatos <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1hi5qzhpZz1S7_TFe68lqMQCYUFOEQjRejMOlvSTjw0w/edit#gid=1859408845", sheet = 2)
 
 # 1
 df_ind_names <- metadatos %>% 
@@ -195,7 +237,7 @@ df_ind_names <- metadatos %>%
     glimpse
 # 1
 df_ips_indicadores <- df_ips_indicadoresr                   %>% 
-    filter(anio == 2023) %>% 
+    filter(anio == 2024) %>% 
     filter(cve_ent != "00")                                 %>% 
     left_join(df_pib, by  = c("cve_ent"))           %>% 
     rename(ind_value     = indicador_value)                 %>% 
@@ -259,6 +301,7 @@ df_ips_indicadores <- df_ips_indicadoresr                   %>%
             id_dim_ind == "0233" ~ "020833",
             id_dim_ind == "0234" ~ "020834",
             id_dim_ind == "0256" ~ "020856",
+            id_dim_ind == "0258" ~ "020858",
             id_dim_ind == "0335" ~ "030935",
             id_dim_ind == "0336" ~ "030936",
             id_dim_ind == "0337" ~ "030937",
@@ -303,7 +346,7 @@ df_ranking_ips_all <- df_ips        %>%
 
 # Filtrar solo datos del último año 
 df_ranking_ips <-  df_ranking_ips_all %>% 
-    filter(anio == 2023) %>% 
+    filter(anio == 2024) %>% 
     glimpse
 
 openxlsx::write.xlsx(df_ranking_ips, "03_ips_clean/08_ips_ranking.xlsx", overwrite = T)
@@ -321,7 +364,13 @@ df_ranking_ips <- df_ranking_ips %>%
     ) %>% 
     select(anio, cve_ent, entidad, everything()) %>% 
     # BORRAMOS INDICADORES NO UTILIZADOS EN ESTA EDICIÓN
-    filter(!(id %in% c("010104", "020727", "020831", "030939", "031253")))
+    filter(!(id %in% c("010104",
+                       "020521",
+                       "020727",
+                       "020831",
+                       "030939",
+                       "031044",
+                       "031253")))
 
 grupos <- unique(df_ranking_ips$grupo_pib)
 
@@ -352,9 +401,9 @@ for(x in 1:length(grupos)){
         ips_ent <- round(tempo_ent$value[tempo_ent$id=="00"],2)
         ips_ent_rank <- tempo_ent$ips_rank_nacional[tempo_ent$id=="00"]
         ips_ent_fort_deb <- ifelse(
-            unique(tempo_ent$value[tempo_ent$id=="00"])[1] > as.numeric(quantile(unique(tempo_grupo$value[tempo_ent$id=="00"])[1], 0.5)+sd(unique(tempo_grupo$value[tempo_ent$id=="00"])[1])),
+            unique(tempo_ent$value[tempo_ent$id=="00"])[1] > as.numeric(quantile(unique(tempo_grupo$value[tempo_ent$id=="00"])[1], 0.5) + sd(unique(tempo_grupo$value[tempo_ent$id=="00"]))),
             "Desempeño superior", ifelse(
-                unique(tempo_ent$value[tempo_ent$id=="00"])[1] < as.numeric(quantile(unique(tempo_grupo$value[tempo_ent$id=="00"])[1], 0.5)-sd(unique(tempo_grupo$value[tempo_ent$id=="00"])[1])),
+                unique(tempo_ent$value[tempo_ent$id=="00"])[1] < as.numeric(quantile(unique(tempo_grupo$value[tempo_ent$id=="00"])[1], 0.5)-sd(unique(tempo_grupo$value[tempo_ent$id=="00"]))),
                 "Desempeño inferior", "Desempeño esperado"
             )
         )
@@ -371,8 +420,12 @@ for(x in 1:length(grupos)){
             #filter(str_starts(id, "01")) %>% 
             mutate(
                 value = ifelse(value>=1, prettyNum(round(value, 1), big.mark = ","), prettyNum(round(value, 3), big.mark = ",")),
-                ips_fort_deb_gr = ifelse(ips_fort_deb_gr == "Desempeño superior", 1,
-                                         ifelse(ips_fort_deb_gr == "Desempeño esperado", 2, 3))
+                ips_fort_deb_gr = case_when(ips_fort_deb_gr == "Desempeño superior" ~ 1, 
+                                            ips_fort_deb_gr == "Desempeño esperado" ~ 2, 
+                                            ips_fort_deb_gr == "Desempeño inferior" ~ 3
+                                            )
+                # ips_fort_deb_gr = ifelse(ips_fort_deb_gr == "Desempeño superior", 1,
+                #                          ifelse(ips_fort_deb_gr == "Desempeño esperado", 2, 3))
             ) %>% 
             rename(
                 ` ` = name,
@@ -383,11 +436,16 @@ for(x in 1:length(grupos)){
             glimpse
         
         
+        tabla_colores <- tibble(fortaleza_debilidad = c(1,2,3),
+               color = c(mcv_semaforo[1], mcv_semaforo[3], mcv_semaforo[4])) %>%
+            filter(fortaleza_debilidad %in% unique(tempo_table_id$`Fortaleza/debilidad`))
+        
+        
         tempo_table_id %>% 
             gt %>% 
             data_color(
                 columns = `Fortaleza/debilidad`,
-                colors = c(mcv_semaforo[1], mcv_semaforo[3], mcv_semaforo[4])
+                colors = tabla_colores$color
             ) %>% 
             tab_style(
                 style = list(

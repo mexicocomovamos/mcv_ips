@@ -25,6 +25,7 @@ if(!require("googlesheets4")) install.packages("googlesheets4") & require("googl
 if(!require("psych")) install.packages("psych") & require("psych")
 if(!require("ggalluvial")) install.packages("ggalluvial") & require("ggalluvial")
 if(!require("mxmaps")) install.packages("mxmaps") & require("mxmaps")
+if(!require("ggrepel")) install.packages("ggrepel") & require("ggrepel")
 
 # Tidyverse <3
 require(tidyverse)
@@ -44,19 +45,13 @@ mcv_semaforo <- c(
 mcv_blacks <- c("black", "#D2D0CD", "#777777")
 
 ##############################
-EDICION <- 2023
+EDICION <- 2024
 # De todos modos verificar que todo cambie 
 ##############################
 
 
-
-# a <- imp_dv(x = v_id, y = 3)
-# as.character(a[[1]])
-# which(!(lapply(a$cve_ent, length) %>% as.numeric() == 1))
-
-
 # 1. Consolidación de bd -------------------------------------------------------
-anio_vec <- 2015:2023
+anio_vec <- 2015:2024
 ips_wide <- data.frame()
 ips_long <- data.frame()
 ips_direccion <- data.frame()
@@ -84,6 +79,7 @@ for(x in 1:length(anio_vec)){
     # TENER CUIDADO EN LA LONGITUD DEL BUCLE
     # LE SUMAMOS DOS PARA VERIFICAR QUE APAREZCAN TODAS LAS VARIABLES EN LA BASE!!!
     
+    # i = 3
     for(i in hojas_i[-c(1,2)]){
     # i = hojas[5]
     # for(i in hojas){
@@ -154,6 +150,10 @@ for(x in 1:length(anio_vec)){
         ips_wide, ips_wide_tempo
     )
 }
+
+# Revisión de abreviaturas correctas
+# unique(ips_long$entidad_abr_m) %>% sort()
+# ips_long$id_dim_ind[ips_long$entidad_abr_m == "TAMP"]
 
 ips_wide %>% as_tibble()
 ips_long %>% as_tibble()
@@ -272,7 +272,7 @@ utop_distop_wide <- bind_cols(
             "98", "Utopía",
             "99", "Distopía"),
     t(utop_distop_long$utopia_final) %>% 
-        as_data_frame() %>% 
+        as_tibble() %>% 
         bind_rows(
             t(utop_distop_long$distopia_final) %>% 
                 as_data_frame() 
@@ -293,13 +293,14 @@ ips_wide <- ips_wide %>%
 
 ips_wide_norm <- bind_cols(
     ips_wide[1:3],
-    as_tibble(scale(ips_wide[4:57])) 
+    as_tibble(scale(ips_wide[4:ncol(ips_wide)])) 
 )
 
 openxlsx::write.xlsx(ips_wide_norm, paste0("03_ips_clean/07_ips_wide_norm_complete.xlsx"))
 
 # 6. Alfas de Cronbach y KMO ---------------------------------------------------
-
+# unique(ips_long$id_dim_ind) %>% length()
+# 55 indicadores 
 ids_comp <- imp_dv(v_id, 2) %>% 
     select(id_dimension:direccion,utopia,distopia) %>% 
     mutate(id_comp = paste0(id_dimension, id_indicador, "_", id_componente, "comp")) %>% 
@@ -314,19 +315,21 @@ ids_comp <- imp_dv(v_id, 2) %>%
 length(names(ips_wide_norm)[4:length(names(ips_wide_norm))]) == length(ids_comp$id_comp)
 # VERIFICAR LOS NOMBRES NUEVOS QUE LE VAS A PONER A LA TABLA
 # cbind(names(ips_wide_norm)[4:length(names(ips_wide_norm))],
-#       ids_comp$id_comp) %>% 
+#       ids_comp$id_comp) %>%
 #     View()
 names(ips_wide_norm)[4:length(names(ips_wide_norm))] <- ids_comp$id_comp
 
 ips_comp <- ips_wide_norm %>%
-    select(ends_with("comp")) %>% 
-    select(-c("0103_01comp",
+    select(ends_with("comp")) %>%
+# Variables eliminadas en la edición 2024.
+    select(-c("0104_01comp",
+              # "0113_04comp",
+              "0221_05comp",
               "0227_07comp",
               "0231_08comp",
               "0339_09comp",
+              "0344_10comp",
               "0353_12comp"))
-
-# TODO 
 
 names(ips_comp)
 
@@ -339,6 +342,8 @@ ids_comp_vec <- str_sub(ids_comp$id_comp, -6) %>%
     distinct()
 
 ids_comp_vec <- as.character(ids_comp_vec$value)
+
+source("01_códigos/14_codigo_matriz_correlacion.R")
 
 alphas  <- list()
 kmos    <- list()
@@ -369,8 +374,10 @@ tabla_alfas <- lapply(1:length(alphas), function(i){
            alpha = vcj[2],
            lim_sup = vcj[3]) %>% return()
 }) %>% 
-    do.call(rbind, .)
+    do.call(rbind, .) %>% 
+    mutate(cumple_limite = ifelse(lim_sup > 0.65, yes = T, no = F))
 
+tabla_alfas
 # i = 1
 tabla_kmos <- lapply(1:length(kmos), function(i){
     vcj = kmos[[i]]$MSA  %>% as.vector()
@@ -385,7 +392,8 @@ tabla_kmos <- lapply(1:length(kmos), function(i){
     do.call(rbind, .)
 
 tabla_kmos %>% 
-    filter(str_detect(names, "componente"))
+    filter(str_detect(names, "componente")) %>% 
+    mutate(cumple = ifelse(values >= 0.5, yes = T, no = F))
 tabla_kmos %>% 
     arrange(-values)
 
@@ -400,7 +408,6 @@ for(i in 1:12){
 }
 
 # 7. Estimación de factores ----------------------------------------------------
-
 drop_names <- unique(paste0(str_sub(ids_comp$id_comp,1,2), str_sub(ids_comp$id_comp,-7)))
 coefs <- data.frame()
 ips_wide_fac <- ips_wide 
@@ -456,8 +463,11 @@ rm(drop_names)
 # h = 1
 
 # Checar componente 8
-# valores_esperados_norm$`02_08comp`
+valores_esperados_norm$anio
 h <- 1
+
+# En la columna de año (la 2) salen valores faltantes, lo cual es correcto. No se espanten. 
+# Es porque utopia/distopia no tienen años asociados
 lapply(1:ncol(valores_esperados_norm), function(h){
     is.na(valores_esperados_norm[h]) %>% 
         as.vector() %>% 
@@ -1167,6 +1177,65 @@ g <- ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
 ggsave(filename = "05_infobites/04_IPS_sankey.png", width = 23, height = 12, dpi = 100)
 ggsave(filename = "05_infobites/04_IPS_sankey.svg", width = 23, height = 12, dpi = 100)
 
+# En inglés -----
+
+titulo <- "Social Progress Index Ranking"
+subtitulo <- str_c("2015 - ", EDICION)
+eje_x <- ""
+eje_y <- "Ranking"
+
+g <- 
+    ggplot(
+        d %>% 
+            filter(id_dim == "00"), 
+        aes(
+            y = 100, 
+            x = as.character(anio),
+            stratum = ranking, 
+            alluvium = cve_ent, 
+            fill = as.numeric(ranking), 
+            label = paste0(as.numeric(ranking), ". ", entidad_abr_m)
+        )
+    )  +
+    scale_x_discrete(expand = c(.1, .1)) +
+    geom_flow() +
+    geom_stratum(alpha = .7, show.legend = F) +
+    geom_text(stat = "stratum", size = 4, family = "Ubuntu", fontface = "bold") +
+    scale_fill_gradient2("", high = mcv_semaforo[4], mid = mcv_semaforo[2], low = mcv_semaforo[1],midpoint = 16)  +
+    scale_x_discrete(expand = expansion(c(0.05, 0.05))) + 
+    scale_y_continuous(expand = expansion(c(0.01, 0.05))) + 
+    # Etiquetas
+    labs(
+        title = titulo, 
+        subtitle = subtitulo, 
+        x = eje_x, 
+        y = eje_y, 
+        color = "", 
+        caption = "\nMADE BY MEXICO, ¿CÓMO VAMOS? WITH PUBLIC DATA"
+    )   + 
+    theme_minimal() +
+    theme(
+        plot.title         = element_text(size = 40, family = "Ubuntu", face = "bold", colour = "#6950D8"),
+        plot.subtitle      = element_text(size = 35, family = "Ubuntu", colour = "#777777", margin=margin(0,0,20,0)),
+        plot.caption       = element_text(size = 25, face = "bold", color = "white", hjust = 0),
+        plot.caption.position = "plot",
+        plot.margin        = margin(0.3, 0.3, 0.3, 0.3, "cm"), # margin(top,right, bottom,left)
+        strip.text.x       = element_text(size = 25, colour = "#777777"),
+        panel.grid.minor   = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.background   = element_rect(fill = "transparent", colour = NA),
+        text               = element_text(family = "Ubuntu"),
+        axis.title.x       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+        axis.title.y       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+        axis.text.x        = element_text(family = "Ubuntu", size = 20, colour = "#777777", face = "bold"),
+        axis.text.y        = element_blank(),
+        legend.text        = element_text(family = "Ubuntu", size = 35, colour = "#777777"),
+        legend.position    = "none")  
+g <- ggimage::ggbackground(g, "05_infobites/00_plantillas/01_00_00_plantilla_blanco.pdf")
+ggsave(filename = "05_infobites/04_IPS_sankey_ENG.png", width = 23, height = 12, dpi = 100)
+ggsave(filename = "05_infobites/04_IPS_sankey_ENG.svg", width = 23, height = 12, dpi = 100)
+
+
 ### 2.1. NHB -------------------------------------------------------------------
 
 titulo <- "Ranking de la Dim 1. Necesidades Humanas Básicas"
@@ -1402,6 +1471,158 @@ for(i in 1:33){
     
 }
 
+# En Inglés 
+# i = 1
+for(i in 1:33){
+    
+    a <- ips_final  %>% 
+        mutate(dim = case_when(
+            id_dim == "00" ~ "0. Índice de Progreso Social",
+            id_dim == "01" ~ "1. Necesidades Humanas Básicas",
+            id_dim == "02" ~ "2. Fundamentos del Bienestar",
+            T ~ "3. Oportunidades"
+        )) %>% 
+        filter(cve_ent == cves[i]) %>% 
+        mutate(dim = str_replace_all(dim, c("0. Índice de Progreso Social" = "0. Social Progress Index",
+                                            "1. Necesidades Humanas Básicas" = "1. Basic Human Needs",
+                                            "2. Fundamentos del Bienestar" = "2. Foundations of wellbeing",
+                                            "3. Oportunidades" = "3. Opportunities"))) %>% 
+        mutate(entidad_abr_m = ifelse(entidad_abr_m == "Nacional", yes = "National", no = entidad_abr_m)) %>% 
+        glimpse
+    
+    a$dim
+    
+    titulo <- "Score obtained on the Social Progress Index and its dimensions"
+    subtitulo <- paste0(unique(a$entidad_abr_m), " | 2015 - ", EDICION)
+    eje_x <- "Year"
+    eje_y <- "Score"
+    caption = "\nMade by México, ¿Cómo vamos? with public data" %>% str_to_upper()
+    
+    g <- 
+        ggplot(
+            a,
+            aes(
+                x = as.factor(anio),
+                y = dim_value,
+                group = 1,
+                col = id_dim
+            )
+        ) +
+        geom_line(size = 3.7, alpha = 0.7, show.legend = F) +
+        geom_point(size = 6.7)  +
+        geom_text(
+            aes(label = round(dim_value,1)), 
+            vjust = -1.5, size = 5.5, fontface = "bold", family = "Ubuntu", show.legend = F
+        ) +
+        facet_wrap(~dim)  +
+        scale_color_manual(values = mcv_discrete)+
+        ylim(30,95)+
+        # Etiquetas
+        labs(
+            title = titulo, 
+            subtitle = subtitulo, 
+            x = eje_x, 
+            y = eje_y, 
+            color = "", 
+            caption = caption
+        )   + 
+        theme_minimal() +
+        theme(
+            plot.title         = element_text(size = 40, family = "Ubuntu", face = "bold", colour = "#6950D8"),
+            plot.subtitle      = element_text(size = 35, family = "Ubuntu", colour = "#777777", margin=margin(0,0,30,0)),
+            plot.caption       = element_text(size = 25, color = "white", hjust = 0, face = "bold", family = "Ubuntu"),
+            plot.caption.position = "plot",
+            plot.margin        = margin(0.3, 0.3, 0.3, 0.3, "cm"), # margin(top,right, bottom,left)
+            strip.text.x       = element_text(size = 25, colour = "#777777", face = "bold"),
+            panel.grid.minor   = element_blank(),
+            #panel.grid.major.x = element_blank(),
+            panel.background   = element_rect(fill = "transparent", colour = NA),
+            text               = element_text(family = "Ubuntu"),
+            axis.title.x       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+            axis.title.y       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+            axis.text.x        = element_text(family = "Ubuntu", size = 15, colour = "#777777"),
+            axis.text.y        = element_text(family = "Ubuntu", size = 15, colour = "#777777"),
+            legend.text        = element_text(family = "Ubuntu", size = 35, colour = "#777777"),
+            legend.position    = "none") 
+    g <- ggimage::ggbackground(g, "05_infobites/00_plantillas/01_00_00_plantilla_blanco.pdf")
+    ggsave(filename = paste0("05_infobites/08_entidades/ingles/", unique(a$cve_ent), "_", unique(a$entidad_abr_m), ".png"), width = 23, height = 12, dpi = 100)
+    ggsave(filename = paste0("05_infobites/08_entidades/ingles/", unique(a$cve_ent), "_", unique(a$entidad_abr_m), ".svg"), width = 23, height = 12, dpi = 100)
+    
+    
+}
+
+## 3.1 Scores por entidades comparativa JALISCO-----------------------------------------------------
+
+#INFOBITE de comparación de las entidades Jalisco, Nacional y CDMX los cuadrantes de las dimensiones
+    
+    a <- ips_final  %>% 
+        mutate(dim = case_when(
+            id_dim == "00" ~ "0. Índice de Progreso Social",
+            id_dim == "01" ~ "1. Necesidades Humanas Básicas",
+            id_dim == "02" ~ "2. Fundamentos del Bienestar",
+            T ~ "3. Oportunidades"
+        )) %>% 
+        filter(cve_ent %in% c("14", "09", "00")) %>% 
+        glimpse
+    
+    titulo <- "Puntaje en el IPS y dimensiones"
+    subtitulo <- "Evolución en el tiempo"
+    eje_x <- "Años"
+    eje_y <- "Puntaje"
+    
+    g <- 
+        ggplot(
+            a,
+            aes(
+                x = as.factor(anio),
+                y = dim_value,
+                group = cve_ent,
+                col = cve_ent
+            )
+        ) +
+        geom_line(size = 1.7, alpha = 0.7, show.legend = T) +
+        geom_point(size = 2.7)  +
+        geom_text_repel(
+            aes(label = round(dim_value,1)), 
+            vjust = -1.5, size = 5.5, fontface = "bold", family = "Ubuntu", show.legend = F, hjust = 1
+        ) +
+        facet_wrap(~dim)  +
+        scale_color_manual(
+            values = c("14" = "#1f78b4", "09" = "#33a02c", "00" = "#e31a1c"),
+            labels = c("14" = "Jalisco", "09" = "CDMX", "00" = "Nacional")
+        ) +
+        ylim(45,85)+
+        # Etiquetas
+        labs(
+            title = titulo, 
+            subtitle = subtitulo, 
+            x = eje_x, 
+            y = eje_y, 
+            color = "Entidad"
+        )   + 
+        theme_minimal() +
+        theme(
+            plot.title         = element_text(size = 40, family = "Ubuntu", face = "bold", colour = "#6950D8"),
+            plot.subtitle      = element_text(size = 35, family = "Ubuntu", colour = "#777777", margin=margin(0,0,30,0)),
+            plot.caption       = element_text(size = 20),
+            plot.margin        = margin(0.3, 0.3, 2, 0.3, "cm"), # margin(top,right, bottom,left)
+            strip.text.x       = element_text(size = 25, colour = "#777777"),
+            panel.grid.minor   = element_blank(),
+            #panel.grid.major.x = element_blank(),
+            panel.background   = element_rect(fill = "transparent", colour = NA),
+            text               = element_text(family = "Ubuntu"),
+            axis.title.x       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+            axis.title.y       = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
+            axis.text.x        = element_text(family = "Ubuntu", size = 15, colour = "#777777"),
+            axis.text.y        = element_text(family = "Ubuntu", size = 15, colour = "#777777"),
+            legend.text        = element_text(family = "Ubuntu", size = 23, colour = "#777777"),
+            legend.title        = element_text(family = "Ubuntu", size = 23, colour = "#777777"),
+            legend.position    = "top") 
+    g <- ggimage::ggbackground(g, "05_infobites/00_plantillas/00_IPS.pdf")
+    ggsave(filename = paste0("05_infobites/08_entidades/", "Jal_comparación.png"), width = 23, height = 12, dpi = 100)
+    ggsave(filename = paste0("05_infobites/08_entidades/", "Jal_comparación.svg"), width = 23, height = 12, dpi = 100)
+    
+
 ## 4. Componentes --------------------------------------------------------------
 ips_comp <- readxl::read_excel("03_ips_clean/00_IPS_COMPLETE_LONG.xlsx", sheet = 2) %>% 
     left_join(
@@ -1482,7 +1703,7 @@ for(i in 1:length(id_comp_vec)){
 }
 
 ### 4.2. Sankeys (rankings) ----------------------------------------------------
-
+# i = 1
 for(i in 1:length(id_comp_vec)){
     
     a <- ips_comp %>% 
@@ -1624,198 +1845,6 @@ for(i in 1:length(id_comp_vec)){
     
 }
 
-# 5. Gráfica gasto en salud ----------------------------------------------------
-
-d_plot <- 
-tribble(
-    ~decil, ~prop,	~anio,
-    1,  0.036333211,  2016,
-    2,  0.021226619,  2016,
-    3,  0.020249575,  2016,
-    4,  0.01673376,  2016,
-    5,  0.016779546,  2016,
-    6,  0.017257786,  2016,
-    7,  0.01547467,  2016,
-    8,  0.013747097,  2016,
-    9,  0.016706299,  2016,
-    10,  0.015063593,  2016,
-    1,  0.028556168,  2018,
-    2,  0.022736609,  2018,
-    3,  0.017528229,  2018,
-    4,  0.017134013,  2018,
-    5,  0.017985526,  2018,
-    6,  0.014910528,  2018,
-    7,  0.015820028,  2018,
-    8,  0.015715694,  2018,
-    9,  0.01771706,  2018,
-    10,  0.016134848,  2018,
-    1,  0.049900965,  2020,
-    2,  0.032137995,  2020,
-    3,  0.028487149,  2020,
-    4,  0.028152928,  2020,
-    5,  0.027127273,  2020,
-    6,  0.025297019,  2020,
-    7,  0.0243463,  2020,
-    8,  0.023429131,  2020,
-    9,  0.024179847,  2020,
-    10,  0.022897623,  2020
-)%>% 
-    mutate(
-        decil = as.character(as.roman(as.numeric(decil)))
-    ) %>% 
-    glimpse
-
-v_title <- "Gasto promedio en salud de los hogares\npor decil de ingresos"
-v_subtitle <- "Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH)"
-v_eje_x <- "Decil de ingresos"
-g <- 
-    ggplot(
-        d_plot,
-        aes(
-            x = reorder(decil, as.numeric(as.roman(decil))),
-            y = prop,
-            fill = as.factor(anio)
-        )
-    ) + 
-    geom_col(position = position_dodge2()) +
-    scale_y_continuous("", labels = scales::percent_format(accuracy = 1L), 
-                       limits = c(0,0.05), breaks = seq(0,0.05,0.01)) +
-    scale_fill_manual("", values = c(mcv_discrete[1], mcv_discrete[2], mcv_semaforo[4])) +
-    scale_colour_manual("", values = c(mcv_discrete[1], mcv_discrete[2], mcv_semaforo[4])) +
-    labs(
-        title    = v_title, 
-        subtitle = v_subtitle, 
-        x        = v_eje_x
-    ) +
-    theme_minimal() +
-    theme(
-        plot.title        = element_text(size = 40, face = "bold", colour = "#6950D8"),
-        plot.subtitle     = element_text(size = 35, colour = "#777777", margin=margin(0,0,10,0)),
-        plot.margin       = margin(0.3, 0.3, 1.5, 0.3, "cm"), # margin(top,right, bottom,left)
-        plot.caption      = element_text(size = 20),
-        strip.text.x      = element_text(size = 20),
-        panel.grid.minor  = element_blank(),
-        panel.background  = element_rect(fill = "transparent",colour = NA),
-        text              = element_text(family = "Ubuntu"),
-        axis.title.x      = element_blank(),
-        axis.title.y      = element_text(size = 25),
-        axis.text.x       = element_text(size = 25, angle = 0, vjust = 0.5),
-        axis.text.y       = element_text(size = 25),
-        legend.text       = element_text(size = 15),
-        legend.key.size   = unit(0.7, "cm"),
-        legend.position   = "top")
-g <- ggimage::ggbackground(g, "05_infobites/00_plantillas/01_inegi.pdf")
-
-ggsave(filename = "07_gráficas_en_texto/13_gasto_promedio_salud_deciles.png", 
-       # device = "png", type = "cairo",
-       # bg= "transparent", 
-       width = 16, height = 9, dpi = 200)
-
-ggsave(filename = "07_gráficas_en_texto/13_gasto_promedio_salud_deciles.svg", 
-       # device = "png", type = "cairo",
-       # bg= "transparent", 
-       width = 16, height = 9, dpi = 200)
-
-
-# 5. Transformación para Omar --------------------------------------------------
-
-ips_final <- readxl::read_excel("03_ips_clean/00_IPS_COMPLETE_LONG.xlsx") %>% 
-    glimpse
-
-openxlsx::write.xlsx(
-    ips_final %>% 
-        filter(id_dim=="00", as.numeric(cve_ent) < 33) %>% 
-        select(anio, entidad_abr_m, value = dim_value) %>% 
-        pivot_wider(
-            names_from = entidad_abr_m, values_from = value
-        ),
-    "03_ips_clean/09_data_web/00_ips.xlsx"
-)
-
-openxlsx::write.xlsx(
-    ips_final %>% 
-        filter(id_dim=="01", as.numeric(cve_ent) < 33) %>% 
-        select(anio, entidad_abr_m, value = dim_value) %>% 
-        pivot_wider(
-            names_from = entidad_abr_m, values_from = value
-        ),
-    "03_ips_clean/09_data_web/01_nhb.xlsx"
-)
-
-openxlsx::write.xlsx(
-    ips_final %>% 
-        filter(id_dim=="02", as.numeric(cve_ent) < 33) %>% 
-        select(anio, entidad_abr_m, value = dim_value) %>% 
-        pivot_wider(
-            names_from = entidad_abr_m, values_from = value
-        ),
-    "03_ips_clean/09_data_web/02_fb.xlsx"
-)
-
-openxlsx::write.xlsx(
-    ips_final %>% 
-        filter(id_dim=="03", as.numeric(cve_ent) < 33) %>% 
-        select(anio, entidad_abr_m, value = dim_value) %>% 
-        pivot_wider(
-            names_from = entidad_abr_m, values_from = value
-        ),
-    "03_ips_clean/09_data_web/03_op.xlsx"
-)
-
-openxlsx::write.xlsx(
-    
-    ips_final %>% 
-        filter(id_dim == "00") %>% 
-        filter(!as.numeric(cve_ent) > 33) %>% 
-        filter(anio == 2020) %>% 
-        bind_rows(
-            ips_final %>% 
-                filter(id_dim == "00") %>% 
-                filter(!as.numeric(cve_ent) > 33) %>% 
-                filter(anio == EDICION) 
-        ) %>% 
-        pivot_wider(
-            names_from = "anio",
-            names_prefix = "anio_",
-            values_from = "dim_value"
-        ) %>% 
-        mutate(
-            dif = round(anio_2023-anio_2020,2)
-        ) %>% 
-        filter(!cve_ent == "00", dif >= 0) %>% 
-        arrange(desc(dif))%>% 
-        select(Entidad = entidad_abr_m, `Diferencia en puntuación entre 2020 y 2023` = dif),
-    "03_ips_clean/09_data_web/04_01_entidades_ganaron.xlsx"
-    
-)
-
-
-openxlsx::write.xlsx(
-    
-    ips_final %>% 
-        filter(id_dim == "00") %>% 
-        filter(!as.numeric(cve_ent) > 33) %>% 
-        filter(anio == 2020) %>% 
-        bind_rows(
-            ips_final %>% 
-                filter(id_dim == "00") %>% 
-                filter(!as.numeric(cve_ent) > 33) %>% 
-                filter(anio == EDICION) 
-        ) %>% 
-        pivot_wider(
-            names_from = "anio",
-            names_prefix = "anio_",
-            values_from = "dim_value"
-        ) %>% 
-        mutate(
-            dif = round(anio_2023-anio_2020,2)
-        ) %>% 
-        filter(!cve_ent == "00", dif < 0) %>% 
-        arrange(dif) %>% 
-        select(Entidad = entidad_abr_m, `Diferencia en puntuación entre 2020 y 2023` = dif),
-    "03_ips_clean/09_data_web/04_02_entidades_perdieron.xlsx"
-    
-)
 
 # FIN. -------------------------------------------------------------------------
 

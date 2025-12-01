@@ -54,7 +54,7 @@ v_time      <- c(
     "2009-2010", "2010-2011", "2011-2012", "2012-2013", 
     "2013-2014", "2014-2015", "2015-2016", "2016-2017", 
     "2017-2018", "2018-2019", "2019-2020", "2020-2021", 
-    "2021-2022", "2022-2023", "2023-2024")
+    "2021-2022", "2022-2023", "2023-2024", "2024-2025")
 
 v_formato   <- c(".xlsx")
 
@@ -69,7 +69,7 @@ df_estudiantes <- df_crudo                                  %>%
     slice(1:33)                                             %>% 
     select(v_names[1], v_names[4])                          %>%
     rename(                 
-        entidad       = v_names[1],                   
+        entidad       = v_names[1], 
         estudiantes   = v_names[4])                         %>% 
     mutate(anio       = 2015)
 
@@ -77,7 +77,7 @@ df_estudiantes <- df_crudo                                  %>%
 
 # Vectores de texto
 v_formato   <- c(".xlsx")
-v_years     <- c(2009:2024)
+v_years     <- c(2009:2025)
 
 # Base vacía 
 df_unida <- data.frame()
@@ -97,8 +97,12 @@ for(i in 1:length(v_time)){
     
     v_names     <- names(df_crudo)
     
-    x <- ifelse(v_time[i] %in% v_time[1:5], 3, #nota: aquí revisar la base nueva y el orden de las columnas 
-                ifelse(v_time[i] %in% v_time[15], 3,4)) 
+    #x <- ifelse(v_time[i] %in% v_time[1:5], 3, #nota: aquí revisar la base nueva y el orden de las columnas 
+     #           ifelse(v_time[i] %in% v_time[15], 3,4)) 
+    
+    x <- ifelse(v_anio >= 2023, 3,  # 2023-2024: columna 3
+                ifelse(v_anio >= 2014 & v_anio <= 2022, 4,  # 2014-2022: columna 4
+                       3)) #nota: aquí revisar la base nueva y el orden de las columnas 
     
     df_estudiantes <- df_crudo                                  %>%
         slice(1:33)                                             %>% 
@@ -228,10 +232,11 @@ load("02_datos_crudos/df_pop_state_age.RData")
 
 # Filtrar por años y edades de interés
 df_pop <- df_pop_state_age              %>% 
-    filter(year > 2008 & year < 2024)   %>% 
+    filter(year > 2008 & year < 2025)   %>% 
     filter(age  > 17   & age  < 24)     %>%  # Este rango de edad da lo más similar a lo reportado por la SEP
     group_by(year, CVE_GEO, state)      %>% 
-    summarise(pop = sum(population))    %>% 
+    #summarise(pop = sum(population))    %>% 
+    summarise(pop = sum(pop_tot))    %>% 
     ungroup()                           %>% 
     mutate(cve_ent = str_pad(CVE_GEO, 2, pad = "0"))    %>% 
     select(cve_ent, anio = year, pop)

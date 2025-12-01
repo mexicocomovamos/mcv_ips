@@ -10,30 +10,29 @@ gc() #free up memrory and report the memory usage.
 Sys.setlocale("LC_ALL", "Spanish_Mexico.1252") # Cambiar locale para prevenir problemas con caracteres especiales
 options(scipen=999) # Prevenir notacion cientifica
 
-# carga lista de librerías que necesitaremos
+# carga lista de librer?as que necesitaremos
 library(foreign)
-# librería que nos ayuda a leer las tablas en diferentes formatos
+# librer?a que nos ayuda a leer las tablas en diferentes formatos
 library(doBy)
-# librería que nos permite ordenar los datos de la tabla según el ingreso
+# librer?a que nos permite ordenar los datos de la tabla seg?n el ingreso
 library(reldist)
 library(dplyr)
 library(tidyr)
-# carga la librería survey, ésta nos sirve para el cálculo del diseño muestral
+# carga la librer?a survey, ?sta nos sirve para el c?lculo del dise?o muestral
 library(srvyr)
 library(writexl)
+library(tidyverse)
 
 ###########################2016###########################
-# cargamos las bases de población y vivienda
-setwd("J:/MCV/Pruebas/ENIGH/2016")
-
+# cargamos las bases de poblaci?n y vivienda
+# dir_enigh = 
+# setwd("J:/MCV/Pruebas/ENIGH/2016")
 Pob<- read.dbf("./data/poblacion.dbf",as.is = T)
-
 Viv <- read.dbf("./data/viviendas.dbf",as.is = T)
 
+#Creamos las variables sobre poblaci?n ind?gena y poblaci?n discapacitada
 
-#Creamos las variables sobre población indígena y población discapacitada
-
-Pob<-Pob%>%
+Pob <- Pob%>%
   #Obtener la clave de entidad de la variable folioviv
   mutate(cve_ent=
            case_when(nchar(folioviv)==9 ~ substr(folioviv,1,1),
@@ -47,29 +46,29 @@ Pob<-Pob%>%
                             cve_ent==06 ~ "Colima",
                             cve_ent==07 ~ "Chiapas",
                             cve_ent==08 ~ "Chihuahua",
-                            cve_ent==09 ~ "Ciudad de México",
+                            cve_ent==09 ~ "Ciudad de MÃ©xico",
                             cve_ent==10 ~ "Durango",
                             cve_ent==11 ~ "Guanajuato",
                             cve_ent==12 ~ "Guerrero",
                             cve_ent==13 ~ "Hidalgo",
                             cve_ent==14 ~ "Jalisco",
-                            cve_ent==15 ~ "México",
-                            cve_ent==16 ~ "Michoacán de Ocampo",
+                            cve_ent==15 ~ "MÃ©xico",
+                            cve_ent==16 ~ "MichoacÃ¡n de Ocampo",
                             cve_ent==17 ~ "Morelos",
                             cve_ent==18 ~ "Nayarit",
-                            cve_ent==19 ~ "Nuevo León",
+                            cve_ent==19 ~ "Nuevo LeÃ³n",
                             cve_ent==20 ~ "Oaxaca",
                             cve_ent==21 ~ "Puebla",
-                            cve_ent==22 ~ "Querétaro",
+                            cve_ent==22 ~ "QuerÃ©taro",
                             cve_ent==23 ~ "Quintana Roo",
-                            cve_ent==24 ~ "San Luis Potosí",
+                            cve_ent==24 ~ "San Luis PotosÃ­",
                             cve_ent==25 ~ "Sinaloa",
                             cve_ent==26 ~ "Sonora",
                             cve_ent==27 ~ "Tabasco",
                             cve_ent==28 ~ "Tamaulipas",
                             cve_ent==29 ~ "Tlaxcala",
                             cve_ent==30 ~ "Veracruz de Ignacio de la Llave",
-                            cve_ent==31 ~ "Yucatán",
+                            cve_ent==31 ~ "YucatÃ¡n",
                             cve_ent==32 ~ "Zacatecas"))
 
 #Analfabetismo
@@ -103,15 +102,15 @@ analfabetismo <- base%>%
 write_xlsx(analfabetismo,"./resultados/analfabetismo.xlsx")
 
 ###########################2018###########################
-# cargamos las bases de población y vivienda
-setwd("J:/MCV/Pruebas/ENIGH/2018")
+# cargamos las bases de poblaci?n y vivienda
+Pob <- read_csv("/Volumes/Extreme\ SSD/DATASETS/INEGI\ -\ ENIGH/2022/poblacion.csv")
+Viv <- read_csv("/Volumes/Extreme\ SSD/DATASETS/INEGI\ -\ ENIGH/2022/viviendas.csv")
+# setwd("J:/MCV/Pruebas/ENIGH/2018")
+# Pob<- read.dbf("./data/poblacion.dbf",as.is = T)
+# Viv <- read.dbf("./data/viviendas.dbf",as.is = T)
 
-Pob<- read.dbf("./data/poblacion.dbf",as.is = T)
 
-Viv <- read.dbf("./data/viviendas.dbf",as.is = T)
-
-
-#Creamos las variables sobre población indígena y población discapacitada
+#Creamos las variables sobre poblaci?n ind?gena y poblaci?n discapacitada
 
 Pob<-Pob%>%
   #Obtener la clave de entidad de la variable folioviv
@@ -127,29 +126,29 @@ Pob<-Pob%>%
                             cve_ent==06 ~ "Colima",
                             cve_ent==07 ~ "Chiapas",
                             cve_ent==08 ~ "Chihuahua",
-                            cve_ent==09 ~ "Ciudad de México",
+                            cve_ent==09 ~ "Ciudad de M?xico",
                             cve_ent==10 ~ "Durango",
                             cve_ent==11 ~ "Guanajuato",
                             cve_ent==12 ~ "Guerrero",
                             cve_ent==13 ~ "Hidalgo",
                             cve_ent==14 ~ "Jalisco",
-                            cve_ent==15 ~ "México",
-                            cve_ent==16 ~ "Michoacán de Ocampo",
+                            cve_ent==15 ~ "M?xico",
+                            cve_ent==16 ~ "Michoac?n de Ocampo",
                             cve_ent==17 ~ "Morelos",
                             cve_ent==18 ~ "Nayarit",
-                            cve_ent==19 ~ "Nuevo León",
+                            cve_ent==19 ~ "Nuevo Le?n",
                             cve_ent==20 ~ "Oaxaca",
                             cve_ent==21 ~ "Puebla",
-                            cve_ent==22 ~ "Querétaro",
+                            cve_ent==22 ~ "Quer?taro",
                             cve_ent==23 ~ "Quintana Roo",
-                            cve_ent==24 ~ "San Luis Potosí",
+                            cve_ent==24 ~ "San Luis Potos?",
                             cve_ent==25 ~ "Sinaloa",
                             cve_ent==26 ~ "Sonora",
                             cve_ent==27 ~ "Tabasco",
                             cve_ent==28 ~ "Tamaulipas",
                             cve_ent==29 ~ "Tlaxcala",
                             cve_ent==30 ~ "Veracruz de Ignacio de la Llave",
-                            cve_ent==31 ~ "Yucatán",
+                            cve_ent==31 ~ "Yucat?n",
                             cve_ent==32 ~ "Zacatecas"))
 
 #Analfabetismo
@@ -162,13 +161,11 @@ Pob<-Pob %>%
 colnames(Viv) <- tolower(colnames(Viv))
 
 prov <- Viv %>%
-  select(folioviv, factor, tot_resid)%>%
+  select(folioviv, tot_resid)%>%
   mutate(tot_resid = as.numeric(tot_resid))
-
 
 base <- Pob %>%
   left_join(prov,by=c("folioviv"))
-
 
 #Analfabetismo
 analfabetismo <- base%>% 
@@ -180,7 +177,58 @@ analfabetismo <- base%>%
   ) %>% 
   select(-ends_with("se")) 
 
-write_xlsx(analfabetismo,"./resultados/analfabetismo.xlsx")
+write_xlsx(analfabetismo,"02_datos_crudos/02_18_analfabetismo/analfabetismo.xlsx")
 
+# Analfabetismo ENIGH 2022: ----
+Pob <- read_csv("/Volumes/Extreme\ SSD/DATASETS/INEGI\ -\ ENIGH/2022/poblacion.csv")
+Viv <- read_csv("/Volumes/Extreme\ SSD/DATASETS/INEGI\ -\ ENIGH/2022/viviendas.csv")
 
+Pob<-Pob%>%
+    mutate(cve_ent=case_when(nchar(folioviv)==9 ~ substr(folioviv,1,1),
+                             TRUE ~substr(folioviv,1,2)))  %>%
+    filter(edad >= 15) %>% 
+#Analfabetismo
+    #Obtener la clave de entidad de la variable folioviv
+    mutate(analfa = case_when(alfabetism == 2 ~ "Analfabetismo",
+                              alfabetism == 1 ~ "No analfabetismo")) 
 
+alfab <- Pob %>% 
+    group_by(cve_ent, analfa) %>% 
+    summarise(total_pob = sum(factor, na.rm = t)) %>% 
+    filter(!is.na(analfa)) %>% 
+    pivot_wider(names_from = analfa, 
+                values_from = total_pob, 
+                id_cols = cve_ent)
+
+tot_pob <- Pob %>% 
+    group_by(cve_ent) %>% 
+    summarise(total_pob = sum(factor, na.rm = t))
+
+left_join(alfab, tot_pob) %>% 
+    ungroup() %>% 
+    mutate(tasa = 100*(Analfabetismo/total_pob))
+
+# #Merge con la tabla de vivienda y hogares
+colnames(Viv) <- tolower(colnames(Viv))
+
+prov <- Viv %>%
+    select(folioviv, tot_resid)%>%
+    mutate(tot_resid = as.numeric(tot_resid))
+
+base <- Pob %>%
+    left_join(prov,by=c("folioviv"))
+
+#Analfabetismo
+analfabetismo <- base %>% 
+    mutate(analfa = case_when(alfabetism == 2 ~ 1,
+                              alfabetism == 1 ~ 0)) %>% 
+    drop_na(analfa) %>% 
+    as_survey_design(
+        # weights = factor
+                     id=upm, strata=est_dis, weights=factor
+                     ) %>% 
+    # group_by(cve_ent) %>% 
+    summarise(analfabetismo = survey_mean(analfa, na.rm = T)*100) %>% 
+    select(-ends_with("se")) 
+
+write_xlsx(analfabetismo,"02_datos_crudos/02_18_analfabetismo/analfabetismo.xlsx")

@@ -123,7 +123,7 @@ df_data <- df_data_join                                                         
     # Agregar identificador del indicador
     mutate(id_dimension = "03",
            id_indicador = "35", 
-           anio = 2022)  
+           anio = 2024)  
 
 #Hogares con escrituras
 df_escrituras <- df_data                                               %>% 

@@ -9,7 +9,7 @@
 # Última actualización:       10 de septiembre de 2024
 #------------------------------------------------------------------------------#
 
-# Fuente: en esta liga se comparte la fuente de datos para las elecciones 2024 - hay entidades que todavía no tienen el dato debido a que no ha iniciado la legislatura 
+# Fuente: en esta liga se comparte la fuente de datos para las elecciones 2024: 
 #https://docs.google.com/spreadsheets/d/1eC3rZ2IrEJTA7R92m3iBZ2EN7nZhUjpygPerxu1ZF8w/edit?usp=sharing
 
 # 0. Configuración inicial -----------------------------------------------------
@@ -51,7 +51,7 @@ imp_dv <- function(x){
         paste0("https://docs.google.com/spreadsheets/d/", x))}
 # 1. Procesamiento de datos ----------------------------------------------------
 
-# Ya fue actualizado hasta 2023 y sigue proceso de actualización 2024
+# Ya fue actualizado hasta 2024
 df_crudo    <- read_excel(paste0(inp, "paridad_congresos_locales_nuevo.xlsx"))
 
 df_crudo <- df_crudo %>% 

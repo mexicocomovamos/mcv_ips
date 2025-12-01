@@ -229,7 +229,7 @@ df_indigenas <- base                                              %>%
     # Agregar identificador del indicador
     mutate(id_dimension = "03",
            id_indicador = "48", 
-           anio = 2022)                                           %>% 
+           anio = 2024)                                           %>% 
     group_by(cve_ent, entidad_abr_m, anio, 
              id_dimension, id_indicador)                          %>% 
     summarise(
@@ -246,13 +246,53 @@ df_discapacitados <- base                                          %>%
     # Agregar identificador del indicador
     mutate(id_dimension = "03",
            id_indicador = "49", 
-           anio = 2022)                                            %>% 
+           anio = 2024)                                            %>% 
     group_by(cve_ent, entidad_abr_m, anio, 
              id_dimension, id_indicador)                           %>% 
     summarise(
         indicador_value = (survey_mean(disc_analfa, na.rm = T)*100)
     )                                                              %>% 
     select(-ends_with("se")) 
+
+
+
+#-----------------Indigenas analfabetas - TOTAL NACIONAL
+df_indigenas_nacional <- base                                              %>% 
+    drop_na(ind_analfa)                                           %>% 
+    filter(ind == 1)                                              %>% 
+    as_survey_design(weights = factor)                            %>% 
+    # Agregar identificador del indicador
+    mutate(id_dimension = "03",
+           id_indicador = "48", 
+           anio = 2024,
+           cve_ent = "00",
+           entidad_abr_m = "Nacional")                            %>% 
+    group_by(cve_ent, entidad_abr_m, anio, 
+             id_dimension, id_indicador)                          %>% 
+    summarise(
+        indicador_value = (survey_mean(ind_analfa, na.rm = T)*100)
+    )                                                             %>% 
+    select(-ends_with("se")) 
+
+#-----------------Discapacitados analfabetas - TOTAL NACIONAL
+df_discapacitados_nacional <- base                                          %>% 
+    drop_na(discapacidad)                                          %>% 
+    filter(discapacidad == 1)                                      %>% 
+    as_survey_design(weights = factor)                             %>% 
+    # Agregar identificador del indicador
+    mutate(id_dimension = "03",
+           id_indicador = "49", 
+           anio = 2024,
+           cve_ent = "00",
+           entidad_abr_m = "Nacional")                             %>% 
+    group_by(cve_ent, entidad_abr_m, anio, 
+             id_dimension, id_indicador)                           %>% 
+    summarise(
+        indicador_value = (survey_mean(disc_analfa, na.rm = T)*100)
+    )                                                              %>% 
+    select(-ends_with("se")) 
+
+
 
 
 # 3. Guardar en drive ----------------------------------------------------------

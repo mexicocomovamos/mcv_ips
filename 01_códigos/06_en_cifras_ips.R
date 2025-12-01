@@ -41,12 +41,36 @@ mcv_semaforo <- c(
 
 mcv_blacks <- c("black", "#D2D0CD", "#777777")
 
+## 0.2. Tokens ----
+# google_token <- "AIzaSyDF4E80nih1fBMPg785wYO-ruAKgJiEdW0"
 
+v_usuaria <- "juvenal"
+googlesheets4::gs4_auth(cache = ".secrets",
+                        email = paste0(v_usuaria, "@mexicocomovamos.mx"))
+options(gargle_oauth_cache = ".secrets")
+gargle::gargle_oauth_cache()
+list.files(".secrets/")
+
+metadatos <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1hi5qzhpZz1S7_TFe68lqMQCYUFOEQjRejMOlvSTjw0w/edit#gid=1859408845", sheet = 2)
+
+# Obtener identificador de la base de del IPS 
+googlesheets4::sheet_names("https://docs.google.com/spreadsheets/d/1hi5qzhpZz1S7_TFe68lqMQCYUFOEQjRejMOlvSTjw0w/edit#gid=1859408845")
+# v_id <- as.character(
+#     googledrive::drive_get(
+#         "https://docs.google.com/spreadsheets/d/1hi5qzhpZz1S7_TFe68lqMQCYUFOEQjRejMOlvSTjw0w/edit#gid=1859408845")[1, 2])
+# 1
+v_id <- str_c(metadatos$id_dimension,metadatos$id_indicador)
+
+# Función para importar de manera más corta desde drive
+imp_dv <- function(x, y){
+    googlesheets4::read_sheet(
+        paste0("https://docs.google.com/spreadsheets/d/", x), sheet = y)}
 
 # 1. Datos ----
 ips_complete <- data.frame()
-# i = 56
-for(i in 3:59){
+# i = 60
+
+for(i in 3:60){
     
     ips_tempo <- readxl::read_excel("02_datos_crudos/00_IPS_bd.xlsx", sheet = i) %>% 
         # imp_dv(v_id, i) %>% 
@@ -58,7 +82,7 @@ for(i in 3:59){
             vars(c(starts_with("id"), starts_with("cve"))),
             ~as.character(str_pad(.,2,"left","0"))
         ) %>% 
-        filter(anio %in% c(2014:2023))
+        filter(anio %in% c(2014:2024))
     
     
     ips_complete <- bind_rows(ips_complete, ips_tempo)
@@ -82,7 +106,7 @@ ips_complete_filt <- ips_complete %>%
     drop_na(cve_ent) %>% 
     mutate(id_unique = paste(id_dimension, id_componente,  id_indicador, sep = "_")) %>% 
     as_tibble()
-1
+1 # No se que hace este "uno" acá 
 # 2. Heatmaps ----
 # v_id_dim_ind <- unique(ips_complete_filt$id_dim_ind)
 v_id_dim_ind <- unique(ips_complete_filt$id_dim_ind)
@@ -190,13 +214,13 @@ for(i in 1:length(v_id_dim_ind)){
 # a <- ips_complete_filt %>%
 #     filter(id_indicador == "56") %>%
 #     filter(anio >= 2014)
-# 
-# print(paste0(v_id_dim_ind[i], " - ", 
+#
+# print(paste0(v_id_dim_ind[i], " - ",
 #              unique(a$indicador) %>% str_replace_all("toneladas", "miles de toneladas")
 #              ))
 # v_cols_plot <- rev(mcv_semaforo)
 # titulo <- str_c("02.04.05 ", unique(a$indicador_name) %>% str_replace_all("toneladas", "miles de toneladas"))
-# # 
+# #
 # subtitulo <- paste0(min(a$anio), " - ", max(a$anio))
 # ggplot(data =
 #            a, #%>%
@@ -241,27 +265,27 @@ for(i in 1:length(v_id_dim_ind)){
 #         axis.text.y        = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
 #         plot.title.position = "plot",
 #         legend.position    = "none")
-# 
-# ggsave(filename = paste0("05_infobites/00_en_cifras_ips/", unique(a$id_unique), "_", str_replace_all(tolower(trimws(str_remove_all(unique(a$indicador), "[[:punct:]]"))), " ", "_"), ".png"), 
+#
+# ggsave(filename = paste0("05_infobites/00_en_cifras_ips/", unique(a$id_unique), "_", str_replace_all(tolower(trimws(str_remove_all(unique(a$indicador), "[[:punct:]]"))), " ", "_"), ".png"),
 #        width = 12, height = 23, dpi = 200)
-# 
-# ggsave(filename = paste0("05_infobites/00_en_cifras_ips/", unique(a$id_unique), "_", str_replace_all(tolower(trimws(str_remove_all(unique(a$indicador), "[[:punct:]]"))), " ", "_"), ".svg"), 
+#
+# ggsave(filename = paste0("05_infobites/00_en_cifras_ips/", unique(a$id_unique), "_", str_replace_all(tolower(trimws(str_remove_all(unique(a$indicador), "[[:punct:]]"))), " ", "_"), ".svg"),
 #        width = 12, height = 23, dpi = 200)
-# 
-# 
-# 
-# 
-# 
+#
+#
+#
+#
+#
 # a <- ips_complete_filt %>%
 #     filter(id_indicador == "42") %>%
 #     filter(anio >= 2014)
-# 
-# print(paste0(v_id_dim_ind[i], " - ", 
+#
+# print(paste0(v_id_dim_ind[i], " - ",
 #              unique(a$indicador) %>% str_replace_all("toneladas", "miles de toneladas")
 # ))
 # v_cols_plot <- rev(mcv_semaforo)
 # titulo <- str_c("03.10.03 ", unique(a$indicador_name))
-# # 
+# #
 # subtitulo <- paste0(min(a$anio), " - ", max(a$anio))
 # ggplot(data =
 #            a, #%>%
@@ -306,21 +330,21 @@ for(i in 1:length(v_id_dim_ind)){
 #         axis.text.y        = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
 #         plot.title.position = "plot",
 #         legend.position    = "none")
-# 
-# ggsave(filename = paste0("05_infobites/00_en_cifras_ips/", unique(a$id_unique), "_", str_replace_all(tolower(trimws(str_remove_all(unique(a$indicador), "[[:punct:]]"))), " ", "_"), ".png"), 
+#
+# ggsave(filename = paste0("05_infobites/00_en_cifras_ips/", unique(a$id_unique), "_", str_replace_all(tolower(trimws(str_remove_all(unique(a$indicador), "[[:punct:]]"))), " ", "_"), ".png"),
 #        width = 12, height = 23, dpi = 200)
-# 
-# ggsave(filename = paste0("05_infobites/00_en_cifras_ips/", unique(a$id_unique), "_", str_replace_all(tolower(trimws(str_remove_all(unique(a$indicador), "[[:punct:]]"))), " ", "_"), ".svg"), 
+#
+# ggsave(filename = paste0("05_infobites/00_en_cifras_ips/", unique(a$id_unique), "_", str_replace_all(tolower(trimws(str_remove_all(unique(a$indicador), "[[:punct:]]"))), " ", "_"), ".svg"),
 #        width = 12, height = 23, dpi = 200)
-# 
+#
 # # ggsave(filename = paste0("05_infobites/00_en_cifras_ips/", unique(a$id_unique), "_", str_replace_all(tolower(trimws(str_remove_all(unique(a$indicador), "[[:punct:]]"))), " ", "_"), ".png"),
 # #        width = 12, height = 23, dpi = 200)
-# # 
+# #
 # # ggsave(filename = paste0("05_infobites/00_en_cifras_ips/", unique(a$id_unique), "_", str_replace_all(tolower(trimws(str_remove_all(unique(a$indicador), "[[:punct:]]"))), " ", "_"), ".svg"),
 # #        width = 12, height = 23, dpi = 200)
-# # 
-# # 
-# # 
+# #
+# #
+# #
 # # i = 19
 # # a <- ips_complete_filt %>%
 # #     filter(id_dim_ind == v_id_dim_ind[i]) %>%
@@ -330,9 +354,9 @@ for(i in 1:length(v_id_dim_ind)){
 # # v_cols_plot <-
 # #     if(unique(a$direccion)>0){mcv_semaforo}else{rev(mcv_semaforo)}
 # # titulo <- unique(a$indicador_name)
-# # 
+# #
 # # subtitulo <- paste0(min(a$anio), " - ", max(a$anio))
-# # 
+# #
 # # ggplot(data =
 # #            a,
 # #        aes(x = as.factor(anio),
@@ -367,10 +391,10 @@ for(i in 1:length(v_id_dim_ind)){
 # #         axis.text.y        = element_text(family = "Ubuntu", size = 25, colour = "#777777"),
 # #         # plot.title.position = "plot",
 # #         legend.position    = "none")
-# # 
+# #
 # # ggsave(filename = paste0("05_infobites/00_en_cifras_ips/", unique(a$id_dim_ind), "_", str_replace_all(tolower(trimws(str_remove_all(unique(a$indicador), "[[:punct:]]"))), " ", "_"), ".png"),
 # #        width = 12, height = 23, dpi = 200)
-# # 
+# #
 # # ggsave(filename = paste0("05_infobites/00_en_cifras_ips/", unique(a$id_dim_ind), "_", str_replace_all(tolower(trimws(str_remove_all(unique(a$indicador), "[[:punct:]]"))), " ", "_"), ".svg"),
 # #        width = 12, height = 23, dpi = 200)
-# # 
+# #

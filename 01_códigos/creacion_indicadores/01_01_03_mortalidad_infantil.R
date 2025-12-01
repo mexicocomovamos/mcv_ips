@@ -109,7 +109,7 @@ df_limpio   <- df_crudo                         %>%
     mutate(
         id_dimension = "01", 
         id_indicador = "03") %>% 
-    filter(anio %in% c(1990:2023))
+    filter(anio %in% c(1990:2024))
 
 
 
@@ -176,7 +176,7 @@ df_pop <- df_pop_state_age                          %>%
 df_final    <- df_entidad                                       %>% 
     left_join(df_pop, 
               by = c("cve_ent", "anio"))       %>% 
-    filter(anio %in% 1990:2023)                                 %>% 
+    filter(anio %in% 1990:2024)                                 %>% 
     mutate(         
         indicador_value = total*1000 / pop_tot)             %>% 
     arrange(anio, cve_ent)                                      %>% 

@@ -13,9 +13,16 @@ catalogo_abreviaturas <- read_csv("https://raw.githubusercontent.com/JuveCampos/
 # Y vamos a pasar el año de ocurrencia y la Entidad y municipio de ocurrencia a los renglones, y vamos a desdoblar todas las categorías de enfermedades
 # Guardamos como csv, verificamos la estructura y seguimos corriendo el código: 
 
-TODAS_ENFERMEDADES <- readxl::read_xlsx("02_datos_crudos/01_01_mortalidad/TODAS_ENFERMEDADES_RESIDENCIA.xlsx", skip = 4)
-# ¡¡¡¡El renombrado se hace tomando en cuenta los arreglos de las columnas en la consulta de INEGI!!
-names(TODAS_ENFERMEDADES)[c(1,2,3,4)] <- c("ocurrencia", "cve_ent", "nom_ent", "registro")
+# TODAS_ENFERMEDADES0 <- readxl::read_xlsx("02_datos_crudos/01_01_mortalidad/TODAS_ENFERMEDADES_RESIDENCIA.xlsx", skip = 4) 
+# TODAS_ENFERMEDADES <- readxl::read_xlsx("02_datos_crudos/01_01_mortalidad/TODAS_ENFERMEDADES_RESIDENCIA2.xlsx", skip = 4) %>%
+#     select(2,3,4,1, 5:ncol(.))
+TODAS_ENFERMEDADES <- read_csv("02_datos_crudos/01_01_mortalidad/ENFERMEDADES_INFECCIOSAS_2.csv")
+
+# # ¡¡¡¡El renombrado se hace tomando en cuenta los arreglos de las columnas en la consulta de INEGI!!
+# names(TODAS_ENFERMEDADES)[c(1,2,3,4)] <- c("ocurrencia", "cve_ent", "nom_ent", "registro")
+
+TODAS_ENFERMEDADES
+
 
 # Procesamiento: 
 
@@ -29,7 +36,7 @@ names(TODAS_ENFERMEDADES)[c(1,2,3,4)] <- c("ocurrencia", "cve_ent", "nom_ent", "
 dx <- TODAS_ENFERMEDADES %>% 
     mutate(cve_ent = ifelse(nom_ent == "Total", yes = "00", no = cve_ent)) %>% 
     mutate(nom_ent = ifelse(nom_ent == "Total", yes = "Nacional", no = cve_ent)) %>% 
-    pivot_longer(6:ncol(.)) %>% 
+    pivot_longer(5:ncol(.)) %>% 
     mutate(value = str_remove_all(value, pattern = ",") %>% as.numeric()) %>% 
     filter(name %in% c(
         "(01B) Fiebre tifoidea",
@@ -137,5 +144,5 @@ datos <- left_join(dx,
     filter(as.numeric(cve_ent) <= 32) %>% 
     arrange(anio, cve_ent)
 
-
+datos
 openxlsx::write.xlsx(datos, "02_datos_crudos/01_01_04_datos_mortalidad_infecciosas.xlsx")

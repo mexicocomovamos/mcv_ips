@@ -10,7 +10,8 @@
 #------------------------------------------------------------------------------#
 
 # Fuente: https://www.planeacion.sep.gob.mx/principalescifras/
-# Cada año corresponde a aquel en que terminó el ciclo escolar.  
+# Cada año corresponde a aquel en que terminó el ciclo escolar. Es decir, 
+#si el ciclo escolar es 2023-2024, corresponde al año 2024. 
 
 # Para educación superior se toman todas las categorías del portal
 # Para posgrado se toma solo la categoría de posgrados
@@ -29,12 +30,6 @@ options(scipen=999)
 # Vaciar espacio de trabajo 
 rm(list=ls())
 
-# Colores MCV
-mcv_discrete <- c("#6950d8", "#3CEAFA", "#00b783", "#ff6260", "#ffaf84", "#ffbd41")
-mcv_semaforo <- c("#00b783", "#E8D92E", "#ffbd41", "#ff6260") # Verde, amarillo, naranja y rojo
-mcv_blacks   <- c("black"  , "#D2D0CD", "#777777")            # Negros
-mcv_morados  <- c("#6950D8", "#A99BE9")                       # Morados
-
 # Activar las credenciales de google
 v_usuaria <- "sandra"
 
@@ -46,66 +41,6 @@ googlesheets4::gs4_auth(paste0(v_usuaria, "@mexicocomovamos.mx"))
 inp <- "02_datos_crudos/03_53_paridad_educ/"
 
 # 1. Procesamiento de datos ----------------------------------------------------
-
-# Vectores de texto
-v_tipo      <- c("edusuperior_", "posgrado_")
-v_time      <- c(
-                "2009-2010", "2010-2011", "2011-2012", "2012-2013", 
-                "2013-2014", "2014-2015", "2015-2016", "2016-2017", 
-                "2018-2019", "2019-2020", "2020-2021", "2021-2022", 
-                "2022-2023", "2023-2024")
-
-v_formato   <- c(".xlsx")
-
-
-## 1.1. Limpieza de ensayo -----------------------------------------------------
-
-# # Posgrados 
-# df_crudo    <- read_excel(paste0(inp, v_tipo[2], v_time[1], v_formato), skip = 4)
-# v_names     <- names(df_crudo)
-# 
-# df_posgrado <- df_crudo                                     %>%
-#     slice(1:33)                                             %>% 
-#     select(v_names[1], v_names[3], v_names[4], v_names[5])  %>%
-#     rename(
-#         entidad = v_names[1], 
-#         posgrado_total   = v_names[5], 
-#         posgrado_hombres = v_names[6],
-#         posgrado_mujeres = v_names[7])  
-# 
-# # Licenciatura 
-# df_crudo    <- read_excel(paste0(inp, v_tipo[1], v_time[1], v_formato), skip = 4)
-# v_names     <- names(df_crudo)
-# 
-# # Todos 
-# df_limpio   <- df_crudo                                     %>%
-#     slice(1:33)                                             %>% 
-#     select(v_names[1], v_names[3], v_names[4], v_names[5])  %>%
-#     rename(
-#         entidad = v_names[1], 
-#         superior_total   = v_names[3], 
-#         superior_hombres = v_names[4],
-#         superior_mujeres = v_names[5])                      %>%
-#     left_join(df_posgrado, by = "entidad")                  %>% 
-#     # Estimar estudiantes de licenciatura (sin posgrado)     
-#     mutate(
-#         licenciatura_total   = superior_total   - posgrado_total  , 
-#         licenciatura_hombres = superior_hombres - posgrado_hombres, 
-#         licenciatura_mujeres = superior_mujeres - posgrado_mujeres) %>% 
-#     # Cambiar a formato largo 
-#     pivot_longer(
-#         cols      = -c(entidad), 
-#         names_to  = c("nivel", "grupo"),
-#         names_sep = "_", 
-#         values_to = "total") %>% 
-#     pivot_wider(
-#         names_from  = grupo, 
-#         values_from = total) %>% 
-#     # Estimar el valor del indicador 
-#     mutate(
-#         indicador_value = abs((hombres/mujeres)-1), 
-#         anio = 2010
-#     )
 
 ## 1.2. Limpieza en bucle ------------------------------------------------------
 
@@ -120,10 +55,10 @@ v_time      <- c(
     "2009-2010", "2010-2011", "2011-2012", "2012-2013", 
     "2013-2014", "2014-2015", "2015-2016", "2016-2017", 
     "2017-2018", "2018-2019", "2019-2020", "2020-2021", 
-    "2021-2022", "2022-2023", "2023-2024")
+    "2021-2022", "2022-2023", "2023-2024", "2024-2025")
 
 v_formato   <- c(".xlsx")
-v_years     <- c(2009:2024)
+v_years     <- c(2009:2025)
 
 # Base vacía 
 df_unida <- data.frame()
@@ -198,8 +133,6 @@ for(i in 1:length(v_time)){
     
     df_unida <- df_unida %>% bind_rows(df_limpio) %>% drop_na(indicador_value)
 }
-
-
 
 
 # Controles de calidad
@@ -332,6 +265,8 @@ df_final    <- df_unida                             %>%
     # Seleccionar variables finales 
     select(cve_ent, entidad_abr_m, anio, nivel, id_dimension, id_indicador, indicador_value)
 
+#ajustar año 
+df_final <- df_final %>% mutate(anio = anio + 1)
 
 # Controles de calidad
 # View(df_final)

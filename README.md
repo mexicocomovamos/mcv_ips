@@ -58,13 +58,11 @@ Somos un colectivo de científicos sociales, principalmente economistas, que se 
 <p>&nbsp;</p>
 
 # Enlaces relevantes 🔗
-[Estudio IPS 2015-2023](https://mexicocomovamos.mx/wp-content/uploads/2024/11/22112024_Indice-de-Progreso-Social-2024.pdf)
+[Estudio IPS 2025](https://mexicocomovamos.mx/wp-content/uploads/2025/11/MCV-2025_IPS_WEB.pdf)
 
 [Sitio IPS](https://mexicocomovamos.mx/indice-de-progreso-social/)
 
-[IPS en cifras](https://mexicocomovamos.mx/wp-content/uploads/2024/11/22112024_EnCifras_IPS2024.pdf)
-
-[Comunicado IPS](https://mexicocomovamos.mx/wp-content/uploads/2024/11/Comunicado-IPS_2024-version-final.pdf)
+[Resumen ejecutivo](https://mexicocomovamos.mx/wp-content/uploads/2025/11/Resumen-ejecutivo-IPS-.pdf)
 
 [Sitio México ¿Cómo vamos?](https://mexicocomovamos.mx)
 

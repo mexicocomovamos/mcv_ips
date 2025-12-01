@@ -12,6 +12,7 @@
 # Fuente 2022: Solicitud de acceso a la información con folio 330010922000496 
 # Fuente 2023: Solicitud de acceso a la información con folio 330010923000734 
 # Fuente 2024: Solicitud de acceso a la información con folio 330010924000525
+# Fuente 2025: Solicitud de acceso a la información con folio 343235700002825
 
 # El programa cambió en 2022
     # Antes: Programa Nacional de Posgrados de Calidad
@@ -53,9 +54,12 @@ googledrive::drive_user()
 googlesheets4::gs4_user() 
 
 # Función para importar de manera más corta desde drive
-imp_dv <- function(x){
+imp_dv <- function(x, ...){
     googlesheets4::read_sheet(
-        paste0("https://docs.google.com/spreadsheets/d/", x))}
+        paste0("https://docs.google.com/spreadsheets/d/", x),
+        ...
+    )
+}
 
 # 1. Cargar datos --------------------------------------------------------------
 
@@ -64,7 +68,13 @@ imp_dv <- function(x){
 #Datos desde 2021 a 2023 del SNP:
 #df_crudo  <- imp_dv("10I0C_qSfk0Ou8RVXZMBCPgmDumL1BlyUQ1W-IWUIaR0/edit#gid=0")
 #Datos solicitados en 2024:
-df_crudo  <- imp_dv("1xHFp4pHJl_wPnKrcsJ2MkFW4nUZrLx1aSHwImduJBoM/edit?gid=0#gid=0")
+#df_crudo  <- imp_dv("1xHFp4pHJl_wPnKrcsJ2MkFW4nUZrLx1aSHwImduJBoM/edit?gid=0#gid=0")
+#Datos solicitados en 2025: contienen info de 2021 a 2025 (segundo trimestre de 2025)
+df_crudo  <- imp_dv("1JIndck15eMmv29Ms-8mh_30wyDjLqfIHJMKRfS2GT9w/edit?gid=0#gid=0", 
+                    skip = 1, 
+                    .name_repair = "minimal")
+
+df_crudo <- df_crudo[-nrow(df_crudo),]
 
 # Datos de población 
 load("02_datos_crudos/df_pop_state.Rdata")
@@ -72,11 +82,11 @@ load("02_datos_crudos/df_pop_state.Rdata")
 # 2. Procesamiento de datos ----------------------------------------------------
 
 # Limpiar formato de base de población
-df_pob <- df_pop_state |> 
-    ungroup() |> 
+df_pob <- df_pop_state %>% 
+    ungroup() %>% 
     mutate(
         cve_ent = str_pad(CVE_GEO, width = 2, pad = "0")) |> 
-    select(anio = year, cve_ent, pop = population)
+    select(anio = year, cve_ent, pop = pop_tot)
 
 
 #------- PROCESO 2022: Cambiar a formato largo y limpiar formato de datos y nombres 
@@ -96,57 +106,96 @@ df_pob <- df_pop_state |>
     #    id_dimension = "03",
     #    id_indicador = "55")
 
-#--------- PROCESO  2023
+#--------- PROCESO  2024
  df_limpio <- df_crudo                       |> 
-     rename(anio = 1, entidad = 3)           |> 
-     filter(anio == 2023)                    |> 
-     group_by(anio, entidad)                 |> 
-     summarise(indicador = n())              |> 
-         # Limpiar formato del resto de variables
-         mutate(
-             cve_ent = case_when(
-                 entidad == "AGS"  ~ "01",
-                 entidad == "BC"   ~ "02",
-                 entidad == "BCS"  ~ "03",
-                 entidad == "CDMX" ~ "09",
-                 entidad == "CHIH" ~ "08",
-                 entidad == "CHPS" ~ "07", 
-                 entidad == "COAH" ~ "05",
-                 entidad == "COLI" ~ "06",
-                 entidad == "DGO"  ~ "10",
-                 entidad == "EMEX" ~ "15",
-                 entidad == "GRO"  ~ "12",
-                 entidad == "GTO"  ~ "11",
-                 entidad == "HGO"  ~ "13",
-                 entidad == "JAL"  ~ "14",
-                 entidad == "MICH" ~ "16",
-                 entidad == "MOR"  ~ "17", 
-                 entidad == "NAY"  ~ "18", 
-                 entidad == "NL"   ~ "19",   
-                 entidad == "OAX"  ~ "20",  
-                 entidad == "PUE"  ~ "21", 
-                 entidad == "QRO"  ~ "22", 
-                 entidad == "QROO" ~ "23", 
-                 entidad == "SIN"  ~ "25",  
-                 entidad == "SLP"  ~ "24",  
-                 entidad == "SON"  ~ "26",  
-                 entidad == "TAB"  ~ "27",  
-                 entidad == "TLAX" ~ "29", 
-                 entidad == "VER"  ~ "30", 
-                 entidad == "YUC"  ~ "31", 
-                 entidad == "ZAC"  ~ "32", 
-                 entidad == "CAMP" ~ "04", 
-                 entidad == "TAMP" ~ "28"
-             ),
-             id_dimension = "03",
-             id_indicador = "55")             |>
-     rename(entidad_abr_m = entidad)          |>
+     rename(cve_ent = 1,entidad = 2)           |> 
+     select(cve_ent, entidad, indicador = `2024`)            |> 
+     mutate(anio = "2024") |> 
+     #group_by(anio, entidad)                 |> 
+     #summarise(indicador = n())              |>
+             #id_dimension = "03",
+             #id_indicador = "55")             |>
+    # rename(entidad_abr_m = entidad)          |>
      # Ajuste abreviación de entidades
+    # mutate(
+     #    entidad_abr_m = if_else(
+      #       entidad_abr_m == "COLI" , "COL", 
+       #      ifelse(entidad_abr_m == "EMEX" , "MEX",
+        #     ifelse(entidad_abr_m == "TAMP" , "TAM", entidad_abr_m)))) %>% 
+     mutate(entidad_abr_m = recode(entidad,
+                             "AGUASCALIENTES" = "AGS",
+                             "BAJA CALIFORNIA" = "BC",
+                             "BAJA CALIFORNIA SUR" = "BCS",
+                             "CAMPECHE" = "CAMP",
+                             "COAHUILA DE ZARAGOZA" = "COAH",
+                             "COLIMA" = "COL",
+                             "CHIAPAS" = "CHPS",
+                             "CHIHUAHUA" = "CHIH",
+                             "CIUDAD DE MEXICO" = "CDMX",
+                             "DURANGO" = "DGO",
+                             "GUANAJUATO" = "GTO",
+                             "GUERRERO" = "GRO",
+                             "HIDALGO" = "HGO",
+                             "JALISCO" = "JAL",
+                             "MEXICO" = "MEX",
+                             "MICHOACAN DE OCAMPO" = "MICH",
+                             "MORELOS" = "MOR",
+                             "NAYARIT" = "NAY",
+                             "NUEVO LEON" = "NL",
+                             "OAXACA" = "OAX",
+                             "PUEBLA" = "PUE",
+                             "QUERETARO" = "QRO",
+                             "QUINTANA ROO" = "QROO",
+                             "SAN LUIS POTOSI" = "SLP",
+                             "SINALOA" = "SIN",
+                             "SONORA" = "SON",
+                             "TABASCO" = "TAB",
+                             "TAMAULIPAS" = "TAM",
+                             "TLAXCALA" = "TLAX",
+                             "VERACRUZ DE IGNACIO DE LA LLAVE" = "VER",
+                             "YUCATAN" = "YUC",
+                             "ZACATECAS" = "ZAC"), 
+            id_dimension = "03",
+            id_indicador = "55", 
+            anio = as.numeric(anio)) %>% 
+     # Limpiar formato del resto de variables
      mutate(
-         entidad_abr_m = if_else(
-             entidad_abr_m == "COLI" , "COL", 
-             ifelse(entidad_abr_m == "EMEX" , "MEX",
-             ifelse(entidad_abr_m == "TAMP" , "TAM", entidad_abr_m)))) 
+         cve_ent = case_when(
+             entidad_abr_m == "AGS"  ~ "01",
+             entidad_abr_m  == "BC"   ~ "02",
+             entidad_abr_m  == "BCS"  ~ "03",
+             entidad_abr_m  == "CDMX" ~ "09",
+             entidad_abr_m  == "CHIH" ~ "08",
+             entidad_abr_m  == "CHPS" ~ "07", 
+             entidad_abr_m  == "COAH" ~ "05",
+             entidad_abr_m  == "COL" ~ "06",
+             entidad_abr_m  == "DGO"  ~ "10",
+             entidad_abr_m  == "MEX" ~ "15",
+             entidad_abr_m  == "GRO"  ~ "12",
+             entidad_abr_m  == "GTO"  ~ "11",
+             entidad_abr_m  == "HGO"  ~ "13",
+             entidad_abr_m  == "JAL"  ~ "14",
+             entidad_abr_m  == "MICH" ~ "16",
+             entidad_abr_m  == "MOR"  ~ "17", 
+             entidad_abr_m  == "NAY"  ~ "18", 
+             entidad_abr_m  == "NL"   ~ "19",   
+             entidad_abr_m  == "OAX"  ~ "20",  
+             entidad_abr_m  == "PUE"  ~ "21", 
+             entidad_abr_m  == "QRO"  ~ "22", 
+             entidad_abr_m == "QROO" ~ "23", 
+             entidad_abr_m  == "SIN"  ~ "25",  
+             entidad_abr_m  == "SLP"  ~ "24",  
+             entidad_abr_m  == "SON"  ~ "26",  
+             entidad_abr_m  == "TAB"  ~ "27",  
+             entidad_abr_m  == "TLAX" ~ "29", 
+             entidad_abr_m  == "VER"  ~ "30", 
+             entidad_abr_m  == "YUC"  ~ "31", 
+             entidad_abr_m  == "ZAC"  ~ "32", 
+             entidad_abr_m  == "CAMP" ~ "04", 
+             entidad_abr_m  == "TAM" ~ "28"
+         )) %>% 
+     mutate(cve_ent = str_pad(cve_ent, width = 2, side = "left", pad = "0")) %>% 
+     select(cve_ent, entidad_abr_m, anio, id_dimension, id_indicador, indicador)
 
 # Agregar el total nacional y estimar indicador ponderado
 df_data <- df_limpio                                            |> 

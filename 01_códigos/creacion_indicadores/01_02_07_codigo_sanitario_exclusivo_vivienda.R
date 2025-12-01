@@ -9,12 +9,15 @@ viv_2016 <- "2016/conjunto_de_datos_viviendas_enigh_2016_ns/conjunto_de_datos/co
 viv_2018 <- "2018/conjunto_de_datos_vivienda_enigh_2018_ns/conjunto_de_datos/conjunto_de_datos_viviendas_enigh_2018_ns.csv"
 viv_2020 <- "2020/conjunto_de_datos_viviendas_enigh_2020_ns/conjunto_de_datos/conjunto_de_datos_viviendas_enigh_2020_ns.csv"
 viv_2022 <- "2022/viviendas.csv"
+viv_2024 <- "2024/viviendas.csv"
 
 hog_2014 <- "2014/concentradohogar_enigh2014ncv/conjunto_de_datos/concentradohogar.csv"
 hog_2016 <- "2016/conjunto_de_datos_concentradohogar_enigh_2016_ns/conjunto_de_datos/conjunto_de_datos_concentradohogar_enigh_2016_ns.csv"
 hog_2018 <- "2018/conjunto_de_datos_concentradohogar_enigh_2018_ns/conjunto_de_datos/conjunto_de_datos_concentradohogar_enigh_2018_ns.csv"
 hog_2020 <- "2020/conjunto_de_datos_concentradohogar_enigh_2020_ns/conjunto_de_datos/conjunto_de_datos_concentradohogar_enigh_2020_ns.csv"
 hog_2022 <- "2022/concentradohogar.csv"
+hog_2024 <- "2024/concentradohogar.csv"
+
 
 # 2014 ----
 # viviendas$uso_compar
@@ -159,6 +162,36 @@ dt_2022 <- left_join(hogares, viviendas) %>%
                 mutate(entidad = "00") %>%
                 select(entidad,pp,pp_se,year))) %>%
   arrange(entidad)
+
+# 2024 ----
+viviendas <- read_csv(viv_2024) %>%
+    filter(excusado == 1) %>%
+    filter(uso_compar == 2) %>%
+    select(folioviv) %>%
+    mutate(uso_compar = T)
+
+hogares <- read_csv(hog_2024) %>%
+    mutate(entidad = str_extract(folioviv, "^\\d\\d")) %>%
+    select(folioviv, foliohog, factor, entidad) # 70301
+
+dt_2024 <- left_join(hogares, viviendas) %>%
+    mutate(uso_compar = ifelse(is.na(uso_compar), yes = F, no = T)) %>%
+    as_survey_design(weights = factor) %>%
+    group_by(entidad) %>%
+    summarise(pp = 100*survey_mean(uso_compar, na.rm = T)) %>%
+    arrange(entidad) %>%
+    mutate(year = 2024) %>%
+    rbind(rbind(left_join(hogares, viviendas) %>%
+                    mutate(uso_compar = ifelse(is.na(uso_compar), yes = F, no = T)) %>%
+                    as_survey_design(weights = factor) %>%
+                    summarise(pp = 100*survey_mean(uso_compar, na.rm = T)) %>%
+                    arrange(-pp) %>%
+                    mutate(year = 2024) %>%
+                    mutate(entidad = "00") %>%
+                    select(entidad,pp,pp_se,year))) %>%
+    arrange(entidad)
+
+
 
 datos_final <- rbind(dt_2014, dt_2016, dt_2018, dt_2020, dt_2022)
 openxlsx::write.xlsx(datos_final, "20241104_excel_sanitario_exclusivo.xlsx")

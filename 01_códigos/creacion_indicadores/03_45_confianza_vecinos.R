@@ -52,13 +52,13 @@ df_crudo <- read_csv(paste0(inp,"TPer_Vic1.csv"),
 # limpiar
 df_crudo     <- clean_names(df_crudo)
 
-
 df_data <- df_crudo                                                         %>%
   select(cve_ent,
          entidad_abr_m = nom_ent,
          #pregunta
          ap5_2_1, 
-         factor = fac_ele)                                                  %>% 
+         factor = fac_ele)                                                  %>%
+    mutate(factor = as.numeric(factor))                                     %>% 
   #Filtramos para no seleccionar respuestas "No aplica = 5 y "NS/NR = 9"
   filter(!ap5_2_1 %in% c(5,9))                                              %>% 
     #ponderador 
@@ -79,7 +79,7 @@ df_data <- df_crudo                                                         %>%
   # Agregar identificador del indicador
   mutate(id_dimension = "03",
          id_indicador = "45", 
-         anio = 2022)                                                       %>%
+         anio = 2024)                                                       %>%
   # Generar identificador abreviado 
   mutate(
     entidad_abr_m = case_when(

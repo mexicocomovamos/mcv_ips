@@ -94,12 +94,26 @@ df_data <-df_crudo                                                         %>%
     # Agregar identificador del indicador
     mutate(id_dimension = "02",
            id_indicador = "34", 
-           anio = 2022)  
+           anio = 2024)  
 
 #Generamos la variable de  focos ahorradores
 df_focos <-df_data                                                    %>%
     mutate(focos = case_when(focos_ahor >= 1 ~ 1,
                              focos_ahor == 0 ~ 0))
+
+#Focos ahorradores nacional 
+df_focos_nac <- df_focos %>% 
+    drop_na(focos) %>% 
+    as_survey_design(weights = factor) %>% 
+    group_by(anio, id_dimension, id_indicador) %>% 
+    summarise(
+        indicador_value = survey_mean(focos, na.rm = T)*100
+    ) %>% 
+    select(-ends_with("se")) %>% 
+    mutate(
+        cve_ent = "00",
+        entidad_abr_m = "Nacional"
+    )
 
 #Focos ahorradores por entidad federativa
 df_focos <- df_focos                                                  %>% 
@@ -109,8 +123,10 @@ df_focos <- df_focos                                                  %>%
     summarise(
         indicador_value = survey_mean(focos, na.rm = T)*100
     )                                                                 %>% 
-    select(-ends_with("se"))                    
+    select(-ends_with("se"))  
 
+#unir
+df_focos <- bind_rows(df_focos, df_focos_nac)
 
 # 3. Guardar en drive ----------------------------------------------------------
 

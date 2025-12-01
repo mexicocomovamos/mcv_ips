@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='864.00pt' height='1656.00pt' viewBox='0 0 864.00 1656.00'>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='864.00pt' height='1656.00pt' viewBox='0 0 864.00 1656.00'>
+<g class='svglite'>
 <defs>
   <style type='text/css'><![CDATA[
     .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
@@ -12,6 +13,10 @@
     .svglite text {
       white-space: pre;
     }
+    .svglite g.glyphgroup path {
+      fill: inherit;
+      stroke: none;
+    }
   ]]></style>
 </defs>
 <rect width='100%' height='100%' style='stroke: none; fill: none;'/>
@@ -23,393 +28,461 @@
 <g clip-path='url(#cpMC4wMHw4NjQuMDB8MC4wMHwxNjU2LjAw)'>
 </g>
 <defs>
-  <clipPath id='cpMjU0LjI1fDYwOS43NXwwLjAwfDE2NTYuMDA='>
-    <rect x='254.25' y='0.00' width='355.49' height='1656.00' />
+  <clipPath id='cpMjMyLjU4fDYzMS40MnwwLjAwfDE2NTYuMDA='>
+    <rect x='232.58' y='0.00' width='398.84' height='1656.00' />
   </clipPath>
 </defs>
-<g clip-path='url(#cpMjU0LjI1fDYwOS43NXwwLjAwfDE2NTYuMDA=)'>
+<g clip-path='url(#cpMjMyLjU4fDYzMS40MnwwLjAwfDE2NTYuMDA=)'>
 </g>
 <g clip-path='url(#cpMC4wMHw4NjQuMDB8MC4wMHwxNjU2LjAw)'>
 </g>
 <defs>
-  <clipPath id='cpMzg3LjU5fDYwNC4yN3wxMjUuNzN8MTU2NC40Mw=='>
-    <rect x='387.59' y='125.73' width='216.67' height='1438.70' />
+  <clipPath id='cpMzY1LjkzfDYyNS45NHwxMjUuNzN8MTU2NC40NA=='>
+    <rect x='365.93' y='125.73' width='260.01' height='1438.72' />
   </clipPath>
 </defs>
-<g clip-path='url(#cpMzg3LjU5fDYwNC4yN3wxMjUuNzN8MTU2NC40Mw==)'>
-<rect x='387.59' y='125.73' width='216.67' height='1438.70' style='stroke-width: 1.07; stroke: none;' />
-<rect x='387.59' y='130.06' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9652;' />
-<rect x='387.59' y='173.39' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F9C43D;' />
-<rect x='387.59' y='216.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9B51;' />
-<rect x='387.59' y='260.06' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF775B;' />
-<rect x='387.59' y='303.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F6C93A;' />
-<rect x='387.59' y='346.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FAC33E;' />
-<rect x='387.59' y='390.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9752;' />
-<rect x='387.59' y='433.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF715D;' />
-<rect x='387.59' y='476.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFB446;' />
-<rect x='387.59' y='520.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF655F;' />
-<rect x='387.59' y='563.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9F4F;' />
-<rect x='387.59' y='606.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9553;' />
-<rect x='387.59' y='650.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF6260;' />
-<rect x='387.59' y='693.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9752;' />
-<rect x='387.59' y='736.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF695F;' />
-<rect x='387.59' y='780.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF8B56;' />
-<rect x='387.59' y='823.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF8358;' />
-<rect x='387.59' y='866.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9354;' />
-<rect x='387.59' y='910.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9752;' />
-<rect x='387.59' y='953.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EFD234;' />
-<rect x='387.59' y='996.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFBA43;' />
-<rect x='387.59' y='1040.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF6F5D;' />
-<rect x='387.59' y='1083.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9C50;' />
-<rect x='387.59' y='1126.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9A51;' />
-<rect x='387.59' y='1170.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFA44D;' />
-<rect x='387.59' y='1213.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFBA43;' />
-<rect x='387.59' y='1256.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FAC43D;' />
-<rect x='387.59' y='1300.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF8857;' />
-<rect x='387.59' y='1343.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF8C56;' />
-<rect x='387.59' y='1386.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FEBF40;' />
-<rect x='387.59' y='1430.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF8957;' />
-<rect x='387.59' y='1473.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FCC13F;' />
-<rect x='387.59' y='1516.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FDBF40;' />
-<rect x='430.93' y='130.06' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9752;' />
-<rect x='430.93' y='173.39' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFB943;' />
-<rect x='430.93' y='216.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFA64C;' />
-<rect x='430.93' y='260.06' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFAF48;' />
-<rect x='430.93' y='303.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F7C83B;' />
-<rect x='430.93' y='346.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FCC13F;' />
-<rect x='430.93' y='390.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9553;' />
-<rect x='430.93' y='433.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF6D5E;' />
-<rect x='430.93' y='476.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFBD41;' />
-<rect x='430.93' y='520.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF7B5B;' />
-<rect x='430.93' y='563.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFAC4A;' />
-<rect x='430.93' y='606.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF8F55;' />
-<rect x='430.93' y='650.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF725D;' />
-<rect x='430.93' y='693.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9C50;' />
-<rect x='430.93' y='736.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF7F5A;' />
-<rect x='430.93' y='780.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF7D5A;' />
-<rect x='430.93' y='823.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF8458;' />
-<rect x='430.93' y='866.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9652;' />
-<rect x='430.93' y='910.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9752;' />
-<rect x='430.93' y='953.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F1CF36;' />
-<rect x='430.93' y='996.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFA74C;' />
-<rect x='430.93' y='1040.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF8658;' />
-<rect x='430.93' y='1083.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF7F59;' />
-<rect x='430.93' y='1126.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9055;' />
-<rect x='430.93' y='1170.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9752;' />
-<rect x='430.93' y='1213.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFA34D;' />
-<rect x='430.93' y='1256.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FDC03F;' />
-<rect x='430.93' y='1300.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9E4F;' />
-<rect x='430.93' y='1343.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9D50;' />
-<rect x='430.93' y='1386.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FDBF40;' />
-<rect x='430.93' y='1430.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF7C5A;' />
-<rect x='430.93' y='1473.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F6C93A;' />
-<rect x='430.93' y='1516.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F7C83B;' />
-<rect x='474.26' y='130.06' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EED234;' />
-<rect x='474.26' y='173.39' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #92C765;' />
-<rect x='474.26' y='216.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EDD433;' />
-<rect x='474.26' y='260.06' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EFD134;' />
-<rect x='474.26' y='303.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F0D135;' />
-<rect x='474.26' y='346.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EFD134;' />
-<rect x='474.26' y='390.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C0D04E;' />
-<rect x='474.26' y='433.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFAB4A;' />
-<rect x='474.26' y='476.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EED234;' />
-<rect x='474.26' y='520.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #A7CB5B;' />
-<rect x='474.26' y='563.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C4D14B;' />
-<rect x='474.26' y='606.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E3D833;' />
-<rect x='474.26' y='650.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9553;' />
-<rect x='474.26' y='693.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F4CC38;' />
-<rect x='474.26' y='736.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #A7CB5B;' />
-<rect x='474.26' y='780.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FBC23E;' />
-<rect x='474.26' y='823.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E5D831;' />
-<rect x='474.26' y='866.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFBD41;' />
-<rect x='474.26' y='910.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E9D72F;' />
-<rect x='474.26' y='953.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #9EC960;' />
-<rect x='474.26' y='996.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F2CE37;' />
-<rect x='474.26' y='1040.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FAC43D;' />
-<rect x='474.26' y='1083.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F2CD37;' />
-<rect x='474.26' y='1126.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E0D736;' />
-<rect x='474.26' y='1170.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #B0CD57;' />
-<rect x='474.26' y='1213.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FBC23E;' />
-<rect x='474.26' y='1256.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #BBCF50;' />
-<rect x='474.26' y='1300.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F4CB39;' />
-<rect x='474.26' y='1343.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #91C765;' />
-<rect x='474.26' y='1386.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F8C73B;' />
-<rect x='474.26' y='1430.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F4CC38;' />
-<rect x='474.26' y='1473.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #87C56A;' />
-<rect x='474.26' y='1516.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #D3D540;' />
-<rect x='517.60' y='130.06' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #ECD531;' />
-<rect x='517.60' y='173.39' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #4CBC7B;' />
-<rect x='517.60' y='216.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E9D82F;' />
-<rect x='517.60' y='260.06' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EBD631;' />
-<rect x='517.60' y='303.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #D0D443;' />
-<rect x='517.60' y='346.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #CCD346;' />
-<rect x='517.60' y='390.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #9CC961;' />
-<rect x='517.60' y='433.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FBC33E;' />
-<rect x='517.60' y='476.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #ECD432;' />
-<rect x='517.60' y='520.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #97C863;' />
-<rect x='517.60' y='563.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #B7CE53;' />
-<rect x='517.60' y='606.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F0D135;' />
-<rect x='517.60' y='650.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FAC33D;' />
-<rect x='517.60' y='693.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EDD432;' />
-<rect x='517.60' y='736.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #9CC961;' />
-<rect x='517.60' y='780.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F6C93A;' />
-<rect x='517.60' y='823.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EFD234;' />
-<rect x='517.60' y='866.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFAF48;' />
-<rect x='517.60' y='910.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E8D92E;' />
-<rect x='517.60' y='953.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #B2CD56;' />
-<rect x='517.60' y='996.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #ECD531;' />
-<rect x='517.60' y='1040.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F3CD37;' />
-<rect x='517.60' y='1083.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EED233;' />
-<rect x='517.60' y='1126.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F6C93A;' />
-<rect x='517.60' y='1170.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #BFD04E;' />
-<rect x='517.60' y='1213.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F8C73C;' />
-<rect x='517.60' y='1256.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #DBD63A;' />
-<rect x='517.60' y='1300.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F0D036;' />
-<rect x='517.60' y='1343.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #7AC26E;' />
-<rect x='517.60' y='1386.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EDD433;' />
-<rect x='517.60' y='1430.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F2CE37;' />
-<rect x='517.60' y='1473.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C6D24A;' />
-<rect x='517.60' y='1516.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #BDD050;' />
-<rect x='560.93' y='130.06' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EAD730;' />
-<rect x='560.93' y='173.39' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #74C170;' />
-<rect x='560.93' y='216.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #DCD63A;' />
-<rect x='560.93' y='260.06' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EBD531;' />
-<rect x='560.93' y='303.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #CBD347;' />
-<rect x='560.93' y='346.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C3D14B;' />
-<rect x='560.93' y='390.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #00B783;' />
-<rect x='560.93' y='433.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F9C63C;' />
-<rect x='560.93' y='476.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F0D035;' />
-<rect x='560.93' y='520.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #ACCC59;' />
-<rect x='560.93' y='563.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #ECD432;' />
-<rect x='560.93' y='606.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C7D249;' />
-<rect x='560.93' y='650.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F0D035;' />
-<rect x='560.93' y='693.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EED333;' />
-<rect x='560.93' y='736.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #85C46A;' />
-<rect x='560.93' y='780.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F6C93A;' />
-<rect x='560.93' y='823.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EBD531;' />
-<rect x='560.93' y='866.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFBC42;' />
-<rect x='560.93' y='910.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EDD432;' />
-<rect x='560.93' y='953.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #8DC667;' />
-<rect x='560.93' y='996.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #B8CF52;' />
-<rect x='560.93' y='1040.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EDD432;' />
-<rect x='560.93' y='1083.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F1CF36;' />
-<rect x='560.93' y='1126.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F0D035;' />
-<rect x='560.93' y='1170.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #DBD63B;' />
-<rect x='560.93' y='1213.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EDD432;' />
-<rect x='560.93' y='1256.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #ECD531;' />
-<rect x='560.93' y='1300.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F4CB39;' />
-<rect x='560.93' y='1343.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #A9CB5B;' />
-<rect x='560.93' y='1386.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EDD433;' />
-<rect x='560.93' y='1430.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F4CC38;' />
-<rect x='560.93' y='1473.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #A4CA5D;' />
-<rect x='560.93' y='1516.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #D1D442;' />
-<text x='409.26' y='155.55' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>56.4</text>
-<text x='409.26' y='198.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>66.29</text>
-<text x='409.26' y='242.22' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>57.14</text>
-<text x='409.26' y='285.55' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>51.77</text>
-<text x='409.26' y='328.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>68.59</text>
-<text x='409.26' y='372.22' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>65.7</text>
-<text x='409.26' y='415.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>56.58</text>
-<text x='409.26' y='458.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>50.97</text>
-<text x='409.26' y='502.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>61.24</text>
-<text x='409.26' y='545.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>49.4</text>
-<text x='409.26' y='588.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>57.81</text>
-<text x='409.26' y='632.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>56.17</text>
-<text x='409.26' y='675.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>49.01</text>
-<text x='409.26' y='718.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>56.5</text>
-<text x='409.26' y='762.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>49.95</text>
-<text x='409.26' y='805.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>54.64</text>
-<text x='409.26' y='848.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>53.51</text>
-<text x='409.26' y='892.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>55.87</text>
-<text x='409.26' y='935.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>56.46</text>
-<text x='409.26' y='978.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>72.74</text>
-<text x='409.26' y='1022.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>62.31</text>
-<text x='409.26' y='1065.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>50.68</text>
-<text x='409.26' y='1108.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>57.28</text>
-<text x='409.26' y='1152.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>57.02</text>
-<text x='409.26' y='1195.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>58.55</text>
-<text x='409.26' y='1238.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>62.2</text>
-<text x='409.26' y='1282.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>65.94</text>
-<text x='409.26' y='1325.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>54.23</text>
-<text x='409.26' y='1368.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>54.75</text>
-<text x='409.26' y='1412.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>63.65</text>
-<text x='409.26' y='1455.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>54.4</text>
-<text x='409.26' y='1498.92' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>64.64</text>
-<text x='409.26' y='1542.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>63.84</text>
-<text x='452.60' y='155.55' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>56.6</text>
-<text x='452.60' y='198.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>62.04</text>
-<text x='452.60' y='242.22' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>58.91</text>
-<text x='452.60' y='285.55' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>60.44</text>
-<text x='452.60' y='328.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>67.84</text>
-<text x='452.60' y='372.22' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>64.84</text>
-<text x='452.60' y='415.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>56.28</text>
-<text x='452.60' y='458.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>50.35</text>
-<text x='452.60' y='502.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>62.75</text>
-<text x='452.60' y='545.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>52.3</text>
-<text x='452.60' y='588.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>59.85</text>
-<text x='452.60' y='632.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>55.36</text>
-<text x='452.60' y='675.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>51.07</text>
-<text x='452.60' y='718.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>57.33</text>
-<text x='452.60' y='762.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>52.85</text>
-<text x='452.60' y='805.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>52.63</text>
-<text x='452.60' y='848.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>53.62</text>
-<text x='452.60' y='892.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>56.35</text>
-<text x='452.60' y='935.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>56.45</text>
-<text x='452.60' y='978.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>71.48</text>
-<text x='452.60' y='1022.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>59.06</text>
-<text x='452.60' y='1065.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>53.89</text>
-<text x='452.60' y='1108.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>52.9</text>
-<text x='452.60' y='1152.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>55.39</text>
-<text x='452.60' y='1195.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>56.58</text>
-<text x='452.60' y='1238.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>58.47</text>
-<text x='452.60' y='1282.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>64.26</text>
-<text x='452.60' y='1325.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>57.68</text>
-<text x='452.60' y='1368.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>57.47</text>
-<text x='452.60' y='1412.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>63.78</text>
-<text x='452.60' y='1455.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>52.41</text>
-<text x='452.60' y='1498.92' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>68.42</text>
-<text x='452.60' y='1542.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>67.78</text>
-<text x='495.93' y='155.55' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>72.88</text>
-<text x='495.93' y='198.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>84.18</text>
-<text x='495.93' y='242.22' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>73.72</text>
-<text x='495.93' y='285.55' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>72.56</text>
-<text x='495.93' y='328.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>72.21</text>
-<text x='495.93' y='372.22' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>72.53</text>
-<text x='495.93' y='415.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>80.3</text>
-<text x='495.93' y='458.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>59.73</text>
-<text x='495.93' y='502.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>72.97</text>
-<text x='495.93' y='545.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>82.48</text>
-<text x='495.93' y='588.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>79.92</text>
-<text x='495.93' y='632.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>76.94</text>
-<text x='495.93' y='675.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>56.14</text>
-<text x='495.93' y='718.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>69.75</text>
-<text x='495.93' y='762.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>82.45</text>
-<text x='495.93' y='805.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>65.18</text>
-<text x='495.93' y='848.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>76.76</text>
-<text x='495.93' y='892.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>62.74</text>
-<text x='495.93' y='935.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>75.73</text>
-<text x='495.93' y='978.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>83.18</text>
-<text x='495.93' y='1022.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>70.87</text>
-<text x='495.93' y='1065.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>66.19</text>
-<text x='495.93' y='1108.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>70.59</text>
-<text x='495.93' y='1152.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>77.3</text>
-<text x='495.93' y='1195.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>81.67</text>
-<text x='495.93' y='1238.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>65.14</text>
-<text x='495.93' y='1282.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>80.69</text>
-<text x='495.93' y='1325.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>69.65</text>
-<text x='495.93' y='1368.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>84.24</text>
-<text x='495.93' y='1412.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>67.5</text>
-<text x='495.93' y='1455.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>69.82</text>
-<text x='495.93' y='1498.92' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>85.02</text>
-<text x='495.93' y='1542.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>78.47</text>
-<text x='539.26' y='155.55' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>74.53</text>
-<text x='539.26' y='198.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>88.49</text>
-<text x='539.26' y='242.22' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>76.09</text>
-<text x='539.26' y='285.55' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>74.93</text>
-<text x='539.26' y='328.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>78.79</text>
-<text x='539.26' y='372.22' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>79.17</text>
-<text x='539.26' y='415.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>83.36</text>
-<text x='539.26' y='458.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>65.5</text>
-<text x='539.26' y='502.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>74.18</text>
-<text x='539.26' y='545.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>83.78</text>
-<text x='539.26' y='588.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>81.1</text>
-<text x='539.26' y='632.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>72.22</text>
-<text x='539.26' y='675.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>65.77</text>
-<text x='539.26' y='718.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>73.86</text>
-<text x='539.26' y='762.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>83.35</text>
-<text x='539.26' y='805.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>68.4</text>
-<text x='539.26' y='848.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>72.77</text>
-<text x='539.26' y='892.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>60.48</text>
-<text x='539.26' y='935.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>76.29</text>
-<text x='539.26' y='978.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>81.5</text>
-<text x='539.26' y='1022.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>74.44</text>
-<text x='539.26' y='1065.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>70.39</text>
-<text x='539.26' y='1108.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>73.19</text>
-<text x='539.26' y='1152.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>68.63</text>
-<text x='539.26' y='1195.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>80.34</text>
-<text x='539.26' y='1238.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>67.35</text>
-<text x='539.26' y='1282.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>77.73</text>
-<text x='539.26' y='1325.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>71.74</text>
-<text x='539.26' y='1368.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>85.93</text>
-<text x='539.26' y='1412.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>73.75</text>
-<text x='539.26' y='1455.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>70.95</text>
-<text x='539.26' y='1498.92' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>79.72</text>
-<text x='539.26' y='1542.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>80.56</text>
-<text x='582.60' y='155.55' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>75.5</text>
-<text x='582.60' y='198.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>86.32</text>
-<text x='582.60' y='242.22' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>77.68</text>
-<text x='582.60' y='285.55' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>74.71</text>
-<text x='582.60' y='328.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>79.28</text>
-<text x='582.60' y='372.22' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>79.96</text>
-<text x='582.60' y='415.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>90.25</text>
-<text x='582.60' y='458.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>66.88</text>
-<text x='582.60' y='502.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>71.89</text>
-<text x='582.60' y='545.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>82.04</text>
-<text x='582.60' y='588.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>74.16</text>
-<text x='582.60' y='632.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>79.59</text>
-<text x='582.60' y='675.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>71.82</text>
-<text x='582.60' y='718.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>73.32</text>
-<text x='582.60' y='762.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>85.12</text>
-<text x='582.60' y='805.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>68.47</text>
-<text x='582.60' y='848.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>74.62</text>
-<text x='582.60' y='892.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>62.56</text>
-<text x='582.60' y='935.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>73.82</text>
-<text x='582.60' y='978.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>84.53</text>
-<text x='582.60' y='1022.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>81.01</text>
-<text x='582.60' y='1065.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>73.94</text>
-<text x='582.60' y='1108.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>71.24</text>
-<text x='582.60' y='1152.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>71.9</text>
-<text x='582.60' y='1195.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.51px' lengthAdjust='spacingAndGlyphs'>77.8</text>
-<text x='582.60' y='1238.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>73.92</text>
-<text x='582.60' y='1282.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>74.47</text>
-<text x='582.60' y='1325.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>69.37</text>
-<text x='582.60' y='1368.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>82.31</text>
-<text x='582.60' y='1412.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>73.72</text>
-<text x='582.60' y='1455.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>69.89</text>
-<text x='582.60' y='1498.92' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>82.73</text>
-<text x='582.60' y='1542.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.77px' lengthAdjust='spacingAndGlyphs'>78.68</text>
+<g clip-path='url(#cpMzY1LjkzfDYyNS45NHwxMjUuNzN8MTU2NC40NA==)'>
+<rect x='365.93' y='125.73' width='260.01' height='1438.72' style='stroke-width: 1.07; stroke: none;' />
+<rect x='365.93' y='130.06' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9652;' />
+<rect x='365.93' y='173.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F9C43D;' />
+<rect x='365.93' y='216.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9B51;' />
+<rect x='365.93' y='260.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF775B;' />
+<rect x='365.93' y='303.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F6C93A;' />
+<rect x='365.93' y='346.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FAC33E;' />
+<rect x='365.93' y='390.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9752;' />
+<rect x='365.93' y='433.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF715D;' />
+<rect x='365.93' y='476.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFB446;' />
+<rect x='365.93' y='520.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF655F;' />
+<rect x='365.93' y='563.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9F4F;' />
+<rect x='365.93' y='606.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9553;' />
+<rect x='365.93' y='650.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF6260;' />
+<rect x='365.93' y='693.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9752;' />
+<rect x='365.93' y='736.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF695F;' />
+<rect x='365.93' y='780.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF8B56;' />
+<rect x='365.93' y='823.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF8358;' />
+<rect x='365.93' y='866.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9354;' />
+<rect x='365.93' y='910.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9752;' />
+<rect x='365.93' y='953.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EFD234;' />
+<rect x='365.93' y='996.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFBA43;' />
+<rect x='365.93' y='1040.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF6F5D;' />
+<rect x='365.93' y='1083.43' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9C50;' />
+<rect x='365.93' y='1126.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9A51;' />
+<rect x='365.93' y='1170.10' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFA44D;' />
+<rect x='365.93' y='1213.43' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFBA43;' />
+<rect x='365.93' y='1256.77' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FAC43D;' />
+<rect x='365.93' y='1300.10' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF8857;' />
+<rect x='365.93' y='1343.43' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF8C56;' />
+<rect x='365.93' y='1386.77' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FEBF40;' />
+<rect x='365.93' y='1430.10' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF8957;' />
+<rect x='365.93' y='1473.44' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FCC13F;' />
+<rect x='365.93' y='1516.77' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FDBF40;' />
+<rect x='409.27' y='130.06' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9752;' />
+<rect x='409.27' y='173.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFB943;' />
+<rect x='409.27' y='216.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFA64C;' />
+<rect x='409.27' y='260.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFAF48;' />
+<rect x='409.27' y='303.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F7C83B;' />
+<rect x='409.27' y='346.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FCC13F;' />
+<rect x='409.27' y='390.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9553;' />
+<rect x='409.27' y='433.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF6D5E;' />
+<rect x='409.27' y='476.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFBD41;' />
+<rect x='409.27' y='520.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF7B5B;' />
+<rect x='409.27' y='563.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFAC4A;' />
+<rect x='409.27' y='606.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF8F55;' />
+<rect x='409.27' y='650.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF725D;' />
+<rect x='409.27' y='693.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9C50;' />
+<rect x='409.27' y='736.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF7F5A;' />
+<rect x='409.27' y='780.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF7D5A;' />
+<rect x='409.27' y='823.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF8458;' />
+<rect x='409.27' y='866.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9652;' />
+<rect x='409.27' y='910.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9752;' />
+<rect x='409.27' y='953.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F1CF36;' />
+<rect x='409.27' y='996.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFA74C;' />
+<rect x='409.27' y='1040.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF8658;' />
+<rect x='409.27' y='1083.43' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF7F59;' />
+<rect x='409.27' y='1126.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9055;' />
+<rect x='409.27' y='1170.10' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9752;' />
+<rect x='409.27' y='1213.43' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFA34D;' />
+<rect x='409.27' y='1256.77' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FDC03F;' />
+<rect x='409.27' y='1300.10' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9E4F;' />
+<rect x='409.27' y='1343.43' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9D50;' />
+<rect x='409.27' y='1386.77' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FDBF40;' />
+<rect x='409.27' y='1430.10' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF7C5A;' />
+<rect x='409.27' y='1473.44' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F6C93A;' />
+<rect x='409.27' y='1516.77' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F7C83B;' />
+<rect x='452.60' y='130.06' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EED234;' />
+<rect x='452.60' y='173.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #92C765;' />
+<rect x='452.60' y='216.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EDD433;' />
+<rect x='452.60' y='260.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EFD134;' />
+<rect x='452.60' y='303.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F0D135;' />
+<rect x='452.60' y='346.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EFD134;' />
+<rect x='452.60' y='390.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C0D04E;' />
+<rect x='452.60' y='433.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFAB4A;' />
+<rect x='452.60' y='476.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EED234;' />
+<rect x='452.60' y='520.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #A7CB5B;' />
+<rect x='452.60' y='563.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C4D14B;' />
+<rect x='452.60' y='606.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E3D833;' />
+<rect x='452.60' y='650.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF9553;' />
+<rect x='452.60' y='693.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F4CC38;' />
+<rect x='452.60' y='736.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #A7CB5B;' />
+<rect x='452.60' y='780.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FBC23E;' />
+<rect x='452.60' y='823.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E5D831;' />
+<rect x='452.60' y='866.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFBD41;' />
+<rect x='452.60' y='910.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E9D72F;' />
+<rect x='452.60' y='953.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #9EC960;' />
+<rect x='452.60' y='996.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F2CE37;' />
+<rect x='452.60' y='1040.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FAC43D;' />
+<rect x='452.60' y='1083.43' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F2CD37;' />
+<rect x='452.60' y='1126.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E0D736;' />
+<rect x='452.60' y='1170.10' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #B0CD57;' />
+<rect x='452.60' y='1213.43' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FBC23E;' />
+<rect x='452.60' y='1256.77' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #BBCF50;' />
+<rect x='452.60' y='1300.10' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F4CB39;' />
+<rect x='452.60' y='1343.43' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #91C765;' />
+<rect x='452.60' y='1386.77' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F8C73B;' />
+<rect x='452.60' y='1430.10' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F4CC38;' />
+<rect x='452.60' y='1473.44' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #87C56A;' />
+<rect x='452.60' y='1516.77' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #D3D540;' />
+<rect x='495.94' y='130.06' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #ECD531;' />
+<rect x='495.94' y='173.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #4CBC7B;' />
+<rect x='495.94' y='216.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E9D82F;' />
+<rect x='495.94' y='260.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EBD631;' />
+<rect x='495.94' y='303.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #D0D443;' />
+<rect x='495.94' y='346.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #CCD346;' />
+<rect x='495.94' y='390.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #9CC961;' />
+<rect x='495.94' y='433.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FBC33E;' />
+<rect x='495.94' y='476.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #ECD432;' />
+<rect x='495.94' y='520.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #97C863;' />
+<rect x='495.94' y='563.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #B7CE53;' />
+<rect x='495.94' y='606.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F0D135;' />
+<rect x='495.94' y='650.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FAC33D;' />
+<rect x='495.94' y='693.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EDD432;' />
+<rect x='495.94' y='736.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #9CC961;' />
+<rect x='495.94' y='780.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F6C93A;' />
+<rect x='495.94' y='823.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EFD234;' />
+<rect x='495.94' y='866.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFAF48;' />
+<rect x='495.94' y='910.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E8D92E;' />
+<rect x='495.94' y='953.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #B2CD56;' />
+<rect x='495.94' y='996.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #ECD531;' />
+<rect x='495.94' y='1040.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F3CD37;' />
+<rect x='495.94' y='1083.43' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EED233;' />
+<rect x='495.94' y='1126.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F6C93A;' />
+<rect x='495.94' y='1170.10' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #BFD04E;' />
+<rect x='495.94' y='1213.43' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F8C73C;' />
+<rect x='495.94' y='1256.77' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #DBD63A;' />
+<rect x='495.94' y='1300.10' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F0D036;' />
+<rect x='495.94' y='1343.43' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #7AC26E;' />
+<rect x='495.94' y='1386.77' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EDD433;' />
+<rect x='495.94' y='1430.10' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F2CE37;' />
+<rect x='495.94' y='1473.44' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C6D24A;' />
+<rect x='495.94' y='1516.77' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #BDD050;' />
+<rect x='539.27' y='130.06' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EAD730;' />
+<rect x='539.27' y='173.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #74C170;' />
+<rect x='539.27' y='216.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #DCD63A;' />
+<rect x='539.27' y='260.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EBD531;' />
+<rect x='539.27' y='303.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #CBD347;' />
+<rect x='539.27' y='346.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C3D14B;' />
+<rect x='539.27' y='390.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #00B783;' />
+<rect x='539.27' y='433.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F9C63C;' />
+<rect x='539.27' y='476.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F0D035;' />
+<rect x='539.27' y='520.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #ACCC59;' />
+<rect x='539.27' y='563.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #ECD432;' />
+<rect x='539.27' y='606.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C7D249;' />
+<rect x='539.27' y='650.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F0D035;' />
+<rect x='539.27' y='693.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EED333;' />
+<rect x='539.27' y='736.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #85C46A;' />
+<rect x='539.27' y='780.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F6C93A;' />
+<rect x='539.27' y='823.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EBD531;' />
+<rect x='539.27' y='866.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFBC42;' />
+<rect x='539.27' y='910.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EDD432;' />
+<rect x='539.27' y='953.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #8DC667;' />
+<rect x='539.27' y='996.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #B8CF52;' />
+<rect x='539.27' y='1040.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EDD432;' />
+<rect x='539.27' y='1083.43' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F1CF36;' />
+<rect x='539.27' y='1126.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F0D035;' />
+<rect x='539.27' y='1170.10' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #DBD63B;' />
+<rect x='539.27' y='1213.43' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EDD432;' />
+<rect x='539.27' y='1256.77' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #ECD531;' />
+<rect x='539.27' y='1300.10' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F4CB39;' />
+<rect x='539.27' y='1343.43' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #A9CB5B;' />
+<rect x='539.27' y='1386.77' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EDD433;' />
+<rect x='539.27' y='1430.10' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F4CC38;' />
+<rect x='539.27' y='1473.44' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #A4CA5D;' />
+<rect x='539.27' y='1516.77' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #D1D442;' />
+<rect x='582.61' y='130.06' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EDD333;' />
+<rect x='582.61' y='173.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #3CBA7E;' />
+<rect x='582.61' y='216.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #ECD532;' />
+<rect x='582.61' y='260.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E8D92E;' />
+<rect x='582.61' y='303.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E1D835;' />
+<rect x='582.61' y='346.73' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #B8CF52;' />
+<rect x='582.61' y='390.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #7DC36D;' />
+<rect x='582.61' y='433.40' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFA64C;' />
+<rect x='582.61' y='476.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EDD333;' />
+<rect x='582.61' y='520.07' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #9FC95F;' />
+<rect x='582.61' y='563.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #ECD532;' />
+<rect x='582.61' y='606.74' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F0D035;' />
+<rect x='582.61' y='650.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F3CD37;' />
+<rect x='582.61' y='693.41' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F6C93A;' />
+<rect x='582.61' y='736.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #87C569;' />
+<rect x='582.61' y='780.08' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F8C73B;' />
+<rect x='582.61' y='823.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EFD134;' />
+<rect x='582.61' y='866.75' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFB247;' />
+<rect x='582.61' y='910.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #DED738;' />
+<rect x='582.61' y='953.42' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #A0CA5F;' />
+<rect x='582.61' y='996.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FF8159;' />
+<rect x='582.61' y='1040.09' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F2CD37;' />
+<rect x='582.61' y='1083.43' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EBD631;' />
+<rect x='582.61' y='1126.76' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F0D035;' />
+<rect x='582.61' y='1170.10' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #B8CF52;' />
+<rect x='582.61' y='1213.43' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EED234;' />
+<rect x='582.61' y='1256.77' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C8D248;' />
+<rect x='582.61' y='1300.10' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F9C53D;' />
+<rect x='582.61' y='1343.43' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #9EC95F;' />
+<rect x='582.61' y='1386.77' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EAD730;' />
+<rect x='582.61' y='1430.10' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F0D035;' />
+<rect x='582.61' y='1473.44' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #D7D53E;' />
+<rect x='582.61' y='1516.77' width='43.33' height='43.33' style='stroke-width: 0.21; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #C7D249;' />
+<text x='387.60' y='155.55' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>56.4</text>
+<text x='387.60' y='198.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>66.29</text>
+<text x='387.60' y='242.22' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>57.14</text>
+<text x='387.60' y='285.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>51.77</text>
+<text x='387.60' y='328.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>68.59</text>
+<text x='387.60' y='372.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>65.7</text>
+<text x='387.60' y='415.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>56.58</text>
+<text x='387.60' y='458.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>50.97</text>
+<text x='387.60' y='502.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>61.24</text>
+<text x='387.60' y='545.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>49.4</text>
+<text x='387.60' y='588.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>57.81</text>
+<text x='387.60' y='632.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>56.17</text>
+<text x='387.60' y='675.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>49.01</text>
+<text x='387.60' y='718.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>56.5</text>
+<text x='387.60' y='762.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>49.95</text>
+<text x='387.60' y='805.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>54.64</text>
+<text x='387.60' y='848.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>53.51</text>
+<text x='387.60' y='892.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>55.87</text>
+<text x='387.60' y='935.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>56.46</text>
+<text x='387.60' y='978.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>72.74</text>
+<text x='387.60' y='1022.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>62.31</text>
+<text x='387.60' y='1065.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>50.68</text>
+<text x='387.60' y='1108.92' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>57.28</text>
+<text x='387.60' y='1152.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>57.02</text>
+<text x='387.60' y='1195.59' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>58.55</text>
+<text x='387.60' y='1238.92' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>62.2</text>
+<text x='387.60' y='1282.26' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>65.94</text>
+<text x='387.60' y='1325.59' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>54.23</text>
+<text x='387.60' y='1368.93' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>54.75</text>
+<text x='387.60' y='1412.26' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>63.65</text>
+<text x='387.60' y='1455.60' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>54.4</text>
+<text x='387.60' y='1498.93' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>64.64</text>
+<text x='387.60' y='1542.26' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>63.84</text>
+<text x='430.94' y='155.55' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>56.6</text>
+<text x='430.94' y='198.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>62.04</text>
+<text x='430.94' y='242.22' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>58.91</text>
+<text x='430.94' y='285.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>60.44</text>
+<text x='430.94' y='328.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>67.84</text>
+<text x='430.94' y='372.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>64.84</text>
+<text x='430.94' y='415.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>56.28</text>
+<text x='430.94' y='458.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>50.35</text>
+<text x='430.94' y='502.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>62.75</text>
+<text x='430.94' y='545.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>52.3</text>
+<text x='430.94' y='588.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>59.85</text>
+<text x='430.94' y='632.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>55.36</text>
+<text x='430.94' y='675.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>51.07</text>
+<text x='430.94' y='718.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>57.33</text>
+<text x='430.94' y='762.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>52.85</text>
+<text x='430.94' y='805.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>52.63</text>
+<text x='430.94' y='848.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>53.62</text>
+<text x='430.94' y='892.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>56.35</text>
+<text x='430.94' y='935.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>56.45</text>
+<text x='430.94' y='978.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>71.48</text>
+<text x='430.94' y='1022.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>59.06</text>
+<text x='430.94' y='1065.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>53.89</text>
+<text x='430.94' y='1108.92' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>52.9</text>
+<text x='430.94' y='1152.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>55.39</text>
+<text x='430.94' y='1195.59' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>56.58</text>
+<text x='430.94' y='1238.92' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>58.47</text>
+<text x='430.94' y='1282.26' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>64.26</text>
+<text x='430.94' y='1325.59' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>57.68</text>
+<text x='430.94' y='1368.93' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>57.47</text>
+<text x='430.94' y='1412.26' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>63.78</text>
+<text x='430.94' y='1455.60' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>52.41</text>
+<text x='430.94' y='1498.93' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>68.42</text>
+<text x='430.94' y='1542.26' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>67.78</text>
+<text x='474.27' y='155.55' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>72.88</text>
+<text x='474.27' y='198.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>84.18</text>
+<text x='474.27' y='242.22' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>73.72</text>
+<text x='474.27' y='285.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>72.56</text>
+<text x='474.27' y='328.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>72.21</text>
+<text x='474.27' y='372.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>72.53</text>
+<text x='474.27' y='415.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>80.3</text>
+<text x='474.27' y='458.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>59.73</text>
+<text x='474.27' y='502.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>72.97</text>
+<text x='474.27' y='545.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>82.48</text>
+<text x='474.27' y='588.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>79.92</text>
+<text x='474.27' y='632.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>76.94</text>
+<text x='474.27' y='675.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>56.14</text>
+<text x='474.27' y='718.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>69.75</text>
+<text x='474.27' y='762.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>82.45</text>
+<text x='474.27' y='805.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>65.18</text>
+<text x='474.27' y='848.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>76.76</text>
+<text x='474.27' y='892.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>62.74</text>
+<text x='474.27' y='935.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>75.73</text>
+<text x='474.27' y='978.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>83.18</text>
+<text x='474.27' y='1022.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>70.87</text>
+<text x='474.27' y='1065.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>66.19</text>
+<text x='474.27' y='1108.92' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>70.59</text>
+<text x='474.27' y='1152.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>77.3</text>
+<text x='474.27' y='1195.59' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>81.67</text>
+<text x='474.27' y='1238.92' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>65.14</text>
+<text x='474.27' y='1282.26' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>80.69</text>
+<text x='474.27' y='1325.59' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>69.65</text>
+<text x='474.27' y='1368.93' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>84.24</text>
+<text x='474.27' y='1412.26' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>67.5</text>
+<text x='474.27' y='1455.60' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>69.82</text>
+<text x='474.27' y='1498.93' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>85.02</text>
+<text x='474.27' y='1542.26' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>78.47</text>
+<text x='517.60' y='155.55' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>74.53</text>
+<text x='517.60' y='198.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>88.49</text>
+<text x='517.60' y='242.22' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>76.09</text>
+<text x='517.60' y='285.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>74.93</text>
+<text x='517.60' y='328.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>78.79</text>
+<text x='517.60' y='372.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>79.17</text>
+<text x='517.60' y='415.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>83.36</text>
+<text x='517.60' y='458.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>65.5</text>
+<text x='517.60' y='502.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>74.18</text>
+<text x='517.60' y='545.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>83.78</text>
+<text x='517.60' y='588.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>81.1</text>
+<text x='517.60' y='632.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>72.22</text>
+<text x='517.60' y='675.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>65.77</text>
+<text x='517.60' y='718.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>73.86</text>
+<text x='517.60' y='762.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>83.35</text>
+<text x='517.60' y='805.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>68.4</text>
+<text x='517.60' y='848.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>72.77</text>
+<text x='517.60' y='892.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>60.48</text>
+<text x='517.60' y='935.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>76.29</text>
+<text x='517.60' y='978.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>81.5</text>
+<text x='517.60' y='1022.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>74.44</text>
+<text x='517.60' y='1065.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>70.39</text>
+<text x='517.60' y='1108.92' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>73.19</text>
+<text x='517.60' y='1152.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>68.63</text>
+<text x='517.60' y='1195.59' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>80.34</text>
+<text x='517.60' y='1238.92' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>67.35</text>
+<text x='517.60' y='1282.26' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>77.73</text>
+<text x='517.60' y='1325.59' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>71.74</text>
+<text x='517.60' y='1368.93' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>85.93</text>
+<text x='517.60' y='1412.26' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>73.75</text>
+<text x='517.60' y='1455.60' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>70.95</text>
+<text x='517.60' y='1498.93' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>79.72</text>
+<text x='517.60' y='1542.26' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>80.56</text>
+<text x='560.94' y='155.55' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>75.5</text>
+<text x='560.94' y='198.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>86.32</text>
+<text x='560.94' y='242.22' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>77.68</text>
+<text x='560.94' y='285.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>74.71</text>
+<text x='560.94' y='328.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>79.28</text>
+<text x='560.94' y='372.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>79.96</text>
+<text x='560.94' y='415.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>90.25</text>
+<text x='560.94' y='458.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>66.88</text>
+<text x='560.94' y='502.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>71.89</text>
+<text x='560.94' y='545.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>82.04</text>
+<text x='560.94' y='588.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>74.16</text>
+<text x='560.94' y='632.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>79.59</text>
+<text x='560.94' y='675.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>71.82</text>
+<text x='560.94' y='718.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>73.32</text>
+<text x='560.94' y='762.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>85.12</text>
+<text x='560.94' y='805.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>68.47</text>
+<text x='560.94' y='848.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>74.62</text>
+<text x='560.94' y='892.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>62.56</text>
+<text x='560.94' y='935.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>73.82</text>
+<text x='560.94' y='978.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>84.53</text>
+<text x='560.94' y='1022.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>81.01</text>
+<text x='560.94' y='1065.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>73.94</text>
+<text x='560.94' y='1108.92' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>71.24</text>
+<text x='560.94' y='1152.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>71.9</text>
+<text x='560.94' y='1195.59' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>77.8</text>
+<text x='560.94' y='1238.92' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>73.92</text>
+<text x='560.94' y='1282.26' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>74.47</text>
+<text x='560.94' y='1325.59' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>69.37</text>
+<text x='560.94' y='1368.93' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>82.31</text>
+<text x='560.94' y='1412.26' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>73.72</text>
+<text x='560.94' y='1455.60' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>69.89</text>
+<text x='560.94' y='1498.93' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>82.73</text>
+<text x='560.94' y='1542.26' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>78.68</text>
+<text x='604.27' y='155.55' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>73.54</text>
+<text x='604.27' y='198.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>89.13</text>
+<text x='604.27' y='242.22' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>74.24</text>
+<text x='604.27' y='285.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>76.44</text>
+<text x='604.27' y='328.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>77.16</text>
+<text x='604.27' y='372.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>80.97</text>
+<text x='604.27' y='415.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>85.73</text>
+<text x='604.27' y='458.89' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>58.87</text>
+<text x='604.27' y='502.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>73.68</text>
+<text x='604.27' y='545.56' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>83.15</text>
+<text x='604.27' y='588.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>74.26</text>
+<text x='604.27' y='632.23' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>72.05</text>
+<text x='604.27' y='675.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>70.51</text>
+<text x='604.27' y='718.90' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>68.65</text>
+<text x='604.27' y='762.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='12.53px' lengthAdjust='spacingAndGlyphs'>85</text>
+<text x='604.27' y='805.57' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>67.49</text>
+<text x='604.27' y='848.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>72.49</text>
+<text x='604.27' y='892.24' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>60.98</text>
+<text x='604.27' y='935.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>77.47</text>
+<text x='604.27' y='978.91' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>83.06</text>
+<text x='604.27' y='1022.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>53.13</text>
+<text x='604.27' y='1065.58' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>70.6</text>
+<text x='604.27' y='1108.92' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='12.53px' lengthAdjust='spacingAndGlyphs'>75</text>
+<text x='604.27' y='1152.25' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>72.08</text>
+<text x='604.27' y='1195.59' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>80.95</text>
+<text x='604.27' y='1238.92' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>72.9</text>
+<text x='604.27' y='1282.26' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>79.5</text>
+<text x='604.27' y='1325.59' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>66.46</text>
+<text x='604.27' y='1368.93' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>83.17</text>
+<text x='604.27' y='1412.26' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>75.26</text>
+<text x='604.27' y='1455.60' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='21.52px' lengthAdjust='spacingAndGlyphs'>72.1</text>
+<text x='604.27' y='1498.93' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>78.16</text>
+<text x='604.27' y='1542.26' text-anchor='middle' style='font-size: 11.04px; font-weight: bold; font-family: "Ubuntu";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>79.59</text>
 </g>
 <g clip-path='url(#cpMC4wMHw4NjQuMDB8MC4wMHwxNjU2LjAw)'>
-<text x='382.66' y='1547.09' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='46.40px' lengthAdjust='spacingAndGlyphs'>ZAC</text>
-<text x='382.66' y='1503.76' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='47.65px' lengthAdjust='spacingAndGlyphs'>YUC</text>
-<text x='382.66' y='1460.42' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='46.40px' lengthAdjust='spacingAndGlyphs'>VER</text>
-<text x='382.66' y='1417.09' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='59.45px' lengthAdjust='spacingAndGlyphs'>TLAX</text>
-<text x='382.66' y='1373.75' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='52.47px' lengthAdjust='spacingAndGlyphs'>TAM</text>
-<text x='382.66' y='1330.42' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='46.78px' lengthAdjust='spacingAndGlyphs'>TAB</text>
-<text x='382.66' y='1287.09' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='50.95px' lengthAdjust='spacingAndGlyphs'>SON</text>
-<text x='382.66' y='1243.75' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='38.22px' lengthAdjust='spacingAndGlyphs'>SIN</text>
-<text x='382.66' y='1200.42' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='41.47px' lengthAdjust='spacingAndGlyphs'>SLP</text>
-<text x='382.66' y='1157.08' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='74.07px' lengthAdjust='spacingAndGlyphs'>QROO</text>
-<text x='382.66' y='1113.75' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='54.62px' lengthAdjust='spacingAndGlyphs'>QRO</text>
-<text x='382.66' y='1070.41' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='46.68px' lengthAdjust='spacingAndGlyphs'>PUE</text>
-<text x='382.66' y='1027.08' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='51.80px' lengthAdjust='spacingAndGlyphs'>OAX</text>
-<text x='382.66' y='983.75' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='31.18px' lengthAdjust='spacingAndGlyphs'>NL</text>
-<text x='382.66' y='940.41' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='49.72px' lengthAdjust='spacingAndGlyphs'>NAY</text>
-<text x='382.66' y='897.08' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='56.94px' lengthAdjust='spacingAndGlyphs'>MOR</text>
-<text x='382.66' y='853.74' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='61.62px' lengthAdjust='spacingAndGlyphs'>MICH</text>
-<text x='382.66' y='810.41' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='51.83px' lengthAdjust='spacingAndGlyphs'>MEX</text>
-<text x='382.66' y='767.07' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='42.05px' lengthAdjust='spacingAndGlyphs'>JAL</text>
-<text x='382.66' y='723.74' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='53.87px' lengthAdjust='spacingAndGlyphs'>HGO</text>
-<text x='382.66' y='680.40' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='51.97px' lengthAdjust='spacingAndGlyphs'>GRO</text>
-<text x='382.66' y='637.07' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='50.37px' lengthAdjust='spacingAndGlyphs'>GTO</text>
-<text x='382.66' y='593.74' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='54.07px' lengthAdjust='spacingAndGlyphs'>DGO</text>
-<text x='382.66' y='550.40' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='70.88px' lengthAdjust='spacingAndGlyphs'>CDMX</text>
-<text x='382.66' y='507.07' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='57.48px' lengthAdjust='spacingAndGlyphs'>CHIH</text>
-<text x='382.66' y='463.73' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='61.62px' lengthAdjust='spacingAndGlyphs'>CHPS</text>
-<text x='382.66' y='420.40' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='47.92px' lengthAdjust='spacingAndGlyphs'>COL</text>
-<text x='382.66' y='377.06' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='69.15px' lengthAdjust='spacingAndGlyphs'>COAH</text>
-<text x='382.66' y='333.73' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='69.05px' lengthAdjust='spacingAndGlyphs'>CAMP</text>
-<text x='382.66' y='290.40' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='44.88px' lengthAdjust='spacingAndGlyphs'>BCS</text>
-<text x='382.66' y='247.06' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='31.58px' lengthAdjust='spacingAndGlyphs'>BC</text>
-<text x='382.66' y='203.73' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='46.67px' lengthAdjust='spacingAndGlyphs'>AGS</text>
-<text x='382.66' y='160.39' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='98.16px' lengthAdjust='spacingAndGlyphs'>Nacional</text>
-<text transform='translate(417.93,1569.36) rotate(-90)' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='56.39px' lengthAdjust='spacingAndGlyphs'>2015</text>
-<text transform='translate(461.26,1569.36) rotate(-90)' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='56.39px' lengthAdjust='spacingAndGlyphs'>2016</text>
-<text transform='translate(504.60,1569.36) rotate(-90)' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='56.39px' lengthAdjust='spacingAndGlyphs'>2018</text>
-<text transform='translate(547.93,1569.36) rotate(-90)' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='56.39px' lengthAdjust='spacingAndGlyphs'>2020</text>
-<text transform='translate(591.26,1569.36) rotate(-90)' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='56.39px' lengthAdjust='spacingAndGlyphs'>2022</text>
-<text x='432.00' y='113.67' text-anchor='middle' style='font-size: 35.00px;fill: #777777; font-family: "Ubuntu";' textLength='184.57px' lengthAdjust='spacingAndGlyphs'>2015 - 2022</text>
-<text x='432.00' y='33.21' text-anchor='middle' style='font-size: 40.00px; font-weight: bold;fill: #6950D8; font-family: "Ubuntu";' textLength='402.23px' lengthAdjust='spacingAndGlyphs'>03.09.01 Hogares con</text>
-<text x='432.00' y='76.41' text-anchor='middle' style='font-size: 40.00px; font-weight: bold;fill: #6950D8; font-family: "Ubuntu";' textLength='443.95px' lengthAdjust='spacingAndGlyphs'>título de propiedad (%)</text>
+<text x='361.00' y='1547.11' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='46.36px' lengthAdjust='spacingAndGlyphs'>ZAC</text>
+<text x='361.00' y='1503.77' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='47.66px' lengthAdjust='spacingAndGlyphs'>YUC</text>
+<text x='361.00' y='1460.44' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='46.41px' lengthAdjust='spacingAndGlyphs'>VER</text>
+<text x='361.00' y='1417.10' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='60.78px' lengthAdjust='spacingAndGlyphs'>TLAX</text>
+<text x='361.00' y='1373.77' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='50.89px' lengthAdjust='spacingAndGlyphs'>TAM</text>
+<text x='361.00' y='1330.43' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='45.19px' lengthAdjust='spacingAndGlyphs'>TAB</text>
+<text x='361.00' y='1287.10' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='50.95px' lengthAdjust='spacingAndGlyphs'>SON</text>
+<text x='361.00' y='1243.76' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='38.22px' lengthAdjust='spacingAndGlyphs'>SIN</text>
+<text x='361.00' y='1200.43' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='41.47px' lengthAdjust='spacingAndGlyphs'>SLP</text>
+<text x='361.00' y='1157.09' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='73.80px' lengthAdjust='spacingAndGlyphs'>QROO</text>
+<text x='361.00' y='1113.76' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='54.34px' lengthAdjust='spacingAndGlyphs'>QRO</text>
+<text x='361.00' y='1070.42' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='46.69px' lengthAdjust='spacingAndGlyphs'>PUE</text>
+<text x='361.00' y='1027.09' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='51.97px' lengthAdjust='spacingAndGlyphs'>OAX</text>
+<text x='361.00' y='983.75' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='31.17px' lengthAdjust='spacingAndGlyphs'>NL</text>
+<text x='361.00' y='940.42' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='47.77px' lengthAdjust='spacingAndGlyphs'>NAY</text>
+<text x='361.00' y='897.08' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='56.95px' lengthAdjust='spacingAndGlyphs'>MOR</text>
+<text x='361.00' y='853.75' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='61.62px' lengthAdjust='spacingAndGlyphs'>MICH</text>
+<text x='361.00' y='810.42' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='51.84px' lengthAdjust='spacingAndGlyphs'>MEX</text>
+<text x='361.00' y='767.08' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='41.80px' lengthAdjust='spacingAndGlyphs'>JAL</text>
+<text x='361.00' y='723.75' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='53.88px' lengthAdjust='spacingAndGlyphs'>HGO</text>
+<text x='361.00' y='680.41' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='51.69px' lengthAdjust='spacingAndGlyphs'>GRO</text>
+<text x='361.00' y='637.08' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='49.70px' lengthAdjust='spacingAndGlyphs'>GTO</text>
+<text x='361.00' y='593.74' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='54.08px' lengthAdjust='spacingAndGlyphs'>DGO</text>
+<text x='361.00' y='550.41' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='70.89px' lengthAdjust='spacingAndGlyphs'>CDMX</text>
+<text x='361.00' y='507.07' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='57.47px' lengthAdjust='spacingAndGlyphs'>CHIH</text>
+<text x='361.00' y='463.74' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='61.62px' lengthAdjust='spacingAndGlyphs'>CHPS</text>
+<text x='361.00' y='420.40' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='47.42px' lengthAdjust='spacingAndGlyphs'>COL</text>
+<text x='361.00' y='377.07' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='68.19px' lengthAdjust='spacingAndGlyphs'>COAH</text>
+<text x='361.00' y='333.73' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='69.61px' lengthAdjust='spacingAndGlyphs'>CAMP</text>
+<text x='361.00' y='290.40' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='45.12px' lengthAdjust='spacingAndGlyphs'>BCS</text>
+<text x='361.00' y='247.06' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='31.58px' lengthAdjust='spacingAndGlyphs'>BC</text>
+<text x='361.00' y='203.73' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='46.20px' lengthAdjust='spacingAndGlyphs'>AGS</text>
+<text x='361.00' y='160.39' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='98.17px' lengthAdjust='spacingAndGlyphs'>Nacional</text>
+<text transform='translate(396.27,1569.37) rotate(-90)' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='56.38px' lengthAdjust='spacingAndGlyphs'>2015</text>
+<text transform='translate(439.60,1569.37) rotate(-90)' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='56.38px' lengthAdjust='spacingAndGlyphs'>2016</text>
+<text transform='translate(482.94,1569.37) rotate(-90)' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='56.38px' lengthAdjust='spacingAndGlyphs'>2018</text>
+<text transform='translate(526.27,1569.37) rotate(-90)' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='56.38px' lengthAdjust='spacingAndGlyphs'>2020</text>
+<text transform='translate(569.60,1569.37) rotate(-90)' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='56.38px' lengthAdjust='spacingAndGlyphs'>2022</text>
+<text transform='translate(612.94,1569.37) rotate(-90)' text-anchor='end' style='font-size: 25.00px;fill: #777777; font-family: "Ubuntu";' textLength='56.38px' lengthAdjust='spacingAndGlyphs'>2024</text>
+<text x='432.00' y='113.67' text-anchor='middle' style='font-size: 35.00px;fill: #777777; font-family: "Ubuntu";' textLength='184.50px' lengthAdjust='spacingAndGlyphs'>2015 - 2024</text>
+<text x='432.00' y='33.21' text-anchor='middle' style='font-size: 40.00px; font-weight: bold;fill: #6950D8; font-family: "Ubuntu";' textLength='400.80px' lengthAdjust='spacingAndGlyphs'>03.09.01 Hogares con</text>
+<text x='432.00' y='76.41' text-anchor='middle' style='font-size: 40.00px; font-weight: bold;fill: #6950D8; font-family: "Ubuntu";' textLength='443.48px' lengthAdjust='spacingAndGlyphs'>título de propiedad (%)</text>
+</g>
 </g>
 </svg>
